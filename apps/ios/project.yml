@@ -1,0 +1,221 @@
+# XcodeGen spec for the Desyn iOS app: `xcodegen generate --spec project.yml` (see README.md).
+name: Desyn
+options:
+  bundleIdPrefix: app.desyn
+  deploymentTarget:
+    iOS: "18.0"
+  developmentLanguage: en
+  createIntermediateGroups: true
+  groupSortPosition: top
+configFiles:
+  Debug: Config/Desyn.xcconfig
+  Release: Config/Desyn.xcconfig
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    TARGETED_DEVICE_FAMILY: "1,2"
+    DEVELOPMENT_TEAM: HL34V4TRZ5
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+    DEAD_CODE_STRIPPING: YES
+packages:
+  DesignSystem:
+    path: Packages/DesignSystem
+  DesynKit:
+    path: Packages/DesynKit
+  Features:
+    path: Packages/Features
+  DesynEngine:
+    path: DesynEngine
+  # Editor features and app extensions (apps/ios/Features/*, apps/ios/Extensions/*).
+  SharedKit:
+    path: Extensions/SharedKit
+  InspectorFeature:
+    path: Features/Inspector
+  AssetsFeature:
+    path: Features/Assets
+  AIFeature:
+    path: Features/AI
+  ExportFeature:
+    path: Features/Export
+  ShareFeature:
+    path: Features/Share
+  CommentsFeature:
+    path: Features/Comments
+  SettingsFeature:
+    path: Features/Settings
+targets:
+  Desyn:
+    type: application
+    platform: iOS
+    sources:
+      - path: App
+      # Composition root of the editor features, App Intents and widget data.
+      - path: Extensions/App
+    settings:
+      base:
+        PRODUCT_NAME: Desyn
+        PRODUCT_BUNDLE_IDENTIFIER: app.desyn.ios
+        INFOPLIST_FILE: App/Info.plist
+        GENERATE_INFOPLIST_FILE: NO
+        CODE_SIGN_ENTITLEMENTS: App/Desyn.entitlements
+        CODE_SIGN_STYLE: Automatic
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        SUPPORTS_MACCATALYST: NO
+        SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: YES
+    dependencies:
+      - package: Features
+        product: AppFeature
+      - package: DesignSystem
+        product: DesignSystem
+      - package: Features
+        product: FeatureCore
+      - package: Features
+        product: EditorFeature
+      - package: Features
+        product: LibraryFeature
+      - package: DesynKit
+        product: DesynKit
+      - package: SharedKit
+        product: SharedKit
+      - package: SharedKit
+        product: PanelKit
+      - package: SharedKit
+        product: AppGroupKit
+      - package: InspectorFeature
+        product: InspectorFeature
+      - package: AssetsFeature
+        product: AssetsFeature
+      - package: AIFeature
+        product: AIFeature
+      - package: ExportFeature
+        product: ExportFeature
+      - package: ShareFeature
+        product: ShareFeature
+      - package: CommentsFeature
+        product: CommentsFeature
+      - package: SettingsFeature
+        product: SettingsFeature
+      - target: DesynShare
+      - target: DesynWidgets
+  DesynShare:
+    # Share extension: photos and PDFs from other apps become a new design.
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: Extensions/ShareExtension
+    settings:
+      base:
+        PRODUCT_NAME: DesynShare
+        PRODUCT_BUNDLE_IDENTIFIER: app.desyn.ios.share
+        INFOPLIST_FILE: Extensions/ShareExtension/Info.plist
+        GENERATE_INFOPLIST_FILE: NO
+        CODE_SIGN_ENTITLEMENTS: Extensions/ShareExtension/DesynShare.entitlements
+        CODE_SIGN_STYLE: Automatic
+        SKIP_INSTALL: YES
+    dependencies:
+      - package: DesynKit
+        product: DesynKit
+      - package: SharedKit
+        product: SharedKit
+      - package: SharedKit
+        product: AppGroupKit
+      - package: DesignSystem
+        product: DesignSystem
+  DesynWidgets:
+    # Home screen widget: recent designs (WidgetKit), from the App Group snapshot the app writes.
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: Extensions/Widget
+    settings:
+      base:
+        PRODUCT_NAME: DesynWidgets
+        PRODUCT_BUNDLE_IDENTIFIER: app.desyn.ios.widgets
+        INFOPLIST_FILE: Extensions/Widget/Info.plist
+        GENERATE_INFOPLIST_FILE: NO
+        CODE_SIGN_ENTITLEMENTS: Extensions/Widget/DesynWidgets.entitlements
+        CODE_SIGN_STYLE: Automatic
+        SKIP_INSTALL: YES
+    dependencies:
+      - package: SharedKit
+        product: AppGroupKit
+      - package: DesignSystem
+        product: DesignSystem
+      - sdk: WidgetKit.framework
+      - sdk: SwiftUI.framework
+  DesynTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: Tests/DesynTests
+      # The DesynKit package tests also run here (on the simulator), next to the app-level tests.
+      - path: Packages/DesynKit/Tests/DesynKitTests
+      # Editor features and their shared kit.
+      - path: Extensions/SharedKit/Tests/SharedKitTests
+      - path: Features/Inspector/Tests/InspectorFeatureTests
+      - path: Features/Assets/Tests/AssetsFeatureTests
+      - path: Features/AI/Tests/AIFeatureTests
+      - path: Features/Export/Tests/ExportFeatureTests
+      - path: Features/Share/Tests/ShareFeatureTests
+      - path: Features/Comments/Tests/CommentsFeatureTests
+      - path: Features/Settings/Tests/SettingsFeatureTests
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.desyn.ios.tests
+        GENERATE_INFOPLIST_FILE: YES
+        # Logic tests: no host app (the packages are linked into the bundle itself).
+        TEST_HOST: ""
+        BUNDLE_LOADER: ""
+    dependencies:
+      - package: DesynKit
+        product: DesynKit
+      - package: DesignSystem
+        product: DesignSystem
+      - package: Features
+        product: FeatureCore
+      - package: Features
+        product: AuthFeature
+      - package: Features
+        product: LibraryFeature
+      - package: Features
+        product: EditorFeature
+      - package: DesynEngine
+        product: DesynEngine
+      - package: SharedKit
+        product: SharedKit
+      - package: SharedKit
+        product: AppGroupKit
+      - package: InspectorFeature
+        product: InspectorFeature
+      - package: AssetsFeature
+        product: AssetsFeature
+      - package: AIFeature
+        product: AIFeature
+      - package: ExportFeature
+        product: ExportFeature
+      - package: ShareFeature
+        product: ShareFeature
+      - package: CommentsFeature
+        product: CommentsFeature
+      - package: SettingsFeature
+        product: SettingsFeature
+schemes:
+  Desyn:
+    build:
+      targets:
+        Desyn: all
+        DesynTests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      gatherCoverageData: true
+      targets:
+        - DesynTests
+    profile:
+      config: Release
+    archive:
+      config: Release

@@ -1,0 +1,626 @@
+{
+  "description": "Low contrast on flat colors and on sampled photos, a busy photo, an unsampled photo, a faint QR code.",
+  "design": {
+    "assets": {
+      "brightphoto0": {
+        "height": 400.0,
+        "id": "brightphoto0",
+        "kind": "image",
+        "mime": "image/jpeg",
+        "width": 600.0
+      },
+      "busyphoto000": {
+        "height": 400.0,
+        "id": "busyphoto000",
+        "kind": "image",
+        "mime": "image/jpeg",
+        "width": 600.0
+      },
+      "unknownphoto": {
+        "height": 400.0,
+        "id": "unknownphoto",
+        "kind": "image",
+        "mime": "image/jpeg",
+        "width": 600.0
+      }
+    },
+    "id": "design000001",
+    "kind": "social-post",
+    "meta": {},
+    "name": "Fixture",
+    "nodes": {
+      "brightphoto0": {
+        "alt": "Snowy field",
+        "assetId": "brightphoto0",
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fit": "fill",
+        "height": 200.0,
+        "id": "brightphoto0",
+        "locked": false,
+        "name": "Bright photo",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "image",
+        "visible": true,
+        "width": 600.0,
+        "x": 80.0,
+        "y": 400.0
+      },
+      "busyphoto000": {
+        "alt": "Black and white stripes",
+        "assetId": "busyphoto000",
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fit": "fill",
+        "height": 200.0,
+        "id": "busyphoto000",
+        "locked": false,
+        "name": "Busy photo",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "image",
+        "visible": true,
+        "width": 600.0,
+        "x": 80.0,
+        "y": 640.0
+      },
+      "darkpanel000": {
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fills": [
+          {
+            "angle": 90.0,
+            "stops": [
+              {
+                "color": "#101010",
+                "pos": 0.0
+              },
+              {
+                "color": "#2a2a2a",
+                "pos": 1.0
+              }
+            ],
+            "type": "linear"
+          }
+        ],
+        "height": 120.0,
+        "id": "darkpanel000",
+        "locked": false,
+        "name": "Dark panel",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "rect",
+        "visible": true,
+        "width": 600.0,
+        "x": 80.0,
+        "y": 240.0
+      },
+      "faintqr00000": {
+        "bg": "#ffffff",
+        "blend": "normal",
+        "data": "https://desyn.app",
+        "effects": [],
+        "errorCorrection": "M",
+        "fg": "#bbbbbb",
+        "height": 160.0,
+        "id": "faintqr00000",
+        "locked": false,
+        "name": "Faint QR",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "rounded": false,
+        "type": "qr",
+        "visible": true,
+        "width": 160.0,
+        "x": 760.0,
+        "y": 80.0
+      },
+      "greyonwhite0": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 38.4,
+        "id": "greyonwhite0",
+        "locked": false,
+        "name": "Grey on white",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Barely visible caption text"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#d0d0d0",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 32.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 600.0,
+        "x": 80.0,
+        "y": 80.0
+      },
+      "ongradient00": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 38.4,
+        "id": "ongradient00",
+        "locked": false,
+        "name": "On gradient",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Readable on the dark gradient"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#ffffff",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 32.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 560.0,
+        "x": 100.0,
+        "y": 270.0
+      },
+      "onstripes000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 48.0,
+        "id": "onstripes000",
+        "locked": false,
+        "name": "On stripes",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "White type on stripes"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#ffffff",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 40.0,
+          "fontStyle": "normal",
+          "fontWeight": 700.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 400.0,
+        "x": 100.0,
+        "y": 700.0
+      },
+      "onunknown000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 48.0,
+        "id": "onunknown000",
+        "locked": false,
+        "name": "On unknown",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Beach day"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#ffffff",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 40.0,
+          "fontStyle": "normal",
+          "fontWeight": 700.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 260.0,
+        "x": 740.0,
+        "y": 460.0
+      },
+      "page00000001": {
+        "background": [
+          {
+            "color": "#ffffff",
+            "type": "solid"
+          }
+        ],
+        "bleed": 0.0,
+        "blend": "normal",
+        "children": [
+          "greyonwhite0",
+          "yellowonwhit",
+          "darkpanel000",
+          "ongradient00",
+          "brightphoto0",
+          "whiteonsnow0",
+          "busyphoto000",
+          "onstripes000",
+          "unsampledpho",
+          "onunknown000",
+          "faintqr00000",
+          "watermark000"
+        ],
+        "clip": true,
+        "effects": [],
+        "height": 1080.0,
+        "id": "page00000001",
+        "locked": false,
+        "name": "Page 1",
+        "opacity": 1.0,
+        "parent": "root",
+        "rotation": 0.0,
+        "type": "page",
+        "unit": "px",
+        "visible": true,
+        "width": 1080.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "root": {
+        "blend": "normal",
+        "children": [
+          "page00000001"
+        ],
+        "effects": [],
+        "height": 0.0,
+        "id": "root",
+        "locked": false,
+        "name": "Root",
+        "opacity": 1.0,
+        "parent": null,
+        "rotation": 0.0,
+        "type": "root",
+        "visible": true,
+        "width": 0.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "unsampledpho": {
+        "alt": "A beach",
+        "assetId": "unknownphoto",
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fit": "fill",
+        "height": 200.0,
+        "id": "unsampledpho",
+        "locked": false,
+        "name": "Unsampled photo",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "image",
+        "visible": true,
+        "width": 300.0,
+        "x": 720.0,
+        "y": 400.0
+      },
+      "watermark000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 48.0,
+        "id": "watermark000",
+        "locked": false,
+        "name": "Watermark",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "role": "watermark",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "DRAFT"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#f2f2f2",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 40.0,
+          "fontStyle": "normal",
+          "fontWeight": 700.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 260.0,
+        "x": 760.0,
+        "y": 900.0
+      },
+      "whiteonsnow0": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 48.0,
+        "id": "whiteonsnow0",
+        "locked": false,
+        "name": "White on snow",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Winter sale"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#ffffff",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 40.0,
+          "fontStyle": "normal",
+          "fontWeight": 700.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 400.0,
+        "x": 100.0,
+        "y": 460.0
+      },
+      "yellowonwhit": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 38.4,
+        "id": "yellowonwhit",
+        "locked": false,
+        "name": "Yellow on white",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Sunny but hard to read"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#e0a800",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 32.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 600.0,
+        "x": 80.0,
+        "y": 160.0
+      }
+    },
+    "schema": 1,
+    "styles": {
+      "colors": {},
+      "effects": {},
+      "text": {},
+      "variables": {}
+    }
+  },
+  "expect": {
+    "flags": {
+      "Grey on white": [
+        "low-contrast"
+      ],
+      "On unknown": [
+        "on-image"
+      ]
+    },
+    "issues": [
+      {
+        "code": "low-contrast",
+        "fix": true,
+        "ids": [
+          "Grey on white"
+        ],
+        "rule": "low-contrast",
+        "severity": "error"
+      },
+      {
+        "code": "low-contrast",
+        "fix": true,
+        "ids": [
+          "Yellow on white"
+        ],
+        "rule": "low-contrast",
+        "severity": "warn"
+      },
+      {
+        "code": "low-contrast",
+        "ids": [
+          "White on snow"
+        ],
+        "rule": "low-contrast"
+      },
+      {
+        "code": "low-contrast",
+        "ids": [
+          "On stripes"
+        ],
+        "rule": "busy-background"
+      },
+      {
+        "code": "low-contrast",
+        "fix": true,
+        "ids": [
+          "Faint QR"
+        ],
+        "rule": "qr-contrast"
+      }
+    ]
+  },
+  "images": {
+    "brightphoto0": {
+      "height": 40,
+      "pattern": "solid:#f4f6f8",
+      "width": 60
+    },
+    "busyphoto000": {
+      "height": 40,
+      "pattern": "stripes:#000000,#ffffff",
+      "width": 64
+    }
+  },
+  "options": null
+}

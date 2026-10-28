@@ -1,0 +1,27 @@
+{
+  "name": "node-qr",
+  "schema": "QrNode",
+  "valid": true,
+  "description": "canonical example of a qr node",
+  "value": {
+    "id": "node00000023",
+    "type": "qr",
+    "name": "QR",
+    "parent": "page00000001",
+    "x": 100,
+    "y": 120,
+    "width": 160,
+    "height": 160,
+    "rotation": 0,
+    "opacity": 1,
+    "blend": "normal",
+    "visible": true,
+    "locked": false,
+    "effects": [],
+    "data": "https://desyn.app/s/abc",
+    "fg": "#000000",
+    "bg": "#ffffff",
+    "errorCorrection": "Q",
+    "rounded": true
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "invalid-root-parent",
+  "schema": "RootNode",
+  "valid": false,
+  "description": "root.parent is null",
+  "value": {
+    "id": "root",
+    "type": "root",
+    "name": "Root",
+    "parent": "page00000001",
+    "x": 0,
+    "y": 0,
+    "width": 0,
+    "height": 0,
+    "rotation": 0,
+    "opacity": 1,
+    "blend": "normal",
+    "visible": true,
+    "locked": false,
+    "effects": [],
+    "children": []
+  }
+}

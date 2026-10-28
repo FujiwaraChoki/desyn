@@ -1,0 +1,1073 @@
+{
+  "name": "asset-malformed-fields",
+  "description": "asset.set must be an object and asset.remove an array of strings",
+  "layoutSensitive": false,
+  "before": {
+    "schema": 1,
+    "id": "dsn000000001",
+    "name": "Fixture design",
+    "kind": "social-post",
+    "nodes": {
+      "root": {
+        "id": "root",
+        "type": "root",
+        "name": "Root",
+        "parent": null,
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "children": ["page00000001", "page00000002"]
+      },
+      "page00000001": {
+        "id": "page00000001",
+        "type": "page",
+        "name": "Page 1",
+        "parent": "root",
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1080,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "children": [
+          "bg0000000001",
+          "frame0000001",
+          "ell000000001",
+          "text00000001",
+          "img000000001",
+          "group0000001"
+        ],
+        "clip": true,
+        "unit": "px",
+        "background": [
+          {
+            "type": "solid",
+            "color": "#ffffff"
+          }
+        ],
+        "bleed": 0
+      },
+      "page00000002": {
+        "id": "page00000002",
+        "type": "page",
+        "name": "Page 2",
+        "parent": "root",
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1350,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "children": ["p2rect000001", "p2text000001"],
+        "clip": true,
+        "unit": "px",
+        "background": [
+          {
+            "type": "solid",
+            "color": "#ffffff"
+          }
+        ],
+        "bleed": 0
+      },
+      "bg0000000001": {
+        "id": "bg0000000001",
+        "type": "rect",
+        "name": "Background",
+        "parent": "page00000001",
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1080,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "fills": [
+          {
+            "type": "solid",
+            "color": "#faf8f4"
+          }
+        ],
+        "strokes": [],
+        "cornerRadius": 0,
+        "role": "background"
+      },
+      "frame0000001": {
+        "id": "frame0000001",
+        "type": "frame",
+        "name": "Card",
+        "parent": "page00000001",
+        "x": 80,
+        "y": 600,
+        "width": 400,
+        "height": 300,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "fills": [
+          {
+            "type": "solid",
+            "color": "#ffffff"
+          }
+        ],
+        "strokes": [],
+        "cornerRadius": 16,
+        "children": ["frect0000001", "ftext0000001"],
+        "clip": true,
+        "role": "card"
+      },
+      "frect0000001": {
+        "id": "frect0000001",
+        "type": "rect",
+        "name": "Card accent",
+        "parent": "frame0000001",
+        "x": 0,
+        "y": 0,
+        "width": 400,
+        "height": 8,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "fills": [
+          {
+            "type": "solid",
+            "color": "#ff6a1f"
+          }
+        ],
+        "strokes": [],
+        "cornerRadius": 0
+      },
+      "ftext0000001": {
+        "id": "ftext0000001",
+        "type": "text",
+        "name": "Card title",
+        "parent": "frame0000001",
+        "x": 24,
+        "y": 32,
+        "width": 352,
+        "height": 40,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "runs": [
+          {
+            "text": "Card title"
+          }
+        ],
+        "style": {
+          "fontFamily": "Inter",
+          "fontWeight": 700,
+          "fontStyle": "normal",
+          "fontSize": 40,
+          "fills": [
+            {
+              "type": "solid",
+              "color": "#111111"
+            }
+          ],
+          "letterSpacing": 0,
+          "textCase": "none",
+          "decoration": "none"
+        },
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120
+          },
+          "spacing": 0,
+          "indent": 0,
+          "list": "none"
+        },
+        "autoResize": "none",
+        "verticalAlign": "top",
+        "role": "subhead"
+      },
+      "ell000000001": {
+        "id": "ell000000001",
+        "type": "ellipse",
+        "name": "Sun",
+        "parent": "page00000001",
+        "x": 700,
+        "y": 120,
+        "width": 240,
+        "height": 240,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "fills": [
+          {
+            "type": "solid",
+            "color": "#ffb02e"
+          }
+        ],
+        "strokes": [],
+        "cornerRadius": 0,
+        "role": "decoration"
+      },
+      "text00000001": {
+        "id": "text00000001",
+        "type": "text",
+        "name": "Headline",
+        "parent": "page00000001",
+        "x": 80,
+        "y": 120,
+        "width": 560,
+        "height": 96,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "runs": [
+          {
+            "text": "design at the speed of light"
+          }
+        ],
+        "style": {
+          "fontFamily": "Inter",
+          "fontWeight": 700,
+          "fontStyle": "normal",
+          "fontSize": 40,
+          "fills": [
+            {
+              "type": "solid",
+              "color": "#111111"
+            }
+          ],
+          "letterSpacing": 0,
+          "textCase": "none",
+          "decoration": "none"
+        },
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120
+          },
+          "spacing": 0,
+          "indent": 0,
+          "list": "none"
+        },
+        "autoResize": "none",
+        "verticalAlign": "top",
+        "role": "headline"
+      },
+      "img000000001": {
+        "id": "img000000001",
+        "type": "image",
+        "name": "Photo",
+        "parent": "page00000001",
+        "x": 560,
+        "y": 600,
+        "width": 440,
+        "height": 300,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "fit": "fill",
+        "cornerRadius": 0,
+        "strokes": [],
+        "assetId": "asset0000001",
+        "role": "photo",
+        "alt": "Sunrise over hills"
+      },
+      "group0000001": {
+        "id": "group0000001",
+        "type": "group",
+        "name": "Badge",
+        "parent": "page00000001",
+        "x": 80,
+        "y": 960,
+        "width": 120,
+        "height": 40,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "children": ["grect0000001", "gell00000001"],
+        "clip": false
+      },
+      "grect0000001": {
+        "id": "grect0000001",
+        "type": "rect",
+        "name": "Badge bg",
+        "parent": "group0000001",
+        "x": 0,
+        "y": 0,
+        "width": 120,
+        "height": 40,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "fills": [
+          {
+            "type": "solid",
+            "color": "#ff6a1f"
+          }
+        ],
+        "strokes": [],
+        "cornerRadius": 20
+      },
+      "gell00000001": {
+        "id": "gell00000001",
+        "type": "ellipse",
+        "name": "Badge dot",
+        "parent": "group0000001",
+        "x": 12,
+        "y": 12,
+        "width": 16,
+        "height": 16,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "fills": [
+          {
+            "type": "solid",
+            "color": "#0a0a0a"
+          }
+        ],
+        "strokes": [],
+        "cornerRadius": 0
+      },
+      "p2rect000001": {
+        "id": "p2rect000001",
+        "type": "rect",
+        "name": "Panel",
+        "parent": "page00000002",
+        "x": 100,
+        "y": 100,
+        "width": 880,
+        "height": 400,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "fills": [
+          {
+            "type": "solid",
+            "color": "#ff6a1f"
+          }
+        ],
+        "strokes": [],
+        "cornerRadius": 0
+      },
+      "p2text000001": {
+        "id": "p2text000001",
+        "type": "text",
+        "name": "Title",
+        "parent": "page00000002",
+        "x": 100,
+        "y": 600,
+        "width": 880,
+        "height": 48,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "runs": [
+          {
+            "text": "Second page"
+          }
+        ],
+        "style": {
+          "fontFamily": "Inter",
+          "fontWeight": 700,
+          "fontStyle": "normal",
+          "fontSize": 40,
+          "fills": [
+            {
+              "type": "solid",
+              "color": "#111111"
+            }
+          ],
+          "letterSpacing": 0,
+          "textCase": "none",
+          "decoration": "none"
+        },
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120
+          },
+          "spacing": 0,
+          "indent": 0,
+          "list": "none"
+        },
+        "autoResize": "none",
+        "verticalAlign": "top"
+      }
+    },
+    "assets": {
+      "asset0000001": {
+        "id": "asset0000001",
+        "kind": "image",
+        "mime": "image/jpeg",
+        "width": 2400,
+        "height": 1600,
+        "storageKey": "assets/fixture/sunrise.jpg",
+        "source": "stock"
+      }
+    },
+    "styles": {
+      "colors": {
+        "color0000001": {
+          "name": "Sun",
+          "value": "#ffb02e"
+        }
+      },
+      "text": {
+        "tstyle000001": {
+          "name": "Heading",
+          "style": {
+            "fontFamily": "Instrument Serif",
+            "fontWeight": 400,
+            "fontStyle": "normal",
+            "fontSize": 64,
+            "fills": [
+              {
+                "type": "solid",
+                "color": "#111111"
+              }
+            ],
+            "letterSpacing": 0,
+            "textCase": "none",
+            "decoration": "none"
+          }
+        }
+      },
+      "effects": {
+        "fx0000000001": {
+          "name": "Soft shadow",
+          "effects": [
+            {
+              "type": "dropShadow",
+              "x": 0,
+              "y": 8,
+              "blur": 24,
+              "spread": 0,
+              "color": "#0000001f"
+            }
+          ]
+        }
+      },
+      "variables": {
+        "brand.primary": "#ffb02e",
+        "brand.radius": 16,
+        "brand.dark": true
+      }
+    },
+    "meta": {
+      "createdAt": 1760000000000,
+      "updatedAt": 1760000000000,
+      "tags": ["fixture"]
+    }
+  },
+  "tx": {
+    "id": "tx0000000215",
+    "label": "asset-malformed-fields",
+    "ops": [
+      {
+        "op": "asset",
+        "set": [
+          {
+            "id": "asset0000001",
+            "kind": "image",
+            "mime": "image/png"
+          }
+        ]
+      },
+      {
+        "op": "asset",
+        "remove": "asset0000001"
+      },
+      {
+        "op": "asset",
+        "remove": ["asset0000001", 7]
+      }
+    ],
+    "source": "user",
+    "ts": 1760000000000
+  },
+  "after": {
+    "schema": 1,
+    "id": "dsn000000001",
+    "name": "Fixture design",
+    "kind": "social-post",
+    "nodes": {
+      "root": {
+        "id": "root",
+        "type": "root",
+        "name": "Root",
+        "parent": null,
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "children": ["page00000001", "page00000002"]
+      },
+      "page00000001": {
+        "id": "page00000001",
+        "type": "page",
+        "name": "Page 1",
+        "parent": "root",
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1080,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "children": [
+          "bg0000000001",
+          "frame0000001",
+          "ell000000001",
+          "text00000001",
+          "img000000001",
+          "group0000001"
+        ],
+        "clip": true,
+        "unit": "px",
+        "background": [
+          {
+            "type": "solid",
+            "color": "#ffffff"
+          }
+        ],
+        "bleed": 0
+      },
+      "page00000002": {
+        "id": "page00000002",
+        "type": "page",
+        "name": "Page 2",
+        "parent": "root",
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1350,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "children": ["p2rect000001", "p2text000001"],
+        "clip": true,
+        "unit": "px",
+        "background": [
+          {
+            "type": "solid",
+            "color": "#ffffff"
+          }
+        ],
+        "bleed": 0
+      },
+      "bg0000000001": {
+        "id": "bg0000000001",
+        "type": "rect",
+        "name": "Background",
+        "parent": "page00000001",
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1080,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "fills": [
+          {
+            "type": "solid",
+            "color": "#faf8f4"
+          }
+        ],
+        "strokes": [],
+        "cornerRadius": 0,
+        "role": "background"
+      },
+      "frame0000001": {
+        "id": "frame0000001",
+        "type": "frame",
+        "name": "Card",
+        "parent": "page00000001",
+        "x": 80,
+        "y": 600,
+        "width": 400,
+        "height": 300,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "fills": [
+          {
+            "type": "solid",
+            "color": "#ffffff"
+          }
+        ],
+        "strokes": [],
+        "cornerRadius": 16,
+        "children": ["frect0000001", "ftext0000001"],
+        "clip": true,
+        "role": "card"
+      },
+      "frect0000001": {
+        "id": "frect0000001",
+        "type": "rect",
+        "name": "Card accent",
+        "parent": "frame0000001",
+        "x": 0,
+        "y": 0,
+        "width": 400,
+        "height": 8,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "fills": [
+          {
+            "type": "solid",
+            "color": "#ff6a1f"
+          }
+        ],
+        "strokes": [],
+        "cornerRadius": 0
+      },
+      "ftext0000001": {
+        "id": "ftext0000001",
+        "type": "text",
+        "name": "Card title",
+        "parent": "frame0000001",
+        "x": 24,
+        "y": 32,
+        "width": 352,
+        "height": 40,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "runs": [
+          {
+            "text": "Card title"
+          }
+        ],
+        "style": {
+          "fontFamily": "Inter",
+          "fontWeight": 700,
+          "fontStyle": "normal",
+          "fontSize": 40,
+          "fills": [
+            {
+              "type": "solid",
+              "color": "#111111"
+            }
+          ],
+          "letterSpacing": 0,
+          "textCase": "none",
+          "decoration": "none"
+        },
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120
+          },
+          "spacing": 0,
+          "indent": 0,
+          "list": "none"
+        },
+        "autoResize": "none",
+        "verticalAlign": "top",
+        "role": "subhead"
+      },
+      "ell000000001": {
+        "id": "ell000000001",
+        "type": "ellipse",
+        "name": "Sun",
+        "parent": "page00000001",
+        "x": 700,
+        "y": 120,
+        "width": 240,
+        "height": 240,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "fills": [
+          {
+            "type": "solid",
+            "color": "#ffb02e"
+          }
+        ],
+        "strokes": [],
+        "cornerRadius": 0,
+        "role": "decoration"
+      },
+      "text00000001": {
+        "id": "text00000001",
+        "type": "text",
+        "name": "Headline",
+        "parent": "page00000001",
+        "x": 80,
+        "y": 120,
+        "width": 560,
+        "height": 96,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "runs": [
+          {
+            "text": "design at the speed of light"
+          }
+        ],
+        "style": {
+          "fontFamily": "Inter",
+          "fontWeight": 700,
+          "fontStyle": "normal",
+          "fontSize": 40,
+          "fills": [
+            {
+              "type": "solid",
+              "color": "#111111"
+            }
+          ],
+          "letterSpacing": 0,
+          "textCase": "none",
+          "decoration": "none"
+        },
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120
+          },
+          "spacing": 0,
+          "indent": 0,
+          "list": "none"
+        },
+        "autoResize": "none",
+        "verticalAlign": "top",
+        "role": "headline"
+      },
+      "img000000001": {
+        "id": "img000000001",
+        "type": "image",
+        "name": "Photo",
+        "parent": "page00000001",
+        "x": 560,
+        "y": 600,
+        "width": 440,
+        "height": 300,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "fit": "fill",
+        "cornerRadius": 0,
+        "strokes": [],
+        "assetId": "asset0000001",
+        "role": "photo",
+        "alt": "Sunrise over hills"
+      },
+      "group0000001": {
+        "id": "group0000001",
+        "type": "group",
+        "name": "Badge",
+        "parent": "page00000001",
+        "x": 80,
+        "y": 960,
+        "width": 120,
+        "height": 40,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "children": ["grect0000001", "gell00000001"],
+        "clip": false
+      },
+      "grect0000001": {
+        "id": "grect0000001",
+        "type": "rect",
+        "name": "Badge bg",
+        "parent": "group0000001",
+        "x": 0,
+        "y": 0,
+        "width": 120,
+        "height": 40,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "fills": [
+          {
+            "type": "solid",
+            "color": "#ff6a1f"
+          }
+        ],
+        "strokes": [],
+        "cornerRadius": 20
+      },
+      "gell00000001": {
+        "id": "gell00000001",
+        "type": "ellipse",
+        "name": "Badge dot",
+        "parent": "group0000001",
+        "x": 12,
+        "y": 12,
+        "width": 16,
+        "height": 16,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "fills": [
+          {
+            "type": "solid",
+            "color": "#0a0a0a"
+          }
+        ],
+        "strokes": [],
+        "cornerRadius": 0
+      },
+      "p2rect000001": {
+        "id": "p2rect000001",
+        "type": "rect",
+        "name": "Panel",
+        "parent": "page00000002",
+        "x": 100,
+        "y": 100,
+        "width": 880,
+        "height": 400,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "fills": [
+          {
+            "type": "solid",
+            "color": "#ff6a1f"
+          }
+        ],
+        "strokes": [],
+        "cornerRadius": 0
+      },
+      "p2text000001": {
+        "id": "p2text000001",
+        "type": "text",
+        "name": "Title",
+        "parent": "page00000002",
+        "x": 100,
+        "y": 600,
+        "width": 880,
+        "height": 48,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "runs": [
+          {
+            "text": "Second page"
+          }
+        ],
+        "style": {
+          "fontFamily": "Inter",
+          "fontWeight": 700,
+          "fontStyle": "normal",
+          "fontSize": 40,
+          "fills": [
+            {
+              "type": "solid",
+              "color": "#111111"
+            }
+          ],
+          "letterSpacing": 0,
+          "textCase": "none",
+          "decoration": "none"
+        },
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120
+          },
+          "spacing": 0,
+          "indent": 0,
+          "list": "none"
+        },
+        "autoResize": "none",
+        "verticalAlign": "top"
+      }
+    },
+    "assets": {
+      "asset0000001": {
+        "id": "asset0000001",
+        "kind": "image",
+        "mime": "image/jpeg",
+        "width": 2400,
+        "height": 1600,
+        "storageKey": "assets/fixture/sunrise.jpg",
+        "source": "stock"
+      }
+    },
+    "styles": {
+      "colors": {
+        "color0000001": {
+          "name": "Sun",
+          "value": "#ffb02e"
+        }
+      },
+      "text": {
+        "tstyle000001": {
+          "name": "Heading",
+          "style": {
+            "fontFamily": "Instrument Serif",
+            "fontWeight": 400,
+            "fontStyle": "normal",
+            "fontSize": 64,
+            "fills": [
+              {
+                "type": "solid",
+                "color": "#111111"
+              }
+            ],
+            "letterSpacing": 0,
+            "textCase": "none",
+            "decoration": "none"
+          }
+        }
+      },
+      "effects": {
+        "fx0000000001": {
+          "name": "Soft shadow",
+          "effects": [
+            {
+              "type": "dropShadow",
+              "x": 0,
+              "y": 8,
+              "blur": 24,
+              "spread": 0,
+              "color": "#0000001f"
+            }
+          ]
+        }
+      },
+      "variables": {
+        "brand.primary": "#ffb02e",
+        "brand.radius": 16,
+        "brand.dark": true
+      }
+    },
+    "meta": {
+      "createdAt": 1760000000000,
+      "updatedAt": 1760000000000,
+      "tags": ["fixture"]
+    }
+  },
+  "applied": [],
+  "dropped": [
+    {
+      "index": 0,
+      "reason": "invalid-op"
+    },
+    {
+      "index": 1,
+      "reason": "invalid-op"
+    },
+    {
+      "index": 2,
+      "reason": "invalid-op"
+    }
+  ],
+  "inverse": {
+    "id": "a0abca93bb67",
+    "label": "asset-malformed-fields",
+    "ops": [],
+    "source": "user",
+    "ts": 1760000000000
+  }
+}

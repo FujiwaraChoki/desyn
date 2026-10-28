@@ -1,0 +1,295 @@
+# Desyn self-hosted stack (non-commercial use, every feature unlocked, telemetry off).
+#
+#   cp deploy/compose/.env.example deploy/compose/.env                 # then fill the secrets (openssl rand -hex 32)
+#   cp deploy/compose/convex.selfhost.env.example deploy/compose/convex.env
+#   docker compose -f deploy/compose/desyn.selfhost.yml up -d --build
+#   docker compose -f deploy/compose/desyn.selfhost.yml exec convex-backend ./generate_admin_key.sh
+#       -> put the key into CONVEX_SELF_HOSTED_ADMIN_KEY in .env
+#   grep -E '^[A-Z0-9_]+=.+' deploy/compose/convex.env |
+#     docker compose -f deploy/compose/desyn.selfhost.yml run --rm -T convex-tools env set --force
+#   docker compose -f deploy/compose/desyn.selfhost.yml run --rm convex-tools deploy --yes
+# Full guide: deploy/SELFHOST.md
+#
+# Optional profiles: marketing (landing + docs), mail (Mailpit SMTP sink), ollama (local models),
+# tools (the Convex CLI image, used with `run --rm`). Example: --profile mail --profile ollama
+#
+# All published ports bind to ${DESYN_BIND:-127.0.0.1}; put your own reverse proxy (TLS) in front, or set
+# DESYN_BIND=0.0.0.0 on a trusted LAN. The dashboard, MinIO console and Mailpit UI always bind to 127.0.0.1.
+
+name: desyn-selfhost
+
+x-logging: &logging
+  driver: local
+  options:
+    max-size: "20m"
+    max-file: "3"
+
+x-next-build: &next-build
+  context: ../..
+  dockerfile: deploy/docker/next.Dockerfile
+  args: &next-build-args
+    NEXT_PUBLIC_CONVEX_URL: ${DESYN_CONVEX_URL:-http://localhost:3210}
+    NEXT_PUBLIC_CONVEX_SITE_URL: ${DESYN_CONVEX_SITE_URL:-http://localhost:3211}
+    NEXT_PUBLIC_SITE_URL: ${DESYN_SITE_URL:-http://localhost:3001}
+    NEXT_PUBLIC_APP_URL: ${DESYN_APP_URL:-http://localhost:3000}
+    NEXT_PUBLIC_DOCS_URL: ${DESYN_DOCS_URL:-http://localhost:3002}
+    NEXT_PUBLIC_DESYN_EDITION: selfhost
+    SITE_URL: ${DESYN_SITE_URL:-http://localhost:3001}
+    APP_URL: ${DESYN_APP_URL:-http://localhost:3000}
+    DESYN_EDITION: selfhost
+    CARGO_BUILD_JOBS: ${DESYN_BUILD_JOBS:-4}
+
+x-next-runtime: &next-runtime
+  restart: unless-stopped
+  init: true
+  logging: *logging
+  read_only: true
+  security_opt: ["no-new-privileges:true"]
+  cap_drop: [ALL]
+  environment: &next-env
+    DESYN_EDITION: selfhost
+    SITE_URL: ${DESYN_SITE_URL:-http://localhost:3001}
+    APP_URL: ${DESYN_APP_URL:-http://localhost:3000}
+    CONVEX_URL: ${DESYN_CONVEX_URL:-http://localhost:3210}
+    CONVEX_SITE_URL: ${DESYN_CONVEX_SITE_URL:-http://localhost:3211}
+    NEXT_PUBLIC_CONVEX_URL: ${DESYN_CONVEX_URL:-http://localhost:3210}
+  depends_on:
+    convex-backend:
+      condition: service_healthy
+
+services:
+  postgres:
+    image: postgres:17.11-trixie
+    restart: unless-stopped
+    logging: *logging
+    networks: [db]
+    environment:
+      POSTGRES_USER: desyn
+      POSTGRES_DB: desyn
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in deploy/compose/.env}
+      POSTGRES_INITDB_ARGS: "--data-checksums"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    shm_size: 256m
+    security_opt: ["no-new-privileges:true"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U desyn -d desyn -q"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 30s
+
+  convex-backend:
+    image: ghcr.io/convex/convex-backend:${CONVEX_BACKEND_TAG:-72ce13c379fe6dbdfc305bc8ad699c5663c68c2a}
+    restart: unless-stopped
+    logging: *logging
+    networks: [default, db]
+    stop_grace_period: 15s
+    stop_signal: SIGINT
+    environment:
+      INSTANCE_NAME: desyn
+      INSTANCE_SECRET: ${INSTANCE_SECRET:?set INSTANCE_SECRET in deploy/compose/.env}
+      POSTGRES_URL: postgresql://desyn:${POSTGRES_PASSWORD}@postgres:5432
+      DO_NOT_REQUIRE_SSL: "1"
+      CONVEX_CLOUD_ORIGIN: ${DESYN_CONVEX_URL:-http://localhost:3210}
+      CONVEX_SITE_ORIGIN: ${DESYN_CONVEX_SITE_URL:-http://localhost:3211}
+      # Telemetry off by default for self-hosters (Convex usage beacon).
+      DISABLE_BEACON: "true"
+      REDACT_LOGS_TO_CLIENT: "true"
+      DISABLE_METRICS_ENDPOINT: "true"
+      DOCUMENT_RETENTION_DELAY: "172800"
+      RUST_LOG: info
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "${DESYN_BIND:-127.0.0.1}:${DESYN_CONVEX_PORT:-3210}:3210"
+      - "${DESYN_BIND:-127.0.0.1}:${DESYN_CONVEX_SITE_PORT:-3211}:3211"
+    volumes:
+      - convex_data:/convex/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+    security_opt: ["no-new-privileges:true"]
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "-o", "/dev/null", "http://localhost:3210/version"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 30s
+
+  convex-dashboard:
+    image: ghcr.io/convex/convex-dashboard:${CONVEX_DASHBOARD_TAG:-72ce13c379fe6dbdfc305bc8ad699c5663c68c2a}
+    restart: unless-stopped
+    logging: *logging
+    stop_grace_period: 10s
+    stop_signal: SIGINT
+    environment:
+      NEXT_PUBLIC_DEPLOYMENT_URL: ${DESYN_CONVEX_URL:-http://localhost:3210}
+      NEXT_PUBLIC_LOAD_MONACO_INTERNALLY: "true"
+    ports:
+      - "127.0.0.1:${DESYN_DASHBOARD_PORT:-6791}:6791"
+    depends_on:
+      convex-backend:
+        condition: service_healthy
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: [ALL]
+
+  minio:
+    # Community-maintained build of the MinIO server (pgsty/minio): upstream stopped publishing images.
+    # Any S3-compatible store works; point S3_ENDPOINT in convex.env at it instead.
+    image: pgsty/minio:RELEASE.2026-08-04T00-00-00Z
+    restart: unless-stopped
+    logging: *logging
+    command: ["server", "/data", "--console-address", ":9001"]
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-desyn}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:?set MINIO_ROOT_PASSWORD in deploy/compose/.env}
+      # Browsers upload with presigned PUTs from the app origin.
+      MINIO_API_CORS_ALLOW_ORIGIN: ${DESYN_APP_URL:-http://localhost:3000}
+      MINIO_BROWSER_REDIRECT_URL: http://127.0.0.1:${DESYN_MINIO_CONSOLE_PORT:-9001}
+    ports:
+      - "${DESYN_BIND:-127.0.0.1}:${DESYN_MINIO_PORT:-9000}:9000"
+      - "127.0.0.1:${DESYN_MINIO_CONSOLE_PORT:-9001}:9001"
+    volumes:
+      - minio_data:/data
+    security_opt: ["no-new-privileges:true"]
+
+  minio-init:
+    # One-shot: waits for MinIO, then creates the assets bucket (idempotent).
+    image: amazon/aws-cli:2.38.2
+    restart: on-failure
+    logging: *logging
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        for i in $$(seq 1 60); do
+          aws s3api list-buckets >/dev/null 2>&1 && break
+          sleep 2
+        done
+        aws s3api head-bucket --bucket "$$S3_BUCKET" 2>/dev/null || aws s3 mb "s3://$$S3_BUCKET"
+        echo "bucket $$S3_BUCKET ready"
+    environment:
+      AWS_ACCESS_KEY_ID: ${MINIO_ROOT_USER:-desyn}
+      AWS_SECRET_ACCESS_KEY: ${MINIO_ROOT_PASSWORD}
+      AWS_DEFAULT_REGION: us-east-1
+      AWS_ENDPOINT_URL: http://minio:9000
+      S3_BUCKET: ${S3_BUCKET:-desyn}
+    depends_on:
+      minio:
+        condition: service_started
+
+  worker:
+    build:
+      context: ../..
+      dockerfile: deploy/docker/worker.Dockerfile
+      args:
+        CARGO_BUILD_JOBS: ${DESYN_BUILD_JOBS:-4}
+    image: desyn-selfhost/worker:local
+    restart: unless-stopped
+    logging: *logging
+    environment:
+      PORT: "8080"
+      RUST_LOG: info
+      RENDER_WORKER_SECRET: ${RENDER_WORKER_SECRET:?set RENDER_WORKER_SECRET in deploy/compose/.env}
+    read_only: true
+    tmpfs:
+      - /tmp:size=2g,mode=1777
+    security_opt: ["no-new-privileges:true"]
+    cap_drop: [ALL]
+
+  web:
+    <<: *next-runtime
+    build:
+      <<: *next-build
+      args:
+        <<: *next-build-args
+        APP: web
+    image: desyn-selfhost/web:local
+    ports:
+      - "${DESYN_BIND:-127.0.0.1}:${DESYN_WEB_PORT:-3000}:3000"
+    tmpfs:
+      - /tmp:size=256m,mode=1777
+      - /app/apps/web/.next/cache:size=512m,uid=1000,gid=1000
+
+  landing:
+    <<: *next-runtime
+    profiles: [marketing]
+    build:
+      <<: *next-build
+      args:
+        <<: *next-build-args
+        APP: landing
+    image: desyn-selfhost/landing:local
+    ports:
+      - "${DESYN_BIND:-127.0.0.1}:${DESYN_LANDING_PORT:-3001}:3000"
+    tmpfs:
+      - /tmp:size=256m,mode=1777
+      - /app/apps/landing/.next/cache:size=512m,uid=1000,gid=1000
+
+  docs:
+    <<: *next-runtime
+    profiles: [marketing]
+    build:
+      <<: *next-build
+      args:
+        <<: *next-build-args
+        APP: docs
+    image: desyn-selfhost/docs:local
+    ports:
+      - "${DESYN_BIND:-127.0.0.1}:${DESYN_DOCS_PORT:-3002}:3000"
+    tmpfs:
+      - /tmp:size=256m,mode=1777
+      - /app/apps/docs/.next/cache:size=256m,uid=1000,gid=1000
+
+  mailpit:
+    # SMTP sink for testing mail: set MAIL_TRANSPORT=smtp and SMTP_URL=smtp://mailpit:1025 in convex.env.
+    image: axllent/mailpit:v1.31.6
+    profiles: [mail]
+    restart: unless-stopped
+    logging: *logging
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: "true"
+      MP_SMTP_AUTH_ALLOW_INSECURE: "true"
+      MP_DISABLE_VERSION_CHECK: "true"
+    ports:
+      - "127.0.0.1:${DESYN_MAILPIT_PORT:-8025}:8025"
+    security_opt: ["no-new-privileges:true"]
+
+  ollama:
+    # Local models for the AI features: set OLLAMA_BASE_URL=http://ollama:11434 in convex.env.
+    # For NVIDIA GPUs add a `gpus: all` key here (requires the NVIDIA container toolkit).
+    image: ollama/ollama:0.40.6
+    profiles: [ollama]
+    restart: unless-stopped
+    logging: *logging
+    ports:
+      - "127.0.0.1:${DESYN_OLLAMA_PORT:-11434}:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+
+  convex-tools:
+    # Convex CLI with this repository's functions: `docker compose ... run --rm convex-tools <command>`.
+    profiles: [tools]
+    build:
+      context: ../..
+      dockerfile: deploy/docker/convex.Dockerfile
+    image: desyn-selfhost/convex:local
+    environment:
+      CONVEX_SELF_HOSTED_URL: http://convex-backend:3210
+      CONVEX_SELF_HOSTED_ADMIN_KEY: ${CONVEX_SELF_HOSTED_ADMIN_KEY:-}
+    depends_on:
+      convex-backend:
+        condition: service_healthy
+
+networks:
+  default:
+    name: desyn_selfhost
+  db:
+    name: desyn_selfhost_db
+    internal: true
+
+volumes:
+  postgres_data:
+  convex_data:
+  minio_data:
+  ollama_data:

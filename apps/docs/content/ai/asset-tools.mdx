@@ -1,0 +1,61 @@
+---
+title: Asset tools
+description: Generate images and SVG illustrations, remove backgrounds, inpaint, outpaint, upscale, create mockups and trace bitmaps to vectors.
+---
+
+Asset tools create or transform images and vectors. Use them from the **AI** panel, from the context toolbar on a selected image, or by asking the agent. Every result is saved to your library as a new asset — the original is never overwritten — with the provider, model and prompt recorded so you can regenerate or trace where it came from.
+
+## Generate image
+
+Describe the image and choose a size or aspect ratio. Desyn picks the best available image model for the job, including a model that renders legible text inside images when your prompt asks for lettering.
+
+```text
+Ceramic coffee cup on warm linen, morning sun from the left, soft shadows,
+shallow depth of field, editorial product photography
+```
+
+If the design follows a [brand kit](/concepts/brand-kits), its palette and mood are taken into account. Generated images can be placed directly into a selected frame or image layer.
+
+## Generate SVG
+
+Creates vector illustrations, icons and patterns as editable SVG: *"a minimal line icon of a kiln"*, *"an abstract wave pattern in the brand colors"*. SVGs are sanitized before they are stored, and their colors can be remapped in the inspector afterwards.
+
+## Remove background
+
+Separates the subject from its background. The result is stored as a mask on the image, so the original pixels are kept and you can switch the mask off later. Depending on configuration it runs on the server with a dedicated segmentation model or directly in your browser.
+
+## Inpaint
+
+Paint over part of an image and describe what should be there instead — remove a stray object, change a color, add a detail. Everything outside the painted area stays the same.
+
+## Outpaint
+
+Extends an image beyond its edges: make a square photo fit a wide banner, or add room above a subject for a headline. Choose the new size; the model fills the new area to match.
+
+## Upscale
+
+Increases resolution by 2× or 4× while adding plausible detail — useful for print and for small images flagged as low resolution.
+
+## Mockups
+
+Places your design or an image into a realistic scene: a poster on a wall, a phone screen, a book cover, a mug or a business card on a desk. Pick a scene and a page; the mockup is generated as a new image you can use anywhere.
+
+## Trace to vector
+
+Converts a bitmap — a logo, a sketch, simple artwork — into vector paths with fills, so it scales cleanly and can be recolored and edited with the [pen tool](/editor/shapes-and-pen).
+
+## Video clips
+
+On installations with a video-capable provider, the agent can generate short video clips for video designs. This is the most expensive tool; check the cost below before using it at scale.
+
+## Costs
+
+On the hosted Pro plan:
+
+<Generated name="credit-costs" />
+
+With your own provider key or a local model these tools do not use credits. See [providers & BYOK](/ai/providers-and-byok).
+
+## Usage rights
+
+Stock photos keep their source attribution. For generated media, the terms of the model provider apply; check them before commercial use. Prompts for generated media go through moderation, and requests for harmful content are refused.

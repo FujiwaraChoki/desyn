@@ -1,0 +1,57 @@
+---
+title: Images & adjustments
+description: Placing, cropping and masking images, adjustments and filters, duotone, stock photos and uploads.
+---
+
+## Adding images
+
+- Drag files onto the canvas, paste from the clipboard, or press <Keys combo="mod+shift+k" /> to pick a file.
+- Open **Uploads** for everything you have uploaded before, or **Photos** to search stock photography from Unsplash and Pexels. Photographer attribution is stored with every stock photo you place.
+- Generate a new image from a description in the **AI** panel — see [asset tools](/ai/asset-tools).
+- Drop an image onto a shape or frame to use it as that layer's image fill.
+
+Common image formats such as PNG, JPEG, WebP, GIF and SVG are supported; SVG uploads are sanitized. Identical files are stored only once. The maximum file size depends on your plan (15 MB on Free, 200 MB on Pro).
+
+## Fit and crop
+
+An image layer has a **fit** mode:
+
+| Fit | Behavior |
+| --- | --- |
+| **Fill** | Covers the whole box, cropping the overflow |
+| **Fit** | Shows the whole image inside the box, letterboxed if needed |
+| **Crop** | Shows exactly the region you choose |
+| **Tile** | Repeats the image across the box |
+
+Double-click an image (or press <Keys combo="enter" />) to crop: drag the image inside its frame, resize the visible region, and zoom. Press <Keys combo="enter" /> again to finish. The original is never altered, so you can re-crop at any time.
+
+## Shape and corners
+
+Give an image rounded corners, clip it to an ellipse, or clip it to any vector path from the **Shape** menu. For masks made of other layers, place a shape above the image, select both and use **Use as mask**.
+
+## Adjustments
+
+The **Design** tab shows adjustments for the selected image. All are non-destructive and can be reset individually:
+
+| Adjustment | Range |
+| --- | --- |
+| Brightness, contrast, saturation | −1 to 1 |
+| Exposure | −1 to 1 |
+| Temperature, tint | −1 to 1 |
+| Hue | −180° to 180° |
+| Vignette, grayscale, sepia, sharpen, grain | 0 to 1 |
+| Blur | in pixels |
+
+**Duotone** maps the image's shadows and highlights to two colors — a quick way to make mixed photography feel like one set. **Filters** are named presets that set several adjustments at once; apply one, then fine-tune.
+
+## Background removal
+
+Choose **Remove background** in the context toolbar. The result is stored as a separate mask, so the original pixels stay intact: you can refine the edge or turn the mask off later. See [asset tools](/ai/asset-tools#remove-background).
+
+## Image quality
+
+Desyn keeps your original file and renders it at whatever resolution the canvas or export needs. If an image will print or export blurry at its current size, the design check flags it as low resolution; [Upscale](/ai/asset-tools#upscale) can fix that.
+
+## Alt text
+
+Add an accessibility description under **Alt text** in the inspector. It is used by screen readers in shared and website designs and exported where formats support it. The agent can write alt text for every image on a page: *"add alt text to all images"*.

@@ -1,0 +1,56 @@
+---
+title: Fills, strokes & effects
+description: Solid, gradient and image fills, strokes and dashes, shadows, blurs, noise and glow, blend modes and opacity.
+---
+
+## Fills
+
+A shape, frame, page background or text can have several fills, stacked bottom to top. Each fill has its own opacity, visibility and blend mode.
+
+| Fill | Settings |
+| --- | --- |
+| **Solid** | A color, or a reference to a color style or brand variable |
+| **Linear gradient** | Angle and any number of color stops |
+| **Radial gradient** | Center and radii, color stops |
+| **Conic gradient** | Center, start angle, color stops |
+| **Image** | Fill, fit, tile or stretch; scale, offset and rotation; image adjustments |
+
+Edit gradients directly on the canvas: drag the handles to change direction and size, click the gradient line to add a stop, and drag a stop off the line to remove it.
+
+The color picker has a saturation/brightness area, hue and alpha sliders, hex and RGB input, an eyedropper that samples anything on screen, your document colors, and your brand kit palette.
+
+## Strokes
+
+Add one or more strokes to shapes, frames, images and text:
+
+- **Width** and **alignment** — inside, center or outside the edge.
+- **Paint** — any fill type, so strokes can be gradients.
+- **Dashes** — a dash pattern such as `8 4`.
+- **Caps** (butt, round, square) and **joins** (miter, round, bevel), with a miter limit.
+
+## Effects
+
+Effects are listed in the **Effects** tab. Add as many as you like and toggle each on or off.
+
+| Effect | What it does |
+| --- | --- |
+| **Drop shadow** | Offset, blur, spread and color behind the layer |
+| **Inner shadow** | The same, inside the layer's edge |
+| **Layer blur** | Blurs the layer itself |
+| **Background blur** | Blurs whatever is behind the layer — frosted glass. Works best with a semi-transparent fill |
+| **Noise** | Adds film grain; amount, scale, mono or color |
+| **Glow** | A soft colored halo around the layer |
+
+Basic shadows are available on every plan; background blur, noise, glow and stacked effects are part of the advanced effects in Pro.
+
+Save a set of effects as an **effect style** to reuse it across layers.
+
+## Opacity and blend modes
+
+Layer opacity is set with the slider in the **Design** tab, from fully transparent to fully opaque.
+
+Blend modes control how a layer mixes with what is below it: normal, multiply, screen, overlay, darken, lighten, color dodge, color burn, hard light, soft light, difference, exclusion, hue, saturation, color and luminosity. Fills have blend modes too, so a single layer can combine a photo with a multiplied gradient.
+
+## Consistent rendering
+
+Effects are rendered by the same Rust engine in the editor, the desktop and iOS apps, and every export, so a shadow looks identical on screen, in a PNG and in a PDF.

@@ -1,0 +1,3 @@
+# Local self-hosting files with secrets (never commit).
+.env
+convex.env

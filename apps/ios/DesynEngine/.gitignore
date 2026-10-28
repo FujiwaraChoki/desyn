@@ -1,0 +1,4 @@
+# Built by scripts/build-ios-engine.sh (never committed).
+/Frameworks/
+/.build/
+/.swiftpm/

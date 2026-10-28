@@ -1,0 +1,95 @@
+---
+title: The agent
+description: What the Desyn agent can do, how to talk to it, examples of conversational edits, and how runs, plans, questions and undo work.
+---
+
+The agent is a design collaborator that can see your whole canvas and edit it. Open it with <Keys combo="mod+j" />, type what you want, and watch it work in the run log while the layers it touches glow.
+
+## How it understands your design
+
+Before it changes anything, the agent reads a structural description of the page: every layer with its type, name, [role](/concepts/roles), position and text; the palette and fonts in use; the typographic scale; alignment lines and spacing rhythm; a ranking of what is visually most important; and a list of issues such as low contrast, tiny text, overflowing text or uneven spacing. It also knows what you have selected, so *"this"* and *"these"* mean what you think. When it needs to judge the look, it renders a preview and looks at it.
+
+## What it can do
+
+The agent has a toolbox and chooses the tools it needs for each request:
+
+| Area | Tools |
+| --- | --- |
+| Understand | `read_design`, `read_selection`, `query_elements`, `render_preview`, `critique` |
+| Build and edit | `create_elements`, `update_elements`, `delete_elements`, `duplicate_elements`, `group_elements`, `ungroup`, `set_roles`, `set_style` |
+| Arrange | `arrange` — align, distribute, stack, grid, auto-layout and match size |
+| Text | `set_text`, `rewrite_text`, `translate_text` |
+| Pages | `add_page`, `delete_page`, `reorder_pages`, `resize_page` |
+| Brand and templates | `apply_brand`, `search_templates`, `apply_template` |
+| Assets | `generate_image`, `generate_svg`, `remove_background`, `inpaint`, `outpaint`, `upscale`, `mockup`, `trace_to_vector`, `search_stock`, `search_icons` |
+| Process | `plan`, `ask_user`, `run_workflow`, `finish` |
+
+All edits go through the document's normal transactions, so they appear live for collaborators, can be undone in one step, and show up in version history.
+
+## Examples
+
+Editing:
+
+```text
+Make the headline two lines and give it more breathing room.
+```
+
+```text
+Swap the photo for something warmer and more editorial. Keep the crop.
+```
+
+```text
+Turn these three paragraphs into a feature row with an icon above each.
+```
+
+Asking:
+
+```text
+Why does this slide feel cluttered? Fix the two biggest problems.
+```
+
+```text
+Is the text accessible? List anything below 4.5:1 contrast.
+```
+
+Whole-design changes:
+
+```text
+Make this feel more premium: serif headings, more whitespace, a muted palette.
+Don't touch the logo or the prices.
+```
+
+```text
+Add a closing slide with a QR code to desyn.app and a one-line call to action.
+```
+
+```text
+Translate every page to German and fix anything that overflows.
+```
+
+## Writing good requests
+
+- **Say what to keep.** *"Keep the product photo and the price"* is respected strictly.
+- **Point at things.** Select layers before asking, or name them: *"the subhead under the title"*.
+- **Describe the outcome, not the steps.** *"Make the CTA stand out more"* lets the agent choose between size, color, contrast and position.
+- **Iterate.** Short follow-ups work well: *"warmer"*, *"less"*, *"undo the background change but keep the rest"*.
+
+## Plans, questions and checkpoints
+
+For larger requests the agent first writes a short **plan** — the steps it intends to take — and shows it in the run log. If something is ambiguous it can **ask you** a question and pause until you answer, offering choices when it can. Before destructive bulk changes (for example deleting many layers or rewriting every page) it asks for confirmation.
+
+You can **cancel** a run at any time. Changes made so far stay and can be undone as one step.
+
+## Modes
+
+- **Edit** (default) — changes the design.
+- **Generate** — builds new pages or designs from a brief. See [generating designs](/ai/generating-designs).
+- **Chat** — answers questions and gives feedback without changing anything.
+
+## Undo and history
+
+Each request is one undo step, no matter how many layers changed. If the agent made several commits during one run, they are grouped by the run so <Keys combo="mod+z" /> reverts them together. In [version history](/editor/version-history) they appear with an *"AI:"* label and the request that caused them.
+
+## Limits
+
+The agent stops after a maximum number of steps and a cost cap per run, and you can run up to three agent runs or workflows at the same time. On the hosted Pro plan each request costs credits; see [credits & fair use](/ai/credits-and-fair-use).

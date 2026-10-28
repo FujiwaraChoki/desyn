@@ -1,0 +1,23 @@
+---
+title: Changelog
+description: Notable changes to Desyn, the document model and the Agent API, newest first.
+---
+
+Desyn follows the release notes below. Self-hosters: read every entry between your version and the one you upgrade to, and follow any **Action required** notes. See [upgrades](/self-hosting/upgrades).
+
+## 2026-10-20 — Document model: `doc` unset and precise op semantics
+
+Additive change to the v1 contract: the `doc` operation accepts `unset: ["brandKitId"]`, so detaching a brand kit can be expressed (and undone). The exact semantics of every operation — the fixed vocabulary of drop reasons and the order checks run in, `move` indexes counted after removal, normalized `applied` forms and inverse transaction ids — are now specified in `spec/fixtures/README.md` and enforced by the shared conformance fixtures. See [operations](/developers/operations).
+
+## 2026-10-20 — Document model v1 frozen
+
+The [document model](/developers/document-model) contract reached version 1 (`schema: 1`). It defines designs, the nineteen node types, paint and effects, semantic roles, the eight [operations](/developers/operations), transactions, the [sync protocol](/developers/sync), the [describe](/developers/describe) output and the [render worker API](/developers/render-worker). From now on the model changes only additively, with every change recorded here and in the contract's own change log.
+
+## 2026-10-20 — Agent API v1 and documentation
+
+- The [Agent API](/developers/api) is versioned as `v1` under `/api/v1`, with scoped API keys, stable error codes and an [MCP server](/developers/mcp) at `/mcp` exposing the agent's tools.
+- This documentation site launched at docs.desyn.app with guides for the editor, the AI, self-hosting and developers, and full-text search (<Keys combo="mod+k" />).
+
+## Before 1.0
+
+Desyn is in active development ahead of its public launch at desyn.app. Until 1.0, entries summarize changes to the contracts other software depends on — the document model, the Agent API and the self-hosting configuration — rather than every feature.

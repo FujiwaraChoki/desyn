@@ -1,0 +1,7 @@
+{
+  "name": "literals",
+  "description": "true, false, null",
+  "input": [true, false, null],
+  "inputText": "[true , false , null]",
+  "canonical": "[true,false,null]"
+}

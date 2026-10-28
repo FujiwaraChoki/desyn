@@ -1,0 +1,41 @@
+{
+  "name": "desyn",
+  "private": true,
+  "packageManager": "pnpm@12.11.2",
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "test:convex": "vitest run --config convex/vitest.config.mts",
+    "typecheck:convex": "tsc -p convex/tsconfig.json --noEmit",
+    "stripe:bootstrap": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/stripe-bootstrap.ts"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.15",
+    "@edge-runtime/vm": "5.0.0",
+    "@types/node": "26.6.5",
+    "@types/nodemailer": "8.0.2",
+    "ai": "7.0.145",
+    "convex-test": "0.0.62",
+    "turbo": "^2.5.0",
+    "typescript": "^5.9.0",
+    "vitest": "5.0.5"
+  },
+  "dependencies": {
+    "@aws-sdk/client-sesv2": "3.1153.0",
+    "@convex-dev/better-auth": "0.12.5",
+    "@convex-dev/rate-limiter": "0.4.2",
+    "@desyn/ai": "workspace:*",
+    "@desyn/doc-ops": "workspace:*",
+    "@desyn/schema": "workspace:*",
+    "@desyn/sdk": "workspace:*",
+    "@noble/hashes": "2.4.0",
+    "@xmldom/xmldom": "0.9.12",
+    "better-auth": "1.6.33",
+    "convex": "1.47.0",
+    "image-size": "2.0.4",
+    "nodemailer": "10.1.7",
+    "stripe": "23.0.0"
+  }
+}

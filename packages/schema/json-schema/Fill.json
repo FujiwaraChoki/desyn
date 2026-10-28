@@ -1,0 +1,327 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://desyn.app/schema/v1/Fill.json",
+  "title": "Fill",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "solid"
+        },
+        "color": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Color"
+            },
+            {
+              "$ref": "#/$defs/ColorRef"
+            }
+          ]
+        },
+        "opacity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "visible": {
+          "type": "boolean"
+        },
+        "blend": {
+          "$ref": "#/$defs/BlendMode"
+        }
+      },
+      "required": ["type", "color"],
+      "additionalProperties": {}
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "linear"
+        },
+        "angle": {
+          "type": "number"
+        },
+        "stops": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Stop"
+          }
+        },
+        "opacity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "visible": {
+          "type": "boolean"
+        },
+        "blend": {
+          "$ref": "#/$defs/BlendMode"
+        }
+      },
+      "required": ["type", "angle", "stops"],
+      "additionalProperties": {}
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "radial"
+        },
+        "cx": {
+          "type": "number"
+        },
+        "cy": {
+          "type": "number"
+        },
+        "rx": {
+          "type": "number"
+        },
+        "ry": {
+          "type": "number"
+        },
+        "stops": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Stop"
+          }
+        },
+        "opacity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "visible": {
+          "type": "boolean"
+        },
+        "blend": {
+          "$ref": "#/$defs/BlendMode"
+        }
+      },
+      "required": ["type", "cx", "cy", "rx", "ry", "stops"],
+      "additionalProperties": {}
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "conic"
+        },
+        "cx": {
+          "type": "number"
+        },
+        "cy": {
+          "type": "number"
+        },
+        "angle": {
+          "type": "number"
+        },
+        "stops": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Stop"
+          }
+        },
+        "opacity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "visible": {
+          "type": "boolean"
+        },
+        "blend": {
+          "$ref": "#/$defs/BlendMode"
+        }
+      },
+      "required": ["type", "cx", "cy", "angle", "stops"],
+      "additionalProperties": {}
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "image"
+        },
+        "assetId": {
+          "$ref": "#/$defs/Id"
+        },
+        "mode": {
+          "type": "string",
+          "enum": ["fill", "fit", "tile", "stretch"]
+        },
+        "scale": {
+          "type": "number"
+        },
+        "offsetX": {
+          "type": "number"
+        },
+        "offsetY": {
+          "type": "number"
+        },
+        "rotation": {
+          "type": "number"
+        },
+        "adjust": {
+          "type": "object",
+          "properties": {
+            "brightness": {
+              "type": "number"
+            },
+            "contrast": {
+              "type": "number"
+            },
+            "saturation": {
+              "type": "number"
+            },
+            "hue": {
+              "type": "number"
+            },
+            "temperature": {
+              "type": "number"
+            },
+            "tint": {
+              "type": "number"
+            },
+            "exposure": {
+              "type": "number"
+            },
+            "vignette": {
+              "type": "number"
+            },
+            "blur": {
+              "type": "number"
+            },
+            "grayscale": {
+              "type": "number"
+            },
+            "sepia": {
+              "type": "number"
+            },
+            "sharpen": {
+              "type": "number"
+            },
+            "grain": {
+              "type": "number"
+            },
+            "duotone": {
+              "type": "array",
+              "prefixItems": [
+                {
+                  "$ref": "#/$defs/Color"
+                },
+                {
+                  "$ref": "#/$defs/Color"
+                }
+              ],
+              "items": false,
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "filter": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": {}
+        },
+        "opacity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "visible": {
+          "type": "boolean"
+        },
+        "blend": {
+          "$ref": "#/$defs/BlendMode"
+        }
+      },
+      "required": ["type", "assetId", "mode"],
+      "additionalProperties": {}
+    }
+  ],
+  "$defs": {
+    "Color": {
+      "type": "string",
+      "pattern": "^#(?:[0-9a-f]{6}|[0-9a-f]{8})$"
+    },
+    "ColorRef": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "$var": {
+              "type": "string"
+            }
+          },
+          "required": ["$var"],
+          "additionalProperties": {}
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$style": {
+              "$ref": "#/$defs/Id"
+            }
+          },
+          "required": ["$style"],
+          "additionalProperties": {}
+        }
+      ]
+    },
+    "Id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]{12}$"
+    },
+    "BlendMode": {
+      "type": "string",
+      "enum": [
+        "normal",
+        "multiply",
+        "screen",
+        "overlay",
+        "darken",
+        "lighten",
+        "color-dodge",
+        "color-burn",
+        "hard-light",
+        "soft-light",
+        "difference",
+        "exclusion",
+        "hue",
+        "saturation",
+        "color",
+        "luminosity"
+      ]
+    },
+    "Stop": {
+      "type": "object",
+      "properties": {
+        "pos": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "color": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Color"
+            },
+            {
+              "$ref": "#/$defs/ColorRef"
+            }
+          ]
+        }
+      },
+      "required": ["pos", "color"],
+      "additionalProperties": {}
+    }
+  }
+}

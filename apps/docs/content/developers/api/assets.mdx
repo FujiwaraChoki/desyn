@@ -1,0 +1,24 @@
+---
+title: Assets endpoints
+description: Agent API v1 endpoints for assets — two-step uploads with presigned URLs, finalizing, listing, signed download URLs, renaming and deleting.
+---
+
+Uploads happen in two steps so file bytes never pass through the API: request an upload to get a presigned URL, `PUT` the bytes directly to storage, then finalize. A finalized asset can be placed in any design of the workspace by adding it with an `asset` operation and referencing its id from an image, SVG or video node.
+
+```bash
+# 1. request
+UPLOAD=$(curl -sS -X POST "https://api.desyn.app/api/v1/assets/uploads" \
+  -H "Authorization: Bearer $DESYN_API_KEY" -H "Content-Type: application/json" \
+  -d "{\"name\":\"hero.jpg\",\"mime\":\"image/jpeg\",\"bytes\":$(stat -c %s hero.jpg)}")
+
+# 2. upload the bytes with the returned URL and headers
+curl -sS -X PUT "$(echo "$UPLOAD" | jq -r .uploadUrl)" -H "content-type: image/jpeg" --data-binary @hero.jpg
+
+# 3. finalize
+curl -sS -X POST "https://api.desyn.app/api/v1/assets/$(echo "$UPLOAD" | jq -r .assetId)/finalize" \
+  -H "Authorization: Bearer $DESYN_API_KEY"
+```
+
+Allowed types and the maximum size per file depend on the plan (15 MB on Free, 200 MB on Pro, 1 GB self-hosted).
+
+<Generated name="api-endpoints" page="assets" />

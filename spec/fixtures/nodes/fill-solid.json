@@ -1,0 +1,10 @@
+{
+  "name": "fill-solid",
+  "schema": "Fill",
+  "valid": true,
+  "description": "solid fill",
+  "value": {
+    "type": "solid",
+    "color": "#ffb02e"
+  }
+}

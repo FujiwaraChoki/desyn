@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://desyn.app/schema/v1/AssetRef.json",
+  "title": "AssetRef",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "#/$defs/Id"
+    },
+    "kind": {
+      "type": "string",
+      "enum": ["image", "svg", "font", "video", "audio", "lottie", "data"]
+    },
+    "url": {
+      "type": "string"
+    },
+    "storageKey": {
+      "type": "string"
+    },
+    "mime": {
+      "type": "string"
+    },
+    "bytes": {
+      "type": "number",
+      "minimum": 0
+    },
+    "width": {
+      "type": "number",
+      "minimum": 0
+    },
+    "height": {
+      "type": "number",
+      "minimum": 0
+    },
+    "durationMs": {
+      "type": "number",
+      "minimum": 0
+    },
+    "hash": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string",
+      "enum": ["upload", "ai", "stock", "template", "brand"]
+    },
+    "attribution": {
+      "type": "object",
+      "properties": {
+        "author": {
+          "type": "string"
+        },
+        "license": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "ai": {
+      "type": "object",
+      "properties": {
+        "provider": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "prompt": {
+          "type": "string"
+        },
+        "seed": {
+          "type": "number"
+        }
+      },
+      "required": ["provider", "model", "prompt"],
+      "additionalProperties": {}
+    },
+    "family": {
+      "type": "string"
+    },
+    "weight": {
+      "type": "number"
+    },
+    "style": {
+      "type": "string",
+      "enum": ["normal", "italic"]
+    }
+  },
+  "required": ["id", "kind", "mime"],
+  "additionalProperties": {},
+  "$defs": {
+    "Id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]{12}$"
+    }
+  }
+}

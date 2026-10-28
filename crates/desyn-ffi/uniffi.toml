@@ -1,0 +1,11 @@
+# Binding generation settings (read by `uniffi-bindgen` in library mode).
+[bindings.swift]
+# Swift module of the generated wrapper (SwiftPM target `DesynFFI` in apps/ios/DesynEngine).
+module_name = "DesynFFI"
+# C module of the XCFramework headers (SwiftPM binary target `DesynFFIC`).
+ffi_module_name = "DesynFFIC"
+ffi_module_filename = "DesynFFIC"
+
+[bindings.kotlin]
+package_name = "app.desyn.engine"
+cdylib_name = "desyn_ffi"

@@ -1,0 +1,30 @@
+{
+  "name": "invalid-rect-opacity",
+  "schema": "RectNode",
+  "valid": false,
+  "description": "opacity above 1",
+  "value": {
+    "id": "node00000030",
+    "type": "rect",
+    "name": "Rectangle",
+    "parent": "page00000001",
+    "x": 0,
+    "y": 0,
+    "width": 100,
+    "height": 100,
+    "rotation": 0,
+    "opacity": 1.2,
+    "blend": "normal",
+    "visible": true,
+    "locked": false,
+    "effects": [],
+    "fills": [
+      {
+        "type": "solid",
+        "color": "#d9d9d9"
+      }
+    ],
+    "strokes": [],
+    "cornerRadius": 0
+  }
+}

@@ -1,0 +1,4 @@
+# downloaded Google Fonts (OFL) used only to render thumbnails locally
+.fonts/
+# intermediate full-size renders
+.renders/

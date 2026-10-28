@@ -1,0 +1,6 @@
+.next/
+test-results/
+playwright-report/
+shots/
+*.tsbuildinfo
+next-env.d.ts

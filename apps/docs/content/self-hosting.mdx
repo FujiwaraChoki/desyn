@@ -1,0 +1,51 @@
+---
+title: Self-hosting
+description: Run Desyn on your own server with every feature unlocked, free for non-commercial use. What you need, how the pieces fit, and where to start.
+---
+
+The self-hosted edition is the same software as desyn.app, configured with `DESYN_EDITION=selfhost`. Every feature is unlocked for every account, there is no credit pool and no billing, and telemetry is off unless you turn it on. You bring the infrastructure and, if you want AI features, your own provider keys or local models.
+
+> [!IMPORTANT]
+> Self-hosting is free for **non-commercial use**: personal projects, education, research and non-profit organizations. Running Desyn inside a company or offering it to customers is commercial use and needs a commercial license. See the [license FAQ](/developers/license).
+
+## What you run
+
+The repository ships the whole stack as one Compose file, `deploy/compose/desyn.selfhost.yml`; the [quickstart](/self-hosting/docker-compose) walks through it.
+
+| Component | What it does | In the stack |
+| --- | --- | --- |
+| **Web app** | The Desyn editor, dashboard and admin console (Next.js) | `web`, built from `deploy/docker/next.Dockerfile` |
+| **Convex backend** | Database, realtime sync, server functions, HTTP API, scheduled jobs | `convex-backend` (`ghcr.io/convex/convex-backend`) |
+| **Postgres** | Storage engine of the Convex backend | `postgres`, internal network only |
+| **Convex dashboard** | Browse data, logs and environment variables | `convex-dashboard`, on `127.0.0.1` only |
+| **Render worker** | Exports, thumbnails, layout and AI previews (Rust) | `worker`, built from `deploy/docker/worker.Dockerfile` |
+| **Object storage** | Uploads, generated assets, exports and snapshots | `minio`, or any S3-compatible store |
+| **Email** | Sign-in links, verification, invites | your SMTP server or Amazon SES (`mailpit` for testing) |
+| **AI providers** (optional) | Agent, generation and asset tools | OpenRouter, Fal, members' keys, or `ollama` |
+
+The server functions themselves live in the repository's `convex/` directory and are pushed to your backend with the Convex CLI (the stack's `convex-tools` service).
+
+## Requirements
+
+- **A Linux server** (or, to evaluate, any computer) with Docker Engine and the Compose plugin. For a small team: 4 vCPU, 8 GB RAM and 40 GB of disk is comfortable; exports and AI previews are rendered by the worker and benefit from more cores. Building the images needs more memory than running them — build on a machine with at least 16 GB or use prebuilt images from your CI.
+- **A domain** with DNS records for four hostnames, for example:
+  - `design.example.org` — the web app
+  - `convex.example.org` — the Convex API (with WebSockets)
+  - `convex-site.example.org` — Convex HTTP actions (auth, Agent API, MCP)
+  - `s3.example.org` — object storage, reachable by browsers for direct uploads
+- **TLS certificates** for those hostnames (a reverse proxy with automatic HTTPS handles this; see [reverse proxy & TLS](/self-hosting/reverse-proxy)).
+- **Email delivery**: an SMTP account or Amazon SES.
+- Optionally, **AI**: an OpenRouter and/or Fal key, or a machine that can run local models.
+
+## Start here
+
+<Cards>
+  <Card title="Docker Compose quickstart" href="/self-hosting/docker-compose">From an empty server to a running installation.</Card>
+  <Card title="Configuration reference" href="/self-hosting/configuration">Every environment variable, with defaults and where it is read.</Card>
+  <Card title="Reverse proxy & TLS" href="/self-hosting/reverse-proxy">Caddy and nginx configurations, WebSockets and uploads.</Card>
+  <Card title="Backups & restore" href="/self-hosting/backups">What to back up, how, and how to restore.</Card>
+</Cards>
+
+## Plan limits when self-hosted
+
+The `selfhost` plan in `config/plans.json` applies to every account: unlimited designs, pages, storage, collaborators, brand kits, workspaces and exports, a 1 GB maximum upload size, and no credits (AI requests use your own providers). You can change these values in `config/plans.json` before building, or override individual accounts in the [admin console](/self-hosting/admin-console).

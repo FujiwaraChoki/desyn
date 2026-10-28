@@ -1,0 +1,305 @@
+/*
+ * Desyn Tailwind CSS 4 theme. Import after Tailwind:
+ *   @import "tailwindcss";
+ *   @import "@desyn/tokens/fonts.css";
+ *   @import "@desyn/tokens/tokens.css";
+ *
+ * Theme-dependent values live in variables.css as custom properties and are mapped here with
+ * `@theme inline reference`, so utilities emit `var(--surface-1)` directly and any `[data-theme]`
+ * subtree re-themes itself. Static scales come from the generated theme.css.
+ */
+@import "./variables.css";
+@import "./theme.css";
+
+@theme {
+  /* Desyn has its own palette; Tailwind's default rainbow is removed to keep one accent. */
+  --color-*: initial;
+  --color-white: #ffffff;
+  --color-black: #000000;
+}
+
+@theme inline reference {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-fg: var(--fg);
+  --color-fg-secondary: var(--fg-secondary);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-placeholder: var(--fg-placeholder);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-canvas: var(--canvas);
+  --color-glass: var(--glass);
+  --color-line: var(--line);
+  --color-line-subtle: var(--line-subtle);
+  --color-line-strong: var(--line-strong);
+  --color-hover: var(--hover);
+  --color-pressed: var(--pressed);
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+  --color-accent-solid: var(--accent-solid);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-hi: var(--accent-hi);
+  --color-accent-lo: var(--accent-lo);
+  --color-accent-core: var(--accent-core);
+  --color-accent-mid: var(--accent-mid);
+  --color-accent-glow: var(--accent-glow);
+  --color-accent-tint: var(--accent-tint);
+  --color-accent-wash: var(--accent-wash);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-danger-ink: var(--danger-ink);
+  --color-info: var(--info);
+  --color-selection: var(--selection);
+  --color-scrim: var(--scrim);
+
+  --font-serif: var(--font-family-serif);
+  --font-sans: var(--font-family-sans);
+  --font-mono: var(--font-family-mono);
+
+  --shadow-glow: var(--shadow-glow);
+  --shadow-glow-lg: var(--shadow-glow-lg);
+  --shadow-card: var(--shadow-card);
+  --shadow-popover: var(--shadow-popover);
+  --shadow-dialog: var(--shadow-dialog);
+  --shadow-page: var(--shadow-page);
+  --shadow-inset: var(--shadow-inset);
+}
+
+@theme {
+  --animate-spin-sun: spin-sun 1.6s linear infinite;
+  --animate-shimmer: shimmer 1.8s var(--ease-in-out) infinite;
+  --animate-sun-pulse: sun-pulse 2.4s var(--ease-in-out) infinite;
+  --animate-float-1: float-1 25s var(--ease-in-out) infinite;
+  --animate-float-2: float-2 30s var(--ease-in-out) infinite;
+  --animate-float-3: float-3 20s var(--ease-in-out) infinite;
+  --animate-morph-1: morph-1 18s var(--ease-in-out) infinite;
+  --animate-morph-2: morph-2 22s var(--ease-in-out) infinite;
+  --animate-morph-3: morph-3 15s var(--ease-in-out) infinite;
+  --animate-orb-pulse: orb-pulse 8s var(--ease-in-out) infinite;
+  --animate-fade-up: fade-up 0.8s var(--ease-out) both;
+  --animate-indeterminate: indeterminate 1.4s var(--ease-in-out) infinite;
+
+  @keyframes spin-sun {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes shimmer {
+    0% {
+      background-position: 150% 0;
+    }
+    100% {
+      background-position: -50% 0;
+    }
+  }
+  @keyframes sun-pulse {
+    0%,
+    100% {
+      opacity: 0.55;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  @keyframes float-1 {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+    25% {
+      transform: translate(100px, -80px) scale(1.2) rotate(90deg);
+    }
+    50% {
+      transform: translate(-50px, 60px) scale(0.9) rotate(180deg);
+    }
+    75% {
+      transform: translate(80px, 100px) scale(1.1) rotate(270deg);
+    }
+  }
+  @keyframes float-2 {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+    30% {
+      transform: translate(-120px, 100px) scale(1.15) rotate(-60deg);
+    }
+    60% {
+      transform: translate(90px, -70px) scale(0.85) rotate(-120deg);
+    }
+    85% {
+      transform: translate(-60px, -90px) scale(1.05) rotate(-180deg);
+    }
+  }
+  @keyframes float-3 {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+    20% {
+      transform: translate(70px, -60px) scale(1.3) rotate(120deg);
+    }
+    40% {
+      transform: translate(-80px, 50px) scale(0.8) rotate(240deg);
+    }
+    60% {
+      transform: translate(90px, 80px) scale(1.1) rotate(360deg);
+    }
+    80% {
+      transform: translate(-50px, -70px) scale(0.95) rotate(480deg);
+    }
+  }
+  @keyframes morph-1 {
+    0%,
+    100% {
+      border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+    }
+    25% {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+    50% {
+      border-radius: 30% 60% 50% 40% / 50% 60% 30% 60%;
+    }
+    75% {
+      border-radius: 70% 30% 40% 60% / 40% 70% 50% 30%;
+    }
+  }
+  @keyframes morph-2 {
+    0%,
+    100% {
+      border-radius: 50% 50% 30% 70% / 50% 70% 30% 50%;
+    }
+    33% {
+      border-radius: 70% 30% 50% 50% / 30% 50% 70% 50%;
+    }
+    66% {
+      border-radius: 30% 70% 70% 30% / 70% 30% 50% 50%;
+    }
+  }
+  @keyframes morph-3 {
+    0%,
+    100% {
+      border-radius: 60% 40% 50% 50% / 50% 50% 40% 60%;
+    }
+    20% {
+      border-radius: 40% 60% 40% 60% / 60% 40% 60% 40%;
+    }
+    40% {
+      border-radius: 50% 50% 60% 40% / 40% 60% 50% 50%;
+    }
+    60% {
+      border-radius: 70% 30% 30% 70% / 30% 70% 70% 30%;
+    }
+    80% {
+      border-radius: 50% 50% 50% 50% / 60% 40% 40% 60%;
+    }
+  }
+  @keyframes orb-pulse {
+    0%,
+    100% {
+      filter: blur(80px);
+    }
+    50% {
+      filter: blur(100px);
+    }
+  }
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes indeterminate {
+    0% {
+      transform: translateX(-100%) scaleX(0.4);
+    }
+    50% {
+      transform: translateX(20%) scaleX(0.6);
+    }
+    100% {
+      transform: translateX(120%) scaleX(0.4);
+    }
+  }
+}
+
+/*
+ * `dark:` / `light:` follow the nearest themed ancestor: explicit `data-theme`, `system` resolved by
+ * the media query, and the dark-first `:root` default when no `data-theme` is set anywhere.
+ */
+@custom-variant dark {
+  &:where([data-theme="dark"], [data-theme="dark"] *) {
+    @slot;
+  }
+  &:where(:root:not([data-theme]), :root:not([data-theme]) *):not(:where([data-theme="light"], [data-theme="light"] *)) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where([data-theme="system"], [data-theme="system"] *):not(:where([data-theme="light"], [data-theme="light"] *)) {
+      @slot;
+    }
+  }
+}
+
+@custom-variant light {
+  &:where([data-theme="light"], [data-theme="light"] *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: light) {
+    &:where([data-theme="system"], [data-theme="system"] *):not(:where([data-theme="dark"], [data-theme="dark"] *)) {
+      @slot;
+    }
+  }
+}
+
+@layer base {
+  html {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-family-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  [data-theme] {
+    color: var(--foreground);
+  }
+
+  ::selection {
+    background-color: rgb(var(--accent-rgb) / 0.3);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  ::placeholder {
+    color: var(--fg-placeholder);
+    opacity: 1;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--line) transparent;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

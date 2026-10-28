@@ -1,0 +1,696 @@
+{
+ "schema": 1,
+ "id": "chartsde0015",
+ "name": "charts",
+ "kind": "social-post",
+ "nodes": {
+  "root": {
+   "id": "root",
+   "type": "root",
+   "name": "Root",
+   "parent": null,
+   "x": 0,
+   "y": 0,
+   "width": 0,
+   "height": 0,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "children": [
+    "chartspa0012"
+   ]
+  },
+  "chartspa0012": {
+   "id": "chartspa0012",
+   "type": "page",
+   "name": "Page 1",
+   "parent": null,
+   "x": 0,
+   "y": 0,
+   "width": 980,
+   "height": 980,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "children": [
+    "chcolumn0001",
+    "chbarxxx0002",
+    "chstacke0003",
+    "chlinexx0004",
+    "chareaxx0005",
+    "chscatte0006",
+    "chpiexxx0007",
+    "chdonutx0008",
+    "chradarx0009",
+    "chfunnel0010",
+    "chprogre0011"
+   ],
+   "clip": true,
+   "unit": "px",
+   "background": [
+    {
+     "type": "solid",
+     "color": "#ffffff"
+    }
+   ],
+   "bleed": 0
+  },
+  "chcolumn0001": {
+   "id": "chcolumn0001",
+   "type": "chart",
+   "name": "ch-column",
+   "parent": "chartspa0012",
+   "x": 20,
+   "y": 20,
+   "width": 300,
+   "height": 220,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "chart": "column",
+   "data": {
+    "labels": [
+     "Jan",
+     "Feb",
+     "Mar",
+     "Apr",
+     "May",
+     "Jun"
+    ],
+    "series": [
+     {
+      "name": "Revenue",
+      "values": [
+       12,
+       19,
+       15,
+       24,
+       28,
+       31
+      ]
+     },
+     {
+      "name": "Costs",
+      "values": [
+       8,
+       11,
+       13,
+       14,
+       16,
+       18
+      ]
+     }
+    ]
+   },
+   "options": {
+    "legend": true,
+    "grid": true,
+    "labels": false,
+    "palette": [
+     "#ffb02e",
+     "#4f8cff",
+     "#2fbf71",
+     "#e5484d",
+     "#a463f2"
+    ],
+    "fontFamily": "Inter",
+    "fontSize": 12,
+    "textColor": "#2b2b30",
+    "unit": "k"
+   }
+  },
+  "chbarxxx0002": {
+   "id": "chbarxxx0002",
+   "type": "chart",
+   "name": "ch-bar",
+   "parent": "chartspa0012",
+   "x": 340,
+   "y": 20,
+   "width": 300,
+   "height": 220,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "chart": "bar",
+   "data": {
+    "labels": [
+     "North",
+     "South",
+     "East",
+     "West"
+    ],
+    "series": [
+     {
+      "name": "Sales",
+      "values": [
+       42,
+       31,
+       27,
+       18
+      ]
+     }
+    ]
+   },
+   "options": {
+    "legend": false,
+    "grid": true,
+    "labels": true,
+    "palette": [
+     "#ffb02e",
+     "#4f8cff",
+     "#2fbf71",
+     "#e5484d",
+     "#a463f2"
+    ],
+    "fontFamily": "Inter",
+    "fontSize": 12,
+    "textColor": "#2b2b30"
+   }
+  },
+  "chstacke0003": {
+   "id": "chstacke0003",
+   "type": "chart",
+   "name": "ch-stacked",
+   "parent": "chartspa0012",
+   "x": 660,
+   "y": 20,
+   "width": 300,
+   "height": 220,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "chart": "stacked-column",
+   "data": {
+    "labels": [
+     "Jan",
+     "Feb",
+     "Mar",
+     "Apr",
+     "May",
+     "Jun"
+    ],
+    "series": [
+     {
+      "name": "Revenue",
+      "values": [
+       12,
+       19,
+       15,
+       24,
+       28,
+       31
+      ]
+     },
+     {
+      "name": "Costs",
+      "values": [
+       8,
+       11,
+       13,
+       14,
+       16,
+       18
+      ]
+     }
+    ]
+   },
+   "options": {
+    "legend": true,
+    "grid": true,
+    "labels": false,
+    "palette": [
+     "#ffb02e",
+     "#4f8cff",
+     "#2fbf71",
+     "#e5484d",
+     "#a463f2"
+    ],
+    "fontFamily": "Inter",
+    "fontSize": 12,
+    "textColor": "#2b2b30"
+   }
+  },
+  "chlinexx0004": {
+   "id": "chlinexx0004",
+   "type": "chart",
+   "name": "ch-line",
+   "parent": "chartspa0012",
+   "x": 20,
+   "y": 260,
+   "width": 300,
+   "height": 220,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "chart": "line",
+   "data": {
+    "labels": [
+     "Jan",
+     "Feb",
+     "Mar",
+     "Apr",
+     "May",
+     "Jun"
+    ],
+    "series": [
+     {
+      "name": "Revenue",
+      "values": [
+       12,
+       19,
+       15,
+       24,
+       28,
+       31
+      ]
+     },
+     {
+      "name": "Costs",
+      "values": [
+       8,
+       11,
+       13,
+       14,
+       16,
+       18
+      ]
+     }
+    ]
+   },
+   "options": {
+    "legend": true,
+    "grid": true,
+    "labels": false,
+    "palette": [
+     "#ffb02e",
+     "#4f8cff",
+     "#2fbf71",
+     "#e5484d",
+     "#a463f2"
+    ],
+    "fontFamily": "Inter",
+    "fontSize": 12,
+    "textColor": "#2b2b30"
+   }
+  },
+  "chareaxx0005": {
+   "id": "chareaxx0005",
+   "type": "chart",
+   "name": "ch-area",
+   "parent": "chartspa0012",
+   "x": 340,
+   "y": 260,
+   "width": 300,
+   "height": 220,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "chart": "area",
+   "data": {
+    "labels": [
+     "Jan",
+     "Feb",
+     "Mar",
+     "Apr",
+     "May",
+     "Jun"
+    ],
+    "series": [
+     {
+      "name": "Revenue",
+      "values": [
+       12,
+       19,
+       15,
+       24,
+       28,
+       31
+      ]
+     }
+    ]
+   },
+   "options": {
+    "legend": true,
+    "grid": true,
+    "labels": false,
+    "palette": [
+     "#ffb02e",
+     "#4f8cff",
+     "#2fbf71",
+     "#e5484d",
+     "#a463f2"
+    ],
+    "fontFamily": "Inter",
+    "fontSize": 12,
+    "textColor": "#2b2b30"
+   }
+  },
+  "chscatte0006": {
+   "id": "chscatte0006",
+   "type": "chart",
+   "name": "ch-scatter",
+   "parent": "chartspa0012",
+   "x": 660,
+   "y": 260,
+   "width": 300,
+   "height": 220,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "chart": "scatter",
+   "data": {
+    "labels": [
+     "1",
+     "2",
+     "3",
+     "5",
+     "8",
+     "13"
+    ],
+    "series": [
+     {
+      "name": "Points",
+      "values": [
+       3,
+       7,
+       4,
+       9,
+       6,
+       12
+      ]
+     }
+    ]
+   },
+   "options": {
+    "legend": true,
+    "grid": true,
+    "labels": false,
+    "palette": [
+     "#ffb02e",
+     "#4f8cff",
+     "#2fbf71",
+     "#e5484d",
+     "#a463f2"
+    ],
+    "fontFamily": "Inter",
+    "fontSize": 12,
+    "textColor": "#2b2b30"
+   }
+  },
+  "chpiexxx0007": {
+   "id": "chpiexxx0007",
+   "type": "chart",
+   "name": "ch-pie",
+   "parent": "chartspa0012",
+   "x": 20,
+   "y": 500,
+   "width": 300,
+   "height": 220,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "chart": "pie",
+   "data": {
+    "labels": [
+     "Design",
+     "Code",
+     "Docs",
+     "Ops"
+    ],
+    "series": [
+     {
+      "name": "Time",
+      "values": [
+       40,
+       30,
+       20,
+       10
+      ]
+     }
+    ]
+   },
+   "options": {
+    "legend": true,
+    "grid": true,
+    "labels": true,
+    "palette": [
+     "#ffb02e",
+     "#4f8cff",
+     "#2fbf71",
+     "#e5484d",
+     "#a463f2"
+    ],
+    "fontFamily": "Inter",
+    "fontSize": 12,
+    "textColor": "#2b2b30"
+   }
+  },
+  "chdonutx0008": {
+   "id": "chdonutx0008",
+   "type": "chart",
+   "name": "ch-donut",
+   "parent": "chartspa0012",
+   "x": 340,
+   "y": 500,
+   "width": 300,
+   "height": 220,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "chart": "donut",
+   "data": {
+    "labels": [
+     "A",
+     "B",
+     "C"
+    ],
+    "series": [
+     {
+      "name": "Share",
+      "values": [
+       55,
+       30,
+       15
+      ]
+     }
+    ]
+   },
+   "options": {
+    "legend": true,
+    "grid": true,
+    "labels": true,
+    "palette": [
+     "#ffb02e",
+     "#4f8cff",
+     "#2fbf71",
+     "#e5484d",
+     "#a463f2"
+    ],
+    "fontFamily": "Inter",
+    "fontSize": 12,
+    "textColor": "#2b2b30"
+   }
+  },
+  "chradarx0009": {
+   "id": "chradarx0009",
+   "type": "chart",
+   "name": "ch-radar",
+   "parent": "chartspa0012",
+   "x": 660,
+   "y": 500,
+   "width": 300,
+   "height": 220,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "chart": "radar",
+   "data": {
+    "labels": [
+     "Speed",
+     "Power",
+     "Range",
+     "Comfort",
+     "Price"
+    ],
+    "series": [
+     {
+      "name": "Model X",
+      "values": [
+       8,
+       6,
+       9,
+       5,
+       4
+      ]
+     },
+     {
+      "name": "Model Y",
+      "values": [
+       6,
+       8,
+       5,
+       8,
+       7
+      ]
+     }
+    ]
+   },
+   "options": {
+    "legend": true,
+    "grid": true,
+    "labels": false,
+    "palette": [
+     "#ffb02e",
+     "#4f8cff",
+     "#2fbf71",
+     "#e5484d",
+     "#a463f2"
+    ],
+    "fontFamily": "Inter",
+    "fontSize": 12,
+    "textColor": "#2b2b30"
+   }
+  },
+  "chfunnel0010": {
+   "id": "chfunnel0010",
+   "type": "chart",
+   "name": "ch-funnel",
+   "parent": "chartspa0012",
+   "x": 20,
+   "y": 740,
+   "width": 300,
+   "height": 220,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "chart": "funnel",
+   "data": {
+    "labels": [
+     "Visits",
+     "Signups",
+     "Trials",
+     "Paid"
+    ],
+    "series": [
+     {
+      "name": "Users",
+      "values": [
+       1000,
+       520,
+       260,
+       90
+      ]
+     }
+    ]
+   },
+   "options": {
+    "legend": false,
+    "grid": true,
+    "labels": true,
+    "palette": [
+     "#ffb02e",
+     "#4f8cff",
+     "#2fbf71",
+     "#e5484d",
+     "#a463f2"
+    ],
+    "fontFamily": "Inter",
+    "fontSize": 12,
+    "textColor": "#2b2b30"
+   }
+  },
+  "chprogre0011": {
+   "id": "chprogre0011",
+   "type": "chart",
+   "name": "ch-progress",
+   "parent": "chartspa0012",
+   "x": 340,
+   "y": 740,
+   "width": 300,
+   "height": 60,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "chart": "progress",
+   "data": {
+    "labels": [
+     "Done"
+    ],
+    "series": [
+     {
+      "name": "Progress",
+      "values": [
+       68
+      ]
+     }
+    ]
+   },
+   "options": {
+    "legend": true,
+    "grid": true,
+    "labels": true,
+    "palette": [
+     "#ffb02e",
+     "#4f8cff",
+     "#2fbf71",
+     "#e5484d",
+     "#a463f2"
+    ],
+    "fontFamily": "Inter",
+    "fontSize": 12,
+    "textColor": "#2b2b30"
+   }
+  }
+ },
+ "assets": {},
+ "styles": {
+  "colors": {},
+  "text": {},
+  "effects": {},
+  "variables": {}
+ },
+ "meta": {
+  "render": {
+   "scale": 1
+  }
+ }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "trailing-zeros",
+  "description": "no trailing zeros or trailing decimal point",
+  "input": [1.5, 2.0, 0.1, -1.0, 10.1, 1],
+  "inputText": "[1.50,2.000,0.10,-1.0,10.10,1e0]",
+  "canonical": "[1.5,2,0.1,-1,10.1,1]"
+}

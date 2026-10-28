@@ -1,0 +1,36 @@
+---
+title: Layers & pages
+description: Working with the layers tree — renaming, reordering, locking and hiding — and adding, reordering, resizing and duplicating pages.
+---
+
+## The Layers panel
+
+Open **Layers** in the left rail (<Keys combo="alt+1" />) to see the current page as a tree, front-most layer at the top.
+
+- **Select** a layer by clicking it; <Keys combo="shift+click" /> selects a range and <Keys combo="mod+click" /> toggles individual layers.
+- **Rename** by double-clicking the name or pressing <Keys combo="mod+r" />. Names matter: they show up in comments, version history and AI descriptions.
+- **Reorder** by dragging. Drop onto a frame or group to put the layer inside it.
+- **Lock** a layer to protect it from accidental edits on the canvas (<Keys combo="mod+shift+l" />). Locked layers can still be selected in the panel.
+- **Hide** a layer (<Keys combo="mod+shift+h" />) to keep it in the design without rendering or exporting it.
+- **Collapse and expand** containers with the disclosure arrow; <Keys combo="alt+click" /> on the arrow expands every level.
+
+Icons show each layer's type, and a small marker shows layers that mask, use auto-layout or have a semantic role. While the agent is working, the layers it is changing pulse with a soft glow.
+
+The tree is virtualized, so even pages with thousands of layers scroll smoothly.
+
+## Pages
+
+Pages are shown in the page strip under the canvas and in the **Pages** panel.
+
+- **Add** a page with the **+** button or <Keys combo="mod+enter" />. New pages copy the size of the current one.
+- **Duplicate** a page from its context menu — the fastest way to make variations.
+- **Reorder** pages by dragging thumbnails.
+- **Resize** a page in the inspector with nothing selected. Choose a preset (A4, Letter, Instagram post, 16:9 slide…) or type a size; constraints decide how the content follows. For a smart reflow into different formats, use [resize](/ai/workflows#resize).
+- **Navigate** with <Keys combo="pageup" /> and <Keys combo="pagedown" />.
+- **Delete** a page from its context menu. Like everything else, it can be undone.
+
+Each page keeps its own background, grid, guides, bleed, notes and — for presentations and video — duration and transition.
+
+## Page limits
+
+Free designs can have up to 10 pages, Pro up to 200, and self-hosted designs are unlimited.

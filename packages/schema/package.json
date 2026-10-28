@@ -1,0 +1,41 @@
+{
+  "name": "@desyn/schema",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./types": "./src/types.ts",
+    "./zod": "./src/zod.ts",
+    "./json-schema": "./src/json-schema.ts",
+    "./ids": "./src/ids.ts",
+    "./canonical": "./src/canonical.ts",
+    "./defaults": "./src/defaults.ts",
+    "./validate": "./src/validate.ts",
+    "./plans": "./src/plans.ts",
+    "./presets": "./src/presets.ts",
+    "./color": "./src/color.ts",
+    "./fonts": "./src/fonts.ts",
+    "./roles": "./src/roles.ts",
+    "./kinds": "./src/kinds.ts",
+    "./links": "./src/links.ts",
+    "./json-schema/*": "./json-schema/*"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "lint": "biome check .",
+    "gen:json-schema": "tsx scripts/gen-json-schema.ts && biome format --write json-schema"
+  },
+  "dependencies": {
+    "@noble/hashes": "2.4.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "ajv": "8.20.0",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "vitest": "5.0.5"
+  }
+}

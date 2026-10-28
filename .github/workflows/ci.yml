@@ -1,0 +1,262 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  CARGO_TERM_COLOR: always
+  CARGO_INCREMENTAL: "0"
+  RUST_VERSION: "1.98.1"
+  BINARYEN_VERSION: "133"
+  NODE_VERSION: "26"
+  TURBO_TELEMETRY_DISABLED: "1"
+  NEXT_TELEMETRY_DISABLED: "1"
+  DO_NOT_TRACK: "1"
+
+jobs:
+  js:
+    name: JS (biome, typecheck, test)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v7
+
+      # Package builds (e.g. @desyn/engine) compile the wasm engine, so the Rust wasm toolchain must exist
+      # whenever crates/desyn-wasm does. wasm-bindgen-cli must match the crate version in Cargo.lock exactly.
+      - name: Detect wasm toolchain needs
+        id: wasm
+        run: |
+          version=none
+          if [ -f crates/desyn-wasm/Cargo.toml ] && [ -f Cargo.lock ]; then
+            version="$(awk '$0 == "name = \"wasm-bindgen\"" { getline; gsub(/version = |"/, ""); print; exit }' Cargo.lock)"
+          fi
+          echo "bindgen=${version:-none}" >> "$GITHUB_OUTPUT"
+      - if: steps.wasm.outputs.bindgen != 'none'
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ env.RUST_VERSION }}
+          targets: wasm32-unknown-unknown
+      - if: steps.wasm.outputs.bindgen != 'none'
+        uses: Swatinem/rust-cache@v2.9.2
+        with:
+          shared-key: wasm
+      - if: steps.wasm.outputs.bindgen != 'none'
+        uses: taiki-e/install-action@v2.87.29
+        with:
+          tool: wasm-bindgen@${{ steps.wasm.outputs.bindgen }}
+      - if: steps.wasm.outputs.bindgen != 'none'
+        name: Install wasm-opt (binaryen)
+        run: |
+          curl -fsSL "https://github.com/WebAssembly/binaryen/releases/download/version_${BINARYEN_VERSION}/binaryen-version_${BINARYEN_VERSION}-x86_64-linux.tar.gz" | tar -xz -C "${RUNNER_TEMP}"
+          echo "${RUNNER_TEMP}/binaryen-version_${BINARYEN_VERSION}/bin" >> "$GITHUB_PATH"
+
+      - uses: pnpm/action-setup@v6.1.0
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Biome
+        run: pnpm exec biome ci .
+      - name: Typecheck
+        run: pnpm exec turbo run typecheck
+      - name: Test
+        run: pnpm exec turbo run test
+      - name: Package lint scripts
+        run: pnpm exec turbo run lint
+
+  convex:
+    name: Convex functions (typecheck, convex-test)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - name: Detect convex/
+        id: detect
+        run: |
+          if [ -f convex/schema.ts ]; then echo "present=true" >> "$GITHUB_OUTPUT"; else echo "present=false" >> "$GITHUB_OUTPUT"; fi
+      - if: steps.detect.outputs.present == 'true'
+        uses: pnpm/action-setup@v6.1.0
+      - if: steps.detect.outputs.present == 'true'
+        uses: actions/setup-node@v7.1.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+      - if: steps.detect.outputs.present == 'true'
+        run: pnpm install --frozen-lockfile
+      # Offline: convex-test runs the functions in-process; no deployment and no secrets are involved. Deploys to
+      # Convex Cloud happen in convex-deploy.yml (CONVEX_DEPLOY_KEY) or from the owner's machine (deploy.sh).
+      - if: steps.detect.outputs.present == 'true'
+        run: pnpm typecheck:convex
+      - if: steps.detect.outputs.present == 'true'
+        run: pnpm test:convex
+
+  rust:
+    name: Rust (fmt, clippy, test)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7
+      - name: Detect crates
+        id: detect
+        run: |
+          if ls crates/*/Cargo.toml >/dev/null 2>&1; then echo "present=true" >> "$GITHUB_OUTPUT"; else echo "present=false" >> "$GITHUB_OUTPUT"; fi
+      - if: steps.detect.outputs.present == 'true'
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ env.RUST_VERSION }}
+          components: rustfmt, clippy
+      # System libraries for the GPUI desktop crate (workspace-wide clippy/test compiles it) and ffmpeg for
+      # the worker's video export tests.
+      - if: steps.detect.outputs.present == 'true'
+        name: System dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            pkg-config libssl-dev libfontconfig1-dev libfreetype-dev libxkbcommon-dev libxkbcommon-x11-dev \
+            libwayland-dev libx11-xcb-dev libxcb1-dev libvulkan-dev libasound2-dev libzstd-dev ffmpeg
+      - if: steps.detect.outputs.present == 'true'
+        uses: Swatinem/rust-cache@v2.9.2
+      - if: steps.detect.outputs.present == 'true'
+        run: cargo fmt --all --check
+      - if: steps.detect.outputs.present == 'true'
+        run: cargo clippy --workspace --all-targets --locked -- -D warnings
+      - if: steps.detect.outputs.present == 'true'
+        run: cargo test --workspace --locked
+
+  wasm:
+    name: Wasm engine build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v7
+      - name: Detect desyn-wasm
+        id: detect
+        run: |
+          version=none
+          if [ -f crates/desyn-wasm/Cargo.toml ] && [ -f Cargo.lock ]; then
+            version="$(awk '$0 == "name = \"wasm-bindgen\"" { getline; gsub(/version = |"/, ""); print; exit }' Cargo.lock)"
+          fi
+          echo "bindgen=${version:-none}" >> "$GITHUB_OUTPUT"
+      - if: steps.detect.outputs.bindgen != 'none'
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ env.RUST_VERSION }}
+          targets: wasm32-unknown-unknown
+      - if: steps.detect.outputs.bindgen != 'none'
+        uses: Swatinem/rust-cache@v2.9.2
+        with:
+          shared-key: wasm
+      - if: steps.detect.outputs.bindgen != 'none'
+        uses: taiki-e/install-action@v2.87.29
+        with:
+          tool: wasm-bindgen@${{ steps.detect.outputs.bindgen }}
+      - if: steps.detect.outputs.bindgen != 'none'
+        name: Install wasm-opt (binaryen)
+        run: |
+          curl -fsSL "https://github.com/WebAssembly/binaryen/releases/download/version_${BINARYEN_VERSION}/binaryen-version_${BINARYEN_VERSION}-x86_64-linux.tar.gz" | tar -xz -C "${RUNNER_TEMP}"
+          echo "${RUNNER_TEMP}/binaryen-version_${BINARYEN_VERSION}/bin" >> "$GITHUB_PATH"
+      - if: steps.detect.outputs.bindgen != 'none'
+        name: Build and bind
+        run: |
+          cargo build --release --locked -p desyn-wasm --target wasm32-unknown-unknown
+          target_dir="$(cargo metadata --format-version 1 --no-deps | jq -r .target_directory)"
+          out="${RUNNER_TEMP}/desyn-wasm"
+          wasm-bindgen --target web --out-dir "${out}" "${target_dir}/wasm32-unknown-unknown/release/desyn_wasm.wasm"
+          wasm-opt -Oz --enable-bulk-memory --enable-nontrapping-float-to-int -o "${out}/desyn_wasm_bg.opt.wasm" "${out}/desyn_wasm_bg.wasm"
+          ls -la "${out}"
+          {
+            echo "### desyn-wasm"
+            echo "- raw: $(stat -c %s "${out}/desyn_wasm_bg.wasm") bytes"
+            echo "- wasm-opt -Oz: $(stat -c %s "${out}/desyn_wasm_bg.opt.wasm") bytes"
+          } >> "$GITHUB_STEP_SUMMARY"
+      - if: steps.detect.outputs.bindgen != 'none'
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: desyn-wasm
+          path: ${{ runner.temp }}/desyn-wasm
+          retention-days: 14
+
+  deploy-config:
+    name: Deploy config (shellcheck, compose, nginx -t, actionlint, vector)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - run: bash deploy/scripts/lint.sh
+
+  deploy-tests:
+    name: Deploy scripts (sandboxed bootstrap/deploy/rollback, nginx gate)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - name: Prerequisites
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends nginx
+          sudo systemctl stop nginx
+          # The sandboxed suites run the scripts as fake root in a user namespace.
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+      - run: bash deploy/tests/run.sh
+        env:
+          NGINX_BIN: /usr/sbin/nginx
+
+  images:
+    name: Image build (${{ matrix.name }})
+    if: github.event_name != 'pull_request'
+    needs: [deploy-config, deploy-tests]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { name: web, dockerfile: deploy/docker/next.Dockerfile, app: web, marker: apps/web/package.json, context: . }
+          - { name: landing, dockerfile: deploy/docker/next.Dockerfile, app: landing, marker: apps/landing/package.json, context: . }
+          - { name: docs, dockerfile: deploy/docker/next.Dockerfile, app: docs, marker: apps/docs/package.json, context: . }
+          - { name: worker, dockerfile: deploy/docker/worker.Dockerfile, app: "", marker: crates/desyn-worker/Cargo.toml, context: . }
+          # Server backup/restore tool (Convex CLI only) and the self-host Convex tool image (functions + CLI).
+          - { name: convex-cli, dockerfile: deploy/docker/convex-cli.Dockerfile, app: "", marker: package.json, context: deploy/docker }
+          - { name: convex-tools, dockerfile: deploy/docker/convex.Dockerfile, app: "", marker: convex/schema.ts, context: . }
+    steps:
+      - uses: actions/checkout@v7
+      - name: Source present?
+        id: present
+        run: |
+          if [ -f "${{ matrix.marker }}" ]; then echo "ok=true" >> "$GITHUB_OUTPUT"; else echo "ok=false" >> "$GITHUB_OUTPUT"; fi
+          version="$(grep -oE '"convex"[[:space:]]*:[[:space:]]*"[0-9]+\.[0-9]+\.[0-9]+"' package.json | head -n 1 | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' || true)"
+          echo "convex=${version}" >> "$GITHUB_OUTPUT"
+      # Public build values, as deploy.sh passes them (deploy/env/public.env).
+      - name: Public build config
+        run: grep -E '^[A-Z][A-Z0-9_]*=' deploy/env/public.env | sed 's/^/PUB_/' >> "$GITHUB_ENV"
+      - if: steps.present.outputs.ok == 'true'
+        uses: docker/setup-buildx-action@v4.4.1
+      - if: steps.present.outputs.ok == 'true'
+        uses: docker/build-push-action@v7.4.0
+        with:
+          context: ${{ matrix.context }}
+          file: ${{ matrix.dockerfile }}
+          push: false
+          build-args: |
+            APP=${{ matrix.app }}
+            DESYN_RELEASE=ci-${{ github.sha }}
+            CONVEX_VERSION=${{ steps.present.outputs.convex }}
+            NEXT_PUBLIC_CONVEX_URL=${{ env.PUB_NEXT_PUBLIC_CONVEX_URL }}
+            NEXT_PUBLIC_CONVEX_SITE_URL=${{ env.PUB_NEXT_PUBLIC_CONVEX_SITE_URL }}
+            NEXT_PUBLIC_SITE_URL=${{ env.PUB_NEXT_PUBLIC_SITE_URL }}
+            NEXT_PUBLIC_APP_URL=${{ env.PUB_NEXT_PUBLIC_APP_URL }}
+            NEXT_PUBLIC_DOCS_URL=${{ env.PUB_NEXT_PUBLIC_DOCS_URL }}
+            NEXT_PUBLIC_DESYN_EDITION=hosted
+          cache-from: type=gha,scope=${{ matrix.name }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.name }}

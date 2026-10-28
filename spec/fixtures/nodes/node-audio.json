@@ -1,0 +1,28 @@
+{
+  "name": "node-audio",
+  "schema": "AudioNode",
+  "valid": true,
+  "description": "canonical example of a audio node",
+  "value": {
+    "id": "node00000020",
+    "type": "audio",
+    "name": "Soundtrack",
+    "parent": "page00000001",
+    "x": 100,
+    "y": 120,
+    "width": 0,
+    "height": 0,
+    "rotation": 0,
+    "opacity": 1,
+    "blend": "normal",
+    "visible": true,
+    "locked": false,
+    "effects": [],
+    "startMs": 0,
+    "trimStartMs": 0,
+    "volume": 0.8,
+    "assetId": "audio0000001",
+    "fadeInMs": 300,
+    "fadeOutMs": 1200
+  }
+}

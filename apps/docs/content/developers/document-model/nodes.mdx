@@ -1,0 +1,65 @@
+---
+title: Nodes reference
+description: Every node type in the Desyn document model — base properties, containers, auto-layout, shapes, text, images, SVG, media, charts, tables, QR codes and semantic roles.
+---
+
+All geometry is in **design pixels** (1 px = 1/96 in) regardless of a page's display unit. `x` and `y` are relative to the parent's top-left corner (before the parent's rotation); `rotation` is in degrees clockwise around the node's center. The origin is top-left and y grows downward.
+
+## Base node
+
+Every node has these properties; `type` is the discriminant.
+
+<Generated name="model-types" names="BaseNode" />
+
+`mask: true` makes a node an alpha mask for the siblings that follow it within the same parent, up to the next mask. `link` is a URL or `page:<pageId>`. `meta` is free-form and preserved; templates use `meta.slot` to mark replaceable content.
+
+## Containers
+
+Root, pages, frames, groups and booleans have ordered `children`, back to front (index 0 is the bottom-most).
+
+<Generated name="model-types" names="ContainerProps,RootNode,PageNode,FrameNode,GroupNode,BooleanNode" />
+
+- **Root** has no geometry of its own; its children are the pages, in order.
+- **Pages** are children of root only and cannot nest. `bleed` extends the printable area outside the page for print export. `grid` and `guides` are editor aids that never render.
+- **Groups** have no paint; their bounds are derived from their children.
+- **Booleans** combine their children's outlines with the given operation and paint the result with their own fills and strokes.
+
+### Auto-layout
+
+A frame (or boolean) with `layout` positions and sizes its children. Children use `sizing` to hug their content, fill the remaining space, or keep a fixed size.
+
+<Generated name="model-types" names="AutoLayout" />
+
+Engines recompute `x`, `y`, `width` and `height` of affected nodes after every transaction; clients persist the derived values so that servers and clients without a layout engine see consistent boxes.
+
+## Shapes
+
+<Generated name="model-types" names="Shaped,RectNode,EllipseNode,PolygonNode,StarNode,LineNode,Cap,PathNode" />
+
+`cornerRadius` is a single value or `[topLeft, topRight, bottomRight, bottomLeft]`. Path data is SVG path syntax in the node's local box (`0..width`, `0..height`). A line is drawn along the +x axis of its box and has height 0.
+
+## Text
+
+<Generated name="model-types" names="TextNode,TextRun,TextStyle,ParagraphStyle" />
+
+The text of a node is the concatenation of its runs; `"\n"` starts a new paragraph. `style` is the default for all runs and each run may override any part of it. With `autoResize: "height"` the width is fixed and the height derived; with `"width"` the node is a single line that grows in both directions. `curve` sets text on an arc, in degrees of sweep. `letterSpacing` is in em.
+
+## Images and SVG
+
+<Generated name="model-types" names="ImageNode,SvgNode" />
+
+`crop` is normalized (`0..1`) to the source image and used when `fit` is `"crop"`. `shape` clips the image to an ellipse or any path in a `0..1` unit box. `maskAssetId` is an optional alpha matte, such as the result of background removal. SVG markup is always sanitized: no scripts, `foreignObject` or external references. `recolor` maps original colors to replacements.
+
+## Video and audio
+
+<Generated name="model-types" names="VideoNode,AudioNode" />
+
+## Charts, tables and QR codes
+
+<Generated name="model-types" names="ChartNode,TableNode,QrNode" />
+
+## Semantic roles
+
+<Generated name="model-section" section="3" subsection="Role" />
+
+See [semantic roles](/concepts/roles) for how roles are used in the product.

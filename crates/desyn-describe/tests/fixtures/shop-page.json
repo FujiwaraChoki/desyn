@@ -1,0 +1,1912 @@
+{
+  "description": "Header with logo lockup and nav, a grid of six loose product cards with CTA buttons, a footer.",
+  "design": {
+    "assets": {
+      "logoasset000": {
+        "height": 40.0,
+        "id": "logoasset000",
+        "kind": "svg",
+        "mime": "image/svg+xml",
+        "width": 40.0
+      },
+      "productshot0": {
+        "height": 660.0,
+        "id": "productshot0",
+        "kind": "image",
+        "mime": "image/jpeg",
+        "width": 800.0
+      }
+    },
+    "id": "design000001",
+    "kind": "website",
+    "meta": {},
+    "name": "Fixture",
+    "nodes": {
+      "btnbg0000000": {
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fills": [
+          {
+            "color": "#111111",
+            "type": "solid"
+          }
+        ],
+        "height": 48.0,
+        "id": "btnbg0000000",
+        "locked": false,
+        "name": "btnbg0",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "rect",
+        "visible": true,
+        "width": 140.0,
+        "x": 136.0,
+        "y": 520.0
+      },
+      "btnbg1000000": {
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fills": [
+          {
+            "color": "#111111",
+            "type": "solid"
+          }
+        ],
+        "height": 48.0,
+        "id": "btnbg1000000",
+        "locked": false,
+        "name": "btnbg1",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "rect",
+        "visible": true,
+        "width": 140.0,
+        "x": 476.0,
+        "y": 520.0
+      },
+      "btnbg2000000": {
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fills": [
+          {
+            "color": "#111111",
+            "type": "solid"
+          }
+        ],
+        "height": 48.0,
+        "id": "btnbg2000000",
+        "locked": false,
+        "name": "btnbg2",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "rect",
+        "visible": true,
+        "width": 140.0,
+        "x": 816.0,
+        "y": 520.0
+      },
+      "btnbg3000000": {
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fills": [
+          {
+            "color": "#111111",
+            "type": "solid"
+          }
+        ],
+        "height": 48.0,
+        "id": "btnbg3000000",
+        "locked": false,
+        "name": "btnbg3",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "rect",
+        "visible": true,
+        "width": 140.0,
+        "x": 136.0,
+        "y": 1000.0
+      },
+      "btnbg4000000": {
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fills": [
+          {
+            "color": "#111111",
+            "type": "solid"
+          }
+        ],
+        "height": 48.0,
+        "id": "btnbg4000000",
+        "locked": false,
+        "name": "btnbg4",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "rect",
+        "visible": true,
+        "width": 140.0,
+        "x": 476.0,
+        "y": 1000.0
+      },
+      "btnbg5000000": {
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fills": [
+          {
+            "color": "#111111",
+            "type": "solid"
+          }
+        ],
+        "height": 48.0,
+        "id": "btnbg5000000",
+        "locked": false,
+        "name": "btnbg5",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "rect",
+        "visible": true,
+        "width": 140.0,
+        "x": 816.0,
+        "y": 1000.0
+      },
+      "btnlabel0000": {
+        "autoResize": "none",
+        "blend": "normal",
+        "effects": [],
+        "height": 48.0,
+        "id": "btnlabel0000",
+        "locked": false,
+        "name": "btnlabel0",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "center",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Add to cart"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#ffffff",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 18.0,
+          "fontStyle": "normal",
+          "fontWeight": 600.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "middle",
+        "visible": true,
+        "width": 120.0,
+        "x": 146.0,
+        "y": 520.0
+      },
+      "btnlabel1000": {
+        "autoResize": "none",
+        "blend": "normal",
+        "effects": [],
+        "height": 48.0,
+        "id": "btnlabel1000",
+        "locked": false,
+        "name": "btnlabel1",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "center",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Add to cart"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#ffffff",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 18.0,
+          "fontStyle": "normal",
+          "fontWeight": 600.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "middle",
+        "visible": true,
+        "width": 120.0,
+        "x": 486.0,
+        "y": 520.0
+      },
+      "btnlabel2000": {
+        "autoResize": "none",
+        "blend": "normal",
+        "effects": [],
+        "height": 48.0,
+        "id": "btnlabel2000",
+        "locked": false,
+        "name": "btnlabel2",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "center",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Add to cart"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#ffffff",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 18.0,
+          "fontStyle": "normal",
+          "fontWeight": 600.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "middle",
+        "visible": true,
+        "width": 120.0,
+        "x": 826.0,
+        "y": 520.0
+      },
+      "btnlabel3000": {
+        "autoResize": "none",
+        "blend": "normal",
+        "effects": [],
+        "height": 48.0,
+        "id": "btnlabel3000",
+        "locked": false,
+        "name": "btnlabel3",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "center",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Add to cart"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#ffffff",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 18.0,
+          "fontStyle": "normal",
+          "fontWeight": 600.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "middle",
+        "visible": true,
+        "width": 120.0,
+        "x": 146.0,
+        "y": 1000.0
+      },
+      "btnlabel4000": {
+        "autoResize": "none",
+        "blend": "normal",
+        "effects": [],
+        "height": 48.0,
+        "id": "btnlabel4000",
+        "locked": false,
+        "name": "btnlabel4",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "center",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Add to cart"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#ffffff",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 18.0,
+          "fontStyle": "normal",
+          "fontWeight": 600.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "middle",
+        "visible": true,
+        "width": 120.0,
+        "x": 486.0,
+        "y": 1000.0
+      },
+      "btnlabel5000": {
+        "autoResize": "none",
+        "blend": "normal",
+        "effects": [],
+        "height": 48.0,
+        "id": "btnlabel5000",
+        "locked": false,
+        "name": "btnlabel5",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "center",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Add to cart"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#ffffff",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 18.0,
+          "fontStyle": "normal",
+          "fontWeight": 600.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "middle",
+        "visible": true,
+        "width": 120.0,
+        "x": 826.0,
+        "y": 1000.0
+      },
+      "card00000000": {
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fills": [
+          {
+            "color": "#f6f3ee",
+            "type": "solid"
+          }
+        ],
+        "height": 440.0,
+        "id": "card00000000",
+        "locked": false,
+        "name": "card0",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "rect",
+        "visible": true,
+        "width": 300.0,
+        "x": 120.0,
+        "y": 160.0
+      },
+      "card10000000": {
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fills": [
+          {
+            "color": "#f6f3ee",
+            "type": "solid"
+          }
+        ],
+        "height": 440.0,
+        "id": "card10000000",
+        "locked": false,
+        "name": "card1",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "rect",
+        "visible": true,
+        "width": 300.0,
+        "x": 460.0,
+        "y": 160.0
+      },
+      "card20000000": {
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fills": [
+          {
+            "color": "#f6f3ee",
+            "type": "solid"
+          }
+        ],
+        "height": 440.0,
+        "id": "card20000000",
+        "locked": false,
+        "name": "card2",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "rect",
+        "visible": true,
+        "width": 300.0,
+        "x": 800.0,
+        "y": 160.0
+      },
+      "card30000000": {
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fills": [
+          {
+            "color": "#f6f3ee",
+            "type": "solid"
+          }
+        ],
+        "height": 440.0,
+        "id": "card30000000",
+        "locked": false,
+        "name": "card3",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "rect",
+        "visible": true,
+        "width": 300.0,
+        "x": 120.0,
+        "y": 640.0
+      },
+      "card40000000": {
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fills": [
+          {
+            "color": "#f6f3ee",
+            "type": "solid"
+          }
+        ],
+        "height": 440.0,
+        "id": "card40000000",
+        "locked": false,
+        "name": "card4",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "rect",
+        "visible": true,
+        "width": 300.0,
+        "x": 460.0,
+        "y": 640.0
+      },
+      "card50000000": {
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fills": [
+          {
+            "color": "#f6f3ee",
+            "type": "solid"
+          }
+        ],
+        "height": 440.0,
+        "id": "card50000000",
+        "locked": false,
+        "name": "card5",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "rect",
+        "visible": true,
+        "width": 300.0,
+        "x": 800.0,
+        "y": 640.0
+      },
+      "footer000000": {
+        "blend": "normal",
+        "children": [
+          "footernote00",
+          "footerlink00"
+        ],
+        "clip": false,
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fills": [
+          {
+            "color": "#111111",
+            "type": "solid"
+          }
+        ],
+        "height": 120.0,
+        "id": "footer000000",
+        "locked": false,
+        "name": "Footer",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "frame",
+        "visible": true,
+        "width": 1200.0,
+        "x": 0.0,
+        "y": 1380.0
+      },
+      "footerlink00": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 16.8,
+        "id": "footerlink00",
+        "locked": false,
+        "name": "Footer link",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "footer000000",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Privacy"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#cccccc",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 14.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 100.0,
+        "x": 1060.0,
+        "y": 50.0
+      },
+      "footernote00": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 16.8,
+        "id": "footernote00",
+        "locked": false,
+        "name": "Footer note",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "footer000000",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "© 2026 Kiln ceramics"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#cccccc",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 14.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 400.0,
+        "x": 48.0,
+        "y": 50.0
+      },
+      "header000000": {
+        "blend": "normal",
+        "children": [
+          "logomark0000",
+          "shopname0000",
+          "nav000000000",
+          "nav100000000",
+          "nav200000000",
+          "nav300000000"
+        ],
+        "clip": false,
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fills": [
+          {
+            "color": "#ffffff",
+            "type": "solid"
+          }
+        ],
+        "height": 96.0,
+        "id": "header000000",
+        "locked": false,
+        "name": "Header",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "frame",
+        "visible": true,
+        "width": 1200.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "logomark0000": {
+        "alt": "Shop logo",
+        "assetId": "logoasset000",
+        "blend": "normal",
+        "effects": [],
+        "height": 40.0,
+        "id": "logomark0000",
+        "locked": false,
+        "name": "Logo mark",
+        "opacity": 1.0,
+        "parent": "header000000",
+        "role": "logo",
+        "rotation": 0.0,
+        "type": "svg",
+        "visible": true,
+        "width": 40.0,
+        "x": 48.0,
+        "y": 28.0
+      },
+      "nav000000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 21.6,
+        "id": "nav000000000",
+        "locked": false,
+        "name": "Nav 0",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "header000000",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Shop"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 18.0,
+          "fontStyle": "normal",
+          "fontWeight": 500.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 90.0,
+        "x": 700.0,
+        "y": 38.0
+      },
+      "nav100000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 21.6,
+        "id": "nav100000000",
+        "locked": false,
+        "name": "Nav 1",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "header000000",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "About"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 18.0,
+          "fontStyle": "normal",
+          "fontWeight": 500.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 90.0,
+        "x": 810.0,
+        "y": 38.0
+      },
+      "nav200000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 21.6,
+        "id": "nav200000000",
+        "locked": false,
+        "name": "Nav 2",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "header000000",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Journal"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 18.0,
+          "fontStyle": "normal",
+          "fontWeight": 500.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 90.0,
+        "x": 920.0,
+        "y": 38.0
+      },
+      "nav300000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 21.6,
+        "id": "nav300000000",
+        "locked": false,
+        "name": "Nav 3",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "header000000",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Contact"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 18.0,
+          "fontStyle": "normal",
+          "fontWeight": 500.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 90.0,
+        "x": 1030.0,
+        "y": 38.0
+      },
+      "page00000001": {
+        "background": [
+          {
+            "color": "#ffffff",
+            "type": "solid"
+          }
+        ],
+        "bleed": 0.0,
+        "blend": "normal",
+        "children": [
+          "header000000",
+          "card00000000",
+          "photo0000000",
+          "title0000000",
+          "price0000000",
+          "btnbg0000000",
+          "btnlabel0000",
+          "card10000000",
+          "photo1000000",
+          "title1000000",
+          "price1000000",
+          "btnbg1000000",
+          "btnlabel1000",
+          "card20000000",
+          "photo2000000",
+          "title2000000",
+          "price2000000",
+          "btnbg2000000",
+          "btnlabel2000",
+          "card30000000",
+          "photo3000000",
+          "title3000000",
+          "price3000000",
+          "btnbg3000000",
+          "btnlabel3000",
+          "card40000000",
+          "photo4000000",
+          "title4000000",
+          "price4000000",
+          "btnbg4000000",
+          "btnlabel4000",
+          "card50000000",
+          "photo5000000",
+          "title5000000",
+          "price5000000",
+          "btnbg5000000",
+          "btnlabel5000",
+          "footer000000"
+        ],
+        "clip": true,
+        "effects": [],
+        "height": 1500.0,
+        "id": "page00000001",
+        "locked": false,
+        "name": "Page 1",
+        "opacity": 1.0,
+        "parent": "root",
+        "rotation": 0.0,
+        "type": "page",
+        "unit": "px",
+        "visible": true,
+        "width": 1200.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "photo0000000": {
+        "alt": "Ceramic mug",
+        "assetId": "productshot0",
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fit": "fill",
+        "height": 220.0,
+        "id": "photo0000000",
+        "locked": false,
+        "name": "photo0",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "image",
+        "visible": true,
+        "width": 268.0,
+        "x": 136.0,
+        "y": 176.0
+      },
+      "photo1000000": {
+        "alt": "Ceramic mug",
+        "assetId": "productshot0",
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fit": "fill",
+        "height": 220.0,
+        "id": "photo1000000",
+        "locked": false,
+        "name": "photo1",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "image",
+        "visible": true,
+        "width": 268.0,
+        "x": 476.0,
+        "y": 176.0
+      },
+      "photo2000000": {
+        "alt": "Ceramic mug",
+        "assetId": "productshot0",
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fit": "fill",
+        "height": 220.0,
+        "id": "photo2000000",
+        "locked": false,
+        "name": "photo2",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "image",
+        "visible": true,
+        "width": 268.0,
+        "x": 816.0,
+        "y": 176.0
+      },
+      "photo3000000": {
+        "alt": "Ceramic mug",
+        "assetId": "productshot0",
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fit": "fill",
+        "height": 220.0,
+        "id": "photo3000000",
+        "locked": false,
+        "name": "photo3",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "image",
+        "visible": true,
+        "width": 268.0,
+        "x": 136.0,
+        "y": 656.0
+      },
+      "photo4000000": {
+        "alt": "Ceramic mug",
+        "assetId": "productshot0",
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fit": "fill",
+        "height": 220.0,
+        "id": "photo4000000",
+        "locked": false,
+        "name": "photo4",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "image",
+        "visible": true,
+        "width": 268.0,
+        "x": 476.0,
+        "y": 656.0
+      },
+      "photo5000000": {
+        "alt": "Ceramic mug",
+        "assetId": "productshot0",
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fit": "fill",
+        "height": 220.0,
+        "id": "photo5000000",
+        "locked": false,
+        "name": "photo5",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "image",
+        "visible": true,
+        "width": 268.0,
+        "x": 816.0,
+        "y": 656.0
+      },
+      "price0000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 26.4,
+        "id": "price0000000",
+        "locked": false,
+        "name": "price0",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "$24"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#333333",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 22.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 268.0,
+        "x": 136.0,
+        "y": 452.0
+      },
+      "price1000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 26.4,
+        "id": "price1000000",
+        "locked": false,
+        "name": "price1",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "$24"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#333333",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 22.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 268.0,
+        "x": 476.0,
+        "y": 452.0
+      },
+      "price2000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 26.4,
+        "id": "price2000000",
+        "locked": false,
+        "name": "price2",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "$24"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#333333",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 22.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 268.0,
+        "x": 816.0,
+        "y": 452.0
+      },
+      "price3000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 26.4,
+        "id": "price3000000",
+        "locked": false,
+        "name": "price3",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "$24"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#333333",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 22.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 268.0,
+        "x": 136.0,
+        "y": 932.0
+      },
+      "price4000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 26.4,
+        "id": "price4000000",
+        "locked": false,
+        "name": "price4",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "$24"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#333333",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 22.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 268.0,
+        "x": 476.0,
+        "y": 932.0
+      },
+      "price5000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 26.4,
+        "id": "price5000000",
+        "locked": false,
+        "name": "price5",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "$24"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#333333",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 22.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 268.0,
+        "x": 816.0,
+        "y": 932.0
+      },
+      "root": {
+        "blend": "normal",
+        "children": [
+          "page00000001"
+        ],
+        "effects": [],
+        "height": 0.0,
+        "id": "root",
+        "locked": false,
+        "name": "Root",
+        "opacity": 1.0,
+        "parent": null,
+        "rotation": 0.0,
+        "type": "root",
+        "visible": true,
+        "width": 0.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "shopname0000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 33.6,
+        "id": "shopname0000",
+        "locked": false,
+        "name": "Shop name",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "header000000",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Kiln"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 28.0,
+          "fontStyle": "normal",
+          "fontWeight": 700.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 120.0,
+        "x": 100.0,
+        "y": 32.0
+      },
+      "title0000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 28.799999999999997,
+        "id": "title0000000",
+        "locked": false,
+        "name": "title0",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Ceramic mug"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 24.0,
+          "fontStyle": "normal",
+          "fontWeight": 600.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 268.0,
+        "x": 136.0,
+        "y": 412.0
+      },
+      "title1000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 28.799999999999997,
+        "id": "title1000000",
+        "locked": false,
+        "name": "title1",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Ceramic mug"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 24.0,
+          "fontStyle": "normal",
+          "fontWeight": 600.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 268.0,
+        "x": 476.0,
+        "y": 412.0
+      },
+      "title2000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 28.799999999999997,
+        "id": "title2000000",
+        "locked": false,
+        "name": "title2",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Ceramic mug"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 24.0,
+          "fontStyle": "normal",
+          "fontWeight": 600.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 268.0,
+        "x": 816.0,
+        "y": 412.0
+      },
+      "title3000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 28.799999999999997,
+        "id": "title3000000",
+        "locked": false,
+        "name": "title3",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Ceramic mug"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 24.0,
+          "fontStyle": "normal",
+          "fontWeight": 600.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 268.0,
+        "x": 136.0,
+        "y": 892.0
+      },
+      "title4000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 28.799999999999997,
+        "id": "title4000000",
+        "locked": false,
+        "name": "title4",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Ceramic mug"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 24.0,
+          "fontStyle": "normal",
+          "fontWeight": 600.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 268.0,
+        "x": 476.0,
+        "y": 892.0
+      },
+      "title5000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 28.799999999999997,
+        "id": "title5000000",
+        "locked": false,
+        "name": "title5",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Ceramic mug"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 24.0,
+          "fontStyle": "normal",
+          "fontWeight": 600.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 268.0,
+        "x": 816.0,
+        "y": 892.0
+      }
+    },
+    "schema": 1,
+    "styles": {
+      "colors": {},
+      "effects": {},
+      "text": {},
+      "variables": {}
+    }
+  },
+  "expect": {
+    "absent": [
+      "uneven-spacing",
+      "misaligned",
+      "low-contrast",
+      "overlap",
+      "text-covered"
+    ],
+    "groups": [
+      {
+        "kind": "header",
+        "node": "Header"
+      },
+      {
+        "ids": [
+          "Logo mark",
+          "Shop name"
+        ],
+        "kind": "logo-lockup"
+      },
+      {
+        "ids": [
+          "Nav 0",
+          "Nav 1",
+          "Nav 2",
+          "Nav 3"
+        ],
+        "kind": "nav-bar"
+      },
+      {
+        "count": 6,
+        "kind": "product-card"
+      },
+      {
+        "ids": [
+          "card0",
+          "photo0",
+          "title0",
+          "price0",
+          "btnbg0",
+          "btnlabel0"
+        ],
+        "kind": "product-card"
+      },
+      {
+        "count": 6,
+        "kind": "button"
+      },
+      {
+        "ids": [
+          "btnbg3",
+          "btnlabel3"
+        ],
+        "kind": "button"
+      },
+      {
+        "ids": [
+          "card0",
+          "card5"
+        ],
+        "kind": "grid"
+      },
+      {
+        "kind": "footer",
+        "node": "Footer"
+      }
+    ],
+    "issues": [],
+    "semantic": {
+      "Footer": "footer",
+      "Header": "header"
+    }
+  },
+  "options": null
+}

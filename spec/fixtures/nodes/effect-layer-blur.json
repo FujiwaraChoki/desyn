@@ -1,0 +1,10 @@
+{
+  "name": "effect-layer-blur",
+  "schema": "Effect",
+  "valid": true,
+  "description": "layer-blur effect",
+  "value": {
+    "type": "layerBlur",
+    "radius": 8
+  }
+}

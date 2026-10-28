@@ -1,0 +1,39 @@
+{
+  "name": "transaction",
+  "schema": "Transaction",
+  "valid": true,
+  "description": "an AI transaction with actor",
+  "value": {
+    "id": "tx0000000001",
+    "label": "AI: make it more premium",
+    "ops": [
+      {
+        "op": "update",
+        "id": "text00000001",
+        "set": {
+          "name": "Headline"
+        }
+      },
+      {
+        "op": "patch",
+        "id": "ell000000001",
+        "path": ["fills", 0, "color"],
+        "value": "#ffd66b"
+      },
+      {
+        "op": "doc",
+        "set": {
+          "name": "Premium"
+        },
+        "unset": ["brandKitId"]
+      }
+    ],
+    "source": "ai",
+    "actor": {
+      "userId": "user_1",
+      "runId": "run_1",
+      "agent": "desyn-agent"
+    },
+    "ts": 1760000000000
+  }
+}

@@ -1,0 +1,50 @@
+---
+title: AI providers
+description: Give a self-hosted installation AI features — server keys for OpenRouter and Fal, members' own keys, a shared Ollama server or other local models.
+---
+
+Every AI feature works on a self-hosted installation; you decide where the models run. There are three ways to provide them, and you can combine them.
+
+## 1. Server keys (shared by everyone)
+
+Set provider keys in the Convex environment (`deploy/compose/convex.env` in the quickstart, then push it) and every member can use AI without any setup:
+
+```dotenv
+OPENROUTER_API_KEY=<key>   # agent, generation, critique, SVG, copy and translation
+FAL_AI_API_KEY=<key>       # images, background removal, inpaint, outpaint, upscale, video
+```
+
+Requests are billed to your provider accounts. There are no credits on a self-hosted installation, but the per-account request caps from `config/plans.json` (per minute, per day and concurrent runs) still apply and protect your bill. Set spending limits in your provider dashboards as well.
+
+Default models per task are described in [providers & BYOK](/ai/providers-and-byok#default-models-per-task); exact model ids are resolved from the providers' live catalogs.
+
+## 2. Members' own keys (BYOK)
+
+Members can add their own keys for OpenRouter, Anthropic, OpenAI, Google, Mistral, Groq, Fal or Replicate in **Settings → AI providers**. Keys stored on the server are encrypted with `AI_KEY_ENCRYPTION_SECRET`, which must be set — without it, members can only use browser-only local keys.
+
+## 3. Local models
+
+Run models on your own hardware and set a default endpoint for everyone:
+
+```dotenv
+OLLAMA_BASE_URL=http://ollama:11434
+```
+
+With the quickstart stack, start the bundled Ollama service (profile `ollama`) and pull a model with tool-calling support:
+
+```bash
+docker compose --profile ollama up -d ollama
+docker compose exec ollama ollama pull qwen3:32b
+```
+
+Because the backend runs on the same Docker network, server-run agent jobs and workflows can use `http://ollama:11434` directly. For GPU acceleration, give the container access to your GPU: for NVIDIA, install the Container Toolkit and add `gpus: all` to the `ollama` service in a Compose override file.
+
+Members can also add any OpenAI-compatible server (LM Studio, vLLM, llama.cpp, LocalAI) in their settings. See [local models](/ai/local-models) for model choice and CORS.
+
+## Checking providers
+
+**Admin → Health** shows which provider keys are configured, and **Settings → AI providers → Test** checks a specific key or endpoint and lists the models it offers. If a task has no available model (for example image generation with neither a Fal key nor a media-capable BYOK key), its buttons are disabled with an explanation instead of failing.
+
+## Without any AI
+
+Leave all keys unset and do not configure local models: the editor, templates, collaboration and exports work fully, and AI entry points explain how to add a provider.

@@ -1,0 +1,39 @@
+---
+title: Render worker API
+description: The internal HTTP API of desyn-worker — render, describe, layout, measure, apply and thumbnail — used by the backend for exports, previews and layout.
+---
+
+The render worker (`crates/desyn-worker`) is an internal Axum service. The Convex backend calls it for exports, thumbnails, AI previews, server-side layout and text measurement. It is **not** a public API: keep it on a private network and never expose its port. For programmatic access to designs, use the [Agent API](/developers/api).
+
+## Authentication
+
+Every request must carry the shared secret in the `x-desyn-secret` header. The value is `RENDER_WORKER_SECRET`, set identically on the backend and the worker. `GET /healthz` is the only unauthenticated route.
+
+## Endpoints
+
+<Generated name="model-section" section="8" />
+
+## Example
+
+Render the first page of a design to a 2× PNG from inside the Compose network:
+
+```bash
+curl -sS http://worker:8080/v1/render \
+  -H "x-desyn-secret: $RENDER_WORKER_SECRET" \
+  -H "content-type: application/json" \
+  --data @- --output page.png <<'EOF'
+{ "design": { "schema": 1, "id": "d3k5m7p9r1t3", "...": "..." }, "format": "png", "scale": 2 }
+EOF
+```
+
+Print-ready PDF of all pages with bleed and crop marks:
+
+```json
+{ "design": { "...": "..." }, "pageId": "all", "format": "pdf", "pdf": { "bleed": true, "cropMarks": true, "cmyk": false } }
+```
+
+## Operations
+
+- **Health**: `GET /healthz` for container health checks.
+- **Fonts**: the worker loads a bundled set of open-licensed fonts from `FONTS_DIR` at start, and fetches design-specific and custom fonts from `assetUrls` per request.
+- **Resources**: renders run in parallel; MP4 and large multi-page exports are the heaviest. Give the worker enough memory for your largest designs and limit it with container resource limits.

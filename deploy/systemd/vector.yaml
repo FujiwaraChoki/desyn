@@ -1,0 +1,50 @@
+# Vector pipeline for desyn-logship.service: docker logs of the compose project "desyn" -> Axiom.
+# Secrets come from the environment (AXIOM_TOKEN, AXIOM_DATASET) loaded from /opt/desyn/secrets/axiom.env.
+# Use an Axiom API token with ingest permission on the dataset only (API tokens need no org id).
+data_dir: /var/lib/vector
+
+sources:
+  desyn_containers:
+    type: docker_logs
+    # Only containers of the desyn compose project; every other workload on the host is ignored.
+    include_labels:
+      - "com.docker.compose.project=desyn"
+    exclude_containers:
+      - desyn-vector
+
+transforms:
+  desyn_shape:
+    type: remap
+    inputs: [desyn_containers]
+    source: |
+      .service = .label."com.docker.compose.service"
+      if .service == null { .service = .container_name }
+      .project = "desyn"
+      .host = get_hostname() ?? "unknown"
+      del(.label)
+      # Structured JSON lines (the apps' shared logger) become fields; plain lines stay in .message.
+      parsed, err = parse_json(.message)
+      if err == null && is_object(parsed) {
+        . = merge(., object!(parsed))
+      }
+      # Defense in depth: never ship credentials that slipped into a log line.
+      if is_string(.message) {
+        .message = redact(string!(.message), filters: [
+          r'(?i)(authorization|cookie|set-cookie|api[_-]?key|token|secret|password)(["\s:=]+)((bearer|basic|convex)\s+)?[^\s",;]+',
+          r'sk-[A-Za-z0-9_\-]{16,}'
+        ])
+      }
+
+sinks:
+  axiom:
+    type: axiom
+    inputs: [desyn_shape]
+    dataset: "${AXIOM_DATASET:-desyn}"
+    token: "${AXIOM_TOKEN}"
+    compression: zstd
+    batch:
+      timeout_secs: 5
+    buffer:
+      type: disk
+      max_size: 268435488
+      when_full: drop_newest

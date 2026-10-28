@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" data-theme="system">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark light" />
+    <title>desyn engine — live canvas</title>
+  </head>
+  <body>
+    <div class="app" id="app">
+      <header class="topbar">
+        <div class="brand">
+          <span class="sun" aria-hidden="true"></span>
+          <span class="wordmark">desyn</span>
+          <span class="tag"><em>engine</em></span>
+        </div>
+        <label class="picker">
+          <span class="sr-only">Design</span>
+          <select id="fixture" aria-label="Design"></select>
+        </label>
+        <div class="spacer"></div>
+        <fieldset class="zoom">
+          <legend class="sr-only">Zoom</legend>
+          <button type="button" class="icon" id="zoom-out" aria-label="Zoom out" title="Zoom out (−)">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14" /></svg>
+          </button>
+          <button type="button" class="zoom-value" id="zoom-value" title="Zoom to 100% (1)">100%</button>
+          <button type="button" class="icon" id="zoom-in" aria-label="Zoom in" title="Zoom in (+)">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14" /></svg>
+          </button>
+          <button type="button" class="ghost" id="fit" title="Fit page (0)">Fit</button>
+        </fieldset>
+        <div class="export">
+          <button type="button" class="secondary" id="export-png">PNG</button>
+          <button type="button" class="secondary" id="export-svg">SVG</button>
+          <button type="button" class="primary" id="export-pdf">Export PDF</button>
+        </div>
+      </header>
+      <main class="stage" id="stage">
+        <canvas id="canvas" aria-label="Design canvas"></canvas>
+        <svg class="overlay" id="overlay" aria-hidden="true"></svg>
+        <div class="text-layer" id="text-layer"></div>
+        <div class="loading" id="loading">
+          <div class="spinner" aria-hidden="true"></div>
+          <p>warming up the <em>engine</em></p>
+        </div>
+      </main>
+      <footer class="hud" id="hud" aria-live="polite">
+        <span class="pill" id="hud-mode">—</span>
+        <span class="metric"><b id="hud-fps">—</b> fps</span>
+        <span class="metric"><b id="hud-frame">—</b> ms frame</span>
+        <span class="metric"><b id="hud-tiles">0</b> tiles pending</span>
+        <span class="hint" id="hud-hint">Drag to move · double-click text to edit · space-drag or scroll to pan · ⌘/ctrl-scroll to zoom</span>
+      </footer>
+      <div class="toast" id="toast" role="status"></div>
+    </div>
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>

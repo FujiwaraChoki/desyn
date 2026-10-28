@@ -1,0 +1,5 @@
+/*
+ * @desyn/editor stylesheet: registers the package sources with Tailwind so the utilities the editor uses
+ * are generated. Import it after @desyn/ui/styles.css in the app's global CSS.
+ */
+@source "./";

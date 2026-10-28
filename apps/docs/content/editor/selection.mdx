@@ -1,0 +1,55 @@
+---
+title: Selection & transform
+description: Selecting layers, moving, resizing and rotating them, aligning and distributing, grouping, masking and precise numeric edits.
+---
+
+## Selecting
+
+- Click a layer to select it. Clicking inside a group selects the whole group; double-click (or press <Keys combo="enter" />) to go inside, and <Keys combo="shift+enter" /> to select the parent again.
+- <Keys combo="mod+click" /> selects the deepest layer under the pointer directly, ignoring groups.
+- <Keys combo="shift+click" /> adds or removes layers from the selection.
+- Drag on empty canvas to select everything the marquee touches.
+- <Keys combo="mod+a" /> selects everything on the page; <Keys combo="escape" /> deselects.
+- <Keys combo="tab" /> and <Keys combo="shift+tab" /> move the selection to the next or previous sibling — a quick way to step through layers with the keyboard.
+
+Locked layers cannot be selected on the canvas; select them in the [Layers panel](/editor/layers-and-pages) instead.
+
+## Moving
+
+Drag the selection, or nudge it with the arrow keys: one pixel per press, ten with <Keys combo="shift" />. Hold <Keys combo="alt" /> while dragging to duplicate as you move. Layers snap to guides, the grid and their neighbors as described in [canvas & navigation](/editor/canvas#snapping).
+
+Drag a layer into a frame to put it inside; drag it out to take it out. In an [auto-layout](/editor/auto-layout) frame, dragging reorders children instead of placing them freely.
+
+## Resizing and rotating
+
+Drag a handle to resize. Hold <Keys combo="shift" /> to keep proportions (or turn on the aspect lock in the **Position** tab), and <Keys combo="alt" /> to resize from the center. Resizing a text layer changes its box, not its font size.
+
+Move the pointer just outside a corner handle to rotate. Hold <Keys combo="shift" /> to snap to 15° steps. Flip horizontally with <Keys combo="shift+h" /> and vertically with <Keys combo="shift+v" />.
+
+## Exact values
+
+The **Position** tab of the inspector shows X, Y, width, height and rotation. Every number field accepts arithmetic (`120*2`, `+16`, `50%`) and supports scrubbing: drag the label left or right to change the value, with <Keys combo="shift" /> for bigger steps. When several layers are selected, editing a field sets it on all of them; fields that differ show *Mixed*.
+
+## Align and distribute
+
+With two or more layers selected, use the **Arrange** tab or the shortcuts:
+
+- Align left, center or right: <Keys combo="alt+a" />, <Keys combo="alt+h" />, <Keys combo="alt+d" />
+- Align top, middle or bottom: <Keys combo="alt+w" />, <Keys combo="alt+v" />, <Keys combo="alt+s" />
+- Distribute horizontally or vertically: <Keys combo="alt+shift+h" />, <Keys combo="alt+shift+v" />
+
+With a single layer selected, alignment is relative to its parent frame or page. **Tidy up** arranges a messy selection into an even row, column or grid, and **Match size** makes every selected layer the size of the first.
+
+## Order
+
+Bring forward and send backward with <Keys combo="mod+]" /> and <Keys combo="mod+[" />; add <Keys combo="alt" /> to go all the way to the front or back.
+
+## Group, frame and mask
+
+- **Group** (<Keys combo="mod+g" />) bundles layers without adding any visual. **Ungroup** with <Keys combo="mod+shift+g" />.
+- **Frame selection** (<Keys combo="mod+alt+g" />) wraps the layers in a frame you can style, clip and give auto-layout.
+- **Use as mask** (<Keys combo="mod+alt+m" />) turns the bottom selected layer into a mask for the layers above it in the same container: they are only visible where the mask is opaque.
+
+## Constraints
+
+When a frame resizes, its children follow their constraints: pinned to the left, right or center, stretched with the frame, or scaled proportionally — set separately for horizontal and vertical. Constraints are what make [resizing a design](/ai/workflows#resize) to other formats look intentional.

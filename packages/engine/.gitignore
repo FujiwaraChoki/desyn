@@ -1,0 +1,6 @@
+# Build outputs of `pnpm build:wasm` (compiled from crates/desyn-wasm and crates/desyn-text/fonts).
+/wasm/
+/fonts/
+/demo/dist/
+/demo/shots/
+/demo/next-smoke/.next/

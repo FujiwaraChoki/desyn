@@ -1,0 +1,345 @@
+{
+  "description": "A frame with an explicit product-card role (wins over the text-only inference), a section group, and colors set through a color style and a variable.",
+  "design": {
+    "assets": {},
+    "id": "design000001",
+    "kind": "social-post",
+    "meta": {},
+    "name": "Fixture",
+    "nodes": {
+      "offer0000000": {
+        "blend": "normal",
+        "children": [
+          "offertitle00",
+          "offerbody000"
+        ],
+        "clip": false,
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fills": [
+          {
+            "color": {
+              "$style": "stylesun0001"
+            },
+            "type": "solid"
+          }
+        ],
+        "height": 300.0,
+        "id": "offer0000000",
+        "locked": false,
+        "name": "Offer",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "role": "product-card",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "frame",
+        "visible": true,
+        "width": 920.0,
+        "x": 80.0,
+        "y": 80.0
+      },
+      "offerbody000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 38.4,
+        "id": "offerbody000",
+        "locked": false,
+        "name": "Offer body",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "offer0000000",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "This weekend at every store."
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#1b1b1b",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 32.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 600.0,
+        "x": 40.0,
+        "y": 140.0
+      },
+      "offertitle00": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 76.8,
+        "id": "offertitle00",
+        "locked": false,
+        "name": "Offer title",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "offer0000000",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Two for one"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": {
+                "$var": "brand.ink"
+              },
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 64.0,
+          "fontStyle": "normal",
+          "fontWeight": 700.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 600.0,
+        "x": 40.0,
+        "y": 40.0
+      },
+      "page00000001": {
+        "background": [
+          {
+            "color": "#ffffff",
+            "type": "solid"
+          }
+        ],
+        "bleed": 0.0,
+        "blend": "normal",
+        "children": [
+          "offer0000000",
+          "story0000000"
+        ],
+        "clip": true,
+        "effects": [],
+        "height": 1080.0,
+        "id": "page00000001",
+        "locked": false,
+        "name": "Page 1",
+        "opacity": 1.0,
+        "parent": "root",
+        "rotation": 0.0,
+        "type": "page",
+        "unit": "px",
+        "visible": true,
+        "width": 1080.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "root": {
+        "blend": "normal",
+        "children": [
+          "page00000001"
+        ],
+        "effects": [],
+        "height": 0.0,
+        "id": "root",
+        "locked": false,
+        "name": "Root",
+        "opacity": 1.0,
+        "parent": null,
+        "rotation": 0.0,
+        "type": "root",
+        "visible": true,
+        "width": 0.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "story0000000": {
+        "blend": "normal",
+        "children": [
+          "storytitle00",
+          "storybody000"
+        ],
+        "clip": false,
+        "effects": [],
+        "height": 103.6,
+        "id": "story0000000",
+        "locked": false,
+        "name": "Story",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "role": "section",
+        "rotation": 0.0,
+        "type": "group",
+        "visible": true,
+        "width": 600.0,
+        "x": 80.0,
+        "y": 500.00000000000006
+      },
+      "storybody000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 33.6,
+        "id": "storybody000",
+        "locked": false,
+        "name": "Story body",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "story0000000",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Founded in a small workshop in 1998."
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#333333",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 28.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 600.0,
+        "x": 0.0,
+        "y": 70.0
+      },
+      "storytitle00": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 57.599999999999994,
+        "id": "storytitle00",
+        "locked": false,
+        "name": "Story title",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "story0000000",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Our story"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 48.0,
+          "fontStyle": "normal",
+          "fontWeight": 700.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 600.0,
+        "x": 0.0,
+        "y": 0.0
+      }
+    },
+    "schema": 1,
+    "styles": {
+      "colors": {
+        "stylesun0001": {
+          "name": "Sun",
+          "value": "#ffb02e"
+        }
+      },
+      "effects": {},
+      "text": {},
+      "variables": {
+        "brand.ink": "#1b1b1b"
+      }
+    }
+  },
+  "expect": {
+    "groups": [
+      {
+        "kind": "product-card",
+        "node": "Offer"
+      },
+      {
+        "kind": "role",
+        "node": "Story"
+      }
+    ],
+    "issues": [],
+    "onlyRules": [],
+    "semantic": {
+      "Offer": "product card",
+      "Story": "section"
+    }
+  },
+  "options": null
+}

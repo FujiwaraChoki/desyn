@@ -1,0 +1,24 @@
+{
+  "name": "fill-radial",
+  "schema": "Fill",
+  "valid": true,
+  "description": "radial fill",
+  "value": {
+    "type": "radial",
+    "cx": 0.5,
+    "cy": 0.4,
+    "rx": 0.6,
+    "ry": 0.5,
+    "stops": [
+      {
+        "pos": 0,
+        "color": "#ffb02eff"
+      },
+      {
+        "pos": 1,
+        "color": "#ffb02e00"
+      }
+    ],
+    "blend": "lighten"
+  }
+}

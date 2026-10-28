@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://desyn.app/schema/v1/ParagraphStyle.json",
+  "title": "ParagraphStyle",
+  "type": "object",
+  "properties": {
+    "align": {
+      "type": "string",
+      "enum": ["left", "center", "right", "justify"]
+    },
+    "direction": {
+      "type": "string",
+      "enum": ["ltr", "rtl", "auto"]
+    },
+    "lineHeight": {
+      "type": "object",
+      "properties": {
+        "unit": {
+          "type": "string",
+          "enum": ["auto", "px", "percent"]
+        },
+        "value": {
+          "type": "number"
+        }
+      },
+      "required": ["unit", "value"],
+      "additionalProperties": {}
+    },
+    "spacing": {
+      "type": "number"
+    },
+    "indent": {
+      "type": "number"
+    },
+    "list": {
+      "type": "string",
+      "enum": ["none", "bullet", "number"]
+    }
+  },
+  "required": ["align", "direction", "lineHeight", "spacing", "indent", "list"],
+  "additionalProperties": {}
+}

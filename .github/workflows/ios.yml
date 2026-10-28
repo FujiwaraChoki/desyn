@@ -1,0 +1,203 @@
+name: iOS
+
+# The only place the iOS app is compiled: builds the Rust engine (crates/desyn-ffi) as an XCFramework with
+# UniFFI Swift bindings, then runs `xcodebuild test` for apps/ios on a simulator.
+#
+# Contract with apps/ios: the engine build script is used as-is when it exists, the repository's
+# scripts/build-ios-engine.sh first (the documented entry point, also run on the owner's Mac), then
+# apps/ios/scripts/build-xcframework.sh. Otherwise this workflow produces apps/ios/Frameworks/DesynFFI.xcframework
+# and the generated Swift sources in apps/ios/Generated/ (uniffi-bindgen library mode via the `uniffi-bindgen`
+# binary of desyn-ffi). An XcodeGen spec (apps/ios/project.yml) is turned into the Xcode project before testing.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "apps/ios/**"
+      - "crates/**"
+      - "scripts/build-ios-engine.sh"
+      - "Cargo.lock"
+      - "deploy/env/public.env"
+      - ".github/workflows/ios.yml"
+  pull_request:
+    paths:
+      - "apps/ios/**"
+      - "crates/**"
+      - "scripts/build-ios-engine.sh"
+      - "Cargo.lock"
+      - "deploy/env/public.env"
+      - ".github/workflows/ios.yml"
+  workflow_dispatch:
+    inputs:
+      scheme:
+        description: "Xcode scheme to test (default: first scheme of the project)"
+        required: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ios-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  CARGO_TERM_COLOR: always
+  CARGO_INCREMENTAL: "0"
+  RUST_VERSION: "1.98.1"
+  IPHONEOS_DEPLOYMENT_TARGET: "18.0"
+
+jobs:
+  ios:
+    name: XCFramework + xcodebuild test
+    runs-on: macos-15
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v7
+
+      # Hosted endpoints for the client build (Convex Cloud prod + the web app), from the committed
+      # deploy/env/public.env, so CI builds never point at a stale or self-hosted backend.
+      - name: Hosted endpoints
+        run: |
+          pub=deploy/env/public.env
+          {
+            echo "DESYN_CONVEX_URL=$(sed -n 's/^NEXT_PUBLIC_CONVEX_URL=//p' "${pub}")"
+            echo "DESYN_CONVEX_SITE_URL=$(sed -n 's/^NEXT_PUBLIC_CONVEX_SITE_URL=//p' "${pub}")"
+            echo "DESYN_APP_URL=$(sed -n 's/^APP_URL=//p' "${pub}")"
+          } >> "$GITHUB_ENV"
+
+      - name: Detect sources
+        id: detect
+        run: |
+          if [ -d apps/ios ] && [ -f crates/desyn-ffi/Cargo.toml ]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            echo "apps/ios or crates/desyn-ffi not present yet; nothing to build" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - if: steps.detect.outputs.present == 'true'
+        name: Select newest Xcode
+        run: |
+          xcode="$(find /Applications -maxdepth 1 -name 'Xcode_*.app' | sort -V | tail -n 1)"
+          sudo xcode-select -s "${xcode}"
+          xcodebuild -version
+
+      - if: steps.detect.outputs.present == 'true'
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ env.RUST_VERSION }}
+          targets: aarch64-apple-ios,aarch64-apple-ios-sim,x86_64-apple-ios
+
+      - if: steps.detect.outputs.present == 'true'
+        uses: Swatinem/rust-cache@v2.9.2
+        with:
+          shared-key: ios
+
+      # The UniFFI Swift wrapper is committed (apps/ios/DesynEngine/Sources/DesynFFI); it must match the Rust API.
+      - if: steps.detect.outputs.present == 'true' && hashFiles('scripts/build-ios-engine.sh') != ''
+        name: Swift bindings are up to date
+        run: bash scripts/build-ios-engine.sh --check
+
+      - if: steps.detect.outputs.present == 'true'
+        name: Build Rust XCFramework
+        run: |
+          set -euo pipefail
+          for script in scripts/build-ios-engine.sh apps/ios/scripts/build-xcframework.sh; do
+            if [ -f "${script}" ]; then
+              echo "building the engine with ${script}"
+              bash "${script}"
+              exit 0
+            fi
+          done
+          lib=libdesyn_ffi.a
+          for target in aarch64-apple-ios aarch64-apple-ios-sim x86_64-apple-ios; do
+            cargo build --release --locked -p desyn-ffi --lib --target "${target}"
+          done
+          target_dir="$(cargo metadata --format-version 1 --no-deps | jq -r .target_directory)"
+          work="${RUNNER_TEMP}/ffi"
+          rm -rf "${work}" && mkdir -p "${work}/headers" "${work}/sim" "${work}/swift"
+          lipo -create \
+            "${target_dir}/aarch64-apple-ios-sim/release/${lib}" \
+            "${target_dir}/x86_64-apple-ios/release/${lib}" \
+            -output "${work}/sim/${lib}"
+          cargo run --release --locked -p desyn-ffi --bin uniffi-bindgen -- generate \
+            --library "${target_dir}/aarch64-apple-ios/release/${lib}" --language swift --out-dir "${work}/swift"
+          cp "${work}"/swift/*.h "${work}/headers/"
+          cat "${work}"/swift/*.modulemap > "${work}/headers/module.modulemap"
+          rm -rf apps/ios/Frameworks/DesynFFI.xcframework
+          mkdir -p apps/ios/Frameworks apps/ios/Generated
+          xcodebuild -create-xcframework \
+            -library "${target_dir}/aarch64-apple-ios/release/${lib}" -headers "${work}/headers" \
+            -library "${work}/sim/${lib}" -headers "${work}/headers" \
+            -output apps/ios/Frameworks/DesynFFI.xcframework
+          cp "${work}"/swift/*.swift apps/ios/Generated/
+          du -sh apps/ios/Frameworks/DesynFFI.xcframework
+
+      # The engine package on its own (macOS slice of the XCFramework): Rust facade, actor, CGImage / Metal helpers.
+      - if: steps.detect.outputs.present == 'true' && hashFiles('apps/ios/DesynEngine/Package.swift') != ''
+        name: DesynEngine package tests
+        run: swift test --package-path apps/ios/DesynEngine
+
+      - if: steps.detect.outputs.present == 'true' && hashFiles('apps/ios/project.yml') != ''
+        name: Generate the Xcode project (XcodeGen)
+        run: |
+          brew install xcodegen
+          cd apps/ios
+          xcodegen generate --spec project.yml
+
+      - if: steps.detect.outputs.present == 'true'
+        name: xcodebuild test
+        env:
+          INPUT_SCHEME: ${{ inputs.scheme }}
+        run: |
+          set -euo pipefail
+          cd apps/ios
+          container=()
+          workspace="$(find . -maxdepth 1 -name '*.xcworkspace' | head -n 1)"
+          project="$(find . -maxdepth 1 -name '*.xcodeproj' | head -n 1)"
+          if [ -n "${workspace}" ]; then
+            container=(-workspace "${workspace}")
+            kind=workspace
+          elif [ -n "${project}" ]; then
+            container=(-project "${project}")
+            kind=project
+          elif [ -f Package.swift ]; then
+            kind=workspace
+          else
+            echo "apps/ios has no .xcworkspace, .xcodeproj or Package.swift" >&2
+            exit 1
+          fi
+          scheme="${INPUT_SCHEME:-}"
+          # apps/ios/.ci-scheme names the app scheme (local Swift package schemes may sort before it).
+          if [ -z "${scheme}" ] && [ -f .ci-scheme ]; then
+            scheme="$(tr -d '[:space:]' < .ci-scheme)"
+          fi
+          if [ -z "${scheme}" ]; then
+            scheme="$(xcodebuild "${container[@]}" -list -json | python3 -c "import json,sys; d=json.load(sys.stdin); print((d.get('${kind}') or d.get('project') or d.get('workspace'))['schemes'][0])")"
+          fi
+          device="$(xcrun simctl list devices available -j | python3 -c '
+          import json, sys
+          data = json.load(sys.stdin)["devices"]
+          best = None
+          for runtime, devices in data.items():
+              if "iOS" not in runtime:
+                  continue
+              version = tuple(int(p) for p in runtime.rsplit("iOS-", 1)[-1].split("-") if p.isdigit())
+              for d in devices:
+                  if d.get("isAvailable") and d["name"].startswith("iPhone"):
+                      if best is None or version > best[0]:
+                          best = (version, d["udid"], d["name"])
+          print(best[1] if best else "")
+          ')"
+          [ -n "${device}" ] || { echo "no available iPhone simulator" >&2; exit 1; }
+          echo "testing scheme ${scheme} on simulator ${device}"
+          xcodebuild test "${container[@]}" -scheme "${scheme}" -destination "id=${device}" \
+            -resultBundlePath "${RUNNER_TEMP}/DesynTests.xcresult" \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO
+
+      - if: failure() && steps.detect.outputs.present == 'true'
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: ios-test-results
+          path: ${{ runner.temp }}/DesynTests.xcresult
+          retention-days: 7

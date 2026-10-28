@@ -1,0 +1,32 @@
+{
+  "name": "invalid-page-parent",
+  "schema": "PageNode",
+  "valid": false,
+  "description": "a page's parent is always root",
+  "value": {
+    "id": "node00000032",
+    "type": "page",
+    "name": "Page",
+    "parent": "node00000002",
+    "x": 0,
+    "y": 0,
+    "width": 1080,
+    "height": 1080,
+    "rotation": 0,
+    "opacity": 1,
+    "blend": "normal",
+    "visible": true,
+    "locked": false,
+    "effects": [],
+    "children": [],
+    "clip": true,
+    "unit": "px",
+    "background": [
+      {
+        "type": "solid",
+        "color": "#ffffff"
+      }
+    ],
+    "bleed": 0
+  }
+}

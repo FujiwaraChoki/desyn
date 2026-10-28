@@ -1,0 +1,55 @@
+{
+  "name": "invalid-text-autoresize",
+  "schema": "TextNode",
+  "valid": false,
+  "description": "autoResize is none | height | width",
+  "value": {
+    "id": "node00000035",
+    "type": "text",
+    "name": "Text",
+    "parent": "page00000001",
+    "x": 0,
+    "y": 0,
+    "width": 320,
+    "height": 29,
+    "rotation": 0,
+    "opacity": 1,
+    "blend": "normal",
+    "visible": true,
+    "locked": false,
+    "effects": [],
+    "runs": [
+      {
+        "text": "Add a heading"
+      }
+    ],
+    "style": {
+      "fontFamily": "Inter",
+      "fontWeight": 400,
+      "fontStyle": "normal",
+      "fontSize": 24,
+      "fills": [
+        {
+          "type": "solid",
+          "color": "#111111"
+        }
+      ],
+      "letterSpacing": 0,
+      "textCase": "none",
+      "decoration": "none"
+    },
+    "paragraph": {
+      "align": "left",
+      "direction": "auto",
+      "lineHeight": {
+        "unit": "percent",
+        "value": 120
+      },
+      "spacing": 0,
+      "indent": 0,
+      "list": "none"
+    },
+    "autoResize": "both",
+    "verticalAlign": "top"
+  }
+}

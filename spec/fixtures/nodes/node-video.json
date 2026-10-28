@@ -1,0 +1,31 @@
+{
+  "name": "node-video",
+  "schema": "VideoNode",
+  "valid": true,
+  "description": "canonical example of a video node",
+  "value": {
+    "id": "node00000019",
+    "type": "video",
+    "name": "Clip",
+    "parent": "page00000001",
+    "x": 100,
+    "y": 120,
+    "width": 640,
+    "height": 360,
+    "rotation": 0,
+    "opacity": 1,
+    "blend": "normal",
+    "visible": true,
+    "locked": false,
+    "effects": [],
+    "trimStartMs": 500,
+    "muted": true,
+    "loop": true,
+    "volume": 1,
+    "fit": "fill",
+    "cornerRadius": 0,
+    "assetId": "video0000001",
+    "trimEndMs": 4500,
+    "posterAssetId": "asset0000001"
+  }
+}

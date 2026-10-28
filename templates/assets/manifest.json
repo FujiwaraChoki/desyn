@@ -1,0 +1,1034 @@
+{
+  "coffee-pour": {
+    "file": "coffee-pour.jpg",
+    "width": 1435,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Barista pouring latte art into a ceramic cup",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Close-up of a barista's hands pouring a rosetta of latte art into a speckled ceramic cup on a walnut counter, morning sun from a window, steam rising. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "coffee-shop": {
+    "file": "coffee-shop.jpg",
+    "width": 1800,
+    "height": 1192,
+    "mime": "image/jpeg",
+    "alt": "Warm, sunlit neighborhood coffee shop interior",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Interior of a small neighborhood coffee shop with exposed brick, wooden counter, glass jars of coffee beans and hanging plants, warm late-morning light, empty and inviting. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "bakery-bread": {
+    "file": "bakery-bread.jpg",
+    "width": 1800,
+    "height": 1192,
+    "mime": "image/jpeg",
+    "alt": "Rustic sourdough loaves on a wooden board",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Several rustic sourdough loaves with deep caramel crusts and flour dusting on a linen-covered wooden board, a bread knife beside them, soft side light. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "restaurant-dish": {
+    "file": "restaurant-dish.jpg",
+    "width": 1435,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Plate of fresh tagliatelle with ragù",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Overhead view of a plate of handmade tagliatelle with slow-cooked ragù and shaved parmigiano on a dark ceramic plate, linen napkin, glass of red wine, candlelit restaurant table. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "bakery-pastries": {
+    "file": "bakery-pastries.jpg",
+    "width": 1435,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Croissants and pastries on a marble counter",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Golden butter croissants, pain au chocolat and cardamom buns arranged on a pale marble counter in a bakery, crumbs and parchment paper, soft daylight. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "restaurant-table": {
+    "file": "restaurant-table.jpg",
+    "width": 1800,
+    "height": 1192,
+    "mime": "image/jpeg",
+    "alt": "Candlelit restaurant dining room",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Intimate Italian restaurant dining room at night, candlelit tables with white linen, a glowing wood-fired oven in the background, warm amber light, no people in focus. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "fitness-training": {
+    "file": "fitness-training.jpg",
+    "width": 1435,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Athlete training with a kettlebell in a gym",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Athletic woman mid-swing with a kettlebell in a modern gym with concrete floors and large windows, dramatic side light, sweat and motion, focused expression. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "fitness-runner": {
+    "file": "fitness-runner.jpg",
+    "width": 1800,
+    "height": 1192,
+    "mime": "image/jpeg",
+    "alt": "Runner on an early-morning city trail",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Runner in motion on a lakeside city trail at sunrise, low angle, golden backlight, city skyline softly blurred in the distance. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "yoga-pose": {
+    "file": "yoga-pose.jpg",
+    "width": 1435,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Woman in a calm yoga pose in a sunlit studio",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Woman in a serene warrior pose on a cork mat in a minimal sunlit yoga studio with plants and pale wooden floors, soft morning light, peaceful mood. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "wellness-spa": {
+    "file": "wellness-spa.jpg",
+    "width": 1800,
+    "height": 1192,
+    "mime": "image/jpeg",
+    "alt": "Spa still life with stones, towels and eucalyptus",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Calm spa still life: rolled linen towels, smooth river stones, a sprig of eucalyptus and a ceramic bowl of water on a stone surface, diffused light, sage and sand tones. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "realestate-interior": {
+    "file": "realestate-interior.jpg",
+    "width": 1435,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Bright living room with original moldings",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Bright, styled living room in a restored brownstone with tall windows, crown moldings, a linen sofa, oak floors and plants, afternoon sun. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "realestate-house": {
+    "file": "realestate-house.jpg",
+    "width": 1800,
+    "height": 1192,
+    "mime": "image/jpeg",
+    "alt": "Modern family house exterior at dusk",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Architectural photo of a modern family house with large windows glowing at dusk, landscaped garden and lawn, warm interior light, clear blue twilight sky. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "tech-abstract": {
+    "file": "tech-abstract.jpg",
+    "width": 1800,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Abstract glowing data visualization",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Abstract 3D render of flowing translucent ribbons and glowing particles forming a data landscape, deep navy background with electric blue and teal light, elegant and minimal. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "podcast-studio": {
+    "file": "podcast-studio.jpg",
+    "width": 1800,
+    "height": 1192,
+    "mime": "image/jpeg",
+    "alt": "Podcast studio with microphones",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Cozy podcast studio with two broadcast microphones on boom arms, headphones, acoustic panels and warm lamp light, empty chairs, inviting atmosphere. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "tech-workspace": {
+    "file": "tech-workspace.jpg",
+    "width": 1800,
+    "height": 1192,
+    "mime": "image/jpeg",
+    "alt": "Modern workspace with laptop and charts",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Clean modern desk with a laptop showing abstract colorful charts, a notebook, coffee and a plant, in a bright office with soft blue morning light, shallow depth of field. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "wedding-florals": {
+    "file": "wedding-florals.jpg",
+    "width": 1435,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Garden wedding flower arrangement",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Lush wedding floral arrangement of garden roses, peonies, ranunculus and trailing greenery in soft blush and ivory tones, on a rustic table at a vineyard, golden hour. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "wedding-couple": {
+    "file": "wedding-couple.jpg",
+    "width": 1800,
+    "height": 1192,
+    "mime": "image/jpeg",
+    "alt": "Couple walking through a vineyard at golden hour",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Wedding couple seen from behind walking hand in hand between vineyard rows at golden hour, flowing dress, warm hazy light, romantic and candid. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "party-balloons": {
+    "file": "party-balloons.jpg",
+    "width": 1435,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Colorful balloons and streamers",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Bunch of glossy pastel and bright balloons with curling ribbons and confetti against a soft pink wall, playful birthday party mood, bright even light. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "podcast-host": {
+    "file": "podcast-host.jpg",
+    "width": 1435,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Podcast host speaking into a microphone",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Portrait of a smiling podcast host in their thirties speaking into a broadcast microphone, wearing headphones, warm studio light and a softly blurred bookshelf behind. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "party-cake": {
+    "file": "party-cake.jpg",
+    "width": 1800,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Birthday cake with sprinkles and candles",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Colorful layered birthday cake with rainbow sprinkles and lit candles on a cake stand, confetti on the table, cheerful bright light. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "festival-crowd": {
+    "file": "festival-crowd.jpg",
+    "width": 1800,
+    "height": 1192,
+    "mime": "image/jpeg",
+    "alt": "Festival crowd at sunset with hands raised",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Silhouettes of a happy festival crowd with raised hands in front of an outdoor stage at sunset, golden haze, stage lights and confetti in the air. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "concert-stage": {
+    "file": "concert-stage.jpg",
+    "width": 1435,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Concert stage with dramatic lights",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Outdoor concert stage at night with dramatic orange and magenta beams of light cutting through haze, guitarist silhouetted, energetic mood. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "skincare-bottles": {
+    "file": "skincare-bottles.jpg",
+    "width": 1435,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Glass skincare bottles on a stone plinth",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Minimal product still life of amber and frosted glass skincare dropper bottles and a cream jar on travertine stone blocks, soft shadows, blush and sand tones, unbranded. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "skincare-model": {
+    "file": "skincare-model.jpg",
+    "width": 1435,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Woman with glowing skin applying serum",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Close beauty portrait of a woman with glowing, natural skin gently applying facial serum, soft diffused light, minimal makeup, neutral background. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "fashion-model": {
+    "file": "fashion-model.jpg",
+    "width": 1192,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Model in a camel wool coat on a city street",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Fashion editorial: model in an oversized camel wool coat and knit sweater walking on a Paris street, autumn light, film-like tones, confident stride. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "fashion-rack": {
+    "file": "fashion-rack.jpg",
+    "width": 1800,
+    "height": 1192,
+    "mime": "image/jpeg",
+    "alt": "Boutique clothing rack in earthy tones",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Minimal boutique interior with a clothing rack of wool coats and knitwear in earthy tones, wooden hangers, white walls and a single plant, soft daylight. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "travel-coast": {
+    "file": "travel-coast.jpg",
+    "width": 1800,
+    "height": 1192,
+    "mime": "image/jpeg",
+    "alt": "Colorful cliffside village above the sea",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Colorful cliffside village above a turquoise Mediterranean sea with small boats, lemon trees in the foreground, bright summer light. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "volunteers": {
+    "file": "volunteers.jpg",
+    "width": 1800,
+    "height": 1192,
+    "mime": "image/jpeg",
+    "alt": "Volunteers packing food boxes together",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Diverse group of smiling volunteers packing boxes of fresh produce in a bright community food bank warehouse, candid, warm and hopeful. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "travel-mountains": {
+    "file": "travel-mountains.jpg",
+    "width": 1435,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Hiker overlooking a mountain lake",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Hiker with a backpack standing on a rocky ridge overlooking a turquoise mountain lake and jagged peaks, dramatic clouds, epic scale. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "classroom": {
+    "file": "classroom.jpg",
+    "width": 1800,
+    "height": 1192,
+    "mime": "image/jpeg",
+    "alt": "Modern workshop classroom with learners",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Modern bright workshop space with adult learners collaborating around a table with laptops and sticky notes, candid, natural window light. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "photo-portrait": {
+    "file": "photo-portrait.jpg",
+    "width": 1435,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Natural light portrait of a woman",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Natural-light studio portrait of a woman with freckles and loose curls looking softly at the camera, linen backdrop, warm tones, film-like grain. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "study-desk": {
+    "file": "study-desk.jpg",
+    "width": 1800,
+    "height": 1192,
+    "mime": "image/jpeg",
+    "alt": "Student studying with a laptop and notes",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Young adult studying at a sunny desk with a laptop, open notebook with sketches of app wireframes and a cup of tea, focused and calm, shallow depth of field. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "community-garden": {
+    "file": "community-garden.jpg",
+    "width": 1435,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Hands holding freshly harvested vegetables",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Close-up of hands holding a crate of freshly harvested vegetables in a community garden, carrots, greens and tomatoes, morning light. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "photo-landscape": {
+    "file": "photo-landscape.jpg",
+    "width": 1800,
+    "height": 1192,
+    "mime": "image/jpeg",
+    "alt": "Misty forest at sunrise",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Misty evergreen forest at sunrise with sunbeams cutting through the trees, quiet and atmospheric, muted greens and golds. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "office-building": {
+    "file": "office-building.jpg",
+    "width": 1435,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Modern office building facade",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Looking up at a modern office building facade of glass and stone against a clear blue sky, clean geometric lines. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "dental-clinic": {
+    "file": "dental-clinic.jpg",
+    "width": 1800,
+    "height": 1192,
+    "mime": "image/jpeg",
+    "alt": "Bright, modern dental clinic",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Bright, modern, welcoming dental clinic treatment room with a white dental chair, soft teal accents and natural light, spotless and calm. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "office-meeting": {
+    "file": "office-meeting.jpg",
+    "width": 1800,
+    "height": 1192,
+    "mime": "image/jpeg",
+    "alt": "Professionals in a calm meeting room",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Professionals in a calm, modern meeting room with glass walls, reviewing documents together, natural light, understated and trustworthy. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "smile-portrait": {
+    "file": "smile-portrait.jpg",
+    "width": 1435,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Smiling person with a bright smile",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Portrait of a cheerful middle-aged man with a bright natural smile outdoors, soft background, fresh and friendly. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "gaming-setup": {
+    "file": "gaming-setup.jpg",
+    "width": 1800,
+    "height": 1192,
+    "mime": "image/jpeg",
+    "alt": "Gaming setup with neon lighting",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Gaming desk setup with a curved monitor, mechanical keyboard and headset, neon purple and cyan ambient lighting, dark room, no on-screen text. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "flowers-bouquet": {
+    "file": "flowers-bouquet.jpg",
+    "width": 1435,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Loose seasonal bouquet wrapped in paper",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Loose, garden-style bouquet of seasonal flowers (peonies, cosmos, ranunculus, grasses) wrapped in kraft paper, held against a soft plaster wall. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "flower-shop": {
+    "file": "flower-shop.jpg",
+    "width": 1800,
+    "height": 1192,
+    "mime": "image/jpeg",
+    "alt": "Florist shop full of buckets of flowers",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Charming florist shop front with zinc buckets of fresh flowers on the sidewalk, morning light, rustic wooden shelves. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "neon-city": {
+    "file": "neon-city.jpg",
+    "width": 1800,
+    "height": 1011,
+    "mime": "image/jpeg",
+    "alt": "Neon-lit city street at night",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Futuristic neon-lit city street at night in the rain, reflections on wet asphalt, magenta and cyan signs without readable text, cinematic. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "conference-stage": {
+    "file": "conference-stage.jpg",
+    "width": 1800,
+    "height": 1192,
+    "mime": "image/jpeg",
+    "alt": "Speaker on a conference stage",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Speaker on a modern conference stage with a large warm-gradient screen behind them, audience silhouettes in the foreground, stage lighting. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "conference-crowd": {
+    "file": "conference-crowd.jpg",
+    "width": 1800,
+    "height": 1192,
+    "mime": "image/jpeg",
+    "alt": "Attendees networking at a tech conference",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Attendees networking in a bright conference hall with coffee, lanyards and laptops, candid smiles, airy venue with large windows. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "cat-portrait": {
+    "file": "cat-portrait.jpg",
+    "width": 1800,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Fluffy cat portrait",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Portrait of a fluffy grey cat with green eyes sitting regally against a soft teal backdrop, crisp studio light. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "dog-portrait": {
+    "file": "dog-portrait.jpg",
+    "width": 1435,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Happy freshly groomed dog",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Studio portrait of a happy, freshly groomed golden doodle with a bandana, tongue out, against a soft yellow backdrop, crisp and joyful. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "architecture-facade": {
+    "file": "architecture-facade.jpg",
+    "width": 1435,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Minimal timber house by a fjord",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Minimal Scandinavian timber house with large glass walls on the edge of a calm fjord, overcast soft light, quiet and serene. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "interior-minimal": {
+    "file": "interior-minimal.jpg",
+    "width": 1800,
+    "height": 1192,
+    "mime": "image/jpeg",
+    "alt": "Minimal Scandinavian interior",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Minimal Scandinavian interior with oak furniture, a linen sofa, a large window framing trees, soft diffused daylight, calm neutral palette. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "portrait-man": {
+    "file": "portrait-man.jpg",
+    "width": 1435,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Professional portrait of a man",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Professional headshot of a friendly man in his late twenties with glasses and a denim shirt, soft daylight, blurred office background. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "portrait-man-2": {
+    "file": "portrait-man-2.jpg",
+    "width": 1435,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Portrait of a man outdoors",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Portrait of a man in his fifties with a trimmed beard and navy sweater, smiling warmly, soft window light, simple backdrop. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "portrait-woman-2": {
+    "file": "portrait-woman-2.jpg",
+    "width": 1435,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Portrait of a smiling woman",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Portrait of a smiling woman in her forties with long grey-streaked hair, wearing a camel blazer, outdoor soft light, green bokeh. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "portrait-woman": {
+    "file": "portrait-woman.jpg",
+    "width": 1435,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Professional portrait of a woman",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Professional headshot of a confident woman in her thirties with short dark hair, wearing a simple black top, soft studio light, neutral warm grey backdrop. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "abstract-cool": {
+    "file": "abstract-cool.jpg",
+    "width": 1800,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Abstract cool gradient with soft shapes",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Abstract soft-focus image of overlapping translucent blue, teal and lilac glass shapes with gentle light refraction, minimal and calm. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "abstract-warm": {
+    "file": "abstract-warm.jpg",
+    "width": 1800,
+    "height": 1800,
+    "mime": "image/jpeg",
+    "alt": "Abstract warm gradient with soft shapes",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image",
+      "prompt": "Abstract soft-focus image of overlapping translucent amber, coral and gold glass shapes with gentle light refraction, minimal and warm. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "classroom@print": {
+    "file": "classroom@print.jpg",
+    "width": 3600,
+    "height": 2384,
+    "mime": "image/jpeg",
+    "alt": "Modern workshop classroom with learners",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Modern bright workshop space with adult learners collaborating around a table with laptops and sticky notes, candid, natural window light. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "coffee-pour@print": {
+    "file": "coffee-pour@print.jpg",
+    "width": 2880,
+    "height": 3600,
+    "mime": "image/jpeg",
+    "alt": "Barista pouring latte art into a ceramic cup",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Close-up of a barista's hands pouring a rosetta of latte art into a speckled ceramic cup on a walnut counter, morning sun from a window, steam rising. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "bakery-pastries@print": {
+    "file": "bakery-pastries@print.jpg",
+    "width": 2880,
+    "height": 3600,
+    "mime": "image/jpeg",
+    "alt": "Croissants and pastries on a marble counter",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Golden butter croissants, pain au chocolat and cardamom buns arranged on a pale marble counter in a bakery, crumbs and parchment paper, soft daylight. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "architecture-facade@print": {
+    "file": "architecture-facade@print.jpg",
+    "width": 2880,
+    "height": 3600,
+    "mime": "image/jpeg",
+    "alt": "Minimal timber house by a fjord",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Minimal Scandinavian timber house with large glass walls on the edge of a calm fjord, overcast soft light, quiet and serene. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "coffee-shop@print": {
+    "file": "coffee-shop@print.jpg",
+    "width": 3600,
+    "height": 2384,
+    "mime": "image/jpeg",
+    "alt": "Warm, sunlit neighborhood coffee shop interior",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Interior of a small neighborhood coffee shop with exposed brick, wooden counter, glass jars of coffee beans and hanging plants, warm late-morning light, empty and inviting. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "concert-stage@print": {
+    "file": "concert-stage@print.jpg",
+    "width": 2880,
+    "height": 3600,
+    "mime": "image/jpeg",
+    "alt": "Concert stage with dramatic lights",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Outdoor concert stage at night with dramatic orange and magenta beams of light cutting through haze, guitarist silhouetted, energetic mood. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "festival-crowd@print": {
+    "file": "festival-crowd@print.jpg",
+    "width": 3600,
+    "height": 2384,
+    "mime": "image/jpeg",
+    "alt": "Festival crowd at sunset with hands raised",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Silhouettes of a happy festival crowd with raised hands in front of an outdoor stage at sunset, golden haze, stage lights and confetti in the air. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "flowers-bouquet@print": {
+    "file": "flowers-bouquet@print.jpg",
+    "width": 2880,
+    "height": 3600,
+    "mime": "image/jpeg",
+    "alt": "Loose seasonal bouquet wrapped in paper",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Loose, garden-style bouquet of seasonal flowers (peonies, cosmos, ranunculus, grasses) wrapped in kraft paper, held against a soft plaster wall. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "photo-landscape@print": {
+    "file": "photo-landscape@print.jpg",
+    "width": 3600,
+    "height": 2384,
+    "mime": "image/jpeg",
+    "alt": "Misty forest at sunrise",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Misty evergreen forest at sunrise with sunbeams cutting through the trees, quiet and atmospheric, muted greens and golds. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "photo-portrait@print": {
+    "file": "photo-portrait@print.jpg",
+    "width": 2880,
+    "height": 3600,
+    "mime": "image/jpeg",
+    "alt": "Natural light portrait of a woman",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Natural-light studio portrait of a woman with freckles and loose curls looking softly at the camera, linen backdrop, warm tones, film-like grain. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "podcast-host@print": {
+    "file": "podcast-host@print.jpg",
+    "width": 2880,
+    "height": 3600,
+    "mime": "image/jpeg",
+    "alt": "Podcast host speaking into a microphone",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Portrait of a smiling podcast host in their thirties speaking into a broadcast microphone, wearing headphones, warm studio light and a softly blurred bookshelf behind. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "podcast-studio@print": {
+    "file": "podcast-studio@print.jpg",
+    "width": 3600,
+    "height": 2384,
+    "mime": "image/jpeg",
+    "alt": "Podcast studio with microphones",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Cozy podcast studio with two broadcast microphones on boom arms, headphones, acoustic panels and warm lamp light, empty chairs, inviting atmosphere. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "portrait-man@print": {
+    "file": "portrait-man@print.jpg",
+    "width": 2880,
+    "height": 3600,
+    "mime": "image/jpeg",
+    "alt": "Professional portrait of a man",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Professional headshot of a friendly man in his late twenties with glasses and a denim shirt, soft daylight, blurred office background. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "portrait-man-2@print": {
+    "file": "portrait-man-2@print.jpg",
+    "width": 2880,
+    "height": 3600,
+    "mime": "image/jpeg",
+    "alt": "Portrait of a man outdoors",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Portrait of a man in his fifties with a trimmed beard and navy sweater, smiling warmly, soft window light, simple backdrop. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "portrait-woman@print": {
+    "file": "portrait-woman@print.jpg",
+    "width": 2880,
+    "height": 3600,
+    "mime": "image/jpeg",
+    "alt": "Professional portrait of a woman",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Professional headshot of a confident woman in her thirties with short dark hair, wearing a simple black top, soft studio light, neutral warm grey backdrop. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "portrait-woman-2@print": {
+    "file": "portrait-woman-2@print.jpg",
+    "width": 2880,
+    "height": 3600,
+    "mime": "image/jpeg",
+    "alt": "Portrait of a smiling woman",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Portrait of a smiling woman in her forties with long grey-streaked hair, wearing a camel blazer, outdoor soft light, green bokeh. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "realestate-house@print": {
+    "file": "realestate-house@print.jpg",
+    "width": 3600,
+    "height": 2384,
+    "mime": "image/jpeg",
+    "alt": "Modern family house exterior at dusk",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Architectural photo of a modern family house with large windows glowing at dusk, landscaped garden and lawn, warm interior light, clear blue twilight sky. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "study-desk@print": {
+    "file": "study-desk@print.jpg",
+    "width": 3600,
+    "height": 2384,
+    "mime": "image/jpeg",
+    "alt": "Student studying with a laptop and notes",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Young adult studying at a sunny desk with a laptop, open notebook with sketches of app wireframes and a cup of tea, focused and calm, shallow depth of field. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "realestate-interior@print": {
+    "file": "realestate-interior@print.jpg",
+    "width": 2880,
+    "height": 3600,
+    "mime": "image/jpeg",
+    "alt": "Bright living room with original moldings",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Bright, styled living room in a restored brownstone with tall windows, crown moldings, a linen sofa, oak floors and plants, afternoon sun. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "volunteers@print": {
+    "file": "volunteers@print.jpg",
+    "width": 3600,
+    "height": 2384,
+    "mime": "image/jpeg",
+    "alt": "Volunteers packing food boxes together",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Diverse group of smiling volunteers packing boxes of fresh produce in a bright community food bank warehouse, candid, warm and hopeful. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "tech-abstract@print": {
+    "file": "tech-abstract@print.jpg",
+    "width": 3600,
+    "height": 3600,
+    "mime": "image/jpeg",
+    "alt": "Abstract glowing data visualization",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Abstract 3D render of flowing translucent ribbons and glowing particles forming a data landscape, deep navy background with electric blue and teal light, elegant and minimal. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "wedding-couple@print": {
+    "file": "wedding-couple@print.jpg",
+    "width": 3600,
+    "height": 2384,
+    "mime": "image/jpeg",
+    "alt": "Couple walking through a vineyard at golden hour",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Wedding couple seen from behind walking hand in hand between vineyard rows at golden hour, flowing dress, warm hazy light, romantic and candid. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "yoga-pose@print": {
+    "file": "yoga-pose@print.jpg",
+    "width": 2880,
+    "height": 3600,
+    "mime": "image/jpeg",
+    "alt": "Woman in a calm yoga pose in a sunlit studio",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Woman in a serene warrior pose on a cork mat in a minimal sunlit yoga studio with plants and pale wooden floors, soft morning light, peaceful mood. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "neon-city@print": {
+    "file": "neon-city@print.jpg",
+    "width": 3600,
+    "height": 2032,
+    "mime": "image/jpeg",
+    "alt": "Neon-lit city street at night",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Futuristic neon-lit city street at night in the rain, reflections on wet asphalt, magenta and cyan signs without readable text, cinematic. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "fashion-rack@print": {
+    "file": "fashion-rack@print.jpg",
+    "width": 3600,
+    "height": 2384,
+    "mime": "image/jpeg",
+    "alt": "Boutique clothing rack in earthy tones",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Minimal boutique interior with a clothing rack of wool coats and knitwear in earthy tones, wooden hangers, white walls and a single plant, soft daylight. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "fitness-training@print": {
+    "file": "fitness-training@print.jpg",
+    "width": 2880,
+    "height": 3600,
+    "mime": "image/jpeg",
+    "alt": "Athlete training with a kettlebell in a gym",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Athletic woman mid-swing with a kettlebell in a modern gym with concrete floors and large windows, dramatic side light, sweat and motion, focused expression. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "restaurant-dish@print": {
+    "file": "restaurant-dish@print.jpg",
+    "width": 2880,
+    "height": 3600,
+    "mime": "image/jpeg",
+    "alt": "Plate of fresh tagliatelle with ragù",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Overhead view of a plate of handmade tagliatelle with slow-cooked ragù and shaved parmigiano on a dark ceramic plate, linen napkin, glass of red wine, candlelit restaurant table. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "restaurant-table@print": {
+    "file": "restaurant-table@print.jpg",
+    "width": 3600,
+    "height": 2384,
+    "mime": "image/jpeg",
+    "alt": "Candlelit restaurant dining room",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Intimate Italian restaurant dining room at night, candlelit tables with white linen, a glowing wood-fired oven in the background, warm amber light, no people in focus. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "smile-portrait@print": {
+    "file": "smile-portrait@print.jpg",
+    "width": 2880,
+    "height": 3600,
+    "mime": "image/jpeg",
+    "alt": "Smiling person with a bright smile",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Portrait of a cheerful middle-aged man with a bright natural smile outdoors, soft background, fresh and friendly. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "tech-workspace@print": {
+    "file": "tech-workspace@print.jpg",
+    "width": 3600,
+    "height": 2384,
+    "mime": "image/jpeg",
+    "alt": "Modern workspace with laptop and charts",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Clean modern desk with a laptop showing abstract colorful charts, a notebook, coffee and a plant, in a bright office with soft blue morning light, shallow depth of field. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "wedding-florals@print": {
+    "file": "wedding-florals@print.jpg",
+    "width": 2880,
+    "height": 3600,
+    "mime": "image/jpeg",
+    "alt": "Garden wedding flower arrangement",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Lush wedding floral arrangement of garden roses, peonies, ranunculus and trailing greenery in soft blush and ivory tones, on a rustic table at a vineyard, golden hour. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  },
+  "wellness-spa@print": {
+    "file": "wellness-spa@print.jpg",
+    "width": 3600,
+    "height": 2384,
+    "mime": "image/jpeg",
+    "alt": "Spa still life with stones, towels and eucalyptus",
+    "provenance": {
+      "provider": "fal",
+      "model": "blackforestlabs/flux-3/text-to-image + fal-ai/seedvr/upscale/image (2x)",
+      "prompt": "Calm spa still life: rolled linen towels, smooth river stones, a sprig of eucalyptus and a ceramic bowl of water on a stone surface, diffused light, sage and sand tones. Editorial photograph, natural light, shallow depth of field, rich but true-to-life color, professional color grading, no text, no logos, no watermarks."
+    }
+  }
+}

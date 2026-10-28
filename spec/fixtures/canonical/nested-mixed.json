@@ -1,0 +1,7 @@
+{
+  "name": "nested-mixed",
+  "description": "objects inside arrays inside objects",
+  "input": [[3, 2, 1], { "b": [{ "d": 1, "c": 2 }], "a": [[{ "y": 0, "x": -0 }]] }],
+  "inputText": "[[3,2,1],{\"b\":[{\"d\":1,\"c\":2}],\"a\":[[{\"y\":0,\"x\":-0}]]}]",
+  "canonical": "[[3,2,1],{\"a\":[[{\"x\":0,\"y\":0}]],\"b\":[{\"c\":2,\"d\":1}]}]"
+}

@@ -1,0 +1,36 @@
+# Build context for deploy/docker/convex.Dockerfile is the repository root.
+# BuildKit reads this file instead of a root .dockerignore because it sits next to the Dockerfile.
+
+# Secrets never enter an image or the build context.
+# No re-include of .env.example: a negated pattern makes BuildKit walk every excluded tree (node_modules,
+# target) to look for matches, which is slow on a workstation and fails on unreadable files. No build reads it.
+**/.env
+**/.env.*
+**/*.pem
+**/*.key
+**/*.p12
+**/*.p8
+**/*.mobileprovision
+**/*.htpasswd
+deploy/compose/.env
+deploy/compose/convex.env
+
+# VCS, caches and build outputs (rebuilt inside the image).
+.git
+**/node_modules
+**/.next
+**/.turbo
+**/dist
+**/*.tsbuildinfo
+**/.vercel
+**/.convex
+target
+**/target
+**/*.log
+.superpowers
+.DS_Store
+
+# Native clients are compiled elsewhere (desktop.yml / ios.yml).
+apps/ios
+**/DerivedData
+**/xcuserdata

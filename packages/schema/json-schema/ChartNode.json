@@ -1,0 +1,472 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://desyn.app/schema/v1/ChartNode.json",
+  "title": "ChartNode",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "#/$defs/Id"
+    },
+    "name": {
+      "type": "string"
+    },
+    "parent": {
+      "$ref": "#/$defs/NodeId"
+    },
+    "x": {
+      "type": "number"
+    },
+    "y": {
+      "type": "number"
+    },
+    "width": {
+      "type": "number",
+      "minimum": 0
+    },
+    "height": {
+      "type": "number",
+      "minimum": 0
+    },
+    "rotation": {
+      "type": "number"
+    },
+    "flipX": {
+      "type": "boolean"
+    },
+    "flipY": {
+      "type": "boolean"
+    },
+    "opacity": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "blend": {
+      "$ref": "#/$defs/BlendMode"
+    },
+    "visible": {
+      "type": "boolean"
+    },
+    "locked": {
+      "type": "boolean"
+    },
+    "effects": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Effect"
+      }
+    },
+    "role": {
+      "type": "string"
+    },
+    "constraints": {
+      "type": "object",
+      "properties": {
+        "h": {
+          "type": "string",
+          "enum": ["left", "right", "center", "stretch", "scale"]
+        },
+        "v": {
+          "type": "string",
+          "enum": ["top", "bottom", "center", "stretch", "scale"]
+        }
+      },
+      "required": ["h", "v"],
+      "additionalProperties": {}
+    },
+    "sizing": {
+      "type": "object",
+      "properties": {
+        "h": {
+          "type": "string",
+          "enum": ["fixed", "hug", "fill"]
+        },
+        "v": {
+          "type": "string",
+          "enum": ["fixed", "hug", "fill"]
+        }
+      },
+      "required": ["h", "v"],
+      "additionalProperties": {}
+    },
+    "aspectLocked": {
+      "type": "boolean"
+    },
+    "mask": {
+      "type": "boolean"
+    },
+    "link": {
+      "type": "string"
+    },
+    "alt": {
+      "type": "string"
+    },
+    "anim": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Animation"
+      }
+    },
+    "notes": {
+      "type": "string"
+    },
+    "meta": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string"
+      },
+      "additionalProperties": {}
+    },
+    "type": {
+      "type": "string",
+      "const": "chart"
+    },
+    "chart": {
+      "type": "string",
+      "enum": [
+        "bar",
+        "column",
+        "line",
+        "area",
+        "pie",
+        "donut",
+        "scatter",
+        "radar",
+        "funnel",
+        "stacked-column",
+        "progress"
+      ]
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "labels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "series": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "values": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "color": {
+                "$ref": "#/$defs/Color"
+              }
+            },
+            "required": ["name", "values"],
+            "additionalProperties": {}
+          }
+        }
+      },
+      "required": ["labels", "series"],
+      "additionalProperties": {}
+    },
+    "options": {
+      "type": "object",
+      "properties": {
+        "legend": {
+          "type": "boolean"
+        },
+        "grid": {
+          "type": "boolean"
+        },
+        "labels": {
+          "type": "boolean"
+        },
+        "palette": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Color"
+          }
+        },
+        "fontFamily": {
+          "type": "string"
+        },
+        "fontSize": {
+          "type": "number",
+          "minimum": 0
+        },
+        "textColor": {
+          "$ref": "#/$defs/Color"
+        },
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string"
+        }
+      },
+      "required": ["legend", "grid", "labels", "palette", "fontFamily", "fontSize", "textColor"],
+      "additionalProperties": {}
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "parent",
+    "x",
+    "y",
+    "width",
+    "height",
+    "rotation",
+    "opacity",
+    "blend",
+    "visible",
+    "locked",
+    "effects",
+    "type",
+    "chart",
+    "data",
+    "options"
+  ],
+  "additionalProperties": {},
+  "$defs": {
+    "Id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]{12}$"
+    },
+    "NodeId": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Id"
+        },
+        {
+          "type": "string",
+          "const": "root"
+        }
+      ]
+    },
+    "BlendMode": {
+      "type": "string",
+      "enum": [
+        "normal",
+        "multiply",
+        "screen",
+        "overlay",
+        "darken",
+        "lighten",
+        "color-dodge",
+        "color-burn",
+        "hard-light",
+        "soft-light",
+        "difference",
+        "exclusion",
+        "hue",
+        "saturation",
+        "color",
+        "luminosity"
+      ]
+    },
+    "Effect": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "dropShadow"
+            },
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            },
+            "blur": {
+              "type": "number",
+              "minimum": 0
+            },
+            "spread": {
+              "type": "number"
+            },
+            "color": {
+              "$ref": "#/$defs/Color"
+            },
+            "visible": {
+              "type": "boolean"
+            }
+          },
+          "required": ["type", "x", "y", "blur", "spread", "color"],
+          "additionalProperties": {}
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "innerShadow"
+            },
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            },
+            "blur": {
+              "type": "number",
+              "minimum": 0
+            },
+            "spread": {
+              "type": "number"
+            },
+            "color": {
+              "$ref": "#/$defs/Color"
+            },
+            "visible": {
+              "type": "boolean"
+            }
+          },
+          "required": ["type", "x", "y", "blur", "spread", "color"],
+          "additionalProperties": {}
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "layerBlur"
+            },
+            "radius": {
+              "type": "number",
+              "minimum": 0
+            },
+            "visible": {
+              "type": "boolean"
+            }
+          },
+          "required": ["type", "radius"],
+          "additionalProperties": {}
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "backgroundBlur"
+            },
+            "radius": {
+              "type": "number",
+              "minimum": 0
+            },
+            "visible": {
+              "type": "boolean"
+            }
+          },
+          "required": ["type", "radius"],
+          "additionalProperties": {}
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "noise"
+            },
+            "amount": {
+              "type": "number"
+            },
+            "scale": {
+              "type": "number"
+            },
+            "mono": {
+              "type": "boolean"
+            },
+            "visible": {
+              "type": "boolean"
+            }
+          },
+          "required": ["type", "amount", "scale", "mono"],
+          "additionalProperties": {}
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "glow"
+            },
+            "radius": {
+              "type": "number",
+              "minimum": 0
+            },
+            "strength": {
+              "type": "number"
+            },
+            "color": {
+              "$ref": "#/$defs/Color"
+            },
+            "visible": {
+              "type": "boolean"
+            }
+          },
+          "required": ["type", "radius", "strength", "color"],
+          "additionalProperties": {}
+        }
+      ]
+    },
+    "Color": {
+      "type": "string",
+      "pattern": "^#(?:[0-9a-f]{6}|[0-9a-f]{8})$"
+    },
+    "Animation": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Id"
+        },
+        "preset": {
+          "type": "string",
+          "enum": [
+            "fade",
+            "rise",
+            "drop",
+            "slide-left",
+            "slide-right",
+            "zoom-in",
+            "zoom-out",
+            "pop",
+            "rotate",
+            "wipe",
+            "typewriter",
+            "pulse",
+            "float",
+            "shake",
+            "blur-in",
+            "none"
+          ]
+        },
+        "phase": {
+          "type": "string",
+          "enum": ["in", "out", "loop"]
+        },
+        "startMs": {
+          "type": "number"
+        },
+        "durationMs": {
+          "type": "number",
+          "minimum": 0
+        },
+        "easing": {
+          "type": "string",
+          "enum": ["linear", "ease", "ease-in", "ease-out", "ease-in-out", "spring"]
+        }
+      },
+      "required": ["id", "preset", "phase", "startMs", "durationMs", "easing"],
+      "additionalProperties": {}
+    }
+  }
+}

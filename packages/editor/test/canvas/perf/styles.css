@@ -1,0 +1,4 @@
+@import "../../../../ui/node_modules/tailwindcss/index.css";
+@import "@desyn/tokens/fonts.css";
+@import "@desyn/ui/styles.css";
+@import "../../../src/styles.css";

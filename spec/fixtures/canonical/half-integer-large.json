@@ -1,0 +1,7 @@
+{
+  "name": "half-integer-large",
+  "description": "a large non-integer keeps its fraction without exponent",
+  "input": [4503599627370495.5],
+  "inputText": "[4503599627370495.5]",
+  "canonical": "[4503599627370495.5]"
+}

@@ -1,0 +1,144 @@
+---
+title: TypeScript SDK
+description: The Desyn TypeScript SDK — a typed client for the Agent API, document builders from @desyn/schema and transaction helpers from @desyn/doc-ops.
+---
+
+The TypeScript SDK (`@desyn/sdk`, in `packages/sdk`) wraps the [Agent API](/developers/api) with full types and builds on the same document packages the Desyn apps use. It runs in Node.js, Deno, Bun and browsers (for browser use, proxy requests through your own backend so the API key stays secret).
+
+Inside the Desyn repository, packages are linked through the pnpm workspace:
+
+```json title="package.json"
+{
+  "dependencies": {
+    "@desyn/sdk": "workspace:*",
+    "@desyn/schema": "workspace:*",
+    "@desyn/doc-ops": "workspace:*"
+  }
+}
+```
+
+## Creating a client
+
+```ts
+import { DesynClient } from "@desyn/sdk";
+
+const desyn = new DesynClient({
+  apiKey: process.env.DESYN_API_KEY,
+  // Omit for desyn.app; self-hosted: your CONVEX_SITE_URL + /api/v1
+  baseUrl: "https://api.desyn.app/api/v1",
+});
+
+const me = await desyn.me();
+console.log(me.plan, me.scopes);
+```
+
+Errors are thrown as `DesynApiError` with the API's `code`, `message`, HTTP `status` and extra fields such as `retryAfterMs`.
+
+## Designs and documents
+
+```ts
+const { items } = await desyn.designs.list({ kind: "presentation", limit: 10 });
+
+const design = await desyn.designs.create({
+  name: "Autumn menu",
+  kind: "menu",
+  width: 794,
+  height: 1123,
+  unit: "mm",
+});
+
+const { design: doc, seq } = await desyn.designs.load(design.id);
+```
+
+## Committing transactions
+
+Build documents with the factories from `@desyn/schema` and transactions with `@desyn/doc-ops`. The helpers produce valid nodes with every required property filled in:
+
+```ts
+import { createText, newId } from "@desyn/schema";
+import { makeTransaction } from "@desyn/doc-ops";
+
+const pageId = doc.nodes.root.children[0];
+const title = createText({
+  id: newId(),
+  name: "Title",
+  role: "headline",
+  text: "Autumn menu",
+  x: 64,
+  y: 80,
+  width: 666,
+});
+
+const tx = makeTransaction([{ op: "create", parent: pageId, nodes: [title] }], "Add title", {
+  source: "ai",
+  actor: { agent: "menu-bot" },
+});
+
+const result = await desyn.designs.commit(design.id, { baseSeq: seq, tx });
+console.log(result.seq, result.dropped);
+```
+
+Because commits are idempotent on `tx.id`, retrying after a network error is safe.
+
+To check an edit locally before sending it, apply it with the same semantics the server uses:
+
+```ts
+import { applyTransaction } from "@desyn/doc-ops";
+
+const { design: preview, dropped } = applyTransaction(doc, tx);
+if (dropped.length) console.warn(dropped);
+```
+
+## Running the agent
+
+```ts
+const run = await desyn.agent.start(design.id, {
+  goal: "Lay out five dishes with prices in two columns. Warm and minimal.",
+});
+
+for await (const event of desyn.agent.events(run.runId)) {
+  if (event.type === "tool-call") console.log("→", event.tool);
+  if (event.type === "question") await desyn.agent.answer(run.runId, event.choices?.[0] ?? "Yes");
+}
+
+const finished = await desyn.agent.get(run.runId);
+console.log(finished.result?.summary);
+```
+
+`events()` polls the events endpoint and ends when the run finishes, fails or is cancelled. Cancel with `desyn.agent.cancel(runId)`.
+
+## Assets
+
+```ts
+import { readFile } from "node:fs/promises";
+
+const bytes = await readFile("dish.jpg");
+const asset = await desyn.assets.upload(bytes, { name: "dish.jpg", mime: "image/jpeg" });
+```
+
+`upload` performs the request, the direct upload to storage and the finalize step.
+
+## Exports
+
+```ts
+const job = await desyn.exports.request(design.id, {
+  format: "pdf",
+  pdf: { bleed: true, cropMarks: true, cmyk: false },
+});
+const done = await desyn.exports.wait(job.exportId);
+console.log(done.url);
+```
+
+## Types
+
+All document types (`Design`, `Node`, `Op`, `Transaction`, `Description`, …) come from `@desyn/schema`, which also provides zod schemas, JSON Schema, id generation and canonical JSON (`canonicalize`, `hashCanonical`) — useful for validating designs your code produces before you commit them:
+
+```ts
+import { validateDesign } from "@desyn/schema";
+
+const { ok, errors, warnings } = validateDesign(preview);
+```
+
+## MCP from TypeScript
+
+The SDK also contains the [MCP server](/developers/mcp) implementation. To build your own agent on the Desyn tools without MCP, call the API directly as above or use the agent endpoint and let Desyn's agent do the work.

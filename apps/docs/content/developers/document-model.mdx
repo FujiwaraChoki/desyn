@@ -1,0 +1,96 @@
+---
+title: Document model
+description: The Desyn document model — a frozen, versioned contract shared by the Rust engine, TypeScript, Convex, every client and the AI. Primitives, the Design object and invariants.
+---
+
+Every package that touches a design follows one contract, `docs/DOCUMENT_MODEL.md`. The type excerpts on these pages are rendered from that file when the docs are built, so they always match it exactly.
+
+Key properties:
+
+- **Flat and addressable.** A design is a flat map of nodes keyed by id; the tree is expressed with `parent` and ordered `children`. Any node can be read or patched directly.
+- **JSON, camelCase.** The TypeScript definitions are the source of truth; `@desyn/schema` derives zod and JSON Schema from them and `desyn-core` mirrors them with serde.
+- **Canonical.** A canonical JSON form (sorted keys, normalized numbers) is used for hashing, conformance fixtures and comparisons.
+- **Versioned.** `schema: 1`. Changes are additive and recorded in the contract's change log.
+
+## Primitives
+
+<Generated name="model-section" section="1" />
+
+## Design
+
+The top-level object. `nodes["root"]` is the root node; its children are the page ids, in order.
+
+<Generated name="model-types" names="Design,DesignKind,AssetRef,DesignStyles" />
+
+Anywhere a `Color` is expected, a value may instead reference a variable or a color style:
+
+```json
+{ "type": "solid", "color": { "$var": "brand.primary" } }
+```
+
+```json
+{ "type": "solid", "color": { "$style": "c0l0rst7le01" } }
+```
+
+Assets are referenced by id from nodes (`ImageNode.assetId`, image fills, SVG and video nodes). `AssetRef.url` is filled in by clients at load time and never persisted; `storageKey` is the server-side truth.
+
+## Invariants
+
+These hold after every transaction. Operations that would break them are dropped, never applied partially.
+
+<Generated name="model-section" section="4" />
+
+## Example
+
+A minimal design with one page and a headline:
+
+```json title="design.json"
+{
+  "schema": 1,
+  "id": "d3k5m7p9r1t3",
+  "name": "Hello",
+  "kind": "social-post",
+  "nodes": {
+    "root": {
+      "id": "root", "type": "root", "name": "Root", "parent": null, "children": ["p8k2m4n6q8r0"],
+      "x": 0, "y": 0, "width": 0, "height": 0, "rotation": 0,
+      "opacity": 1, "blend": "normal", "visible": true, "locked": false, "effects": []
+    },
+    "p8k2m4n6q8r0": {
+      "id": "p8k2m4n6q8r0", "type": "page", "name": "Page 1", "parent": "root", "children": ["h1a2b3c4d5e6"],
+      "x": 0, "y": 0, "width": 1080, "height": 1350, "rotation": 0,
+      "opacity": 1, "blend": "normal", "visible": true, "locked": false, "effects": [],
+      "clip": true, "unit": "px", "bleed": 0,
+      "background": [{ "type": "solid", "color": "#0a0a0a" }]
+    },
+    "h1a2b3c4d5e6": {
+      "id": "h1a2b3c4d5e6", "type": "text", "name": "Headline", "role": "headline", "parent": "p8k2m4n6q8r0",
+      "x": 96, "y": 120, "width": 888, "height": 115, "rotation": 0,
+      "opacity": 1, "blend": "normal", "visible": true, "locked": false, "effects": [],
+      "runs": [{ "text": "design at the speed of light." }],
+      "style": {
+        "fontFamily": "Instrument Serif", "fontWeight": 400, "fontStyle": "normal", "fontSize": 96,
+        "fills": [{ "type": "solid", "color": "#ffb02e" }], "letterSpacing": -0.02,
+        "textCase": "none", "decoration": "none"
+      },
+      "paragraph": {
+        "align": "left", "direction": "ltr", "lineHeight": { "unit": "percent", "value": 100 },
+        "spacing": 0, "indent": 0, "list": "none"
+      },
+      "autoResize": "height", "verticalAlign": "top"
+    }
+  },
+  "assets": {},
+  "styles": { "colors": {}, "text": {}, "effects": {}, "variables": {} },
+  "meta": { "createdAt": 1792483200000 }
+}
+```
+
+## Continue
+
+<Cards>
+  <Card title="Nodes reference" href="/developers/document-model/nodes">Every node type and its properties.</Card>
+  <Card title="Paint, effects & animation" href="/developers/document-model/paint-and-effects">Fills, strokes, effects, image adjustments and animations.</Card>
+  <Card title="Operations" href="/developers/operations">How designs change.</Card>
+  <Card title="Describe" href="/developers/describe">The semantic view the AI reads.</Card>
+</Cards>

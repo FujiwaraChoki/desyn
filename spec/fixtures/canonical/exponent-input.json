@@ -1,0 +1,7 @@
+{
+  "name": "exponent-input",
+  "description": "exponent notation in the input is normalized to plain decimals",
+  "input": [1e2, 1e3, 1.5e1, 2e-3, -1e-2, 1.25e2],
+  "inputText": "[1e2,1E3,1.5e1,2e-3,-1e-2,1.25E+2]",
+  "canonical": "[100,1000,15,0.002,-0.01,125]"
+}

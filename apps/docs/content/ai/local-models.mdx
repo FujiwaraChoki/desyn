@@ -1,0 +1,100 @@
+---
+title: Local models
+description: Run Desyn's AI on your own hardware with Ollama, LM Studio, vLLM, llama.cpp or any OpenAI-compatible server — setup, CORS, model choice and limitations.
+---
+
+Local models keep prompts and designs on your own hardware and never use credits. Desyn supports **Ollama** directly and **any server that implements the OpenAI API**, which covers LM Studio, vLLM, llama.cpp's server and LocalAI. Local models are available on Pro and the self-hosted edition.
+
+## Where requests run
+
+How Desyn reaches your model depends on where it runs:
+
+- **From your browser** — on desyn.app, a model on your own computer is not reachable from Desyn's servers. The editor therefore runs the agent in your browser and calls your local server directly. Your local server must allow requests from the app's origin (CORS, see below). Server-run workflows cannot use a model that only your browser can reach.
+- **From the server** — on a self-hosted installation, the backend can call a model server on your network (for example `http://ollama:11434` in the same Docker network), so server-run agent jobs and workflows can use it too.
+
+## Ollama
+
+<Steps>
+
+### Install and pull a model
+
+Install Ollama from [ollama.com](https://ollama.com) and pull a model that supports **tool calling**, which the agent needs:
+
+```bash
+ollama pull qwen3:32b
+```
+
+### Allow the app's origin
+
+Ollama only accepts browser requests from origins you allow. Set `OLLAMA_ORIGINS` before starting it:
+
+<Tabs>
+<Tab label="macOS">
+
+```bash
+launchctl setenv OLLAMA_ORIGINS "https://app.desyn.app"
+# then quit and reopen the Ollama app
+```
+
+</Tab>
+<Tab label="Linux (systemd)">
+
+```bash
+sudo systemctl edit ollama.service
+# add under [Service]:
+#   Environment="OLLAMA_ORIGINS=https://app.desyn.app"
+sudo systemctl restart ollama
+```
+
+</Tab>
+<Tab label="Windows">
+
+```text
+Settings → System → About → Advanced system settings → Environment Variables
+New user variable: OLLAMA_ORIGINS = https://app.desyn.app
+Then quit Ollama from the tray and start it again.
+```
+
+</Tab>
+</Tabs>
+
+On a self-hosted installation, use your own app origin instead of `https://app.desyn.app`.
+
+### Connect it in Desyn
+
+Open **Settings → AI providers → Ollama**, enter the base URL (default `http://localhost:11434`), and choose **Test**. Your installed models appear in the model pickers for each task.
+
+</Steps>
+
+## LM Studio
+
+1. In LM Studio, download a model and open the **Developer** tab.
+2. Start the server (default `http://localhost:1234`) and enable **CORS** in the server settings.
+3. In Desyn, add an **OpenAI-compatible** provider with base URL `http://localhost:1234/v1`. LM Studio does not need an API key; leave it empty.
+
+## vLLM, llama.cpp and other OpenAI-compatible servers
+
+Add an **OpenAI-compatible** provider with the server's `/v1` base URL and, if the server requires one, an API key:
+
+| Server | Typical base URL | Notes |
+| --- | --- | --- |
+| vLLM | `http://host:8000/v1` | Start with tool calling enabled for the agent (`--enable-auto-tool-choice` and a matching `--tool-call-parser`). |
+| llama.cpp | `http://host:8080/v1` | Run `llama-server` with `--jinja` so tool calls use the model's chat template. |
+| LocalAI | `http://host:8080/v1` | Any model configured with function calling. |
+
+For browser access, the server must send CORS headers allowing your app origin; put it behind a reverse proxy that adds them if it cannot do so itself.
+
+## Choosing models
+
+Different tasks have different needs:
+
+- **Agent and editing** need reliable **tool calling** and a long context. Larger instruction-tuned models (roughly 30B parameters and up) give noticeably better results.
+- **Vision review** needs a model that accepts images. If your local model has no vision, choose a hosted model for that task or accept that the agent judges the design from its structure only.
+- **Copy and translation** work well on smaller, faster models.
+- **Image generation** and other media tools need media models; most local text servers do not provide them, so keep a hosted or BYOK provider for those tasks.
+
+Mix freely: a local model for the agent, a BYOK key for images, and the defaults for everything else.
+
+## Self-hosted defaults
+
+Self-hosters can set `OLLAMA_BASE_URL` so every member sees your Ollama server preconfigured. See [AI providers for self-hosting](/self-hosting/ai-providers).

@@ -1,0 +1,46 @@
+---
+title: Designs & pages
+description: What a design is, the design kinds, page sizes and units, print bleed, and how designs are saved and versioned.
+---
+
+## Designs
+
+A design is one document with a name, a **kind**, its pages and everything they contain, the assets it uses (images, fonts, SVGs, video, audio) and its reusable styles. Designs belong to a workspace and can live in folders.
+
+Designs are saved continuously. There is no save button: each gesture (a drag, a resize, a finished text edit) becomes one transaction that is sent to the server, so closing the tab never loses work. Named versions and automatic snapshots are kept in [version history](/editor/version-history).
+
+### Design kinds
+
+The kind tells Desyn what you are making. It picks default sizes, safe margins, the AI's layout and copywriting conventions, and where the design shows up on the dashboard.
+
+| Group | Kinds |
+| --- | --- |
+| Social & ads | `social-post`, `story`, `thumbnail`, `banner`, `ad` |
+| Print | `poster`, `flyer`, `business-card`, `invitation`, `menu`, `book-cover`, `certificate`, `sticker` |
+| Documents | `presentation`, `document`, `resume`, `newsletter`, `infographic`, `whiteboard` |
+| Brand & product | `logo`, `mockup` |
+| Web & motion | `website`, `video` |
+| Anything else | `custom` |
+
+You can change the kind later from the **Design** panel; it does not move or resize anything.
+
+## Pages
+
+Each design has one or more pages, shown in the page strip under the canvas. A page has:
+
+- **Size** — width and height. Pages in one design can have different sizes (for example a cover and inner pages).
+- **Unit** — `px`, `mm`, `in` or `pt`. Units change how sizes are displayed and exported; internally every position is stored in design pixels (96 per inch), so switching units never moves anything.
+- **Background** — one or more fills: a color, gradient or image.
+- **Bleed** — extra area outside the page edge for print, included in print PDF exports with crop marks. See [export](/editor/export#print-pdf).
+- **Layout grid and guides** — columns, gutter, margin and an optional baseline, plus guides you drag from the rulers.
+- **Notes** — speaker or designer notes, shown in presenter view.
+- **Duration and transition** — for presentations and video: how long the page shows and how it transitions to the next (fade, slide, push, zoom, dissolve).
+
+Pages cannot be nested inside other pages, and every layer belongs to exactly one page.
+
+> [!TIP]
+> For print, set the page unit to `mm` or `in` first, then the size. A 3 mm bleed is standard for most print shops; add it in the **Design** panel under *Print*.
+
+## Limits
+
+How many designs you can keep and how many pages a design can have depends on your plan. On Free, a design can have up to 10 pages; on Pro, 200; self-hosted is unlimited. See [plans and credits](/concepts/plans-and-credits) for every limit.

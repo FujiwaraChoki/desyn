@@ -1,0 +1,65 @@
+---
+title: Upgrades
+description: Upgrade a self-hosted installation safely — back up, update the source, rebuild images, deploy functions, and roll back if needed.
+---
+
+Upgrades replace the code of all components with a newer release. Your data stays in the Postgres, Convex and MinIO volumes; documents are versioned (`schema: 1`), and newer releases read older data. Commands assume `COMPOSE_FILE` is set as in the [quickstart](/self-hosting/docker-compose#point-compose-at-the-stack).
+
+## Before you upgrade
+
+1. Read the [changelog](/changelog) for the versions you are skipping, especially any notes about configuration changes or manual steps.
+2. Take a [backup](/self-hosting/backups): database export, Postgres dump and storage.
+
+## Upgrade
+
+<Steps>
+
+### Update the source
+
+```bash
+git fetch --tags
+git checkout <new version tag>
+```
+
+Compare `deploy/compose/.env.example` and `deploy/compose/convex.selfhost.env.example` with your own files for new variables (`git diff <old tag> <new tag> -- deploy/compose`).
+
+### Rebuild and restart the containers
+
+```bash
+docker compose up -d --build
+```
+
+`up -d` recreates only containers whose image or configuration changed. Members' editors reconnect automatically.
+
+### Deploy the functions
+
+```bash
+docker compose run --rm --build convex-tools deploy --yes
+```
+
+`--build` rebuilds the tool image so it contains the new `convex/` functions. Always deploy functions from the same version as the web app; mixing versions can break the editor.
+
+### Apply new configuration
+
+If the changelog lists new backend variables, add them to `deploy/compose/convex.env` and push it again (see [Convex](/self-hosting/convex#environment-variables)). New `DESYN_*` values in `deploy/compose/.env` take effect with the rebuild above.
+
+### Check
+
+Open **Admin → Health**, sign in, and open and export a design.
+
+</Steps>
+
+## Updating the Convex backend
+
+The Convex backend and dashboard images are pinned to a tested release in the stack file and are updated separately from Desyn. To move to a newer Convex release, take a backup, set `CONVEX_BACKEND_TAG` and `CONVEX_DASHBOARD_TAG` in `deploy/compose/.env`, then:
+
+```bash
+docker compose pull convex-backend convex-dashboard
+docker compose up -d convex-backend convex-dashboard
+```
+
+Prefer the tags a Desyn release pins: they are the versions it was tested with.
+
+## Rolling back
+
+Check out the previous version, `docker compose up -d --build`, and deploy its functions with `docker compose run --rm --build convex-tools deploy --yes`. If the new version had already migrated data in a way the old one cannot read, restore the backup you took before upgrading.

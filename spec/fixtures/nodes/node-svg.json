@@ -1,0 +1,27 @@
+{
+  "name": "node-svg",
+  "schema": "SvgNode",
+  "valid": true,
+  "description": "canonical example of a svg node",
+  "value": {
+    "id": "node00000018",
+    "type": "svg",
+    "name": "Icon",
+    "parent": "page00000001",
+    "x": 100,
+    "y": 120,
+    "width": 48,
+    "height": 48,
+    "rotation": 0,
+    "opacity": 1,
+    "blend": "normal",
+    "visible": true,
+    "locked": false,
+    "effects": [],
+    "markup": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"5\" fill=\"#000000\"/></svg>",
+    "recolor": {
+      "#000000": "#ffb02e"
+    },
+    "role": "icon"
+  }
+}

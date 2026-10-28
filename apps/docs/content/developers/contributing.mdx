@@ -1,0 +1,87 @@
+---
+title: Contributing
+description: How the Desyn repository is organized, how to set up a development environment, run the checks, and submit changes under the contributor license agreement.
+---
+
+Contributions are welcome — bug fixes, documentation, templates, translations and features. Because commercial rights are reserved by the project owner, every contributor signs a Contributor License Agreement (see [below](#contributor-license-agreement)).
+
+## Repository layout
+
+```text
+apps/
+  web/        Next.js app: auth, dashboard, editor, settings, sharing, admin
+  landing/    Marketing site, blog, template gallery, legal pages
+  docs/       This documentation site
+  desktop/    Rust GPUI desktop app
+  ios/        SwiftUI iOS app
+packages/
+  schema/     Types, zod, JSON Schema, canonical JSON, ids, plans loader
+  doc-ops/    applyTransaction, invert, transaction builders, sync helpers
+  tokens/     Design tokens; ui/ React component library
+  ai/         Providers, routing, agent, tools, workflows, prompts, evals
+  engine/     TypeScript bindings around the wasm engine
+  sdk/        Public TypeScript SDK and MCP server
+crates/
+  desyn-core, desyn-text, desyn-describe, desyn-raster, desyn-wasm, desyn-ffi, desyn-worker
+convex/       Backend: schema, functions, HTTP routes, crons
+templates/    Template pipeline and template designs
+deploy/       Dockerfiles, Compose, nginx, scripts and runbooks
+config/       plans.json — limits, features and credit costs
+spec/         Conformance fixtures shared by Rust and TypeScript
+docs/         Specification, document model, design system, handoff notes
+```
+
+Start with `docs/SPEC.md`, then `docs/DOCUMENT_MODEL.md` and `docs/DESIGN_SYSTEM.md`.
+
+## Development setup
+
+Requirements: Node.js 26, pnpm 12, Rust stable (edition 2024) with the `wasm32-unknown-unknown` target, and Docker for the services.
+
+```bash
+pnpm install
+pnpm typecheck
+pnpm test
+```
+
+Each TypeScript package has `typecheck`, `test` (Vitest) and `lint` (Biome) scripts; run them for one package with `pnpm --filter @desyn/<name> <script>`. Rust crates are checked with:
+
+```bash
+cargo fmt --all --check
+cargo clippy --all-targets -- -D warnings
+cargo test
+```
+
+For the backend, run a local Convex deployment without an account:
+
+```bash
+CONVEX_AGENT_MODE=anonymous npx convex dev --once
+```
+
+Backend functions are unit-tested offline with `convex-test`. Tests never need real API keys: providers are faked at the edges.
+
+### Running the docs
+
+```bash
+pnpm --filter @desyn/docs dev        # http://localhost:4103
+pnpm --filter @desyn/docs test       # content, search and link checks
+pnpm --filter @desyn/docs build
+```
+
+Pages are MDX files in `apps/docs/content`; the sidebar order lives in `apps/docs/src/lib/nav.ts`. Reference tables (environment variables, shortcuts, API endpoints, plans) are generated from data files and from `docs/DOCUMENT_MODEL.md` and `config/plans.json`, so update the source rather than the page.
+
+## Guidelines
+
+- **The document model is a contract.** Change `docs/DOCUMENT_MODEL.md` only additively, record the change in its change log, and keep the Rust and TypeScript implementations and the fixtures in `spec/fixtures/` in sync.
+- **Quality over breadth.** No stubs or placeholder implementations; handle the edge cases; add tests that run offline.
+- **Style.** TypeScript strict mode and ESM; small files with clear names; comments that explain *why*. Follow the design system for anything visual, including dark and light themes and accessibility.
+- **Secrets.** Never commit `.env` files, keys or credentials, and never paste them into issues or logs.
+
+## Submitting changes
+
+1. Open an issue first for larger changes, so the approach can be agreed before you invest time.
+2. Create a branch, make focused commits, and make sure typecheck, lint and tests pass for everything you touched.
+3. Open a pull request describing what changed and how you verified it; include screenshots for UI changes.
+
+## Contributor License Agreement
+
+Before your first pull request can be merged, you sign the CLA. You keep the copyright to your contribution, and you grant the project owner a perpetual, worldwide, irrevocable license to use, modify, sublicense and relicense it, including under commercial terms. This is what allows Desyn to offer commercial licenses while staying source-available. A bot asks you to sign on your first pull request.

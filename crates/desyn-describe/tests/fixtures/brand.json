@@ -1,0 +1,239 @@
+{
+  "description": "Brand kit check: a pink band outside the palette and a headline in a non-brand font.",
+  "design": {
+    "assets": {},
+    "id": "design000001",
+    "kind": "social-post",
+    "meta": {},
+    "name": "Fixture",
+    "nodes": {
+      "page00000001": {
+        "background": [
+          {
+            "color": "#ffffff",
+            "type": "solid"
+          }
+        ],
+        "bleed": 0.0,
+        "blend": "normal",
+        "children": [
+          "promoband000",
+          "promotitle00",
+          "promobody000"
+        ],
+        "clip": true,
+        "effects": [],
+        "height": 1080.0,
+        "id": "page00000001",
+        "locked": false,
+        "name": "Page 1",
+        "opacity": 1.0,
+        "parent": "root",
+        "rotation": 0.0,
+        "type": "page",
+        "unit": "px",
+        "visible": true,
+        "width": 1080.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "promoband000": {
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fills": [
+          {
+            "color": "#ff0066",
+            "type": "solid"
+          }
+        ],
+        "height": 200.0,
+        "id": "promoband000",
+        "locked": false,
+        "name": "Promo band",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "rect",
+        "visible": true,
+        "width": 1080.0,
+        "x": 0.0,
+        "y": 760.0
+      },
+      "promobody000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 38.4,
+        "id": "promobody000",
+        "locked": false,
+        "name": "Promo body",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "All products twenty percent off today only."
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 32.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 800.0,
+        "x": 80.0,
+        "y": 300.0
+      },
+      "promotitle00": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 115.19999999999999,
+        "id": "promotitle00",
+        "locked": false,
+        "name": "Promo title",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Brand day"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Playfair Display",
+          "fontSize": 96.0,
+          "fontStyle": "normal",
+          "fontWeight": 700.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 800.0,
+        "x": 80.0,
+        "y": 120.0
+      },
+      "root": {
+        "blend": "normal",
+        "children": [
+          "page00000001"
+        ],
+        "effects": [],
+        "height": 0.0,
+        "id": "root",
+        "locked": false,
+        "name": "Root",
+        "opacity": 1.0,
+        "parent": null,
+        "rotation": 0.0,
+        "type": "root",
+        "visible": true,
+        "width": 0.0,
+        "x": 0.0,
+        "y": 0.0
+      }
+    },
+    "schema": 1,
+    "styles": {
+      "colors": {},
+      "effects": {},
+      "text": {},
+      "variables": {}
+    }
+  },
+  "expect": {
+    "absent": [
+      "too-many-fonts"
+    ],
+    "issues": [
+      {
+        "code": "too-many-colors",
+        "fix": true,
+        "ids": [
+          "Promo band"
+        ],
+        "rule": "off-brand-color"
+      },
+      {
+        "code": "too-many-fonts",
+        "fix": true,
+        "ids": [
+          "Promo title"
+        ],
+        "rule": "off-brand-font"
+      }
+    ]
+  },
+  "options": {
+    "brand": {
+      "colors": [
+        {
+          "name": "Sun",
+          "role": "primary",
+          "value": "#ffb02e"
+        },
+        {
+          "role": "text",
+          "value": "#111111"
+        }
+      ],
+      "fonts": [
+        {
+          "family": "Instrument Serif",
+          "role": "heading"
+        },
+        {
+          "family": "Inter",
+          "role": "body"
+        }
+      ],
+      "name": "Desyn"
+    }
+  }
+}

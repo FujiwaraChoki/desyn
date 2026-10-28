@@ -1,0 +1,35 @@
+{
+  "name": "node-ellipse",
+  "schema": "EllipseNode",
+  "valid": true,
+  "description": "canonical example of a ellipse node",
+  "value": {
+    "id": "node00000011",
+    "type": "ellipse",
+    "name": "Ring",
+    "parent": "page00000001",
+    "x": 100,
+    "y": 120,
+    "width": 200,
+    "height": 200,
+    "rotation": 0,
+    "opacity": 1,
+    "blend": "normal",
+    "visible": true,
+    "locked": false,
+    "effects": [],
+    "fills": [
+      {
+        "type": "solid",
+        "color": "#d9d9d9"
+      }
+    ],
+    "strokes": [],
+    "cornerRadius": 0,
+    "arc": {
+      "start": -90,
+      "end": 180,
+      "inner": 0.8
+    }
+  }
+}

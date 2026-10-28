@@ -1,0 +1,45 @@
+---
+title: Auto-layout
+description: Frames that arrange their children automatically in rows, columns or grids, with gap, padding, alignment and hug or fill sizing.
+---
+
+Auto-layout turns a frame into a container that positions its children for you. Add text to a button and the button grows; remove a card from a list and the others close the gap. It is the difference between a design that holds up when content changes and one that has to be nudged by hand.
+
+Auto-layout is part of Pro and the self-hosted edition.
+
+## Adding auto-layout
+
+Select a frame, or several layers, and press <Keys combo="shift+a" />. If you selected loose layers, Desyn wraps them in a new frame, guesses the direction and gap from their current positions, and keeps the layout visually unchanged. Settings live in the **Arrange** tab of the inspector.
+
+## Settings
+
+| Setting | Meaning |
+| --- | --- |
+| **Direction** | `row` (left to right), `column` (top to bottom) or `grid` |
+| **Gap** | Space between children on the main axis; for grids also a separate row gap |
+| **Padding** | Space inside the frame: top, right, bottom, left |
+| **Main alignment** | `start`, `center`, `end` or `space-between` |
+| **Cross alignment** | `start`, `center`, `end`, `stretch` or `baseline` (align text baselines in a row) |
+| **Wrap** | Rows that wrap onto new lines when they run out of space |
+| **Columns** | Number of columns in grid mode |
+| **Reverse** | Lay children out in reverse order |
+
+Drag the gap and padding handles on the canvas to adjust them visually; hold <Keys combo="shift" /> to change all padding sides together.
+
+## Sizing children
+
+Each child of an auto-layout frame — and the frame itself — has a horizontal and vertical sizing mode:
+
+- **Fixed** — keeps its size.
+- **Hug** — shrinks or grows to fit its own content (text, or its own children).
+- **Fill** — takes up the remaining space in the parent, shared equally with other *fill* siblings.
+
+A typical button is a frame with *hug* in both directions; a card list is a column whose cards *fill* the width.
+
+## Nesting
+
+Auto-layout frames nest: a page section can be a column of rows, each row a set of cards, each card a column of image, text and button. Changes ripple outward — make one card's title longer and its row, then the section, adjust.
+
+## Auto-layout and the AI
+
+The agent builds with auto-layout wherever it makes content resilient — buttons, cards, lists and sections — and can add it to existing designs: *"put these three features in an evenly spaced row"*. When it [resizes designs](/ai/workflows#resize) or [localizes](/ai/workflows#localize) them into longer languages, auto-layout is what lets content reflow instead of overflowing.

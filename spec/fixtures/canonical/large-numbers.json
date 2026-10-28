@@ -1,0 +1,7 @@
+{
+  "name": "large-numbers",
+  "description": "numbers >= 1e21 are written out in full, never with an exponent",
+  "input": [1e21, 1.5e22, -1e21, 123456789012345680000],
+  "inputText": "[1e21,1.5e22,-1e21,123456789012345680000]",
+  "canonical": "[1000000000000000000000,15000000000000000000000,-1000000000000000000000,123456789012345680000]"
+}

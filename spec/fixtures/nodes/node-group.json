@@ -1,0 +1,24 @@
+{
+  "name": "node-group",
+  "schema": "GroupNode",
+  "valid": true,
+  "description": "canonical example of a group node",
+  "value": {
+    "id": "node00000004",
+    "type": "group",
+    "name": "Logo lockup",
+    "parent": "page00000001",
+    "x": 100,
+    "y": 120,
+    "width": 240,
+    "height": 64,
+    "rotation": 0,
+    "opacity": 1,
+    "blend": "normal",
+    "visible": true,
+    "locked": false,
+    "effects": [],
+    "children": ["node00000005", "node00000006"],
+    "clip": false
+  }
+}

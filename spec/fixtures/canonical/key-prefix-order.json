@@ -1,0 +1,7 @@
+{
+  "name": "key-prefix-order",
+  "description": "a key sorts before longer keys it prefixes",
+  "input": { "ab": 1, "a": 2, "abc": 3, "b": 4, "A": 5 },
+  "inputText": "{\"ab\":1,\"a\":2,\"abc\":3,\"b\":4,\"A\":5}",
+  "canonical": "{\"A\":5,\"a\":2,\"ab\":1,\"abc\":3,\"b\":4}"
+}

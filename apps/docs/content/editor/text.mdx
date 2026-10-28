@@ -1,0 +1,61 @@
+---
+title: Text
+description: Adding and styling text — fonts, variable axes, OpenType features, paragraphs and lists, auto-sizing, curved and outlined text, text styles and custom fonts.
+---
+
+## Adding text
+
+Press <Keys combo="t" /> and click to create a text layer that grows with what you type, or drag to create a fixed-width box that wraps. The **Text** panel on the left has ready-made presets (heading, subheading, body) and curated font pairings.
+
+Double-click a text layer or press <Keys combo="enter" /> to edit it, and <Keys combo="escape" /> to finish. Text editing uses your system's text input, so spell checking, autocorrect, dictation and input methods for every language work as usual.
+
+## Character styles
+
+Select text (or the whole layer) and use the **Design** tab of the inspector:
+
+- **Font family** — searchable, previewed in each font. Google Fonts are available on every plan; uploaded custom fonts need Pro.
+- **Weight and style**, **size**, **letter spacing** (in em) and **line height** (auto, pixels or percent).
+- **Fill** — solid color or gradient, from your brand kit or any color.
+- **Case** — as typed, UPPERCASE, lowercase or Title Case, without changing the underlying text.
+- **Decoration** — underline or strikethrough, and a **highlight** color behind the text.
+- **Link** — turn a run into a link (<Keys combo="mod+shift+u" />), kept in PDF and website exports.
+
+Styles apply to the selected characters only, so one layer can mix weights, colors and sizes. Bold, italic and underline have the usual shortcuts: <Keys combo="mod+b" />, <Keys combo="mod+i" />, <Keys combo="mod+u" />.
+
+### Variable fonts and OpenType
+
+For variable fonts, the inspector shows a slider for each axis the font has (weight, width, optical size, slant and custom axes). Under **Details**, toggle OpenType features such as ligatures, stylistic sets (`ss01`…), tabular figures, small caps and fractions — only the features the font actually supports are listed.
+
+## Paragraphs
+
+Per paragraph you can set alignment (left, center, right, justify), direction (left-to-right, right-to-left or automatic), paragraph spacing, first-line indent, and bulleted or numbered lists (<Keys combo="mod+shift+8" />, <Keys combo="mod+shift+7" />). Right-to-left scripts such as Arabic and Hebrew shape and wrap correctly, including mixed-direction text.
+
+## Sizing and overflow
+
+A text layer resizes in one of three ways, set in the inspector:
+
+- **Auto width** — a single line that grows as you type.
+- **Auto height** — fixed width; the box grows downward as lines wrap.
+- **Fixed** — the box stays put; text that does not fit overflows and is flagged.
+
+Set **Max lines** to cut long text with an ellipsis — useful in templates where content varies. Vertical alignment (top, middle, bottom) positions the text inside a fixed box.
+
+## Curved text
+
+Set **Curve** to bend a text layer along an arc. Positive values curve upward, negative downward; 360° wraps it into a full circle for badges and stamps. Curved text stays editable.
+
+## Outlined text
+
+Add a **stroke** to a text layer for outlined or double-outlined lettering, with inside, center or outside alignment.
+
+## Text styles
+
+Save a combination of font, size, spacing and paragraph settings as a **text style** in the **Design** panel. Layers that use the style update when you edit it, and the AI prefers existing styles when it adds text. Text styles from your [brand kit](/concepts/brand-kits) appear here automatically.
+
+## Custom fonts
+
+Upload `.ttf`, `.otf`, `.woff` or `.woff2` files in **Uploads → Fonts** or in your brand kit (Pro). Custom fonts are stored with your workspace and travel with designs into exports, the desktop app and iOS.
+
+## Asking the AI
+
+The agent can write and rewrite text in place while keeping its styling: *"shorten the body to two lines"*, *"rewrite the headline in our brand voice"*, *"translate this page to Spanish"*. See [the agent](/ai/agent).

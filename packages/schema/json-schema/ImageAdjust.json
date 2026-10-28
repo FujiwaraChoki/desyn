@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://desyn.app/schema/v1/ImageAdjust.json",
+  "title": "ImageAdjust",
+  "type": "object",
+  "properties": {
+    "brightness": {
+      "type": "number"
+    },
+    "contrast": {
+      "type": "number"
+    },
+    "saturation": {
+      "type": "number"
+    },
+    "hue": {
+      "type": "number"
+    },
+    "temperature": {
+      "type": "number"
+    },
+    "tint": {
+      "type": "number"
+    },
+    "exposure": {
+      "type": "number"
+    },
+    "vignette": {
+      "type": "number"
+    },
+    "blur": {
+      "type": "number"
+    },
+    "grayscale": {
+      "type": "number"
+    },
+    "sepia": {
+      "type": "number"
+    },
+    "sharpen": {
+      "type": "number"
+    },
+    "grain": {
+      "type": "number"
+    },
+    "duotone": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "$ref": "#/$defs/Color"
+        },
+        {
+          "$ref": "#/$defs/Color"
+        }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "filter": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "brightness",
+    "contrast",
+    "saturation",
+    "hue",
+    "temperature",
+    "tint",
+    "exposure",
+    "vignette",
+    "blur",
+    "grayscale",
+    "sepia",
+    "sharpen",
+    "grain"
+  ],
+  "additionalProperties": {},
+  "$defs": {
+    "Color": {
+      "type": "string",
+      "pattern": "^#(?:[0-9a-f]{6}|[0-9a-f]{8})$"
+    }
+  }
+}

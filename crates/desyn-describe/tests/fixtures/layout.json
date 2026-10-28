@@ -1,0 +1,607 @@
+{
+  "description": "A story with an off-page shape, a headline past the edge, text in the top safe area, near-miss edges, an almost centered title and a list with one uneven gap.",
+  "design": {
+    "assets": {},
+    "id": "design000001",
+    "kind": "story",
+    "meta": {},
+    "name": "Fixture",
+    "nodes": {
+      "centered0000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 57.599999999999994,
+        "id": "centered0000",
+        "locked": false,
+        "name": "Centered",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "center",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Centered title"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 48.0,
+          "fontStyle": "normal",
+          "fontWeight": 700.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 600.0,
+        "x": 245.0,
+        "y": 760.0
+      },
+      "cutheadline0": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 76.8,
+        "id": "cutheadline0",
+        "locked": false,
+        "name": "Cut headline",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Big sale"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 64.0,
+          "fontStyle": "normal",
+          "fontWeight": 700.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 400.0,
+        "x": 900.0,
+        "y": 600.0
+      },
+      "item00000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 38.4,
+        "id": "item00000000",
+        "locked": false,
+        "name": "Item 0",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "List entry number 0"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 32.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 600.0,
+        "x": 120.0,
+        "y": 1200.0
+      },
+      "item10000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 38.4,
+        "id": "item10000000",
+        "locked": false,
+        "name": "Item 1",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "List entry number 1"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 32.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 600.0,
+        "x": 120.0,
+        "y": 1260.0
+      },
+      "item20000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 38.4,
+        "id": "item20000000",
+        "locked": false,
+        "name": "Item 2",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "List entry number 2"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 32.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 600.0,
+        "x": 120.0,
+        "y": 1320.0
+      },
+      "item30000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 38.4,
+        "id": "item30000000",
+        "locked": false,
+        "name": "Item 3",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "List entry number 3"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 32.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 600.0,
+        "x": 120.0,
+        "y": 1387.0
+      },
+      "lefta0000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 38.4,
+        "id": "lefta0000000",
+        "locked": false,
+        "name": "Left a",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Aligned left edge"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 32.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 500.0,
+        "x": 120.0,
+        "y": 900.0
+      },
+      "leftb0000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 38.4,
+        "id": "leftb0000000",
+        "locked": false,
+        "name": "Left b",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Almost aligned left edge"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 32.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 500.0,
+        "x": 124.0,
+        "y": 960.0
+      },
+      "lostshape000": {
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fills": [
+          {
+            "color": "#ff0000",
+            "type": "solid"
+          }
+        ],
+        "height": 100.0,
+        "id": "lostshape000",
+        "locked": false,
+        "name": "Lost shape",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "rect",
+        "visible": true,
+        "width": 100.0,
+        "x": 1200.0,
+        "y": 300.0
+      },
+      "page00000001": {
+        "background": [
+          {
+            "color": "#ffffff",
+            "type": "solid"
+          }
+        ],
+        "bleed": 0.0,
+        "blend": "normal",
+        "children": [
+          "lostshape000",
+          "cutheadline0",
+          "topnote00000",
+          "lefta0000000",
+          "leftb0000000",
+          "centered0000",
+          "item00000000",
+          "item10000000",
+          "item20000000",
+          "item30000000"
+        ],
+        "clip": true,
+        "effects": [],
+        "height": 1920.0,
+        "id": "page00000001",
+        "locked": false,
+        "name": "Page 1",
+        "opacity": 1.0,
+        "parent": "root",
+        "rotation": 0.0,
+        "type": "page",
+        "unit": "px",
+        "visible": true,
+        "width": 1080.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "root": {
+        "blend": "normal",
+        "children": [
+          "page00000001"
+        ],
+        "effects": [],
+        "height": 0.0,
+        "id": "root",
+        "locked": false,
+        "name": "Root",
+        "opacity": 1.0,
+        "parent": null,
+        "rotation": 0.0,
+        "type": "root",
+        "visible": true,
+        "width": 0.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "topnote00000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 48.0,
+        "id": "topnote00000",
+        "locked": false,
+        "name": "Top note",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "New arrivals"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 40.0,
+          "fontStyle": "normal",
+          "fontWeight": 600.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 400.0,
+        "x": 120.0,
+        "y": 120.0
+      }
+    },
+    "schema": 1,
+    "styles": {
+      "colors": {},
+      "effects": {},
+      "text": {},
+      "variables": {}
+    }
+  },
+  "expect": {
+    "groups": [
+      {
+        "ids": [
+          "Item 0",
+          "Item 1",
+          "Item 2",
+          "Item 3"
+        ],
+        "kind": "list"
+      }
+    ],
+    "issues": [
+      {
+        "code": "off-page",
+        "fix": true,
+        "ids": [
+          "Lost shape"
+        ],
+        "rule": "off-page",
+        "severity": "error"
+      },
+      {
+        "code": "off-page",
+        "fix": true,
+        "ids": [
+          "Cut headline"
+        ],
+        "rule": "cut-by-page"
+      },
+      {
+        "code": "unsafe-margin",
+        "fix": true,
+        "ids": [
+          "Top note"
+        ],
+        "rule": "unsafe-margin"
+      },
+      {
+        "code": "misaligned",
+        "fix": true,
+        "ids": [
+          "Left a",
+          "Left b"
+        ],
+        "rule": "misaligned"
+      },
+      {
+        "code": "misaligned",
+        "fix": true,
+        "ids": [
+          "Centered"
+        ],
+        "rule": "off-center"
+      },
+      {
+        "code": "uneven-spacing",
+        "fix": true,
+        "ids": [
+          "Item 0",
+          "Item 3"
+        ],
+        "rule": "uneven-spacing"
+      }
+    ]
+  },
+  "options": null
+}

@@ -1,0 +1,18 @@
+{
+  "Rules": [
+    {
+      "ID": "desyn-backups-expire-30d",
+      "Status": "Enabled",
+      "Filter": { "Prefix": "backups/" },
+      "Expiration": { "Days": 30 },
+      "AbortIncompleteMultipartUpload": { "DaysAfterInitiation": 7 }
+    },
+    {
+      "ID": "desyn-assets-mirror-noncurrent-30d",
+      "Status": "Enabled",
+      "Filter": { "Prefix": "assets-mirror/" },
+      "NoncurrentVersionExpiration": { "NoncurrentDays": 30 },
+      "AbortIncompleteMultipartUpload": { "DaysAfterInitiation": 7 }
+    }
+  ]
+}

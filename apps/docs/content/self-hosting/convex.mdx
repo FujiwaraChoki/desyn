@@ -1,0 +1,83 @@
+---
+title: Convex (self-hosted)
+description: How Desyn uses Convex, running the open-source Convex backend yourself, the admin key, deploying functions, environment variables, the dashboard and its Postgres database.
+---
+
+[Convex](https://www.convex.dev) is Desyn's backend: the database, realtime subscriptions that keep every editor in sync, server functions, HTTP routes (authentication, the Agent API, MCP, health) and scheduled jobs. Self-hosted Desyn runs the open-source Convex backend in a container on your server.
+
+## Ports and URLs
+
+The backend serves two origins:
+
+| Port | Origin variable | Serves |
+| --- | --- | --- |
+| `3210` | `CONVEX_URL` / `NEXT_PUBLIC_CONVEX_URL` | The client API, including the WebSocket that streams live updates |
+| `3211` | `CONVEX_SITE_URL` | HTTP actions: sign-in routes, `/api/v1/*`, `/mcp`, `/healthz` and `/og/:id` |
+
+Both must be reachable over HTTPS from your users' browsers, so each gets its own hostname behind the [reverse proxy](/self-hosting/reverse-proxy). The backend needs to know its public origins, set in the container as `CONVEX_CLOUD_ORIGIN` and `CONVEX_SITE_ORIGIN`.
+
+## Instance secret and admin key
+
+- `INSTANCE_SECRET` (in `deploy/compose/.env`) is the backend's root secret. The quickstart generates it with `openssl rand -hex 32`; keep it with your backups. Changing it invalidates every admin key.
+- The **admin key** is derived from it. Generate one with:
+
+  ```bash
+  docker compose exec convex-backend ./generate_admin_key.sh
+  ```
+
+  The CLI uses it as `CONVEX_SELF_HOSTED_ADMIN_KEY`, together with `CONVEX_SELF_HOSTED_URL` (the backend's URL). Anyone with the admin key can read and change all data, so never put it in the web app's environment or commit it (`deploy/compose/.env` is ignored by git).
+
+## Deploying functions
+
+The functions in the repository's `convex/` directory are pushed to the backend with the Convex CLI. The stack's `convex-tools` service is an image with the CLI and a copy of `convex/`, so the server needs no Node.js. It reaches the backend over the Compose network and reads `CONVEX_SELF_HOSTED_ADMIN_KEY` from `deploy/compose/.env`:
+
+```bash
+docker compose run --rm --build convex-tools deploy --yes
+```
+
+(Commands assume `COMPOSE_FILE` is set as in the [quickstart](/self-hosting/docker-compose#point-compose-at-the-stack).) `--build` refreshes the image's copy of `convex/`; it is needed after you update the source.
+
+With Node.js and the repository checked out on any machine that can reach the backend, the CLI works directly:
+
+```bash
+pnpm install
+export CONVEX_SELF_HOSTED_URL=https://convex.example.org
+export CONVEX_SELF_HOSTED_ADMIN_KEY='<admin key>'
+pnpm exec convex deploy --yes
+```
+
+`deploy` type-checks the functions, pushes the schema and indexes, and replaces the running code without downtime. Schema changes that are incompatible with existing data are rejected before anything changes.
+
+## Environment variables
+
+Server functions read their configuration from the deployment's environment, not from files. The quickstart keeps it in `deploy/compose/convex.env` and pushes every non-empty line:
+
+```bash
+# everything in convex.env (overwrites existing values)
+grep -E '^[A-Z0-9_]+=.+' deploy/compose/convex.env | docker compose run --rm -T convex-tools env set --force
+
+# one variable
+docker compose run --rm convex-tools env set MAIL_TRANSPORT smtp
+
+# remove one
+docker compose run --rm convex-tools env remove OLLAMA_BASE_URL
+
+# list names (add --include-values only on a trusted terminal)
+docker compose run --rm convex-tools env list
+```
+
+Changes apply to new function calls immediately; no redeploy is needed. You can also edit variables in the dashboard under *Settings → Environment variables*. The full list is in the [configuration reference](/self-hosting/configuration).
+
+## The dashboard
+
+The Convex dashboard (`convex-dashboard` service, `127.0.0.1:6791`) lets you browse tables, run functions, read logs and edit environment variables. Log in with your admin key. Do not expose it publicly: reach it through an SSH tunnel (`ssh -L 6791:127.0.0.1:6791 your-server`) or restrict it by IP at the reverse proxy.
+
+## Database
+
+The stack runs the backend on Postgres 17 (`postgres` service). Postgres sits on an internal Docker network that only the backend can reach, with its data in the `postgres_data` volume; the backend reaches it through `POSTGRES_URL`, built from `POSTGRES_PASSWORD`. The backend's own working files live in the `convex_data` volume.
+
+Without `POSTGRES_URL`, the Convex backend falls back to SQLite inside `convex_data`. That is fine for a quick experiment, but the stack is set up and tested with Postgres. To move between the two, use [export and import](/self-hosting/backups#moving-to-another-database): the export format does not depend on the database.
+
+## Scheduled jobs
+
+Desyn's crons run inside the backend automatically once functions are deployed: presence cleanup, monthly credit period rollover, snapshot compaction, orphan asset cleanup, export cleanup and a reaper for stalled AI runs. Nothing needs to be scheduled on the host.

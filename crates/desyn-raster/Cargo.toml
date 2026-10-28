@@ -1,0 +1,59 @@
+[package]
+name = "desyn-raster"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+description = "Desyn renderer: display lists from designs, tiny-skia rasterizer (effects, blends, masks, filters), PNG / JPEG / WebP / SVG / PDF / PPTX / GIF / frame-sequence exporters and the desyn-render CLI."
+publish = false
+
+[features]
+default = ["pdf", "pptx", "gif"]
+# Vector PDF export through krilla (embedded font subsets, links, bleed / crop marks, CMYK-ish colors).
+pdf = ["dep:krilla"]
+# PowerPoint export (zip + hand-written OOXML).
+pptx = ["dep:zip"]
+# Animated GIF export (frames are always available).
+gif = ["dep:gif"]
+# Lossy WebP encoding through libwebp (C, native only). Without it WebP export is lossless (pure Rust).
+webp-lossy = ["dep:webp"]
+# AVIF decoding through dav1d (system libdav1d, native only).
+avif = ["image/avif-native"]
+# Bundle the OFL font set of desyn-text (Inter, Instrument Sans / Serif, JetBrains Mono, Noto Arabic / Hebrew,
+# Noto Emoji) so text renders without host-provided fonts.
+bundled-fonts = ["desyn-text/bundled", "desyn-text/bundled-noto", "desyn-text/bundled-emoji"]
+# The desyn-render command line tool.
+cli = ["pdf", "pptx", "gif", "bundled-fonts", "desyn-core/std-fs"]
+
+[dependencies]
+desyn-core = { path = "../desyn-core" }
+desyn-text = { path = "../desyn-text" }
+serde = { version = "=1.0.229", features = ["derive"] }
+serde_json = { version = "=1.0.154", features = ["float_roundtrip"] }
+tiny-skia = "=0.12.0"
+usvg = { version = "=0.48.1", default-features = false, features = ["text"] }
+resvg = { version = "=0.48.1", default-features = false, features = ["text", "raster-images"] }
+image = { version = "=0.25.10", default-features = false, features = ["png", "jpeg", "webp", "gif", "bmp"] }
+png = "=0.18.1"
+qrcode = { version = "=0.14.1", default-features = false }
+krilla = { version = "=0.8.2", default-features = false, features = ["raster-images"], optional = true }
+zip = { version = "=9.0.5", default-features = false, features = ["deflate-flate2"], optional = true }
+gif = { version = "=0.14.2", optional = true }
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+webp = { version = "=0.3.1", default-features = false, optional = true }
+
+[dev-dependencies]
+desyn-text = { path = "../desyn-text", features = ["bundled", "bundled-emoji"] }
+criterion = { version = "=0.8.2", default-features = false }
+
+[target.'cfg(target_arch = "wasm32")'.dev-dependencies]
+wasm-bindgen-test = "=0.3.79"
+
+[[bin]]
+name = "desyn-render"
+path = "src/bin/desyn-render.rs"
+required-features = ["cli"]
+
+[[bench]]
+name = "raster"
+harness = false

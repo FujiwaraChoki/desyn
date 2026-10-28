@@ -1,0 +1,30 @@
+[package]
+name = "desyn-ffi"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+description = "UniFFI facade of the Desyn engine for Swift (iOS) and Kotlin: load / apply / render / hit-test / snap / describe / export."
+publish = false
+
+[lib]
+crate-type = ["lib", "staticlib", "cdylib"]
+name = "desyn_ffi"
+
+[features]
+default = ["bundled-fonts"]
+bundled-fonts = ["desyn-raster/bundled-fonts"]
+bindgen-cli = ["uniffi/cli"]
+
+[dependencies]
+desyn-core = { path = "../desyn-core" }
+desyn-text = { path = "../desyn-text" }
+desyn-describe = { path = "../desyn-describe" }
+desyn-raster = { path = "../desyn-raster" }
+serde = { version = "=1.0.229", features = ["derive"] }
+serde_json = { version = "=1.0.154", features = ["float_roundtrip"] }
+uniffi = "=0.32.2"
+
+[[bin]]
+name = "uniffi-bindgen"
+path = "src/bin/uniffi-bindgen.rs"
+required-features = ["bindgen-cli"]

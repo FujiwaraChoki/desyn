@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "desyn": {
+      "command": "node",
+      "args": ["/absolute/path/to/desyn/packages/sdk/dist/desyn-mcp.js"],
+      "env": {
+        "DESYN_API_KEY": "dsk_your_key_here",
+        "DESYN_API_URL": "https://api.desyn.app/api/v1"
+      }
+    }
+  }
+}

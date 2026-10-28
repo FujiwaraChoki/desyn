@@ -1,0 +1,59 @@
+---
+title: "Email: SES & SMTP"
+description: Configure outgoing email for verification, magic links, password resets, invites and notifications with Amazon SES or any SMTP server.
+---
+
+Desyn sends email for account verification, magic-link sign-in, password resets, workspace invites and mentions (and receipts on the hosted edition). Messages are sent by backend actions through one of two transports, chosen with `MAIL_TRANSPORT`.
+
+## SMTP
+
+Works with any provider: Postmark, Mailgun, SendGrid, Fastmail, Google Workspace, your own Postfix.
+
+```dotenv
+MAIL_TRANSPORT=smtp
+SMTP_URL=smtps://user:password@smtp.example.org:465
+SES_FROM=Desyn <design@example.org>
+```
+
+- `smtps://…:465` uses implicit TLS; `smtp://…:587` upgrades with STARTTLS.
+- Percent-encode special characters in the user name or password (`@` becomes `%40`, `/` becomes `%2F`).
+- `SES_FROM` is the sender for both transports. Use an address your provider allows you to send from.
+
+## Amazon SES
+
+```dotenv
+MAIL_TRANSPORT=ses
+AWS_REGION=eu-north-1
+SES_FROM=Desyn <design@example.org>
+```
+
+SES uses the same AWS credentials as storage (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`); grant them `ses:SendRawEmail`. Verify your sending domain in SES (with DKIM) in the same region, and request production access — new SES accounts can only send to verified addresses. Optionally set `SES_CONFIGURATION_SET` to track deliveries, bounces and complaints.
+
+Messages are queued and retried with backoff when the provider is temporarily unavailable, so a short outage delays mail instead of losing it.
+
+## Development: log transport
+
+`MAIL_TRANSPORT=log` (also the fallback when the variable is unset) writes each message to the backend's function logs instead of sending it. Use it only on a local installation: in production nobody could confirm their email address or use magic links.
+
+## Testing with Mailpit
+
+The quickstart stack includes [Mailpit](https://mailpit.axllent.org), an SMTP server that catches every message and shows it in a web UI instead of delivering it. Start it with `docker compose --profile mail up -d`, set the transport in `deploy/compose/convex.env` and push the configuration:
+
+```dotenv
+MAIL_TRANSPORT=smtp
+SMTP_URL=smtp://mailpit:1025
+```
+
+Read the messages at `http://127.0.0.1:8025`. Like the log transport, this is for testing: nothing reaches real inboxes.
+
+## Deliverability
+
+Sign-in emails are only useful if they arrive. For your sending domain:
+
+- publish **SPF** and **DKIM** records from your provider,
+- add a **DMARC** policy (start with `p=none` and monitor),
+- send from a real mailbox or a monitored `no-reply` alias on your own domain.
+
+## Testing
+
+**Admin → Health** in the app shows whether the mail transport is configured. To test end to end, invite yourself to a workspace from **Settings → Members** with a second address, and check the backend logs (Convex dashboard → Logs) if nothing arrives: transport errors are logged with the provider's response, never with message contents.

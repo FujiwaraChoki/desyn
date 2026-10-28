@@ -1,0 +1,37 @@
+---
+title: Sync protocol
+description: How edits flow between clients and Convex — sequence numbers, commits, the confirmed-plus-pending client model, loading, snapshots and presence.
+---
+
+Convex is the authority for every design. Clients edit optimistically and converge on the server's order. The rules below are part of the frozen contract and apply to the web, desktop and iOS apps, the AI and the Agent API alike.
+
+<Generated name="model-section" section="6" />
+
+## Sequence diagram
+
+A typical edit from one client while another is watching:
+
+```text
+Client A                         Convex                          Client B
+   │  apply tx locally (pending)    │                                 │
+   │── designs.commit(baseSeq, tx) ─▶ apply to current state          │
+   │                                 │ seq = seq + 1, log in designOps │
+   │◀──── { seq, applied, dropped } ─│                                 │
+   │  move tx: pending → confirmed   │── designOps.since(seq) update ─▶│
+   │                                 │        apply to confirmed,      │
+   │                                 │        re-apply own pending     │
+```
+
+## Implementing a client
+
+1. **Load**: call `designs.load` page by page, assemble the `Design`, remember `seq`.
+2. **Subscribe** to `designOps.since({ designId, seq })` and apply each incoming transaction to the confirmed state, then re-apply your pending transactions on top (dropping ops that no longer apply).
+3. **Edit**: build a transaction per gesture, apply it locally as pending, and call `designs.commit({ designId, baseSeq, tx })`.
+4. **Acknowledge**: when the commit returns, replace the pending transaction with the server's `applied` ops and advance to its `seq`.
+5. **Recover**: if the subscription reports a large gap, reload (snapshot plus subsequent transactions).
+
+`@desyn/doc-ops` provides this state machine — `createSyncState`, `commitLocal`, `acknowledge`, `receiveRemote` and `rebase` — so TypeScript clients only wire it to the transport. Over plain HTTP, the [Agent API](/developers/api/designs#commit-a-transaction) exposes the same commit and `since` operations.
+
+## Presence
+
+Cursors, selections, live drag previews and "AI is editing" markers go through the `presence` table: clients heartbeat every 5 seconds, entries expire on their own, and a cron removes stale ones. Presence is never written into the design or its history.

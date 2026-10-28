@@ -1,0 +1,274 @@
+/*
+ * @desyn/ui stylesheet. In the app's global CSS:
+ *   @import "tailwindcss";
+ *   @import "@desyn/tokens/fonts.css";
+ *   @import "@desyn/ui/styles.css";
+ *
+ * It pulls in the token theme and registers this package's sources so Tailwind generates the
+ * utilities the components use.
+ */
+@import "@desyn/tokens/tokens.css";
+
+@source "./";
+
+@layer components {
+  /* Floating surfaces (menus, popovers, tooltips): quick scale + fade from the trigger side. */
+  .dsn-pop {
+    animation-duration: 160ms;
+    animation-timing-function: var(--ease-out-sun);
+    animation-fill-mode: both;
+  }
+  .dsn-pop:is([data-state="open"], [data-state="delayed-open"], [data-state="instant-open"]) {
+    animation-name: dsn-pop-in;
+  }
+  .dsn-pop[data-state="closed"] {
+    animation-name: dsn-pop-out;
+    animation-duration: 100ms;
+    animation-timing-function: var(--ease-in-out-sun);
+  }
+  .dsn-pop {
+    --dsn-pop-x: 0px;
+    --dsn-pop-y: -4px;
+  }
+  .dsn-pop[data-side="top"] {
+    --dsn-pop-y: 4px;
+  }
+  .dsn-pop[data-side="left"] {
+    --dsn-pop-x: 4px;
+    --dsn-pop-y: 0px;
+  }
+  .dsn-pop[data-side="right"] {
+    --dsn-pop-x: -4px;
+    --dsn-pop-y: 0px;
+  }
+
+  /* Scrims and dialogs. */
+  .dsn-fade[data-state="open"] {
+    animation: dsn-fade-in 200ms var(--ease-out-sun) both;
+  }
+  .dsn-fade[data-state="closed"] {
+    animation: dsn-fade-out 150ms var(--ease-in-out-sun) both;
+  }
+  .dsn-dialog[data-state="open"] {
+    animation: dsn-dialog-in 420ms var(--ease-out-sun) both;
+  }
+  .dsn-dialog[data-state="closed"] {
+    animation: dsn-dialog-out 140ms var(--ease-in-out-sun) both;
+  }
+
+  /* Sheets slide from their edge. */
+  .dsn-sheet[data-state="open"] {
+    animation: dsn-sheet-in 420ms var(--ease-out-sun) both;
+  }
+  .dsn-sheet[data-state="closed"] {
+    animation: dsn-sheet-out 220ms var(--ease-in-out-sun) both;
+  }
+  .dsn-sheet[data-side="right"] {
+    --dsn-sheet-from: translateX(100%);
+  }
+  .dsn-sheet[data-side="left"] {
+    --dsn-sheet-from: translateX(-100%);
+  }
+  .dsn-sheet[data-side="top"] {
+    --dsn-sheet-from: translateY(-100%);
+  }
+  .dsn-sheet[data-side="bottom"] {
+    --dsn-sheet-from: translateY(100%);
+  }
+
+  /* Collapsible / accordion height animation (Radix exposes the measured height). */
+  .dsn-collapse {
+    overflow: hidden;
+  }
+  .dsn-collapse[data-state="open"] {
+    animation: dsn-collapse-open 260ms var(--ease-out-sun);
+  }
+  .dsn-collapse[data-state="closed"] {
+    animation: dsn-collapse-close 200ms var(--ease-in-out-sun);
+  }
+
+  /* Toasts. */
+  .dsn-toast[data-state="open"] {
+    animation: dsn-toast-in 420ms var(--ease-out-sun) both;
+  }
+  .dsn-toast[data-state="closed"] {
+    animation: dsn-toast-out 160ms var(--ease-in-out-sun) both;
+  }
+  .dsn-toast[data-swipe="move"] {
+    transform: translateY(var(--radix-toast-swipe-move-y));
+  }
+  .dsn-toast[data-swipe="cancel"] {
+    transform: translateY(0);
+    transition: transform 200ms var(--ease-out-sun);
+  }
+  .dsn-toast[data-swipe="end"] {
+    animation: dsn-toast-swipe-out 160ms var(--ease-out-sun) both;
+  }
+
+  /* Transparency checkerboard behind alpha swatches. */
+  .dsn-checker {
+    background-color: #fff;
+    background-image:
+      linear-gradient(45deg, #d6d6d6 25%, transparent 25%),
+      linear-gradient(-45deg, #d6d6d6 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #d6d6d6 75%),
+      linear-gradient(-45deg, transparent 75%, #d6d6d6 75%);
+    background-size: 8px 8px;
+    background-position:
+      0 0,
+      0 4px,
+      4px -4px,
+      -4px 0;
+  }
+
+  /* Warm skeleton shimmer in surface tones. */
+  .dsn-shimmer {
+    background-color: var(--surface-2);
+    background-image: linear-gradient(
+      100deg,
+      transparent 20%,
+      rgb(var(--accent-rgb) / 0.06) 40%,
+      rgb(var(--foreground-rgb) / 0.06) 50%,
+      rgb(var(--accent-rgb) / 0.06) 60%,
+      transparent 80%
+    );
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+  }
+
+  /* Editor-style dot grid (canvas backgrounds). */
+  .dsn-dot-grid {
+    background-color: var(--canvas);
+    background-image: radial-gradient(rgb(var(--foreground-rgb) / 0.09) 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+
+  /* Hide native number spinners; NumberField draws its own affordances. */
+  .dsn-no-spin::-webkit-inner-spin-button,
+  .dsn-no-spin::-webkit-outer-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  @keyframes dsn-pop-in {
+    from {
+      opacity: 0;
+      transform: translate(var(--dsn-pop-x), var(--dsn-pop-y)) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: translate(0, 0) scale(1);
+    }
+  }
+  @keyframes dsn-pop-out {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.98);
+    }
+  }
+  @keyframes dsn-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes dsn-fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  @keyframes dsn-dialog-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px) scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  @keyframes dsn-dialog-out {
+    from {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(6px) scale(0.98);
+    }
+  }
+  @keyframes dsn-sheet-in {
+    from {
+      transform: var(--dsn-sheet-from);
+    }
+    to {
+      transform: translate(0, 0);
+    }
+  }
+  @keyframes dsn-sheet-out {
+    from {
+      transform: translate(0, 0);
+    }
+    to {
+      transform: var(--dsn-sheet-from);
+    }
+  }
+  @keyframes dsn-collapse-open {
+    from {
+      height: 0;
+      opacity: 0;
+    }
+    to {
+      height: var(--radix-collapsible-content-height, var(--radix-accordion-content-height));
+      opacity: 1;
+    }
+  }
+  @keyframes dsn-collapse-close {
+    from {
+      height: var(--radix-collapsible-content-height, var(--radix-accordion-content-height));
+      opacity: 1;
+    }
+    to {
+      height: 0;
+      opacity: 0;
+    }
+  }
+  @keyframes dsn-toast-in {
+    from {
+      opacity: 0;
+      transform: translateY(16px) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  @keyframes dsn-toast-out {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+  }
+  @keyframes dsn-toast-swipe-out {
+    from {
+      transform: translateY(var(--radix-toast-swipe-end-y));
+    }
+    to {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+  }
+}

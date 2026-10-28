@@ -1,0 +1,240 @@
+{
+  "name": "text-autoresize-height",
+  "description": "Fixed-width text grows to its line count.",
+  "before": {
+    "schema": 1,
+    "id": "dsn000000001",
+    "name": "Layout fixture",
+    "kind": "custom",
+    "nodes": {
+      "root": {
+        "id": "root",
+        "type": "root",
+        "name": "Root",
+        "parent": null,
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "children": ["page00000001"]
+      },
+      "page00000001": {
+        "id": "page00000001",
+        "type": "page",
+        "name": "Page 1",
+        "parent": "root",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 1000,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "children": ["text00000001"],
+        "clip": true,
+        "unit": "px",
+        "background": [
+          {
+            "type": "solid",
+            "color": "#ffffff"
+          }
+        ],
+        "bleed": 0
+      },
+      "text00000001": {
+        "id": "text00000001",
+        "type": "text",
+        "name": "Text",
+        "parent": "page00000001",
+        "x": 10,
+        "y": 10,
+        "width": 200,
+        "height": 99,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "runs": [
+          {
+            "text": "Hi"
+          }
+        ],
+        "style": {
+          "fontFamily": "Inter",
+          "fontWeight": 400,
+          "fontStyle": "normal",
+          "fontSize": 10,
+          "fills": [
+            {
+              "type": "solid",
+              "color": "#111111"
+            }
+          ],
+          "letterSpacing": 0,
+          "textCase": "none",
+          "decoration": "none"
+        },
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120
+          },
+          "spacing": 0,
+          "indent": 0,
+          "list": "none"
+        },
+        "autoResize": "height",
+        "verticalAlign": "top"
+      }
+    },
+    "assets": {},
+    "styles": {
+      "colors": {},
+      "text": {},
+      "effects": {},
+      "variables": {}
+    },
+    "meta": {}
+  },
+  "tx": {
+    "id": "tx0000000001",
+    "label": "Layout",
+    "ops": [
+      {
+        "op": "update",
+        "id": "text00000001",
+        "set": {
+          "runs": [
+            {
+              "text": "Hello\nworld"
+            }
+          ]
+        }
+      }
+    ],
+    "source": "user",
+    "ts": 1760000000000
+  },
+  "after": {
+    "schema": 1,
+    "id": "dsn000000001",
+    "name": "Layout fixture",
+    "kind": "custom",
+    "nodes": {
+      "root": {
+        "id": "root",
+        "type": "root",
+        "name": "Root",
+        "parent": null,
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "children": ["page00000001"]
+      },
+      "page00000001": {
+        "id": "page00000001",
+        "type": "page",
+        "name": "Page 1",
+        "parent": "root",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 1000,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "children": ["text00000001"],
+        "clip": true,
+        "unit": "px",
+        "background": [
+          {
+            "type": "solid",
+            "color": "#ffffff"
+          }
+        ],
+        "bleed": 0
+      },
+      "text00000001": {
+        "id": "text00000001",
+        "type": "text",
+        "name": "Text",
+        "parent": "page00000001",
+        "x": 10,
+        "y": 10,
+        "width": 200,
+        "height": 24,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "runs": [
+          {
+            "text": "Hello\nworld"
+          }
+        ],
+        "style": {
+          "fontFamily": "Inter",
+          "fontWeight": 400,
+          "fontStyle": "normal",
+          "fontSize": 10,
+          "fills": [
+            {
+              "type": "solid",
+              "color": "#111111"
+            }
+          ],
+          "letterSpacing": 0,
+          "textCase": "none",
+          "decoration": "none"
+        },
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120
+          },
+          "spacing": 0,
+          "indent": 0,
+          "list": "none"
+        },
+        "autoResize": "height",
+        "verticalAlign": "top"
+      }
+    },
+    "assets": {},
+    "styles": {
+      "colors": {},
+      "text": {},
+      "effects": {},
+      "variables": {}
+    },
+    "meta": {}
+  },
+  "dropped": []
+}

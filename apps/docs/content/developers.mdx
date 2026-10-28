@@ -1,0 +1,29 @@
+---
+title: Developers
+description: Build on Desyn — the architecture, the document model and its operations, the Agent REST API, the MCP server, the TypeScript SDK and how to contribute.
+---
+
+Desyn is built around one idea: a single, precise document model that every client, the server, the AI and external agents edit in exactly the same way — through transactions of small operations. If you understand the model, you understand the whole system.
+
+<Cards>
+  <Card title="Architecture" href="/developers/architecture">How the Rust engine, Convex, the clients and the AI fit together.</Card>
+  <Card title="Document model" href="/developers/document-model">Designs, nodes, paint, styles and invariants — the frozen contract.</Card>
+  <Card title="Operations & transactions" href="/developers/operations">The eight operations, undo, and how invalid ops are handled.</Card>
+  <Card title="Sync protocol" href="/developers/sync">How edits flow through Convex and reach every client.</Card>
+  <Card title="Agent API (v1)" href="/developers/api">REST endpoints for designs, assets, the agent and workflows.</Card>
+  <Card title="MCP server" href="/developers/mcp">Let Claude and other agents design with Desyn's tools.</Card>
+  <Card title="TypeScript SDK" href="/developers/sdk">Typed client, document builders and transaction helpers.</Card>
+  <Card title="Contributing" href="/developers/contributing">Repository layout, development setup and the CLA.</Card>
+</Cards>
+
+## Choosing an integration
+
+| You want to | Use |
+| --- | --- |
+| Let an AI assistant (Claude, an IDE agent) create and edit designs | The [MCP server](/developers/mcp) |
+| Automate Desyn from a script, backend or CI | The [Agent API](/developers/api) or the [TypeScript SDK](/developers/sdk) |
+| Make precise programmatic edits | [Transactions](/developers/operations) through the API |
+| Read a design's structure for your own analysis | [Describe](/developers/describe) |
+| Change Desyn itself | The [source](/developers/contributing), under the [license](/developers/license) |
+
+The Agent API and MCP server are part of Pro and the self-hosted edition.

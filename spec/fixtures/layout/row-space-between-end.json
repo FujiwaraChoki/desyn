@@ -1,0 +1,353 @@
+{
+  "name": "row-space-between-end",
+  "description": "Space-between distribution with end cross alignment.",
+  "before": {
+    "schema": 1,
+    "id": "dsn000000001",
+    "name": "Layout fixture",
+    "kind": "custom",
+    "nodes": {
+      "root": {
+        "id": "root",
+        "type": "root",
+        "name": "Root",
+        "parent": null,
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "children": ["page00000001"]
+      },
+      "page00000001": {
+        "id": "page00000001",
+        "type": "page",
+        "name": "Page 1",
+        "parent": "root",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 1000,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "children": ["frame0000001"],
+        "clip": true,
+        "unit": "px",
+        "background": [
+          {
+            "type": "solid",
+            "color": "#ffffff"
+          }
+        ],
+        "bleed": 0
+      },
+      "frame0000001": {
+        "id": "frame0000001",
+        "type": "frame",
+        "name": "Frame",
+        "parent": "page00000001",
+        "x": 0,
+        "y": 0,
+        "width": 200,
+        "height": 50,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "fills": [
+          {
+            "type": "solid",
+            "color": "#ffffff"
+          }
+        ],
+        "strokes": [],
+        "cornerRadius": 0,
+        "children": ["rect00000001", "rect00000002", "rect00000003"],
+        "clip": true,
+        "layout": {
+          "mode": "row",
+          "gap": 0,
+          "padding": [0, 0, 0, 0],
+          "mainAlign": "start",
+          "crossAlign": "start"
+        }
+      },
+      "rect00000001": {
+        "id": "rect00000001",
+        "type": "rect",
+        "name": "Rect 01",
+        "parent": "frame0000001",
+        "x": 0,
+        "y": 0,
+        "width": 20,
+        "height": 20,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "fills": [
+          {
+            "type": "solid",
+            "color": "#d9d9d9"
+          }
+        ],
+        "strokes": [],
+        "cornerRadius": 0
+      },
+      "rect00000002": {
+        "id": "rect00000002",
+        "type": "rect",
+        "name": "Rect 02",
+        "parent": "frame0000001",
+        "x": 20,
+        "y": 0,
+        "width": 20,
+        "height": 20,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "fills": [
+          {
+            "type": "solid",
+            "color": "#d9d9d9"
+          }
+        ],
+        "strokes": [],
+        "cornerRadius": 0
+      },
+      "rect00000003": {
+        "id": "rect00000003",
+        "type": "rect",
+        "name": "Rect 03",
+        "parent": "frame0000001",
+        "x": 40,
+        "y": 0,
+        "width": 20,
+        "height": 20,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "fills": [
+          {
+            "type": "solid",
+            "color": "#d9d9d9"
+          }
+        ],
+        "strokes": [],
+        "cornerRadius": 0
+      }
+    },
+    "assets": {},
+    "styles": {
+      "colors": {},
+      "text": {},
+      "effects": {},
+      "variables": {}
+    },
+    "meta": {}
+  },
+  "tx": {
+    "id": "tx0000000001",
+    "label": "Layout",
+    "ops": [
+      {
+        "op": "patch",
+        "id": "frame0000001",
+        "path": ["layout", "mainAlign"],
+        "value": "space-between"
+      },
+      {
+        "op": "patch",
+        "id": "frame0000001",
+        "path": ["layout", "crossAlign"],
+        "value": "end"
+      }
+    ],
+    "source": "user",
+    "ts": 1760000000000
+  },
+  "after": {
+    "schema": 1,
+    "id": "dsn000000001",
+    "name": "Layout fixture",
+    "kind": "custom",
+    "nodes": {
+      "root": {
+        "id": "root",
+        "type": "root",
+        "name": "Root",
+        "parent": null,
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "children": ["page00000001"]
+      },
+      "page00000001": {
+        "id": "page00000001",
+        "type": "page",
+        "name": "Page 1",
+        "parent": "root",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 1000,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "children": ["frame0000001"],
+        "clip": true,
+        "unit": "px",
+        "background": [
+          {
+            "type": "solid",
+            "color": "#ffffff"
+          }
+        ],
+        "bleed": 0
+      },
+      "frame0000001": {
+        "id": "frame0000001",
+        "type": "frame",
+        "name": "Frame",
+        "parent": "page00000001",
+        "x": 0,
+        "y": 0,
+        "width": 200,
+        "height": 50,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "fills": [
+          {
+            "type": "solid",
+            "color": "#ffffff"
+          }
+        ],
+        "strokes": [],
+        "cornerRadius": 0,
+        "children": ["rect00000001", "rect00000002", "rect00000003"],
+        "clip": true,
+        "layout": {
+          "mode": "row",
+          "gap": 0,
+          "padding": [0, 0, 0, 0],
+          "mainAlign": "space-between",
+          "crossAlign": "end"
+        }
+      },
+      "rect00000001": {
+        "id": "rect00000001",
+        "type": "rect",
+        "name": "Rect 01",
+        "parent": "frame0000001",
+        "x": 0,
+        "y": 30,
+        "width": 20,
+        "height": 20,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "fills": [
+          {
+            "type": "solid",
+            "color": "#d9d9d9"
+          }
+        ],
+        "strokes": [],
+        "cornerRadius": 0
+      },
+      "rect00000002": {
+        "id": "rect00000002",
+        "type": "rect",
+        "name": "Rect 02",
+        "parent": "frame0000001",
+        "x": 90,
+        "y": 30,
+        "width": 20,
+        "height": 20,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "fills": [
+          {
+            "type": "solid",
+            "color": "#d9d9d9"
+          }
+        ],
+        "strokes": [],
+        "cornerRadius": 0
+      },
+      "rect00000003": {
+        "id": "rect00000003",
+        "type": "rect",
+        "name": "Rect 03",
+        "parent": "frame0000001",
+        "x": 180,
+        "y": 30,
+        "width": 20,
+        "height": 20,
+        "rotation": 0,
+        "opacity": 1,
+        "blend": "normal",
+        "visible": true,
+        "locked": false,
+        "effects": [],
+        "fills": [
+          {
+            "type": "solid",
+            "color": "#d9d9d9"
+          }
+        ],
+        "strokes": [],
+        "cornerRadius": 0
+      }
+    },
+    "assets": {},
+    "styles": {
+      "colors": {},
+      "text": {},
+      "effects": {},
+      "variables": {}
+    },
+    "meta": {}
+  },
+  "dropped": []
+}

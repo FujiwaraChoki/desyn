@@ -1,0 +1,7 @@
+{
+  "name": "unicode-key-order",
+  "description": "keys sort by Unicode code point (UTF-8 byte order), not UTF-16 code units",
+  "input": { "😀": 6, "ｚ": 5, "é": 4, "z": 3, "a": 2, "Z": 1 },
+  "inputText": "{\"😀\":6,\"ｚ\":5,\"é\":4,\"z\":3,\"a\":2,\"Z\":1}",
+  "canonical": "{\"Z\":1,\"a\":2,\"z\":3,\"é\":4,\"ｚ\":5,\"😀\":6}"
+}

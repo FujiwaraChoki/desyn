@@ -1,0 +1,7 @@
+{
+  "name": "empty-containers",
+  "description": "empty objects, arrays and strings",
+  "input": { "c": "", "b": [], "a": {} },
+  "inputText": "{\"c\":\"\",\"b\":[],\"a\":{}}",
+  "canonical": "{\"a\":{},\"b\":[],\"c\":\"\"}"
+}

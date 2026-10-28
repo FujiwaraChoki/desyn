@@ -1,0 +1,178 @@
+{
+  "description": "A headline barely larger than the body copy.",
+  "design": {
+    "assets": {},
+    "id": "design000001",
+    "kind": "social-post",
+    "meta": {},
+    "name": "Fixture",
+    "nodes": {
+      "body00000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 81.6,
+        "id": "body00000000",
+        "locked": false,
+        "name": "Body",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Join us for two days of hands-on printmaking with local artists and plenty of coffee."
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#333333",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 34.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 900.0,
+        "x": 80.0,
+        "y": 200.0
+      },
+      "headline0000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 48.0,
+        "id": "headline0000",
+        "locked": false,
+        "name": "Headline",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Weekend workshop"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 40.0,
+          "fontStyle": "normal",
+          "fontWeight": 600.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 900.0,
+        "x": 80.0,
+        "y": 120.0
+      },
+      "page00000001": {
+        "background": [
+          {
+            "color": "#ffffff",
+            "type": "solid"
+          }
+        ],
+        "bleed": 0.0,
+        "blend": "normal",
+        "children": [
+          "headline0000",
+          "body00000000"
+        ],
+        "clip": true,
+        "effects": [],
+        "height": 1080.0,
+        "id": "page00000001",
+        "locked": false,
+        "name": "Page 1",
+        "opacity": 1.0,
+        "parent": "root",
+        "rotation": 0.0,
+        "type": "page",
+        "unit": "px",
+        "visible": true,
+        "width": 1080.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "root": {
+        "blend": "normal",
+        "children": [
+          "page00000001"
+        ],
+        "effects": [],
+        "height": 0.0,
+        "id": "root",
+        "locked": false,
+        "name": "Root",
+        "opacity": 1.0,
+        "parent": null,
+        "rotation": 0.0,
+        "type": "root",
+        "visible": true,
+        "width": 0.0,
+        "x": 0.0,
+        "y": 0.0
+      }
+    },
+    "schema": 1,
+    "styles": {
+      "colors": {},
+      "effects": {},
+      "text": {},
+      "variables": {}
+    }
+  },
+  "expect": {
+    "issues": [
+      {
+        "code": "weak-hierarchy",
+        "ids": [
+          "Headline",
+          "Body"
+        ],
+        "rule": "weak-hierarchy"
+      }
+    ]
+  },
+  "options": null
+}

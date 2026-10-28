@@ -1,0 +1,31 @@
+{
+  "name": "stroke",
+  "schema": "Stroke",
+  "valid": true,
+  "description": "a dashed gradient stroke",
+  "value": {
+    "fills": [
+      {
+        "type": "linear",
+        "angle": 0,
+        "stops": [
+          {
+            "pos": 0,
+            "color": "#ffd66b"
+          },
+          {
+            "pos": 1,
+            "color": "#ff6a1f"
+          }
+        ]
+      }
+    ],
+    "width": 2,
+    "align": "outside",
+    "dash": [4, 2],
+    "cap": "round",
+    "join": "round",
+    "miterLimit": 4,
+    "visible": true
+  }
+}

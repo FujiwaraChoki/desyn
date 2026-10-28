@@ -1,0 +1,153 @@
+import { rgbTriplet } from "./color.ts";
+import { accentAlpha, foregroundAlpha, palettes, type ThemeName } from "./colors.ts";
+import {
+  appType,
+  breakpoints,
+  fonts,
+  layout,
+  marketingType,
+  orbOpacity,
+  radii,
+  scrim,
+  shadows,
+  zIndex,
+} from "./scales.ts";
+import { cssBezier, durations, easings, stagger, tooltipDelay } from "./timing.ts";
+
+type Decls = [name: string, value: string][];
+
+function themeDecls(theme: ThemeName): Decls {
+  const decls: Decls = [["color-scheme", theme]];
+  const palette = palettes[theme];
+  for (const [key, hex] of Object.entries(palette)) {
+    decls.push([`--${key}`, hex.toLowerCase()]);
+    decls.push([`--${key}-rgb`, rgbTriplet(hex)]);
+  }
+  for (const [key, value] of Object.entries(shadows[theme])) {
+    decls.push([`--shadow-${key}`, value]);
+  }
+  decls.push(["--scrim", scrim[theme]]);
+  decls.push(["--orb-opacity", String(orbOpacity[theme])]);
+  return decls;
+}
+
+/**
+ * Tokens computed from the theme's rgb channels. They are re-declared on every theme scope so a
+ * nested `[data-theme]` subtree resolves them against its own palette (custom properties that
+ * reference other properties are computed where they are declared, then inherited).
+ */
+function derivedDecls(): Decls {
+  const fg = (a: number) => `rgb(var(--foreground-rgb) / ${a})`;
+  const ac = (a: number) => `rgb(var(--accent-rgb) / ${a})`;
+  return [
+    ["--fg", "rgb(var(--foreground-rgb))"],
+    ["--fg-secondary", fg(foregroundAlpha.secondary)],
+    ["--fg-muted", fg(foregroundAlpha.muted)],
+    ["--fg-placeholder", fg(foregroundAlpha.placeholder)],
+    ["--line-strong", fg(foregroundAlpha.borderStrong)],
+    ["--line", fg(foregroundAlpha.border)],
+    ["--line-subtle", fg(foregroundAlpha.borderSubtle)],
+    ["--hover", fg(foregroundAlpha.hover)],
+    ["--pressed", fg(foregroundAlpha.pressed)],
+    ["--accent-core", ac(accentAlpha.core)],
+    ["--accent-mid", ac(accentAlpha.mid)],
+    ["--accent-glow", ac(accentAlpha.glow)],
+    ["--ring", ac(accentAlpha.ring)],
+    ["--accent-tint", ac(accentAlpha.tint)],
+    ["--accent-wash", ac(accentAlpha.wash)],
+    ["--glass", "rgb(var(--surface-1-rgb) / 0.72)"],
+    [
+      "--sun-gradient",
+      "linear-gradient(135deg, var(--accent-hi), var(--accent-solid), var(--accent-lo))",
+    ],
+  ];
+}
+
+function staticDecls(): Decls {
+  const decls: Decls = [
+    ["--font-family-serif", fonts.serif],
+    ["--font-family-sans", fonts.sans],
+    ["--font-family-mono", fonts.mono],
+    ["--ease-out-sun", cssBezier(easings.out)],
+    ["--ease-in-out-sun", cssBezier(easings.inOut)],
+    ["--duration-fast", `${durations.fast}s`],
+    ["--duration-normal", `${durations.normal}s`],
+    ["--duration-slow", `${durations.slow}s`],
+    ["--stagger", `${stagger * 1000}ms`],
+    ["--tooltip-delay", `${tooltipDelay}ms`],
+    ["--glass-filter", "blur(20px) saturate(1.2)"],
+    ["--max-width-content", `${layout.maxWidthContent}px`],
+    ["--max-width-wide", `${layout.maxWidthWide}px`],
+    ["--page-padding", `${layout.pagePadding}px`],
+    ["--flyout-width", `${layout.flyoutWidth}px`],
+    ["--inspector-width", `${layout.inspectorWidth}px`],
+  ];
+  for (const [key, value] of Object.entries(radii)) decls.push([`--radius-${key}`, `${value}px`]);
+  for (const [key, value] of Object.entries(zIndex)) decls.push([`--z-${key}`, String(value)]);
+  return decls;
+}
+
+function block(selector: string, decls: Decls, indent = ""): string {
+  const body = decls.map(([name, value]) => `${indent}  ${name}: ${value};`).join("\n");
+  return `${indent}${selector} {\n${body}\n${indent}}`;
+}
+
+const rem = (px: number) => `${px / 16}rem`;
+
+/**
+ * Builds `theme.css`: the static half of the Tailwind 4 theme (values that never change per theme),
+ * generated from the same TS constants so the CSS cannot drift from `@desyn/tokens`.
+ * Theme-dependent values are mapped by hand in `tokens.css` with `@theme inline reference`.
+ */
+export function buildThemeCss(): string {
+  const decls: Decls = [];
+  for (const [key, value] of Object.entries(radii)) {
+    decls.push([`--radius-${key}`, value === radii.pill ? "9999px" : rem(value)]);
+  }
+  for (const [key, step] of Object.entries(appType)) {
+    decls.push([`--text-${key}`, rem(step.size)]);
+    decls.push([`--text-${key}--line-height`, rem(step.lineHeight)]);
+  }
+  for (const [key, step] of Object.entries(marketingType)) {
+    const tracking = "tracking" in step ? step.tracking : undefined;
+    decls.push([`--text-${key}`, rem(step.size)]);
+    decls.push([`--text-${key}--line-height`, String(+(step.lineHeight / step.size).toFixed(3))]);
+    if (tracking !== undefined) decls.push([`--text-${key}--letter-spacing`, `${tracking}em`]);
+  }
+  decls.push(["--ease-out", cssBezier(easings.out)]);
+  decls.push(["--ease-in-out", cssBezier(easings.inOut)]);
+  decls.push(["--ease-in", cssBezier(easings.in)]);
+  for (const [key, value] of Object.entries(breakpoints))
+    decls.push([`--breakpoint-${key}`, rem(value)]);
+  return [
+    "/* Generated by packages/tokens/scripts/generate-css.ts from src/*.ts. Do not edit by hand. */",
+    "",
+    block("@theme", decls),
+    "",
+  ].join("\n");
+}
+
+/**
+ * Builds `variables.css`. Theme resolution:
+ * - `:root` without `data-theme` is dark (Desyn is dark-first).
+ * - `[data-theme="dark"]` / `[data-theme="light"]` force a theme on any subtree.
+ * - `[data-theme="system"]` follows `prefers-color-scheme`.
+ */
+export function buildVariablesCss(): string {
+  return [
+    "/* Generated by packages/tokens/scripts/generate-css.ts from src/*.ts. Do not edit by hand. */",
+    "",
+    block(":root", staticDecls()),
+    "",
+    block(':root,\n[data-theme="dark"],\n[data-theme="system"]', themeDecls("dark")),
+    "",
+    block('[data-theme="light"]', themeDecls("light")),
+    "",
+    "@media (prefers-color-scheme: light) {",
+    block('[data-theme="system"]', themeDecls("light"), "  "),
+    "}",
+    "",
+    block(":root,\n[data-theme]", derivedDecls()),
+    "",
+  ].join("\n");
+}

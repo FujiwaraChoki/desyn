@@ -1,0 +1,22 @@
+{
+  "name": "fill-conic",
+  "schema": "Fill",
+  "valid": true,
+  "description": "conic fill",
+  "value": {
+    "type": "conic",
+    "cx": 0.5,
+    "cy": 0.5,
+    "angle": 90,
+    "stops": [
+      {
+        "pos": 0,
+        "color": "#ff6a1f"
+      },
+      {
+        "pos": 1,
+        "color": "#ffd66b"
+      }
+    ]
+  }
+}

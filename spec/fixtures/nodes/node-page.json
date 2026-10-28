@@ -1,0 +1,54 @@
+{
+  "name": "node-page",
+  "schema": "PageNode",
+  "valid": true,
+  "description": "canonical example of a page node",
+  "value": {
+    "id": "page00000001",
+    "type": "page",
+    "name": "Slide 1",
+    "parent": "root",
+    "x": 0,
+    "y": 0,
+    "width": 1920,
+    "height": 1080,
+    "rotation": 0,
+    "opacity": 1,
+    "blend": "normal",
+    "visible": true,
+    "locked": false,
+    "effects": [],
+    "children": ["node00000001"],
+    "clip": true,
+    "unit": "px",
+    "background": [
+      {
+        "type": "solid",
+        "color": "#0a0a0a"
+      }
+    ],
+    "bleed": 0,
+    "durationMs": 6000,
+    "transition": {
+      "kind": "fade",
+      "durationMs": 400
+    },
+    "grid": {
+      "columns": 12,
+      "gutter": 24,
+      "margin": 96,
+      "baseline": 8
+    },
+    "guides": [
+      {
+        "axis": "x",
+        "pos": 960
+      },
+      {
+        "axis": "y",
+        "pos": 540
+      }
+    ],
+    "notes": "Open with the question."
+  }
+}

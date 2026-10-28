@@ -1,0 +1,31 @@
+[package]
+name = "desyn-wasm"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+description = "Desyn engine for the web: a wasm-bindgen facade over desyn-core, desyn-text, desyn-describe and desyn-raster (load, transactions, previews, viewport rendering with damage / scroll / tiles, hit testing, snapping, handles, measuring, describe / lint, export, text editing geometry)."
+publish = false
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = []
+# PDF, PPTX and GIF exporters (krilla, zip, gif). Built into the second, lazily loaded module
+# (`desyn_export.wasm`); the interactive module (`desyn_engine.wasm`) exports PNG / JPEG / WebP / SVG.
+exporters = ["desyn-raster/pdf", "desyn-raster/pptx", "desyn-raster/gif"]
+
+[dependencies]
+desyn-core = { path = "../desyn-core" }
+desyn-text = { path = "../desyn-text" }
+desyn-describe = { path = "../desyn-describe" }
+desyn-raster = { path = "../desyn-raster", default-features = false }
+serde = { version = "=1.0.229", features = ["derive"] }
+serde_json = { version = "=1.0.154", features = ["float_roundtrip"] }
+wasm-bindgen = "=0.2.129"
+
+[dev-dependencies]
+desyn-text = { path = "../desyn-text", features = ["bundled"] }
+
+[target.'cfg(target_arch = "wasm32")'.dev-dependencies]
+wasm-bindgen-test = "=0.3.79"

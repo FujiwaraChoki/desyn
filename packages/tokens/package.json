@@ -1,0 +1,38 @@
+{
+  "name": "@desyn/tokens",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Desyn design tokens: CSS custom properties, Tailwind CSS 4 theme, TypeScript constants, fonts and motion presets.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./motion": "./src/motion.ts",
+    "./variables.css": "./src/variables.css",
+    "./tokens.css": "./src/tokens.css",
+    "./fonts.css": "./src/fonts.css",
+    "./fonts/*": "./fonts/*"
+  },
+  "files": [
+    "src",
+    "fonts"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "generate": "node scripts/generate-css.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "lint": "biome check ."
+  },
+  "dependencies": {
+    "@fontsource-variable/instrument-sans": "5.3.0",
+    "@fontsource-variable/jetbrains-mono": "5.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "motion": "14.3.0",
+    "typescript": "5.9.3",
+    "vitest": "5.0.5"
+  }
+}

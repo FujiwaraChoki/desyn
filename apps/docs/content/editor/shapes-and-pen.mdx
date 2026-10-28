@@ -1,0 +1,56 @@
+---
+title: Shapes & pen
+description: Drawing rectangles, ellipses, polygons, stars and lines, editing vector paths with the pen, and combining shapes with boolean operations.
+---
+
+## Basic shapes
+
+Pick a shape from the tool dock or press its key, then drag on the canvas. Hold <Keys combo="shift" /> while dragging for a square, circle or regular shape, and <Keys combo="alt" /> to draw from the center. Click without dragging to place a 100 × 100 shape.
+
+| Shape | Key | Shape-specific settings |
+| --- | --- | --- |
+| Rectangle | <Keys combo="r" /> | Corner radius (one value or per corner), corner smoothing for soft "squircle" corners |
+| Ellipse | <Keys combo="o" /> | Arc start and end angle, inner radius for rings and donuts |
+| Polygon | from the shapes menu | Number of sides |
+| Star | from the shapes menu | Number of points, inner radius ratio |
+| Line | <Keys combo="l" /> | Stroke, start and end caps |
+| Arrow | <Keys combo="shift+l" /> | A line with an arrow cap |
+
+Line caps can be none, arrow, triangle, circle, square, diamond or bar, chosen separately for each end.
+
+The **Elements** panel adds ready-made shapes, frames, icons (Lucide, Phosphor and Tabler sets), illustrations and stickers. Icons are inserted as SVG layers you can recolor.
+
+## The pen tool
+
+Press <Keys combo="p" /> to draw vector paths:
+
+- **Click** to add a corner point; **click and drag** to add a smooth point with curve handles.
+- Click the first point to close the path, or press <Keys combo="enter" /> or <Keys combo="escape" /> to finish an open path.
+- Hold <Keys combo="shift" /> to constrain segments to 45° angles.
+
+Pen and boolean operations are part of Pro and the self-hosted edition.
+
+### Editing paths
+
+Double-click a path (or any shape) to enter point editing. Drag points and handles to reshape; double-click a point to toggle it between corner and smooth; hold <Keys combo="alt" /> while dragging a handle to break the symmetry between its two sides. Click a segment to insert a point there; select points and press <Keys combo="delete" /> to remove them.
+
+Converting a rectangle, ellipse, polygon or star into a path (**Flatten** in the context menu) gives you full point control at the cost of its shape settings.
+
+Paths support both *nonzero* and *even-odd* fill rules, so cut-outs in compound shapes behave like they do in other vector tools.
+
+## Boolean operations
+
+Select two or more shapes and choose an operation in the context toolbar:
+
+| Operation | Result |
+| --- | --- |
+| **Union** | Everything covered by any shape |
+| **Subtract** | The bottom shape minus the shapes above it |
+| **Intersect** | Only where all shapes overlap |
+| **Exclude** | Where an odd number of shapes overlap |
+
+The result is a boolean layer whose children stay editable: move or reshape a child and the result updates. Flatten it to bake the outcome into a single path.
+
+## From bitmap to vector
+
+To turn a logo, sketch or photo into editable vector paths, select an image and choose **Trace to vector** in the **AI** panel. See [asset tools](/ai/asset-tools#trace-to-vector).

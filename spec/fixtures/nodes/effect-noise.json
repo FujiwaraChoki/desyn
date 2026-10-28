@@ -1,0 +1,12 @@
+{
+  "name": "effect-noise",
+  "schema": "Effect",
+  "valid": true,
+  "description": "noise effect",
+  "value": {
+    "type": "noise",
+    "amount": 0.15,
+    "scale": 1.5,
+    "mono": true
+  }
+}

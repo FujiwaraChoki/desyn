@@ -1,0 +1,24 @@
+{
+  "name": "@desyn/doc-ops",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "lint": "biome check .",
+    "gen:fixtures": "tsx scripts/gen-fixtures.ts && biome format --write ../../spec/fixtures"
+  },
+  "dependencies": {
+    "@desyn/schema": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "vitest": "5.0.5"
+  }
+}

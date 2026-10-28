@@ -1,0 +1,701 @@
+{
+  "description": "Tiny text, overflow, maxLines truncation, clipping, an orphan, a widow, empty text, overlapping and covered text.",
+  "design": {
+    "assets": {},
+    "id": "design000001",
+    "kind": "social-post",
+    "meta": {},
+    "name": "Fixture",
+    "nodes": {
+      "clipcard0000": {
+        "blend": "normal",
+        "children": [
+          "clipped00000"
+        ],
+        "clip": true,
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fills": [
+          {
+            "color": "#eeeeee",
+            "type": "solid"
+          }
+        ],
+        "height": 120.0,
+        "id": "clipcard0000",
+        "locked": false,
+        "name": "Clip card",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "frame",
+        "visible": true,
+        "width": 300.0,
+        "x": 600.0,
+        "y": 80.0
+      },
+      "clipped00000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 33.6,
+        "id": "clipped00000",
+        "locked": false,
+        "name": "Clipped",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "clipcard0000",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Text that hangs out of its card"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 28.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 400.0,
+        "x": 20.0,
+        "y": 80.0
+      },
+      "empty0000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 28.799999999999997,
+        "id": "empty0000000",
+        "locked": false,
+        "name": "Empty",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "   "
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 24.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 300.0,
+        "x": 80.0,
+        "y": 700.0
+      },
+      "firstoverlap": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 38.4,
+        "id": "firstoverlap",
+        "locked": false,
+        "name": "First overlap",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Overlapping words"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 32.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 300.0,
+        "x": 600.0,
+        "y": 700.0
+      },
+      "hiddentext00": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 38.4,
+        "id": "hiddentext00",
+        "locked": false,
+        "name": "Hidden text",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Covered by a sticker"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 32.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 400.0,
+        "x": 80.0,
+        "y": 820.0
+      },
+      "legal0000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 10.8,
+        "id": "legal0000000",
+        "locked": false,
+        "name": "Legal",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Terms apply. Offer valid while stocks last."
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#333333",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 9.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 600.0,
+        "x": 80.0,
+        "y": 1000.0
+      },
+      "orphan000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 230.39999999999998,
+        "id": "orphan000000",
+        "locked": false,
+        "name": "Orphan",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Our summer collection arrives today"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 64.0,
+          "fontStyle": "normal",
+          "fontWeight": 700.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 640.0,
+        "x": 80.0,
+        "y": 420.0
+      },
+      "overflowing0": {
+        "autoResize": "none",
+        "blend": "normal",
+        "effects": [],
+        "height": 40.0,
+        "id": "overflowing0",
+        "locked": false,
+        "name": "Overflowing",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "This paragraph has far more words than its fixed box can show at this size, so it spills out."
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 28.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 300.0,
+        "x": 80.0,
+        "y": 80.0
+      },
+      "page00000001": {
+        "background": [
+          {
+            "color": "#ffffff",
+            "type": "solid"
+          }
+        ],
+        "bleed": 0.0,
+        "blend": "normal",
+        "children": [
+          "legal0000000",
+          "overflowing0",
+          "truncated000",
+          "clipcard0000",
+          "orphan000000",
+          "widow0000000",
+          "empty0000000",
+          "firstoverlap",
+          "secondoverla",
+          "hiddentext00",
+          "sticker00000"
+        ],
+        "clip": true,
+        "effects": [],
+        "height": 1080.0,
+        "id": "page00000001",
+        "locked": false,
+        "name": "Page 1",
+        "opacity": 1.0,
+        "parent": "root",
+        "rotation": 0.0,
+        "type": "page",
+        "unit": "px",
+        "visible": true,
+        "width": 1080.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "root": {
+        "blend": "normal",
+        "children": [
+          "page00000001"
+        ],
+        "effects": [],
+        "height": 0.0,
+        "id": "root",
+        "locked": false,
+        "name": "Root",
+        "opacity": 1.0,
+        "parent": null,
+        "rotation": 0.0,
+        "type": "root",
+        "visible": true,
+        "width": 0.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "secondoverla": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 38.4,
+        "id": "secondoverla",
+        "locked": false,
+        "name": "Second overlap",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Collide here"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 32.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 300.0,
+        "x": 640.0,
+        "y": 710.0
+      },
+      "sticker00000": {
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fills": [
+          {
+            "color": "#ff5a5f",
+            "type": "solid"
+          }
+        ],
+        "height": 100.0,
+        "id": "sticker00000",
+        "locked": false,
+        "name": "Sticker",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "ellipse",
+        "visible": true,
+        "width": 220.0,
+        "x": 60.0,
+        "y": 790.0
+      },
+      "truncated000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 28.799999999999997,
+        "id": "truncated000",
+        "locked": false,
+        "maxLines": 1,
+        "name": "Truncated",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "A long single line that will be cut with an ellipsis"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 24.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 300.0,
+        "x": 80.0,
+        "y": 300.0
+      },
+      "widow0000000": {
+        "autoResize": "none",
+        "blend": "normal",
+        "effects": [],
+        "height": 50.0,
+        "id": "widow0000000",
+        "locked": false,
+        "name": "Widow",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "First paragraph fits in the box.\nSecond paragraph starts on the last visible line and continues well beyond the bottom of the box."
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 20.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 280.0,
+        "x": 760.0,
+        "y": 420.0
+      }
+    },
+    "schema": 1,
+    "styles": {
+      "colors": {},
+      "effects": {},
+      "text": {},
+      "variables": {}
+    }
+  },
+  "expect": {
+    "flags": {
+      "First overlap": [
+        "overlaps"
+      ],
+      "Legal": [
+        "tiny-text"
+      ]
+    },
+    "issues": [
+      {
+        "code": "tiny-text",
+        "fix": true,
+        "ids": [
+          "Legal"
+        ],
+        "rule": "tiny-text"
+      },
+      {
+        "code": "text-overflow",
+        "fix": true,
+        "ids": [
+          "Overflowing"
+        ],
+        "rule": "text-overflow"
+      },
+      {
+        "code": "text-overflow",
+        "ids": [
+          "Truncated"
+        ],
+        "rule": "text-truncated"
+      },
+      {
+        "code": "text-overflow",
+        "ids": [
+          "Clipped",
+          "Clip card"
+        ],
+        "rule": "text-clipped"
+      },
+      {
+        "code": "orphan-line",
+        "ids": [
+          "Orphan"
+        ],
+        "rule": "orphan-line"
+      },
+      {
+        "code": "orphan-line",
+        "ids": [
+          "Widow"
+        ],
+        "rule": "widow-line"
+      },
+      {
+        "code": "unlabeled-group",
+        "fix": true,
+        "ids": [
+          "Empty"
+        ],
+        "rule": "empty-text"
+      },
+      {
+        "code": "overlap",
+        "ids": [
+          "First overlap",
+          "Second overlap"
+        ],
+        "rule": "overlap"
+      },
+      {
+        "code": "overlap",
+        "ids": [
+          "Hidden text",
+          "Sticker"
+        ],
+        "rule": "text-covered"
+      }
+    ]
+  },
+  "options": null
+}

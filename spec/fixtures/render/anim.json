@@ -1,0 +1,307 @@
+{
+ "schema": 1,
+ "id": "animdesi0015",
+ "name": "anim",
+ "kind": "social-post",
+ "nodes": {
+  "root": {
+   "id": "root",
+   "type": "root",
+   "name": "Root",
+   "parent": null,
+   "x": 0,
+   "y": 0,
+   "width": 0,
+   "height": 0,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "children": [
+    "animpage0012"
+   ]
+  },
+  "animpage0012": {
+   "id": "animpage0012",
+   "type": "page",
+   "name": "Page 1",
+   "parent": null,
+   "x": 0,
+   "y": 0,
+   "width": 480,
+   "height": 480,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "children": [
+    "animbgca0002",
+    "animtitl0004",
+    "animtype0006",
+    "animsunx0009",
+    "animwipe0011"
+   ],
+   "clip": true,
+   "unit": "px",
+   "background": [
+    {
+     "type": "solid",
+     "color": "#0f0d1f"
+    }
+   ],
+   "bleed": 0,
+   "durationMs": 2400
+  },
+  "animbgca0002": {
+   "id": "animbgca0002",
+   "type": "rect",
+   "name": "anim-bg-card",
+   "parent": "animpage0012",
+   "x": 40,
+   "y": 40,
+   "width": 400,
+   "height": 400,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "anim": [
+    {
+     "id": "animzoom0001",
+     "preset": "zoom-in",
+     "phase": "in",
+     "startMs": 0,
+     "durationMs": 600,
+     "easing": "ease-out"
+    }
+   ],
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#1b1446"
+    }
+   ],
+   "strokes": [],
+   "cornerRadius": 32
+  },
+  "animtitl0004": {
+   "id": "animtitl0004",
+   "type": "text",
+   "name": "anim-title",
+   "parent": "animpage0012",
+   "x": 80,
+   "y": 100,
+   "width": 320,
+   "height": 60,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "anim": [
+    {
+     "id": "animrise0003",
+     "preset": "rise",
+     "phase": "in",
+     "startMs": 200,
+     "durationMs": 600,
+     "easing": "ease-out"
+    }
+   ],
+   "runs": [
+    {
+     "text": "Hello, sun"
+    }
+   ],
+   "style": {
+    "fontFamily": "Instrument Serif",
+    "fontWeight": 400,
+    "fontStyle": "normal",
+    "fontSize": 52,
+    "fills": [
+     {
+      "type": "solid",
+      "color": "#ffb02e"
+     }
+    ],
+    "letterSpacing": 0,
+    "textCase": "none",
+    "decoration": "none"
+   },
+   "paragraph": {
+    "align": "left",
+    "direction": "auto",
+    "lineHeight": {
+     "unit": "percent",
+     "value": 120
+    },
+    "spacing": 0,
+    "indent": 0,
+    "list": "none"
+   },
+   "autoResize": "height",
+   "verticalAlign": "top"
+  },
+  "animtype0006": {
+   "id": "animtype0006",
+   "type": "text",
+   "name": "anim-type",
+   "parent": "animpage0012",
+   "x": 80,
+   "y": 180,
+   "width": 320,
+   "height": 40,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "anim": [
+    {
+     "id": "animtype0005",
+     "preset": "typewriter",
+     "phase": "in",
+     "startMs": 300,
+     "durationMs": 800,
+     "easing": "linear"
+    }
+   ],
+   "runs": [
+    {
+     "text": "typewriter reveal"
+    }
+   ],
+   "style": {
+    "fontFamily": "JetBrains Mono",
+    "fontWeight": 400,
+    "fontStyle": "normal",
+    "fontSize": 22,
+    "fills": [
+     {
+      "type": "solid",
+      "color": "#ffffff"
+     }
+    ],
+    "letterSpacing": 0,
+    "textCase": "none",
+    "decoration": "none"
+   },
+   "paragraph": {
+    "align": "left",
+    "direction": "auto",
+    "lineHeight": {
+     "unit": "percent",
+     "value": 120
+    },
+    "spacing": 0,
+    "indent": 0,
+    "list": "none"
+   },
+   "autoResize": "height",
+   "verticalAlign": "top"
+  },
+  "animsunx0009": {
+   "id": "animsunx0009",
+   "type": "ellipse",
+   "name": "anim-sun",
+   "parent": "animpage0012",
+   "x": 190,
+   "y": 260,
+   "width": 100,
+   "height": 100,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [
+    {
+     "type": "glow",
+     "radius": 20,
+     "strength": 0.6,
+     "color": "#ffb02e"
+    }
+   ],
+   "anim": [
+    {
+     "id": "animpopi0007",
+     "preset": "pop",
+     "phase": "in",
+     "startMs": 400,
+     "durationMs": 500,
+     "easing": "ease-out"
+    },
+    {
+     "id": "animpuls0008",
+     "preset": "pulse",
+     "phase": "loop",
+     "startMs": 900,
+     "durationMs": 1200,
+     "easing": "ease-in-out"
+    }
+   ],
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#ffb02e"
+    }
+   ],
+   "strokes": [],
+   "cornerRadius": 0
+  },
+  "animwipe0011": {
+   "id": "animwipe0011",
+   "type": "rect",
+   "name": "anim-wipe",
+   "parent": "animpage0012",
+   "x": 80,
+   "y": 390,
+   "width": 320,
+   "height": 8,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "anim": [
+    {
+     "id": "animwipe0010",
+     "preset": "wipe",
+     "phase": "in",
+     "startMs": 500,
+     "durationMs": 700,
+     "easing": "ease-out"
+    }
+   ],
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#ffb02e"
+    }
+   ],
+   "strokes": [],
+   "cornerRadius": 4
+  }
+ },
+ "assets": {},
+ "styles": {
+  "colors": {},
+  "text": {},
+  "effects": {},
+  "variables": {}
+ },
+ "meta": {
+  "render": {
+   "timeMs": 520
+  }
+ }
+}

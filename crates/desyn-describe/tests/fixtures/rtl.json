@@ -1,0 +1,227 @@
+{
+  "description": "Arabic two-column page: direction rtl, the right column reads before the left one.",
+  "design": {
+    "assets": {},
+    "id": "design000001",
+    "kind": "poster",
+    "meta": {
+      "locale": "ar"
+    },
+    "name": "Fixture",
+    "nodes": {
+      "leftcolumn00": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 67.2,
+        "id": "leftcolumn00",
+        "locked": false,
+        "name": "Left column",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "right",
+          "direction": "rtl",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "ثم ينتقل القارئ إلى العمود الأيسر"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 28.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 440.0,
+        "x": 80.0,
+        "y": 300.0
+      },
+      "page00000001": {
+        "background": [
+          {
+            "color": "#ffffff",
+            "type": "solid"
+          }
+        ],
+        "bleed": 0.0,
+        "blend": "normal",
+        "children": [
+          "title0000000",
+          "rightcolumn0",
+          "leftcolumn00"
+        ],
+        "clip": true,
+        "effects": [],
+        "height": 1350.0,
+        "id": "page00000001",
+        "locked": false,
+        "name": "Page 1",
+        "opacity": 1.0,
+        "parent": "root",
+        "rotation": 0.0,
+        "type": "page",
+        "unit": "px",
+        "visible": true,
+        "width": 1080.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "rightcolumn0": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 67.2,
+        "id": "rightcolumn0",
+        "locked": false,
+        "name": "Right column",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "right",
+          "direction": "rtl",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "النص في العمود الأيمن يقرأ أولا"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 28.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 440.0,
+        "x": 560.0,
+        "y": 300.0
+      },
+      "root": {
+        "blend": "normal",
+        "children": [
+          "page00000001"
+        ],
+        "effects": [],
+        "height": 0.0,
+        "id": "root",
+        "locked": false,
+        "name": "Root",
+        "opacity": 1.0,
+        "parent": null,
+        "rotation": 0.0,
+        "type": "root",
+        "visible": true,
+        "width": 0.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "title0000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 86.4,
+        "id": "title0000000",
+        "locked": false,
+        "name": "Title",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "right",
+          "direction": "rtl",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "عرض الصيف"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 72.0,
+          "fontStyle": "normal",
+          "fontWeight": 700.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 920.0,
+        "x": 80.0,
+        "y": 100.0
+      }
+    },
+    "schema": 1,
+    "styles": {
+      "colors": {},
+      "effects": {},
+      "text": {},
+      "variables": {}
+    }
+  },
+  "expect": {
+    "direction": "rtl",
+    "issues": [],
+    "readingOrder": [
+      "Title",
+      "Right column",
+      "Left column"
+    ]
+  },
+  "options": null
+}

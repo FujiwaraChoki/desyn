@@ -1,0 +1,47 @@
+{
+  "name": "@desyn/engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Desyn rendering engine for the web: the Rust/wasm engine in a Web Worker with an OffscreenCanvas, typed RPC, frame scheduling, fonts, assets, a text-editing bridge and the AI DocHost.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./worker": "./src/worker.ts",
+    "./wasm/*": "./wasm/*"
+  },
+  "files": [
+    "src",
+    "wasm",
+    "fonts"
+  ],
+  "scripts": {
+    "build": "node scripts/build-wasm.mjs",
+    "build:wasm": "node scripts/build-wasm.mjs",
+    "typecheck": "node scripts/build-wasm.mjs --if-missing && tsc --noEmit",
+    "test": "node scripts/build-wasm.mjs --if-missing && vitest run",
+    "lint": "biome check .",
+    "demo": "vite --config demo/vite.config.ts",
+    "demo:build": "vite build --config demo/vite.config.ts",
+    "demo:verify": "node demo/verify.mjs",
+    "demo:next": "next build demo/next-smoke && next start demo/next-smoke -p 4105"
+  },
+  "dependencies": {
+    "@desyn/ai": "workspace:*",
+    "@desyn/doc-ops": "workspace:*",
+    "@desyn/schema": "workspace:*"
+  },
+  "devDependencies": {
+    "@desyn/tokens": "workspace:*",
+    "@types/node": "26.6.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "binaryen": "132.0.0",
+    "next": "16.4.2",
+    "playwright": "1.63.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "typescript": "5.9.3",
+    "vite": "8.3.4",
+    "vitest": "5.0.5"
+  }
+}

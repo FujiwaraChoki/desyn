@@ -1,0 +1,60 @@
+---
+title: Workflows
+description: Multi-step AI jobs that produce many designs — campaigns, A/B variants, resizing to other formats, localization and bulk creation from a spreadsheet.
+---
+
+Workflows are AI jobs that run for longer and produce several designs. They run on the server, so you can close the tab and come back; progress is shown in the **AI** panel and each finished output appears as a new design. Each step bills its credits as it completes, so a cancelled workflow only costs what it produced.
+
+Start a workflow from the **AI** panel, by asking the agent (*"resize this for Instagram story, LinkedIn and a YouTube thumbnail"*), or through the [API](/developers/api/ai#start-a-workflow). Workflows are part of Pro and the self-hosted edition.
+
+## Campaign
+
+From a single brief to a coordinated set of designs.
+
+1. You describe the campaign: product, audience, message, channels.
+2. The agent writes a **concept** — the idea, key message, visual direction and copy variations — and shows it for your approval.
+3. It produces each design in the set (for example an Instagram post, a story, a banner and a flyer) with shared visuals and copy that fits each format.
+
+Campaigns use your brand kit when one is selected. Each design produced costs 5 credits on Pro, plus generated images.
+
+## Variants
+
+Creates alternative versions of a design for A/B testing or for choosing a direction: different headlines, layouts, color treatments or images, as many as you ask for. Variants are created as new pages or new designs, labeled with what differs.
+
+## Resize
+
+Turns a design into other formats with **smart reflow**, not just scaling: content is rearranged for the new aspect ratio, text is resized to stay readable, images are re-cropped around their subject, and safe margins for each platform are respected. Choose from platform presets (Instagram post and story, Facebook, LinkedIn, X, YouTube thumbnail, Pinterest, A4, Letter and more) or enter custom sizes.
+
+Each size produced costs 1 credit on Pro.
+
+## Localize
+
+Translates a design into other languages and fixes the layout afterwards:
+
+- **Length-aware relayout** — German or French copy is often 30% longer than English; text is resized, rewrapped or slightly reflowed so nothing overflows.
+- **Right-to-left** — Arabic, Hebrew and Persian versions mirror the layout where that is appropriate and set text direction correctly.
+- **Consistent terms** — product names and anything you mark as "do not translate" are kept.
+
+Each language produced costs 1 credit on Pro.
+
+## Bulk create
+
+Merges a spreadsheet into a template design to create many designs at once — name badges, certificates, product cards, social posts per location.
+
+1. Prepare a design whose variable layers have [slots or roles](/concepts/roles) such as `name`, `title` or `photo`.
+2. Upload a CSV. Columns are matched to slots by name; you confirm the mapping.
+3. Desyn creates one design (or one page) per row. Image columns can contain URLs or asset ids.
+
+```text title="attendees.csv"
+name,title,company
+Ada Park,Head of Design,Sunline Coffee
+Omar Haddad,Illustrator,Studio Haddad
+```
+
+## Export bundle
+
+Any workflow can end with an export step: all outputs exported in the formats you choose and bundled as one download.
+
+## Safety
+
+Workflows that would change or delete many existing designs ask for confirmation first. Each run is limited in steps and cost, and you can run up to three workflows or agent runs at the same time.

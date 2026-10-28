@@ -1,0 +1,28 @@
+Windows Registry Editor Version 5.00
+
+; Per-user registration of the .desyn file type and desyn:// links. Replace C:\\Program Files\\Desyn\\desyn.exe
+; with the installed path (installers write the same keys). Second launches hand their arguments to the running
+; app through the single-instance channel, so double-clicked files open as tabs.
+
+[HKEY_CURRENT_USER\Software\Classes\.desyn]
+@="Desyn.Design"
+"Content Type"="application/x-desyn"
+
+[HKEY_CURRENT_USER\Software\Classes\Desyn.Design]
+@="Desyn design"
+
+[HKEY_CURRENT_USER\Software\Classes\Desyn.Design\DefaultIcon]
+@="\"C:\\Program Files\\Desyn\\desyn.exe\",0"
+
+[HKEY_CURRENT_USER\Software\Classes\Desyn.Design\shell\open\command]
+@="\"C:\\Program Files\\Desyn\\desyn.exe\" \"%1\""
+
+[HKEY_CURRENT_USER\Software\Classes\desyn]
+@="URL:Desyn"
+"URL Protocol"=""
+
+[HKEY_CURRENT_USER\Software\Classes\desyn\DefaultIcon]
+@="\"C:\\Program Files\\Desyn\\desyn.exe\",0"
+
+[HKEY_CURRENT_USER\Software\Classes\desyn\shell\open\command]
+@="\"C:\\Program Files\\Desyn\\desyn.exe\" \"%1\""

@@ -1,0 +1,91 @@
+name: Convex deploy
+
+# Deploys the convex/ functions of a ref to the Convex Cloud production deployment (CONVEX_DEPLOYMENT in
+# deploy/env/public.env). Authentication is the CONVEX_DEPLOY_KEY secret of the GitHub environment "production"
+# (create or rotate it with deploy/scripts/github-deploy-key.sh; the value never appears in logs).
+# The function env is not managed here: it is pushed from the owner's machine (deploy/scripts/convex-cloud-env.py).
+#
+# Called by release.yml for v* tags when the repository variable DESYN_CONVEX_DEPLOY_ON_RELEASE is "true", or run
+# by hand (Actions -> Convex deploy -> Run workflow) for any ref. The Hetzner services are deployed separately
+# with deploy/scripts/deploy.sh --skip-convex.
+
+on:
+  workflow_call:
+    inputs:
+      ref:
+        description: "Git ref (tag, branch or sha) whose functions are deployed"
+        type: string
+        required: true
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Git ref (tag, branch or sha) whose functions are deployed"
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: convex-deploy-production
+  cancel-in-progress: false
+
+env:
+  NODE_VERSION: "26"
+  DO_NOT_TRACK: "1"
+
+jobs:
+  deploy:
+    name: convex deploy (production)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    environment: production
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.ref }}
+
+      - uses: pnpm/action-setup@v6.1.0
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
+      # The key must belong to the deployment named in deploy/env/public.env, so a dev or preview key can never
+      # stand in for production (and a production key never deploys anything else).
+      - name: Check the deploy key
+        env:
+          CONVEX_DEPLOY_KEY: ${{ secrets.CONVEX_DEPLOY_KEY }}
+        run: |
+          expected="$(sed -n 's/^CONVEX_DEPLOYMENT=//p' deploy/env/public.env)"
+          if [ -z "${CONVEX_DEPLOY_KEY}" ]; then
+            echo "::error::The CONVEX_DEPLOY_KEY secret is not set for the production environment (deploy/scripts/github-deploy-key.sh)"
+            exit 1
+          fi
+          case "${CONVEX_DEPLOY_KEY}" in
+            "${expected}|"*) echo "deploy key targets ${expected}" ;;
+            *)
+              echo "::error::CONVEX_DEPLOY_KEY is not a deploy key for ${expected}"
+              exit 1
+              ;;
+          esac
+
+      - name: convex deploy
+        env:
+          CONVEX_DEPLOY_KEY: ${{ secrets.CONVEX_DEPLOY_KEY }}
+          REF: ${{ inputs.ref }}
+        run: |
+          # Only the deploy key selects the target: no CONVEX_DEPLOYMENT, no self-hosted variables.
+          unset CONVEX_DEPLOYMENT CONVEX_SELF_HOSTED_URL CONVEX_SELF_HOSTED_ADMIN_KEY
+          pnpm exec convex deploy --yes --typecheck enable \
+            --message "GitHub ${GITHUB_REPOSITORY}@${REF} (run ${GITHUB_RUN_ID})"
+
+      - name: Summary
+        env:
+          REF: ${{ inputs.ref }}
+        run: |
+          {
+            echo "### Convex functions deployed"
+            echo "- ref: \`${REF}\` ($(git rev-parse --short HEAD))"
+            echo "- deployment: \`$(sed -n 's/^CONVEX_DEPLOYMENT=//p' deploy/env/public.env)\`"
+          } >> "$GITHUB_STEP_SUMMARY"

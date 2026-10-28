@@ -1,0 +1,18 @@
+[Desktop Entry]
+Type=Application
+Name=Desyn
+GenericName=Design Editor
+Comment=Design posters, social posts, slides and more — with AI that edits real layers
+Exec=desyn %U
+Icon=app.desyn.Desyn
+Terminal=false
+Categories=Graphics;2DGraphics;VectorGraphics;Publishing;
+MimeType=application/x-desyn;x-scheme-handler/desyn;
+Keywords=design;poster;social;slides;presentation;flyer;logo;vector;
+StartupWMClass=app.desyn.Desyn
+StartupNotify=true
+Actions=new-window;
+
+[Desktop Action new-window]
+Name=New Window
+Exec=desyn desyn://new

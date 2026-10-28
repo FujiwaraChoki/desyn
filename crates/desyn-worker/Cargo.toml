@@ -1,0 +1,34 @@
+[package]
+name = "desyn-worker"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+description = "Desyn render worker: Axum HTTP service for render / export (incl. MP4 / WebM via ffmpeg), thumbnails, describe, layout, measure and apply (DOCUMENT_MODEL section 8)."
+publish = false
+
+[dependencies]
+desyn-core = { path = "../desyn-core" }
+desyn-text = { path = "../desyn-text", features = ["fetch"] }
+desyn-raster = { path = "../desyn-raster", features = ["pdf", "pptx", "gif", "webp-lossy", "bundled-fonts"] }
+desyn-describe = { path = "../desyn-describe" }
+axum = { version = "=0.8.9", default-features = false, features = ["http1", "tokio", "query"] }
+tokio = { version = "=1.54.0", features = ["rt-multi-thread", "macros", "net", "signal", "time", "sync"] }
+tower-http = { version = "=0.7.1", default-features = false, features = ["compression-gzip"] }
+reqwest = { version = "=0.13.5", default-features = false, features = ["rustls-no-provider"] }
+# ring is already the TLS crypto of the workspace (ureq); it avoids aws-lc-rs (cmake / C toolchain in the image).
+rustls = { version = "=0.23.46", default-features = false, features = ["ring", "std", "tls12"] }
+tracing = "=0.1.44"
+tracing-subscriber = { version = "=0.3.23", default-features = false, features = ["fmt", "json", "env-filter", "ansi", "std"] }
+serde = { version = "=1.0.229", features = ["derive"] }
+serde_json = { version = "=1.0.154", features = ["float_roundtrip"] }
+flate2 = "=1.1.10"
+subtle = "=2.6.1"
+sha2 = "=0.11.1"
+bytes = "=1.12.1"
+http-body-util = "=0.1.5"
+gif = "=0.14.2"
+getrandom = "=0.4.3"
+
+[dev-dependencies]
+reqwest = { version = "=0.13.5", default-features = false, features = ["json"] }
+tokio = { version = "=1.54.0", features = ["rt-multi-thread", "macros", "net", "time", "sync"] }

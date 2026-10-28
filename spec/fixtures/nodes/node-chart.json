@@ -1,0 +1,50 @@
+{
+  "name": "node-chart",
+  "schema": "ChartNode",
+  "valid": true,
+  "description": "canonical example of a chart node",
+  "value": {
+    "id": "node00000021",
+    "type": "chart",
+    "name": "Revenue",
+    "parent": "page00000001",
+    "x": 100,
+    "y": 120,
+    "width": 480,
+    "height": 320,
+    "rotation": 0,
+    "opacity": 1,
+    "blend": "normal",
+    "visible": true,
+    "locked": false,
+    "effects": [],
+    "chart": "stacked-column",
+    "data": {
+      "labels": ["Q1", "Q2", "Q3", "Q4"],
+      "series": [
+        {
+          "name": "Pro",
+          "values": [12, 18.5, 22, 30],
+          "color": "#ffb02e"
+        },
+        {
+          "name": "Free",
+          "values": [40, 42, 47, 51]
+        }
+      ]
+    },
+    "options": {
+      "legend": true,
+      "grid": false,
+      "labels": true,
+      "palette": ["#ffb02e", "#ff6a1f"],
+      "fontFamily": "Instrument Sans",
+      "fontSize": 14,
+      "textColor": "#ededed",
+      "min": 0,
+      "max": 100,
+      "unit": "k$"
+    },
+    "role": "chart"
+  }
+}

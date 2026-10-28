@@ -1,0 +1,43 @@
+{
+  "name": "@desyn/sdk",
+  "version": "0.1.0",
+  "description": "Typed client for the Desyn Agent API (REST v1) and the desyn-mcp MCP server.",
+  "license": "SEE LICENSE IN ../../LICENSE",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./contract": "./src/contract/index.ts",
+    "./mcp": "./src/mcp/index.ts",
+    "./openapi": "./src/openapi.ts"
+  },
+  "bin": {
+    "desyn-mcp": "./dist/desyn-mcp.js"
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "lint": "biome check .",
+    "gen:openapi": "tsx scripts/gen-openapi.ts && biome format --write openapi.json ../../apps/docs/public/openapi.json"
+  },
+  "dependencies": {
+    "@desyn/schema": "workspace:*",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@desyn/doc-ops": "workspace:*",
+    "@modelcontextprotocol/sdk": "1.32.1",
+    "@seriousme/openapi-schema-validator": "2.11.0",
+    "@types/node": "26.6.5",
+    "esbuild": "0.28.2",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "vitest": "5.0.5"
+  }
+}

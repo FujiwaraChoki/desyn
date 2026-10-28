@@ -1,0 +1,23 @@
+{
+  "name": "text-style",
+  "schema": "TextStyle",
+  "valid": true,
+  "description": "full text style",
+  "value": {
+    "fontFamily": "Inter",
+    "fontWeight": 400,
+    "fontStyle": "normal",
+    "fontSize": 24,
+    "fills": [
+      {
+        "type": "solid",
+        "color": "#111111"
+      }
+    ],
+    "letterSpacing": 0,
+    "textCase": "upper",
+    "decoration": "underline",
+    "highlight": "#ffd66b80",
+    "link": "page:page00000002"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "fill-image",
+  "schema": "Fill",
+  "valid": true,
+  "description": "image fill",
+  "value": {
+    "type": "image",
+    "assetId": "asset0000001",
+    "mode": "tile",
+    "scale": 0.5,
+    "offsetX": 10,
+    "offsetY": -10,
+    "rotation": 15,
+    "opacity": 0.9,
+    "adjust": {
+      "grayscale": 1,
+      "grain": 0.2
+    }
+  }
+}

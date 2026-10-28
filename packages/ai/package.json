@@ -1,0 +1,39 @@
+{
+  "name": "@desyn/ai",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "lint": "biome check .",
+    "evals": "vitest run --config evals/vitest.config.ts"
+  },
+  "dependencies": {
+    "@ai-sdk/anthropic": "4.0.83",
+    "@ai-sdk/fal": "3.0.64",
+    "@ai-sdk/google": "4.0.100",
+    "@ai-sdk/groq": "4.0.65",
+    "@ai-sdk/mistral": "4.0.67",
+    "@ai-sdk/openai": "4.0.97",
+    "@ai-sdk/openai-compatible": "3.0.73",
+    "@ai-sdk/provider": "4.0.30",
+    "@ai-sdk/provider-utils": "5.0.63",
+    "@ai-sdk/replicate": "3.0.64",
+    "@desyn/doc-ops": "workspace:*",
+    "@desyn/schema": "workspace:*",
+    "@fal-ai/client": "1.10.1",
+    "@openrouter/ai-sdk-provider": "3.1.0",
+    "ai": "7.0.145",
+    "ollama-ai-provider-v2": "4.0.1",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "typescript": "5.9.3",
+    "vitest": "5.0.5"
+  }
+}

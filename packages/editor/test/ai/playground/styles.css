@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@import "@desyn/tokens/fonts.css";
+@import "@desyn/ui/styles.css";
+@import "../../../src/styles.css";
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  background: var(--background);
+}

@@ -1,0 +1,86 @@
+---
+title: Backups & restore
+description: What to back up on a self-hosted installation — the Convex database, object storage and secrets — how to automate it, and how to restore.
+---
+
+A complete backup has three parts. Losing any one of them means losing data. Commands assume `COMPOSE_FILE` is set as in the [quickstart](/self-hosting/docker-compose#point-compose-at-the-stack).
+
+| Part | Contains | How |
+| --- | --- | --- |
+| **Database** | Accounts, workspaces, designs and their history, comments, brand kits, settings | `convex export` (plus a Postgres dump) |
+| **Object storage** | Uploads, generated assets, snapshots, thumbnails | mirror the bucket |
+| **Secrets** | `deploy/compose/.env` and `deploy/compose/convex.env` (which include the admin key) | copy to a secure place |
+
+> [!WARNING]
+> Back up `AI_KEY_ENCRYPTION_SECRET` and `BETTER_AUTH_SECRET` together with the database. Without the first, members' stored provider keys cannot be decrypted after a restore.
+
+## Database export
+
+The Convex CLI exports every table to a single ZIP file. The `convex-tools` container runs as uid 1000, so give it a directory it can write to:
+
+```bash
+mkdir -p backups && sudo chown 1000:1000 backups
+docker compose run --rm -v "$PWD/backups:/out" convex-tools export --path /out/convex-$(date +%F).zip
+```
+
+The export is consistent: it captures all tables at a single point in time while the installation keeps running. It is the portable format — it restores into any Convex backend, whatever database that backend uses.
+
+For a fast restore of the exact same setup, also dump the Postgres database:
+
+```bash
+docker compose exec -T postgres pg_dump -U desyn -d desyn -Fc > backups/postgres-$(date +%F).dump
+```
+
+## Storage
+
+The bundled MinIO keeps its data in the `minio_data` volume. Back it up with your volume or snapshot tooling, or mirror the bucket to a second location with any S3 tool, for example `rclone` with a remote for your MinIO (`desyn-store`) and one for the backup target:
+
+```bash
+rclone sync desyn-store:desyn backup-store:desyn-backup --fast-list
+```
+
+With AWS S3 or R2, use bucket versioning or replication instead. Back up storage after the database export, so the backup's objects include everything the exported database references.
+
+## Automating
+
+Run the backup nightly, keep several generations, and store at least one copy off the server. A systemd timer or cron entry calling a script with the commands above is enough, for example:
+
+```bash
+15 3 * * * cd /opt/desyn && COMPOSE_FILE=deploy/compose/desyn.selfhost.yml ./backup.sh >> /var/log/desyn-backup.log 2>&1
+```
+
+Test a restore regularly on a separate machine — a backup you have never restored is a hope, not a backup.
+
+## Restore
+
+<Steps>
+
+### Prepare a fresh installation
+
+Follow the [quickstart](/self-hosting/docker-compose) on the new machine with your backed-up `deploy/compose/.env` and `deploy/compose/convex.env`, and deploy the functions of the same Desyn version as the backup.
+
+### Restore storage
+
+Copy the bucket back into the new store before importing the database:
+
+```bash
+rclone sync backup-store:desyn-backup desyn-store:desyn --fast-list
+```
+
+### Import the database
+
+```bash
+docker compose run --rm -v "$PWD/backups:/in:ro" convex-tools import --replace-all --yes /in/convex-2026-10-20.zip
+```
+
+`--replace-all` replaces everything in the deployment with the backup's contents.
+
+### Check
+
+Sign in, open a few designs, check that images load and that an export works.
+
+</Steps>
+
+## Moving to another database
+
+Export from the old backend, start the new one with the other database (for example a managed Postgres in `POSTGRES_URL`), deploy the same functions and import the export with `--replace-all`. The export format does not depend on the database.

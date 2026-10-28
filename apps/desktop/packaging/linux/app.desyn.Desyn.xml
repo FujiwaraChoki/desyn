@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- shared-mime-info registration for .desyn files (zip archives whose first entry is a stored "mimetype"). -->
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-desyn">
+    <comment>Desyn design</comment>
+    <sub-class-of type="application/zip"/>
+    <glob pattern="*.desyn"/>
+    <magic priority="60">
+      <match type="string" offset="30" value="mimetypeapplication/x-desyn"/>
+    </magic>
+    <icon name="app.desyn.Desyn"/>
+  </mime-type>
+</mime-info>

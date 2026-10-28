@@ -1,0 +1,328 @@
+{
+  "description": "A default-named, upscaled photo without alt text, an unnamed group and an empty frame.",
+  "design": {
+    "assets": {
+      "smallphoto00": {
+        "height": 200.0,
+        "id": "smallphoto00",
+        "kind": "image",
+        "mime": "image/jpeg",
+        "width": 200.0
+      }
+    },
+    "id": "design000001",
+    "kind": "social-post",
+    "meta": {},
+    "name": "Fixture",
+    "nodes": {
+      "bodycopy0000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 48.0,
+        "id": "bodycopy0000",
+        "locked": false,
+        "name": "Body copy",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Fresh flowers delivered to your door every week."
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 40.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 900.0,
+        "x": 80.0,
+        "y": 760.0
+      },
+      "frame7000000": {
+        "blend": "normal",
+        "children": [],
+        "clip": false,
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fills": [],
+        "height": 200.0,
+        "id": "frame7000000",
+        "locked": false,
+        "name": "Frame 7",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "frame",
+        "visible": true,
+        "width": 200.0,
+        "x": 720.0,
+        "y": 400.0
+      },
+      "group3000000": {
+        "blend": "normal",
+        "children": [
+          "pricetag0000",
+          "pricenote000"
+        ],
+        "clip": false,
+        "effects": [],
+        "height": 88.8,
+        "id": "group3000000",
+        "locked": false,
+        "name": "Group 3",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "type": "group",
+        "visible": true,
+        "width": 300.0,
+        "x": 720.0,
+        "y": 80.0
+      },
+      "image0000000": {
+        "assetId": "smallphoto00",
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fit": "fill",
+        "height": 600.0,
+        "id": "image0000000",
+        "locked": false,
+        "name": "Image",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "image",
+        "visible": true,
+        "width": 600.0,
+        "x": 80.0,
+        "y": 80.0
+      },
+      "page00000001": {
+        "background": [
+          {
+            "color": "#ffffff",
+            "type": "solid"
+          }
+        ],
+        "bleed": 0.0,
+        "blend": "normal",
+        "children": [
+          "image0000000",
+          "group3000000",
+          "frame7000000",
+          "bodycopy0000"
+        ],
+        "clip": true,
+        "effects": [],
+        "height": 1080.0,
+        "id": "page00000001",
+        "locked": false,
+        "name": "Page 1",
+        "opacity": 1.0,
+        "parent": "root",
+        "rotation": 0.0,
+        "type": "page",
+        "unit": "px",
+        "visible": true,
+        "width": 1080.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "pricenote000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 28.799999999999997,
+        "id": "pricenote000",
+        "locked": false,
+        "name": "Price note",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "group3000000",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "while stocks last"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#333333",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 24.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 300.0,
+        "x": 0.0,
+        "y": 60.0
+      },
+      "pricetag0000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 48.0,
+        "id": "pricetag0000",
+        "locked": false,
+        "name": "Price tag",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "group3000000",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Only today"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 40.0,
+          "fontStyle": "normal",
+          "fontWeight": 700.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 300.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "root": {
+        "blend": "normal",
+        "children": [
+          "page00000001"
+        ],
+        "effects": [],
+        "height": 0.0,
+        "id": "root",
+        "locked": false,
+        "name": "Root",
+        "opacity": 1.0,
+        "parent": null,
+        "rotation": 0.0,
+        "type": "root",
+        "visible": true,
+        "width": 0.0,
+        "x": 0.0,
+        "y": 0.0
+      }
+    },
+    "schema": 1,
+    "styles": {
+      "colors": {},
+      "effects": {},
+      "text": {},
+      "variables": {}
+    }
+  },
+  "expect": {
+    "issues": [
+      {
+        "code": "missing-alt",
+        "ids": [
+          "Image"
+        ],
+        "rule": "missing-alt"
+      },
+      {
+        "code": "image-low-res",
+        "ids": [
+          "Image"
+        ],
+        "rule": "image-low-res",
+        "severity": "error"
+      },
+      {
+        "code": "unlabeled-group",
+        "ids": [
+          "Group 3"
+        ],
+        "rule": "unlabeled-group"
+      },
+      {
+        "code": "unlabeled-group",
+        "ids": [
+          "Image"
+        ],
+        "rule": "unnamed-important"
+      },
+      {
+        "code": "unlabeled-group",
+        "fix": true,
+        "ids": [
+          "Frame 7"
+        ],
+        "rule": "empty-frame"
+      }
+    ]
+  },
+  "options": null
+}

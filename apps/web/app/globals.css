@@ -1,0 +1,97 @@
+@import "tailwindcss";
+@import "@desyn/tokens/fonts.css";
+@import "@desyn/ui/styles.css";
+@import "../../../packages/editor/src/styles.css";
+
+@source "../app";
+@source "../components";
+
+@layer base {
+  html,
+  body {
+    background: var(--background);
+    color: var(--fg);
+  }
+  body {
+    font-family: var(--font-family-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+@layer components {
+  /* Serif display text with one italic emphasis word (rendered by <Rich>): the italic takes the accent. */
+  .rich-title em {
+    font-style: italic;
+    color: var(--accent-text);
+  }
+
+  /* Staggered entrance used across pages (honours reduced motion through the token base layer). */
+  .rise {
+    animation: web-rise 0.7s var(--ease-out-sun) both;
+    animation-delay: calc(var(--i, 0) * 80ms);
+  }
+
+  /* Hairline frame with a soft inner highlight: the Akatsuki "panel edge". */
+  .panel-edge {
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.04),
+      var(--shadow-popover);
+  }
+
+  /* Checkerboard behind transparent thumbnails. */
+  .checker {
+    background-color: var(--surface-2);
+    background-image:
+      linear-gradient(45deg, rgb(var(--foreground-rgb) / 0.04) 25%, transparent 25%),
+      linear-gradient(-45deg, rgb(var(--foreground-rgb) / 0.04) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, rgb(var(--foreground-rgb) / 0.04) 75%),
+      linear-gradient(-45deg, transparent 75%, rgb(var(--foreground-rgb) / 0.04) 75%);
+    background-size: 16px 16px;
+    background-position:
+      0 0,
+      0 8px,
+      8px -8px,
+      -8px 0;
+  }
+
+  /* Faint dot grid (editor canvas motif) for empty canvases and skeletons. */
+  .dot-grid {
+    background-image: radial-gradient(rgb(var(--foreground-rgb) / 0.08) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes web-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: none;
+  }
+}
+
+html[data-reduce-motion] *,
+html[data-reduce-motion] *::before,
+html[data-reduce-motion] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}

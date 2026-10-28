@@ -1,0 +1,40 @@
+{
+  "name": "node-path",
+  "schema": "PathNode",
+  "valid": true,
+  "description": "canonical example of a path node",
+  "value": {
+    "id": "node00000015",
+    "type": "path",
+    "name": "Wave",
+    "parent": "page00000001",
+    "x": 100,
+    "y": 120,
+    "width": 400,
+    "height": 100,
+    "rotation": 0,
+    "opacity": 1,
+    "blend": "normal",
+    "visible": true,
+    "locked": false,
+    "effects": [],
+    "fills": [
+      {
+        "type": "solid",
+        "color": "#d9d9d9"
+      }
+    ],
+    "strokes": [],
+    "cornerRadius": 0,
+    "paths": [
+      {
+        "d": "M0 50C100 0 100 100 200 50S300 0 400 50L400 100L0 100Z",
+        "fillRule": "nonzero"
+      },
+      {
+        "d": "M10 10h20v20h-20z",
+        "fillRule": "evenodd"
+      }
+    ]
+  }
+}

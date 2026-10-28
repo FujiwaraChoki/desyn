@@ -1,0 +1,46 @@
+Desyn Non-Commercial Source License, Version 1.0
+
+Copyright (c) 2026 Sami Hindi ("Licensor"). All rights reserved except as granted below.
+
+1. Definitions
+   "Software" means the Desyn source code, assets, documentation and everything else in this repository, in source or binary form.
+   "Commercial Use" means any use of the Software that is primarily intended for, or directed toward, commercial advantage or
+   monetary compensation. This includes, without limitation: offering the Software or any derivative as a hosted, managed or
+   white-label service; selling, sublicensing, renting or bundling it with a paid product; using it inside a for-profit
+   organization's business operations; and using its output as a core part of a paid service. Hosting it for a company's own
+   employees or customers is Commercial Use.
+   "Non-Commercial Use" means personal use, hobby projects, education, academic research, evaluation and use by charitable,
+   educational or public-interest organizations that are not operated for profit, in each case without Commercial Use.
+
+2. Grant
+   Subject to these terms, the Licensor grants you a worldwide, non-exclusive, non-transferable, royalty-free license to use,
+   copy, modify and run the Software, and to distribute unmodified or modified copies, solely for Non-Commercial Use.
+
+3. Commercial Use reserved
+   ALL COMMERCIAL RIGHTS ARE RESERVED BY THE LICENSOR. You may not make any Commercial Use of the Software unless you have a
+   separate written commercial license signed by the Licensor. To request one, see COMMERCIAL.md.
+
+4. Conditions
+   (a) Keep this license, copyright notice and attribution in all copies. (b) Modified versions must be clearly marked as modified.
+   (c) You may not remove, bypass or disable any notice of this license. (d) Distributing the Software or a derivative to others
+   passes only the rights of this license; recipients are bound by it. (e) Trademarks: "Desyn", the sun mark and desyn.app are
+   not licensed; you may not use them to imply endorsement or to name a derivative in a confusing way.
+
+5. Contributions
+   Contributions you submit are licensed to the Licensor under the Contributor License Agreement described in CONTRIBUTING.md,
+   which allows the Licensor to relicense them, including commercially.
+
+6. Third-party components
+   The Software includes third-party components under their own licenses (see THIRD_PARTY_NOTICES.md). Those licenses apply to
+   those components. Fonts such as Instrument Serif/Sans, JetBrains Mono and Google Fonts are under the SIL Open Font License.
+
+7. Termination
+   Your license ends automatically if you violate these terms. It resumes if you cure the violation within 30 days of notice
+   (first violation only).
+
+8. No warranty; limitation of liability
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. THE LICENSOR IS NOT LIABLE FOR ANY CLAIM,
+   DAMAGES OR OTHER LIABILITY ARISING FROM THE SOFTWARE OR ITS USE, TO THE MAXIMUM EXTENT PERMITTED BY LAW.
+
+9. Governing law
+   To be set by the Licensor with legal advice.

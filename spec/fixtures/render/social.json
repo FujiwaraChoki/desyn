@@ -1,0 +1,457 @@
+{
+ "schema": 1,
+ "id": "socialde0013",
+ "name": "social",
+ "kind": "social-post",
+ "nodes": {
+  "root": {
+   "id": "root",
+   "type": "root",
+   "name": "Root",
+   "parent": null,
+   "x": 0,
+   "y": 0,
+   "width": 0,
+   "height": 0,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "children": [
+    "socialpa0010"
+   ]
+  },
+  "socialpa0010": {
+   "id": "socialpa0010",
+   "type": "page",
+   "name": "Page 1",
+   "parent": null,
+   "x": 0,
+   "y": 0,
+   "width": 1080,
+   "height": 1080,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "children": [
+    "socialph0001",
+    "socialsc0002",
+    "socialey0003",
+    "socialhe0004",
+    "socialbo0005",
+    "socialct0006",
+    "sociallo0008",
+    "socialbr0009"
+   ],
+   "clip": true,
+   "unit": "px",
+   "background": [
+    {
+     "type": "solid",
+     "color": "#ffffff"
+    }
+   ],
+   "bleed": 0
+  },
+  "socialph0001": {
+   "id": "socialph0001",
+   "type": "image",
+   "name": "social-photo",
+   "parent": "socialpa0010",
+   "x": 0,
+   "y": 0,
+   "width": 1080,
+   "height": 1080,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "assetId": "photo0000001",
+   "fit": "fill",
+   "cornerRadius": 0,
+   "strokes": [],
+   "adjust": {
+    "brightness": -0.05,
+    "contrast": 0.1,
+    "saturation": 0.1,
+    "hue": 0,
+    "temperature": 0.1,
+    "tint": 0,
+    "exposure": 0,
+    "vignette": 0.35,
+    "blur": 0,
+    "grayscale": 0,
+    "sepia": 0,
+    "sharpen": 0,
+    "grain": 0
+   }
+  },
+  "socialsc0002": {
+   "id": "socialsc0002",
+   "type": "rect",
+   "name": "social-scrim",
+   "parent": "socialpa0010",
+   "x": 0,
+   "y": 560,
+   "width": 1080,
+   "height": 520,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "fills": [
+    {
+     "type": "linear",
+     "angle": 180,
+     "stops": [
+      {
+       "pos": 0,
+       "color": "#00000000"
+      },
+      {
+       "pos": 1,
+       "color": "#000000b3"
+      }
+     ]
+    }
+   ],
+   "strokes": [],
+   "cornerRadius": 0
+  },
+  "socialey0003": {
+   "id": "socialey0003",
+   "type": "text",
+   "name": "social-eyebrow",
+   "parent": "socialpa0010",
+   "x": 80,
+   "y": 640,
+   "width": 920,
+   "height": 40,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "runs": [
+    {
+     "text": "SUMMER SOLSTICE"
+    }
+   ],
+   "style": {
+    "fontFamily": "Instrument Sans",
+    "fontWeight": 600,
+    "fontStyle": "normal",
+    "fontSize": 28,
+    "fills": [
+     {
+      "type": "solid",
+      "color": "#ffb02e"
+     }
+    ],
+    "letterSpacing": 0.18,
+    "textCase": "none",
+    "decoration": "none"
+   },
+   "paragraph": {
+    "align": "left",
+    "direction": "auto",
+    "lineHeight": {
+     "unit": "percent",
+     "value": 120
+    },
+    "spacing": 0,
+    "indent": 0,
+    "list": "none"
+   },
+   "autoResize": "height",
+   "verticalAlign": "top"
+  },
+  "socialhe0004": {
+   "id": "socialhe0004",
+   "type": "text",
+   "name": "social-headline",
+   "parent": "socialpa0010",
+   "x": 80,
+   "y": 690,
+   "width": 920,
+   "height": 220,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "runs": [
+    {
+     "text": "Chase the light\nall the way home"
+    }
+   ],
+   "style": {
+    "fontFamily": "Instrument Serif",
+    "fontWeight": 400,
+    "fontStyle": "normal",
+    "fontSize": 96,
+    "fills": [
+     {
+      "type": "solid",
+      "color": "#ffffff"
+     }
+    ],
+    "letterSpacing": 0,
+    "textCase": "none",
+    "decoration": "none"
+   },
+   "paragraph": {
+    "align": "left",
+    "direction": "auto",
+    "lineHeight": {
+     "unit": "percent",
+     "value": 105
+    },
+    "spacing": 0,
+    "indent": 0,
+    "list": "none"
+   },
+   "autoResize": "height",
+   "verticalAlign": "top"
+  },
+  "socialbo0005": {
+   "id": "socialbo0005",
+   "type": "text",
+   "name": "social-body",
+   "parent": "socialpa0010",
+   "x": 80,
+   "y": 910,
+   "width": 640,
+   "height": 80,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "runs": [
+    {
+     "text": "Golden-hour walks, long dinners and the sea. Book by June 21."
+    }
+   ],
+   "style": {
+    "fontFamily": "Inter",
+    "fontWeight": 400,
+    "fontStyle": "normal",
+    "fontSize": 30,
+    "fills": [
+     {
+      "type": "solid",
+      "color": "#ffffffd9"
+     }
+    ],
+    "letterSpacing": 0,
+    "textCase": "none",
+    "decoration": "none"
+   },
+   "paragraph": {
+    "align": "left",
+    "direction": "auto",
+    "lineHeight": {
+     "unit": "percent",
+     "value": 120
+    },
+    "spacing": 0,
+    "indent": 0,
+    "list": "none"
+   },
+   "autoResize": "height",
+   "verticalAlign": "top"
+  },
+  "socialct0006": {
+   "id": "socialct0006",
+   "type": "frame",
+   "name": "social-cta",
+   "parent": "socialpa0010",
+   "x": 780,
+   "y": 920,
+   "width": 220,
+   "height": 72,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [
+    {
+     "type": "dropShadow",
+     "x": 0,
+     "y": 8,
+     "blur": 24,
+     "spread": 0,
+     "color": "#00000059"
+    }
+   ],
+   "children": [
+    "socialct0007"
+   ],
+   "clip": true,
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#ffb02e"
+    }
+   ],
+   "strokes": [],
+   "cornerRadius": 36
+  },
+  "socialct0007": {
+   "id": "socialct0007",
+   "type": "text",
+   "name": "social-cta-label",
+   "parent": "socialct0006",
+   "x": 0,
+   "y": 20,
+   "width": 220,
+   "height": 34,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "runs": [
+    {
+     "text": "Book now"
+    }
+   ],
+   "style": {
+    "fontFamily": "Inter",
+    "fontWeight": 700,
+    "fontStyle": "normal",
+    "fontSize": 28,
+    "fills": [
+     {
+      "type": "solid",
+      "color": "#1b1446"
+     }
+    ],
+    "letterSpacing": 0,
+    "textCase": "none",
+    "decoration": "none"
+   },
+   "paragraph": {
+    "align": "center",
+    "direction": "auto",
+    "lineHeight": {
+     "unit": "percent",
+     "value": 120
+    },
+    "spacing": 0,
+    "indent": 0,
+    "list": "none"
+   },
+   "autoResize": "none",
+   "verticalAlign": "top"
+  },
+  "sociallo0008": {
+   "id": "sociallo0008",
+   "type": "svg",
+   "name": "social-logo",
+   "parent": "socialpa0010",
+   "x": 80,
+   "y": 80,
+   "width": 72,
+   "height": 72,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "assetId": "icon00000001"
+  },
+  "socialbr0009": {
+   "id": "socialbr0009",
+   "type": "text",
+   "name": "social-brand",
+   "parent": "socialpa0010",
+   "x": 168,
+   "y": 96,
+   "width": 400,
+   "height": 44,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "runs": [
+    {
+     "text": "desyn travel"
+    }
+   ],
+   "style": {
+    "fontFamily": "Inter",
+    "fontWeight": 700,
+    "fontStyle": "normal",
+    "fontSize": 32,
+    "fills": [
+     {
+      "type": "solid",
+      "color": "#ffffff"
+     }
+    ],
+    "letterSpacing": 0,
+    "textCase": "none",
+    "decoration": "none"
+   },
+   "paragraph": {
+    "align": "left",
+    "direction": "auto",
+    "lineHeight": {
+     "unit": "percent",
+     "value": 120
+    },
+    "spacing": 0,
+    "indent": 0,
+    "list": "none"
+   },
+   "autoResize": "height",
+   "verticalAlign": "top"
+  }
+ },
+ "assets": {
+  "photo0000001": {
+   "id": "photo0000001",
+   "kind": "image",
+   "mime": "image/jpeg",
+   "width": 960,
+   "height": 640
+  },
+  "icon00000001": {
+   "id": "icon00000001",
+   "kind": "svg",
+   "mime": "image/svg+xml",
+   "width": 64,
+   "height": 64
+  }
+ },
+ "styles": {
+  "colors": {},
+  "text": {},
+  "effects": {},
+  "variables": {}
+ },
+ "meta": {
+  "render": {
+   "scale": 0.5
+  }
+ }
+}

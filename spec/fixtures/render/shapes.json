@@ -1,0 +1,881 @@
+{
+ "schema": 1,
+ "id": "shapesde0033",
+ "name": "shapes",
+ "kind": "social-post",
+ "nodes": {
+  "root": {
+   "id": "root",
+   "type": "root",
+   "name": "Root",
+   "parent": null,
+   "x": 0,
+   "y": 0,
+   "width": 0,
+   "height": 0,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "children": [
+    "shapespa0030"
+   ]
+  },
+  "shapespa0030": {
+   "id": "shapespa0030",
+   "type": "page",
+   "name": "Page 1",
+   "parent": null,
+   "x": 0,
+   "y": 0,
+   "width": 480,
+   "height": 520,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "children": [
+    "rectplai0001",
+    "rectradi0002",
+    "rectsmoo0003",
+    "rectrota0004",
+    "ellipsex0005",
+    "piexxxxx0006",
+    "donutxxx0007",
+    "ringxxxx0008",
+    "triangle0009",
+    "hexagonx0010",
+    "star5xxx0011",
+    "star12xx0012",
+    "patheven0013",
+    "pathcurv0014",
+    "boolunio0015",
+    "boolsubt0018",
+    "boolinte0021",
+    "boolexcl0024",
+    "linearro0027",
+    "linetrix0028",
+    "linediam0029"
+   ],
+   "clip": true,
+   "unit": "px",
+   "background": [
+    {
+     "type": "solid",
+     "color": "#f6f4f0"
+    }
+   ],
+   "bleed": 0
+  },
+  "rectplai0001": {
+   "id": "rectplai0001",
+   "type": "rect",
+   "name": "rect-plain",
+   "parent": "shapespa0030",
+   "x": 20,
+   "y": 20,
+   "width": 100,
+   "height": 70,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#4f8cff"
+    }
+   ],
+   "strokes": [],
+   "cornerRadius": 0
+  },
+  "rectradi0002": {
+   "id": "rectradi0002",
+   "type": "rect",
+   "name": "rect-radii",
+   "parent": "shapespa0030",
+   "x": 140,
+   "y": 20,
+   "width": 100,
+   "height": 70,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "cornerRadius": [
+    0,
+    24,
+    8,
+    35
+   ],
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#ffb02e"
+    }
+   ],
+   "strokes": []
+  },
+  "rectsmoo0003": {
+   "id": "rectsmoo0003",
+   "type": "rect",
+   "name": "rect-smooth",
+   "parent": "shapespa0030",
+   "x": 260,
+   "y": 20,
+   "width": 100,
+   "height": 70,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "cornerRadius": 24,
+   "cornerSmoothing": 1,
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#2fbf71"
+    }
+   ],
+   "strokes": []
+  },
+  "rectrota0004": {
+   "id": "rectrota0004",
+   "type": "rect",
+   "name": "rect-rotated",
+   "parent": "shapespa0030",
+   "x": 380,
+   "y": 25,
+   "width": 80,
+   "height": 60,
+   "rotation": 30,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "cornerRadius": 10,
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#e5484d"
+    }
+   ],
+   "strokes": []
+  },
+  "ellipsex0005": {
+   "id": "ellipsex0005",
+   "type": "ellipse",
+   "name": "ellipse",
+   "parent": "shapespa0030",
+   "x": 20,
+   "y": 110,
+   "width": 100,
+   "height": 80,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#a463f2"
+    }
+   ],
+   "strokes": [],
+   "cornerRadius": 0
+  },
+  "piexxxxx0006": {
+   "id": "piexxxxx0006",
+   "type": "ellipse",
+   "name": "pie",
+   "parent": "shapespa0030",
+   "x": 140,
+   "y": 110,
+   "width": 90,
+   "height": 90,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "arc": {
+    "start": -90,
+    "end": 180,
+    "inner": 0
+   },
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#ffb02e"
+    }
+   ],
+   "strokes": [],
+   "cornerRadius": 0
+  },
+  "donutxxx0007": {
+   "id": "donutxxx0007",
+   "type": "ellipse",
+   "name": "donut",
+   "parent": "shapespa0030",
+   "x": 250,
+   "y": 110,
+   "width": 90,
+   "height": 90,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "arc": {
+    "start": 0,
+    "end": 300,
+    "inner": 0.55
+   },
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#14b8a6"
+    }
+   ],
+   "strokes": [],
+   "cornerRadius": 0
+  },
+  "ringxxxx0008": {
+   "id": "ringxxxx0008",
+   "type": "ellipse",
+   "name": "ring",
+   "parent": "shapespa0030",
+   "x": 360,
+   "y": 110,
+   "width": 90,
+   "height": 90,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "arc": {
+    "start": 0,
+    "end": 360,
+    "inner": 0.8
+   },
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#2b2b30"
+    }
+   ],
+   "strokes": [],
+   "cornerRadius": 0
+  },
+  "triangle0009": {
+   "id": "triangle0009",
+   "type": "polygon",
+   "name": "triangle",
+   "parent": "shapespa0030",
+   "x": 20,
+   "y": 215,
+   "width": 90,
+   "height": 80,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "sides": 3,
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#4f8cff"
+    }
+   ],
+   "strokes": [],
+   "cornerRadius": 0
+  },
+  "hexagonx0010": {
+   "id": "hexagonx0010",
+   "type": "polygon",
+   "name": "hexagon",
+   "parent": "shapespa0030",
+   "x": 130,
+   "y": 215,
+   "width": 90,
+   "height": 80,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "sides": 6,
+   "cornerRadius": 8,
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#2fbf71"
+    }
+   ],
+   "strokes": []
+  },
+  "star5xxx0011": {
+   "id": "star5xxx0011",
+   "type": "star",
+   "name": "star5",
+   "parent": "shapespa0030",
+   "x": 240,
+   "y": 210,
+   "width": 90,
+   "height": 90,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "points": 5,
+   "innerRatio": 0.45,
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#ffb02e"
+    }
+   ],
+   "strokes": [],
+   "cornerRadius": 0
+  },
+  "star12xx0012": {
+   "id": "star12xx0012",
+   "type": "star",
+   "name": "star12",
+   "parent": "shapespa0030",
+   "x": 350,
+   "y": 210,
+   "width": 90,
+   "height": 90,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "points": 12,
+   "innerRatio": 0.7,
+   "cornerRadius": 3,
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#e5484d"
+    }
+   ],
+   "strokes": []
+  },
+  "patheven0013": {
+   "id": "patheven0013",
+   "type": "path",
+   "name": "path-evenodd",
+   "parent": "shapespa0030",
+   "x": 20,
+   "y": 315,
+   "width": 100,
+   "height": 100,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "paths": [
+    {
+     "d": "M0 0H100V100H0Z M25 25V75H75V25Z",
+     "fillRule": "evenodd"
+    }
+   ],
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#2b2b30"
+    }
+   ],
+   "strokes": [],
+   "cornerRadius": 0
+  },
+  "pathcurv0014": {
+   "id": "pathcurv0014",
+   "type": "path",
+   "name": "path-curve",
+   "parent": "shapespa0030",
+   "x": 130,
+   "y": 315,
+   "width": 100,
+   "height": 100,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "paths": [
+    {
+     "d": "M10 90C10 10 90 10 90 90Q50 60 10 90Z",
+     "fillRule": "nonzero"
+    }
+   ],
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#a463f2"
+    }
+   ],
+   "strokes": [
+    {
+     "fills": [
+      {
+       "type": "solid",
+       "color": "#2b2b30"
+      }
+     ],
+     "width": 3,
+     "align": "center",
+     "cap": "butt",
+     "join": "round"
+    }
+   ],
+   "cornerRadius": 0
+  },
+  "boolunio0015": {
+   "id": "boolunio0015",
+   "type": "boolean",
+   "name": "bool-union",
+   "parent": "shapespa0030",
+   "x": 250,
+   "y": 310,
+   "width": 80,
+   "height": 80,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "children": [
+    "boolunio0016",
+    "boolunio0017"
+   ],
+   "clip": false,
+   "op": "union",
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#4f8cff"
+    }
+   ],
+   "strokes": [],
+   "cornerRadius": 0
+  },
+  "boolunio0016": {
+   "id": "boolunio0016",
+   "type": "rect",
+   "name": "bool-union-a",
+   "parent": "boolunio0015",
+   "x": 0,
+   "y": 0,
+   "width": 55,
+   "height": 55,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#000000"
+    }
+   ],
+   "strokes": [],
+   "cornerRadius": 0
+  },
+  "boolunio0017": {
+   "id": "boolunio0017",
+   "type": "ellipse",
+   "name": "bool-union-b",
+   "parent": "boolunio0015",
+   "x": 25,
+   "y": 25,
+   "width": 55,
+   "height": 55,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#000000"
+    }
+   ],
+   "strokes": [],
+   "cornerRadius": 0
+  },
+  "boolsubt0018": {
+   "id": "boolsubt0018",
+   "type": "boolean",
+   "name": "bool-subtract",
+   "parent": "shapespa0030",
+   "x": 360,
+   "y": 310,
+   "width": 80,
+   "height": 80,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "children": [
+    "boolsubt0019",
+    "boolsubt0020"
+   ],
+   "clip": false,
+   "op": "subtract",
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#e5484d"
+    }
+   ],
+   "strokes": [],
+   "cornerRadius": 0
+  },
+  "boolsubt0019": {
+   "id": "boolsubt0019",
+   "type": "rect",
+   "name": "bool-subtract-a",
+   "parent": "boolsubt0018",
+   "x": 0,
+   "y": 0,
+   "width": 55,
+   "height": 55,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#000000"
+    }
+   ],
+   "strokes": [],
+   "cornerRadius": 0
+  },
+  "boolsubt0020": {
+   "id": "boolsubt0020",
+   "type": "ellipse",
+   "name": "bool-subtract-b",
+   "parent": "boolsubt0018",
+   "x": 25,
+   "y": 25,
+   "width": 55,
+   "height": 55,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#000000"
+    }
+   ],
+   "strokes": [],
+   "cornerRadius": 0
+  },
+  "boolinte0021": {
+   "id": "boolinte0021",
+   "type": "boolean",
+   "name": "bool-intersect",
+   "parent": "shapespa0030",
+   "x": 250,
+   "y": 400,
+   "width": 80,
+   "height": 80,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "children": [
+    "boolinte0022",
+    "boolinte0023"
+   ],
+   "clip": false,
+   "op": "intersect",
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#2fbf71"
+    }
+   ],
+   "strokes": [],
+   "cornerRadius": 0
+  },
+  "boolinte0022": {
+   "id": "boolinte0022",
+   "type": "rect",
+   "name": "bool-intersect-a",
+   "parent": "boolinte0021",
+   "x": 0,
+   "y": 0,
+   "width": 55,
+   "height": 55,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#000000"
+    }
+   ],
+   "strokes": [],
+   "cornerRadius": 0
+  },
+  "boolinte0023": {
+   "id": "boolinte0023",
+   "type": "ellipse",
+   "name": "bool-intersect-b",
+   "parent": "boolinte0021",
+   "x": 25,
+   "y": 25,
+   "width": 55,
+   "height": 55,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#000000"
+    }
+   ],
+   "strokes": [],
+   "cornerRadius": 0
+  },
+  "boolexcl0024": {
+   "id": "boolexcl0024",
+   "type": "boolean",
+   "name": "bool-exclude",
+   "parent": "shapespa0030",
+   "x": 360,
+   "y": 400,
+   "width": 80,
+   "height": 80,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "children": [
+    "boolexcl0025",
+    "boolexcl0026"
+   ],
+   "clip": false,
+   "op": "exclude",
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#ffb02e"
+    }
+   ],
+   "strokes": [],
+   "cornerRadius": 0
+  },
+  "boolexcl0025": {
+   "id": "boolexcl0025",
+   "type": "rect",
+   "name": "bool-exclude-a",
+   "parent": "boolexcl0024",
+   "x": 0,
+   "y": 0,
+   "width": 55,
+   "height": 55,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#000000"
+    }
+   ],
+   "strokes": [],
+   "cornerRadius": 0
+  },
+  "boolexcl0026": {
+   "id": "boolexcl0026",
+   "type": "ellipse",
+   "name": "bool-exclude-b",
+   "parent": "boolexcl0024",
+   "x": 25,
+   "y": 25,
+   "width": 55,
+   "height": 55,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#000000"
+    }
+   ],
+   "strokes": [],
+   "cornerRadius": 0
+  },
+  "linearro0027": {
+   "id": "linearro0027",
+   "type": "line",
+   "name": "line-arrow",
+   "parent": "shapespa0030",
+   "x": 20,
+   "y": 440,
+   "width": 200,
+   "height": 0,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "strokes": [
+    {
+     "fills": [
+      {
+       "type": "solid",
+       "color": "#2b2b30"
+      }
+     ],
+     "width": 3,
+     "align": "center",
+     "cap": "round",
+     "join": "miter"
+    }
+   ],
+   "startCap": "circle",
+   "endCap": "arrow"
+  },
+  "linetrix0028": {
+   "id": "linetrix0028",
+   "type": "line",
+   "name": "line-tri",
+   "parent": "shapespa0030",
+   "x": 20,
+   "y": 470,
+   "width": 200,
+   "height": 0,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "strokes": [
+    {
+     "fills": [
+      {
+       "type": "solid",
+       "color": "#e5484d"
+      }
+     ],
+     "width": 4,
+     "align": "center",
+     "cap": "butt",
+     "join": "miter"
+    }
+   ],
+   "startCap": "bar",
+   "endCap": "triangle"
+  },
+  "linediam0029": {
+   "id": "linediam0029",
+   "type": "line",
+   "name": "line-diamond",
+   "parent": "shapespa0030",
+   "x": 20,
+   "y": 500,
+   "width": 440,
+   "height": 0,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "strokes": [
+    {
+     "fills": [
+      {
+       "type": "solid",
+       "color": "#4f8cff"
+      }
+     ],
+     "width": 6,
+     "align": "center",
+     "cap": "round",
+     "join": "miter"
+    }
+   ],
+   "startCap": "square",
+   "endCap": "diamond"
+  }
+ },
+ "assets": {},
+ "styles": {
+  "colors": {},
+  "text": {},
+  "effects": {},
+  "variables": {}
+ },
+ "meta": {
+  "render": {}
+ }
+}

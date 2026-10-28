@@ -1,0 +1,119 @@
+---
+title: MCP server
+description: Connect Claude, Cursor, VS Code and other MCP clients to Desyn so agents can read, create and edit designs with the same tools as the built-in agent.
+---
+
+Desyn runs a [Model Context Protocol](https://modelcontextprotocol.io) server. Connect an MCP-capable assistant and it can find your designs, understand them, and edit them with exactly the same tools the built-in agent uses — every change lands as a normal, undoable transaction that collaborators see live.
+
+The MCP server is part of Pro and the self-hosted edition.
+
+## Endpoint
+
+| Installation | URL |
+| --- | --- |
+| desyn.app | `https://api.desyn.app/mcp` |
+| Self-hosted | `https://convex-site.example.org/mcp` (your `CONVEX_SITE_URL` + `/mcp`) |
+
+The server speaks MCP over HTTP (streamable HTTP transport). Authenticate with an [API key](/developers/api#authentication) that has the `mcp` scope plus the scopes for what the agent should be allowed to do — for example `designs:read`, `designs:write` and `ai:run`. Send it as `Authorization: Bearer dsk_…`.
+
+## Connecting clients
+
+<Tabs>
+<Tab label="Claude Code">
+
+```bash
+claude mcp add --transport http desyn https://api.desyn.app/mcp \
+  --header "Authorization: Bearer $DESYN_API_KEY"
+```
+
+Then ask, for example: *"List my Desyn designs and make the headline on 'Spring launch' warmer."*
+
+</Tab>
+<Tab label="Claude Desktop">
+
+Claude Desktop connects to remote servers that need a custom header through the `mcp-remote` bridge. Add this to `claude_desktop_config.json` (Settings → Developer → Edit config) and restart Claude:
+
+```json title="claude_desktop_config.json"
+{
+  "mcpServers": {
+    "desyn": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://api.desyn.app/mcp",
+        "--header",
+        "Authorization:${DESYN_AUTH}"
+      ],
+      "env": { "DESYN_AUTH": "Bearer dsk_your_key_here" }
+    }
+  }
+}
+```
+
+</Tab>
+<Tab label="Cursor">
+
+```json title=".cursor/mcp.json"
+{
+  "mcpServers": {
+    "desyn": {
+      "url": "https://api.desyn.app/mcp",
+      "headers": { "Authorization": "Bearer ${env:DESYN_API_KEY}" }
+    }
+  }
+}
+```
+
+</Tab>
+<Tab label="VS Code">
+
+```json title=".vscode/mcp.json"
+{
+  "inputs": [
+    { "type": "promptString", "id": "desyn-key", "description": "Desyn API key", "password": true }
+  ],
+  "servers": {
+    "desyn": {
+      "type": "http",
+      "url": "https://api.desyn.app/mcp",
+      "headers": { "Authorization": "Bearer ${input:desyn-key}" }
+    }
+  }
+}
+```
+
+</Tab>
+</Tabs>
+
+For self-hosted installations, replace `https://api.desyn.app/mcp` with your own endpoint.
+
+## Tools
+
+The server exposes the agent's toolset with the same names and input schemas. Each tool takes the `designId` it operates on (and a `pageId` where pages matter); design-level tools help the agent find or start a design first.
+
+| Group | Tools |
+| --- | --- |
+| Designs | `list_designs`, `create_design` |
+| Understand | `read_design`, `read_selection`, `query_elements`, `render_preview`, `critique` |
+| Build and edit | `create_elements`, `update_elements`, `delete_elements`, `duplicate_elements`, `group_elements`, `ungroup`, `set_roles`, `set_style`, `arrange` |
+| Text | `set_text`, `rewrite_text`, `translate_text` |
+| Pages | `add_page`, `delete_page`, `reorder_pages`, `resize_page` |
+| Brand and templates | `apply_brand`, `search_templates`, `apply_template` |
+| Assets | `generate_image`, `generate_svg`, `remove_background`, `inpaint`, `outpaint`, `upscale`, `mockup`, `trace_to_vector`, `search_stock`, `search_icons` |
+| Workflows | `run_workflow` |
+
+Tool results include compact diffs of what changed, so the calling model always knows the current state without re-reading the whole design. `render_preview` returns an image the model can look at.
+
+What a connected agent can do is the intersection of the key's scopes and the member's role: without `designs:write` the editing tools are rejected; without `ai:run` the generative tools are.
+
+## Tips for agents
+
+- Start with `read_design` (or `query_elements` for large designs) instead of loading raw JSON.
+- Batch edits: `create_elements` and `update_elements` accept many elements per call and commit them as one transaction.
+- Use `render_preview` after larger changes and `critique` to catch contrast, spacing and overflow problems.
+- Give layers meaningful names and roles with `set_roles`; later edits get more precise.
+
+## Safety
+
+Design content is passed to the model as data, never as instructions. Destructive bulk operations ask for confirmation through the MCP client. Every edit is attributed to the key's member with the agent recorded in the transaction's `actor`, appears in version history, and can be undone in one step in the editor.

@@ -1,0 +1,223 @@
+{
+  "description": "An A5 flyer whose cover photo stops at the trim, is far below 300 dpi, and fine print below 7 pt.",
+  "design": {
+    "assets": {
+      "flyerphoto00": {
+        "height": 200.0,
+        "id": "flyerphoto00",
+        "kind": "image",
+        "mime": "image/jpeg",
+        "width": 300.0
+      }
+    },
+    "id": "design000001",
+    "kind": "flyer",
+    "meta": {},
+    "name": "Fixture",
+    "nodes": {
+      "coverphoto00": {
+        "alt": "Mountain lake",
+        "assetId": "flyerphoto00",
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fit": "fill",
+        "height": 360.0,
+        "id": "coverphoto00",
+        "locked": false,
+        "name": "Cover photo",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "image",
+        "visible": true,
+        "width": 559.37,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "fineprint000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 8.4,
+        "id": "fineprint000",
+        "locked": false,
+        "name": "Fine print",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Prices include tax."
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#333333",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 7.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 300.0,
+        "x": 40.0,
+        "y": 740.0
+      },
+      "page00000001": {
+        "background": [
+          {
+            "color": "#ffffff",
+            "type": "solid"
+          }
+        ],
+        "bleed": 11.34,
+        "blend": "normal",
+        "children": [
+          "coverphoto00",
+          "title0000000",
+          "fineprint000"
+        ],
+        "clip": true,
+        "effects": [],
+        "height": 793.7,
+        "id": "page00000001",
+        "locked": false,
+        "name": "Page 1",
+        "opacity": 1.0,
+        "parent": "root",
+        "rotation": 0.0,
+        "type": "page",
+        "unit": "mm",
+        "visible": true,
+        "width": 559.37,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "root": {
+        "blend": "normal",
+        "children": [
+          "page00000001"
+        ],
+        "effects": [],
+        "height": 0.0,
+        "id": "root",
+        "locked": false,
+        "name": "Root",
+        "opacity": 1.0,
+        "parent": null,
+        "rotation": 0.0,
+        "type": "root",
+        "visible": true,
+        "width": 0.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "title0000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 48.0,
+        "id": "title0000000",
+        "locked": false,
+        "name": "Title",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Lake retreat"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 40.0,
+          "fontStyle": "normal",
+          "fontWeight": 700.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 480.0,
+        "x": 40.0,
+        "y": 400.0
+      }
+    },
+    "schema": 1,
+    "styles": {
+      "colors": {},
+      "effects": {},
+      "text": {},
+      "variables": {}
+    }
+  },
+  "expect": {
+    "issues": [
+      {
+        "code": "unsafe-margin",
+        "fix": true,
+        "ids": [
+          "Cover photo"
+        ],
+        "rule": "missing-bleed"
+      },
+      {
+        "code": "image-low-res",
+        "ids": [
+          "Cover photo"
+        ],
+        "rule": "image-low-res",
+        "severity": "error"
+      },
+      {
+        "code": "tiny-text",
+        "ids": [
+          "Fine print"
+        ],
+        "rule": "tiny-text"
+      }
+    ]
+  },
+  "options": null
+}

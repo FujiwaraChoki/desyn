@@ -1,0 +1,67 @@
+---
+title: Generating designs
+description: How Desyn turns a prompt into a complete, layered design — the plan, assets, build, preview and critique loop — and how to write briefs that work.
+---
+
+Describe what you need and Desyn builds it as a real design: frames, text, shapes and images that you can edit like anything you made by hand.
+
+## Where to start
+
+- On the dashboard, type a brief into **Create with AI**.
+- In the editor, switch the AI dock to **Generate**, or just ask: *"design a poster for…"*.
+- From a template: **Remix with AI** keeps the template's structure and adapts it to your brief.
+
+## What happens
+
+<Steps>
+
+### Plan
+
+The agent decides the design kind and size, writes the copy, chooses a palette (from your brand kit if the design follows one) and a font pairing, sets a layout grid with margins appropriate to the kind, and lists the images or illustrations it needs.
+
+### Assets
+
+Images and SVG illustrations are generated in parallel, or found in stock photography and icon sets when that fits better. Each asset is stored in your library with the prompt and model that made it.
+
+### Build
+
+The page is assembled with `create_elements`: frames with auto-layout for structure, text with a clear typographic hierarchy on a 4/8 px spacing scale, and every layer named and given a [semantic role](/concepts/roles).
+
+### Look and critique
+
+The agent renders a preview, looks at it, and critiques it against design rules — hierarchy, alignment, contrast, spacing rhythm, safe margins and text overflow — together with the automatic design check.
+
+### Fix
+
+It fixes what the critique found and repeats the preview-critique loop a limited number of times, then finishes with a short summary of what it made.
+
+</Steps>
+
+## Writing a brief
+
+A good brief answers three questions: *what is it*, *who is it for*, and *what should it feel like*.
+
+```text
+A 1080×1350 Instagram post announcing our spring pottery workshop.
+For local beginners. Calm and handmade: off-white background, terracotta
+accents, one photo of hands shaping clay. Date: 12 April, 10:00–13:00.
+```
+
+```text
+A 10-slide pitch deck for a climate-tech startup that turns food waste into
+packaging. Investors are the audience. Confident and minimal, lots of
+whitespace, one chart of our monthly growth: Jan 12, Feb 19, Mar 31, Apr 48.
+```
+
+Tips:
+
+- Give the **real content** — names, dates, prices, numbers. The agent will not invent facts you did not supply; it uses clearly marked placeholders instead.
+- Name **constraints**: size, number of pages, colors to use or avoid, required logos.
+- Mention a **reference style** in words (*"Swiss poster"*, *"editorial magazine"*, *"playful hand-drawn"*).
+- If the design should follow a **brand kit**, pick it first — colors, fonts, logo and voice are applied automatically.
+
+## After generation
+
+Everything is editable, and you can keep the conversation going: *"make it less busy"*, *"try a version with a dark background on a new page"*, *"make three variants of the headline"*. For many formats at once, use [workflows](/ai/workflows).
+
+Generating a complete design costs 5 credits on Pro, plus the images it generates. See [credits](/ai/credits-and-fair-use).

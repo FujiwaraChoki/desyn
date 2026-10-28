@@ -1,0 +1,16 @@
+{
+  "name": "node-snippet",
+  "description": "a typical node",
+  "input": {
+    "type": "rect",
+    "id": "rect00000001",
+    "x": 10.0000001,
+    "y": -0,
+    "width": 100.5,
+    "height": 50,
+    "rotation": -45.1234567,
+    "fills": [{ "color": "#ffb02e", "type": "solid" }]
+  },
+  "inputText": "{\"type\":\"rect\",\"id\":\"rect00000001\",\"x\":10.0000001,\"y\":-0,\"width\":100.5,\"height\":50,\"rotation\":-45.1234567,\"fills\":[{\"color\":\"#ffb02e\",\"type\":\"solid\"}]}",
+  "canonical": "{\"fills\":[{\"color\":\"#ffb02e\",\"type\":\"solid\"}],\"height\":50,\"id\":\"rect00000001\",\"rotation\":-45.123457,\"type\":\"rect\",\"width\":100.5,\"x\":10,\"y\":0}"
+}

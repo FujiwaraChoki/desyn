@@ -1,0 +1,49 @@
+---
+title: Canvas & navigation
+description: Moving around the infinite canvas — panning, zooming, rulers, guides, layout grids and snapping.
+---
+
+The canvas is an infinite surface. Your pages sit on it side by side, on a deep neutral background with a faint dot grid. Everything outside a page is visible while you edit but is not exported.
+
+## Panning
+
+- Scroll with a trackpad or mouse wheel to pan vertically; hold <Keys combo="shift" /> to pan horizontally.
+- Hold <Keys combo="space" /> and drag for a temporary hand tool, or switch to the hand with <Keys combo="h" />.
+- On iOS, drag with two fingers.
+
+## Zooming
+
+| To | Do |
+| --- | --- |
+| Zoom in / out | <Keys combo="mod+=" /> / <Keys combo="mod+-" />, pinch on a trackpad, or <Keys combo="mod+scroll" /> |
+| Zoom to 100% | <Keys combo="shift+0" /> |
+| Fit everything | <Keys combo="shift+1" /> |
+| Fit the selection | <Keys combo="shift+2" /> |
+| Set an exact zoom | Type a percentage in the zoom field in the top bar |
+
+Zoom is centered on the pointer, so you can zoom straight into the area you are looking at.
+
+## Rulers and guides
+
+Toggle rulers with <Keys combo="shift+r" />. Rulers show the current page's unit (px, mm, in or pt) and highlight the selection's extent.
+
+Drag from a ruler onto a page to create a guide. Drag a guide to move it, or drag it back onto the ruler to remove it. Guides belong to a page and are saved with the design; they never appear in exports.
+
+## Layout grid
+
+Each page can have a layout grid with columns, a gutter, an outer margin and an optional baseline. Set it in the **Design** tab of the inspector with nothing selected, and toggle its visibility with <Keys combo="mod+'" />. The AI uses the grid when it lays out or reflows content.
+
+## Snapping
+
+While you move or resize, layers snap to:
+
+- the edges and centers of other layers and of the page,
+- guides, the layout grid and its baseline,
+- equal spacing between neighbors (shown with spacing markers),
+- matching sizes of nearby layers.
+
+Hold <Keys combo="mod" /> while dragging to bypass snapping temporarily, or toggle it with <Keys combo="mod+shift+'" />. Smart distance labels show the gap to the nearest neighbor; hold <Keys combo="alt" /> with something selected and hover another layer to measure the distance between them.
+
+## Performance
+
+The canvas is drawn by the same Rust engine that renders exports, running off the main thread, so dragging stays at your display's refresh rate even on large designs. Very large designs render progressively: you can start working before every image is loaded.

@@ -1,0 +1,587 @@
+{
+ "schema": 1,
+ "id": "strokesd0017",
+ "name": "strokes",
+ "kind": "social-post",
+ "nodes": {
+  "root": {
+   "id": "root",
+   "type": "root",
+   "name": "Root",
+   "parent": null,
+   "x": 0,
+   "y": 0,
+   "width": 0,
+   "height": 0,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "children": [
+    "strokesp0014"
+   ]
+  },
+  "strokesp0014": {
+   "id": "strokesp0014",
+   "type": "page",
+   "name": "Page 1",
+   "parent": null,
+   "x": 0,
+   "y": 0,
+   "width": 480,
+   "height": 480,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "children": [
+    "rectinsi0001",
+    "ellinsid0002",
+    "starinsi0003",
+    "rectcent0004",
+    "ellcente0005",
+    "starcent0006",
+    "rectouts0007",
+    "elloutsi0008",
+    "starouts0009",
+    "dashedxx0010",
+    "persidex0011",
+    "joinsxxx0012",
+    "multixxx0013"
+   ],
+   "clip": true,
+   "unit": "px",
+   "background": [
+    {
+     "type": "solid",
+     "color": "#ffffff"
+    }
+   ],
+   "bleed": 0
+  },
+  "rectinsi0001": {
+   "id": "rectinsi0001",
+   "type": "rect",
+   "name": "rect-inside",
+   "parent": "strokesp0014",
+   "x": 30,
+   "y": 30,
+   "width": 120,
+   "height": 80,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#fff3d6"
+    }
+   ],
+   "strokes": [
+    {
+     "fills": [
+      {
+       "type": "solid",
+       "color": "#2b2b30"
+      }
+     ],
+     "width": 10,
+     "align": "inside",
+     "cap": "butt",
+     "join": "miter"
+    }
+   ],
+   "cornerRadius": 18
+  },
+  "ellinsid0002": {
+   "id": "ellinsid0002",
+   "type": "ellipse",
+   "name": "ell-inside",
+   "parent": "strokesp0014",
+   "x": 40,
+   "y": 135,
+   "width": 100,
+   "height": 80,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#e7efff"
+    }
+   ],
+   "strokes": [
+    {
+     "fills": [
+      {
+       "type": "solid",
+       "color": "#4f8cff"
+      }
+     ],
+     "width": 10,
+     "align": "inside",
+     "cap": "butt",
+     "join": "miter"
+    }
+   ],
+   "cornerRadius": 0
+  },
+  "starinsi0003": {
+   "id": "starinsi0003",
+   "type": "star",
+   "name": "star-inside",
+   "parent": "strokesp0014",
+   "x": 45,
+   "y": 235,
+   "width": 90,
+   "height": 90,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "points": 5,
+   "innerRatio": 0.5,
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#ffe4e4"
+    }
+   ],
+   "strokes": [
+    {
+     "fills": [
+      {
+       "type": "solid",
+       "color": "#e5484d"
+      }
+     ],
+     "width": 6,
+     "align": "inside",
+     "cap": "butt",
+     "join": "round"
+    }
+   ],
+   "cornerRadius": 0
+  },
+  "rectcent0004": {
+   "id": "rectcent0004",
+   "type": "rect",
+   "name": "rect-center",
+   "parent": "strokesp0014",
+   "x": 180,
+   "y": 30,
+   "width": 120,
+   "height": 80,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#fff3d6"
+    }
+   ],
+   "strokes": [
+    {
+     "fills": [
+      {
+       "type": "solid",
+       "color": "#2b2b30"
+      }
+     ],
+     "width": 10,
+     "align": "center",
+     "cap": "butt",
+     "join": "miter"
+    }
+   ],
+   "cornerRadius": 18
+  },
+  "ellcente0005": {
+   "id": "ellcente0005",
+   "type": "ellipse",
+   "name": "ell-center",
+   "parent": "strokesp0014",
+   "x": 190,
+   "y": 135,
+   "width": 100,
+   "height": 80,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#e7efff"
+    }
+   ],
+   "strokes": [
+    {
+     "fills": [
+      {
+       "type": "solid",
+       "color": "#4f8cff"
+      }
+     ],
+     "width": 10,
+     "align": "center",
+     "cap": "butt",
+     "join": "miter"
+    }
+   ],
+   "cornerRadius": 0
+  },
+  "starcent0006": {
+   "id": "starcent0006",
+   "type": "star",
+   "name": "star-center",
+   "parent": "strokesp0014",
+   "x": 195,
+   "y": 235,
+   "width": 90,
+   "height": 90,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "points": 5,
+   "innerRatio": 0.5,
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#ffe4e4"
+    }
+   ],
+   "strokes": [
+    {
+     "fills": [
+      {
+       "type": "solid",
+       "color": "#e5484d"
+      }
+     ],
+     "width": 6,
+     "align": "center",
+     "cap": "butt",
+     "join": "round"
+    }
+   ],
+   "cornerRadius": 0
+  },
+  "rectouts0007": {
+   "id": "rectouts0007",
+   "type": "rect",
+   "name": "rect-outside",
+   "parent": "strokesp0014",
+   "x": 330,
+   "y": 30,
+   "width": 120,
+   "height": 80,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#fff3d6"
+    }
+   ],
+   "strokes": [
+    {
+     "fills": [
+      {
+       "type": "solid",
+       "color": "#2b2b30"
+      }
+     ],
+     "width": 10,
+     "align": "outside",
+     "cap": "butt",
+     "join": "miter"
+    }
+   ],
+   "cornerRadius": 18
+  },
+  "elloutsi0008": {
+   "id": "elloutsi0008",
+   "type": "ellipse",
+   "name": "ell-outside",
+   "parent": "strokesp0014",
+   "x": 340,
+   "y": 135,
+   "width": 100,
+   "height": 80,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#e7efff"
+    }
+   ],
+   "strokes": [
+    {
+     "fills": [
+      {
+       "type": "solid",
+       "color": "#4f8cff"
+      }
+     ],
+     "width": 10,
+     "align": "outside",
+     "cap": "butt",
+     "join": "miter"
+    }
+   ],
+   "cornerRadius": 0
+  },
+  "starouts0009": {
+   "id": "starouts0009",
+   "type": "star",
+   "name": "star-outside",
+   "parent": "strokesp0014",
+   "x": 345,
+   "y": 235,
+   "width": 90,
+   "height": 90,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "points": 5,
+   "innerRatio": 0.5,
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#ffe4e4"
+    }
+   ],
+   "strokes": [
+    {
+     "fills": [
+      {
+       "type": "solid",
+       "color": "#e5484d"
+      }
+     ],
+     "width": 6,
+     "align": "outside",
+     "cap": "butt",
+     "join": "round"
+    }
+   ],
+   "cornerRadius": 0
+  },
+  "dashedxx0010": {
+   "id": "dashedxx0010",
+   "type": "rect",
+   "name": "dashed",
+   "parent": "strokesp0014",
+   "x": 30,
+   "y": 350,
+   "width": 120,
+   "height": 80,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "fills": [],
+   "strokes": [
+    {
+     "fills": [
+      {
+       "type": "solid",
+       "color": "#2b2b30"
+      }
+     ],
+     "width": 4,
+     "align": "center",
+     "cap": "round",
+     "join": "miter",
+     "dash": [
+      12,
+      6
+     ]
+    }
+   ],
+   "cornerRadius": 12
+  },
+  "persidex0011": {
+   "id": "persidex0011",
+   "type": "rect",
+   "name": "per-side",
+   "parent": "strokesp0014",
+   "x": 180,
+   "y": 350,
+   "width": 120,
+   "height": 80,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "fills": [
+    {
+     "type": "solid",
+     "color": "#f1f1f4"
+    }
+   ],
+   "strokes": [
+    {
+     "fills": [
+      {
+       "type": "solid",
+       "color": "#a463f2"
+      }
+     ],
+     "width": 1,
+     "align": "inside",
+     "cap": "butt",
+     "join": "miter",
+     "sides": [
+      0,
+      0,
+      8,
+      2
+     ]
+    }
+   ],
+   "cornerRadius": 0
+  },
+  "joinsxxx0012": {
+   "id": "joinsxxx0012",
+   "type": "path",
+   "name": "joins",
+   "parent": "strokesp0014",
+   "x": 330,
+   "y": 350,
+   "width": 120,
+   "height": 80,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "paths": [
+    {
+     "d": "M0 80L30 0L60 80L90 0L120 80",
+     "fillRule": "nonzero"
+    }
+   ],
+   "fills": [],
+   "strokes": [
+    {
+     "fills": [
+      {
+       "type": "solid",
+       "color": "#2fbf71"
+      }
+     ],
+     "width": 10,
+     "align": "center",
+     "cap": "butt",
+     "join": "bevel"
+    },
+    {
+     "fills": [
+      {
+       "type": "solid",
+       "color": "#2b2b30"
+      }
+     ],
+     "width": 2,
+     "align": "center",
+     "cap": "butt",
+     "join": "miter"
+    }
+   ],
+   "cornerRadius": 0
+  },
+  "multixxx0013": {
+   "id": "multixxx0013",
+   "type": "rect",
+   "name": "multi",
+   "parent": "strokesp0014",
+   "x": 30,
+   "y": 450,
+   "width": 420,
+   "height": 14,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "fills": [],
+   "strokes": [
+    {
+     "fills": [
+      {
+       "type": "linear",
+       "angle": 90,
+       "stops": [
+        {
+         "pos": 0,
+         "color": "#ffb02e"
+        },
+        {
+         "pos": 1,
+         "color": "#a463f2"
+        }
+       ]
+      }
+     ],
+     "width": 6,
+     "align": "center",
+     "cap": "round",
+     "join": "round"
+    }
+   ],
+   "cornerRadius": 7
+  }
+ },
+ "assets": {},
+ "styles": {
+  "colors": {},
+  "text": {},
+  "effects": {},
+  "variables": {}
+ },
+ "meta": {
+  "render": {}
+ }
+}

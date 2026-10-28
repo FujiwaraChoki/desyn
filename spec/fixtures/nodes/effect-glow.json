@@ -1,0 +1,12 @@
+{
+  "name": "effect-glow",
+  "schema": "Effect",
+  "valid": true,
+  "description": "glow effect",
+  "value": {
+    "type": "glow",
+    "radius": 48,
+    "strength": 0.7,
+    "color": "#ffb02e"
+  }
+}

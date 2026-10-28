@@ -1,0 +1,7 @@
+{
+  "name": "round-half-away-from-zero",
+  "description": "x.5 at the 7th decimal rounds away from zero (on the IEEE product |x| * 1e6)",
+  "input": [0.0000005, -0.0000005, 0.0000025, -0.0000025],
+  "inputText": "[0.0000005,-0.0000005,0.0000025,-0.0000025]",
+  "canonical": "[0.000001,-0.000001,0.000003,-0.000003]"
+}

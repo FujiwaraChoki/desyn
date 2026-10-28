@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://desyn.app/schema/v1/Effect.json",
+  "title": "Effect",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "dropShadow"
+        },
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "blur": {
+          "type": "number",
+          "minimum": 0
+        },
+        "spread": {
+          "type": "number"
+        },
+        "color": {
+          "$ref": "#/$defs/Color"
+        },
+        "visible": {
+          "type": "boolean"
+        }
+      },
+      "required": ["type", "x", "y", "blur", "spread", "color"],
+      "additionalProperties": {}
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "innerShadow"
+        },
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "blur": {
+          "type": "number",
+          "minimum": 0
+        },
+        "spread": {
+          "type": "number"
+        },
+        "color": {
+          "$ref": "#/$defs/Color"
+        },
+        "visible": {
+          "type": "boolean"
+        }
+      },
+      "required": ["type", "x", "y", "blur", "spread", "color"],
+      "additionalProperties": {}
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "layerBlur"
+        },
+        "radius": {
+          "type": "number",
+          "minimum": 0
+        },
+        "visible": {
+          "type": "boolean"
+        }
+      },
+      "required": ["type", "radius"],
+      "additionalProperties": {}
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "backgroundBlur"
+        },
+        "radius": {
+          "type": "number",
+          "minimum": 0
+        },
+        "visible": {
+          "type": "boolean"
+        }
+      },
+      "required": ["type", "radius"],
+      "additionalProperties": {}
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "noise"
+        },
+        "amount": {
+          "type": "number"
+        },
+        "scale": {
+          "type": "number"
+        },
+        "mono": {
+          "type": "boolean"
+        },
+        "visible": {
+          "type": "boolean"
+        }
+      },
+      "required": ["type", "amount", "scale", "mono"],
+      "additionalProperties": {}
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "glow"
+        },
+        "radius": {
+          "type": "number",
+          "minimum": 0
+        },
+        "strength": {
+          "type": "number"
+        },
+        "color": {
+          "$ref": "#/$defs/Color"
+        },
+        "visible": {
+          "type": "boolean"
+        }
+      },
+      "required": ["type", "radius", "strength", "color"],
+      "additionalProperties": {}
+    }
+  ],
+  "$defs": {
+    "Color": {
+      "type": "string",
+      "pattern": "^#(?:[0-9a-f]{6}|[0-9a-f]{8})$"
+    }
+  }
+}

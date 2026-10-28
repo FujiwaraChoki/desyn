@@ -1,0 +1,46 @@
+---
+title: Configuration reference
+description: Every environment variable a self-hosted Desyn installation reads, what it does, whether it is required and where it is set.
+---
+
+Desyn is configured entirely through environment variables. They are read in three places, shown as **Read by** under each variable:
+
+- **Convex** — the backend functions. They live in the deployment's environment, not in a file: the [quickstart](/self-hosting/docker-compose) keeps them in `deploy/compose/convex.env` and pushes them with `convex env set` (see [Convex](/self-hosting/convex#environment-variables)); the Convex dashboard can edit them too.
+- **Web app** — the Next.js container. Variables starting with `NEXT_PUBLIC_` are inlined into the browser bundle **at build time**, so changing them means rebuilding the image. The quickstart stack derives them from the `DESYN_*_URL` values in `deploy/compose/.env`.
+- **Worker** — the render worker container.
+
+Variables marked **secret** are credentials. Keep them in your server's environment or a secrets manager, never in git, never in a `NEXT_PUBLIC_` variable, and never in logs or screenshots.
+
+> [!IMPORTANT]
+> Set `DESYN_EDITION=selfhost`. It unlocks every feature for every account, hides billing, and keeps telemetry off unless you opt in. Plan limits on a self-hosted installation come from the `selfhost` plan in `config/plans.json`.
+
+<Generated name="env-vars" />
+
+## Minimal configuration
+
+A working installation needs only the **Core**, **Convex**, **Object storage**, **Email** and **Render worker** groups. Everything else is optional:
+
+- No AI keys: the editor works fully; members can still add their own provider keys or point Desyn at a local model. See [AI providers](/self-hosting/ai-providers).
+- No OAuth providers: members sign in with email and password or magic links.
+- No stock keys: the Photos panel shows only uploads and brand assets.
+- No telemetry variables: nothing leaves your server. See [telemetry](/self-hosting/telemetry).
+
+## Generating secrets
+
+Use a cryptographically random value for each secret, and a different one for each:
+
+```bash
+openssl rand -hex 32
+```
+
+> [!WARNING]
+> Changing `AI_KEY_ENCRYPTION_SECRET` makes stored provider keys unreadable; members must enter them again. Changing `BETTER_AUTH_SECRET` signs everyone out. Back both up together with your database. See [backups](/self-hosting/backups).
+
+## Docs site variables
+
+If you also host this documentation site (`apps/docs`), two optional build variables apply:
+
+| Variable | Default | Description |
+| --- | --- | --- |
+| `DOCS_BASE_PATH` | *(empty)* | Serve the docs under a sub-path such as `/docs`. Set at build time. |
+| `DOCS_SITE_URL` | `https://docs.desyn.app` | Canonical origin used for the sitemap and metadata. |

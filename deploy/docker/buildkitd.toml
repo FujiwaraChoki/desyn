@@ -1,0 +1,12 @@
+# BuildKit config for the dedicated `desyn-builder` buildx builder on the shared server
+# (created by deploy/scripts/bootstrap.sh). CPU and memory caps are set on the builder container itself;
+# this file bounds parallel build steps and the build cache so other workloads keep their headroom.
+[worker.oci]
+  max-parallelism = 3
+  gc = true
+  reservedSpace = "10GB"
+  maxUsedSpace = "40GB"
+  minFreeSpace = "20GB"
+
+[worker.containerd]
+  enabled = false

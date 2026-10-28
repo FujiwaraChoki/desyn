@@ -1,0 +1,54 @@
+{
+  "name": "node-frame",
+  "schema": "FrameNode",
+  "valid": true,
+  "description": "canonical example of a frame node",
+  "value": {
+    "id": "node00000002",
+    "type": "frame",
+    "name": "Card",
+    "parent": "page00000001",
+    "x": 100,
+    "y": 120,
+    "width": 360,
+    "height": 480,
+    "rotation": 0,
+    "opacity": 1,
+    "blend": "normal",
+    "visible": true,
+    "locked": false,
+    "effects": [
+      {
+        "type": "dropShadow",
+        "x": 0,
+        "y": 20,
+        "blur": 60,
+        "spread": -40,
+        "color": "#ffb02e66"
+      }
+    ],
+    "fills": [
+      {
+        "type": "solid",
+        "color": "#ffffff"
+      }
+    ],
+    "strokes": [],
+    "cornerRadius": [24, 24, 8, 8],
+    "children": ["node00000003"],
+    "clip": true,
+    "cornerSmoothing": 0.6,
+    "layout": {
+      "mode": "column",
+      "gap": 16,
+      "padding": [24, 24, 24, 24],
+      "mainAlign": "start",
+      "crossAlign": "stretch"
+    },
+    "sizing": {
+      "h": "fixed",
+      "v": "hug"
+    },
+    "role": "product-card"
+  }
+}

@@ -1,0 +1,46 @@
+[package]
+name = "desyn-desktop"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+description = "Desyn desktop app (GPUI): native editor shell, canvas and the local .desyn library."
+publish = false
+
+[[bin]]
+name = "desyn"
+path = "src/main.rs"
+
+[lib]
+name = "desyn_desktop"
+path = "src/lib.rs"
+
+[dependencies]
+# GPUI: `gpui-pre` is the crates.io publication of Zed's gpui pinned to zed@93d7456 (2026-10-12); the official
+# `gpui` crate on crates.io (0.2.2, 2025) needs a libc downgrade that would change the shared Cargo.lock.
+gpui = { package = "gpui-pre", version = "=0.3.9" }
+gpui_platform = { package = "gpui-pre-platform", version = "=0.3.9", features = ["wayland", "x11"] }
+desyn-core = { path = "../../crates/desyn-core" }
+desyn-text = { path = "../../crates/desyn-text", features = ["bundled", "bundled-noto", "bundled-emoji"] }
+desyn-raster = { path = "../../crates/desyn-raster", default-features = false, features = ["bundled-fonts", "pdf", "pptx", "gif"] }
+serde = { version = "=1.0.229", features = ["derive"] }
+serde_json = { version = "=1.0.154", features = ["float_roundtrip"] }
+anyhow = "=1.0.104"
+log = "=0.4.34"
+zip = { version = "=9.0.5", default-features = false, features = ["deflate-flate2"] }
+sha2 = "=0.11.1"
+image = { version = "=0.25.10", default-features = false, features = ["png", "jpeg", "webp", "gif", "bmp"] }
+getrandom = "=0.4.3"
+dirs = "=6.0.0"
+futures = "=0.3.34"
+smallvec = "=1.16.3"
+unicode-segmentation = "=1.13.3"
+# Cloud (feature modules: auth, sync, AI, export, panels). The Convex Rust client speaks the sync protocol over a
+# websocket (rustls + webpki roots); HTTP calls (native sign-in, uploads, image previews, Iconify, update feed) use
+# reqwest on the same tokio runtime. ring is the workspace's TLS crypto (no aws-lc-rs / cmake).
+convex = { version = "=0.10.4", default-features = false, features = ["rustls-tls-webpki-roots"] }
+tokio = { version = "=1.54.0", features = ["rt-multi-thread", "macros", "net", "time", "sync", "io-util"] }
+reqwest = { version = "=0.13.5", default-features = false, features = ["rustls-no-provider", "json"] }
+rustls = { version = "=0.23.46", default-features = false, features = ["ring", "std", "tls12"] }
+keyring = "=4.2.0"
+base64 = "=0.22.1"
+url = "=2.5.8"

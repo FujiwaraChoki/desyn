@@ -1,0 +1,29 @@
+---
+title: Import
+description: Bring existing work into Desyn — SVG, PDF and PowerPoint files become editable layers, and images become image layers.
+---
+
+Import turns existing files into editable Desyn designs, not flat pictures. Drag a file onto the dashboard to create a new design from it, or onto an open design to add its content to the current page.
+
+## Supported formats
+
+| Format | Becomes |
+| --- | --- |
+| **SVG** | Vector paths, shapes, groups, text and embedded images, with fills, strokes, gradients and opacity preserved. Scripts and external references are removed. |
+| **PDF** | One page per PDF page. Text becomes text layers, vector graphics become paths, and images become image layers. |
+| **PowerPoint (PPTX)** | One page per slide, at the slide size, with text boxes, shapes, images and speaker notes. |
+| **Images** (PNG, JPEG, WebP, GIF) | Image layers. Use [trace to vector](/ai/asset-tools#trace-to-vector) to turn simple images into paths. |
+
+## What to expect
+
+Import is faithful for most files, but every format has features without an exact equivalent:
+
+- **Fonts** — Desyn uses the same font if it is available in Google Fonts or your uploads, and otherwise substitutes the closest match and lists the missing fonts so you can upload them.
+- **Text layout** — text from PDFs is often stored as many separate lines. Desyn merges lines into paragraphs where it can; the agent can tidy the rest (*"merge these text lines into one paragraph"*).
+- **Effects** — filters and effects with no Desyn equivalent are approximated or flattened into images.
+
+After importing, ask the agent to *"label the layers on this page"* so names and [roles](/concepts/roles) are meaningful for later AI edits.
+
+## Desktop files
+
+The desktop app saves and opens `.desyn` files: a zip containing the design JSON and its assets. Designs in the desktop app sync with your online library, so the same work is available in the web and iOS apps.

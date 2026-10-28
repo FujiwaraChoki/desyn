@@ -1,0 +1,80 @@
+---
+title: Describe (AI view)
+description: The semantic description of a page that the AI reads — tree in page coordinates, palette, fonts, typographic scale, alignment grid, hierarchy and lint issues with fixes.
+---
+
+`describe` turns a page into a compact, structured summary — the way a designer would read it — instead of raw JSON. The agent reads it before every edit, and you can use it for your own analysis, accessibility checks or design linting.
+
+It is computed deterministically by the Rust core (`desyn_core::describe`, no model call involved) and exposed by the wasm engine in clients, by the render worker at `POST /v1/describe`, and by the Agent API at [`GET /designs/{designId}/describe`](/developers/api/designs#describe-a-page).
+
+## Input
+
+The design, plus optionally a `pageId` (default: first page), the current `selection`, a `maxDepth` for the tree and whether to include styles.
+
+## Output
+
+<Generated name="model-types" names="Description,DNode,Issue,IssueCode" />
+
+- **tree** — the page's layers in **page coordinates** (rotation and parents already resolved), keeping z-order back to front. Text nodes include their text and font summary; images include their kind (photo, illustration, logo, icon).
+- **palette** — dominant colors by share of area.
+- **fonts** — families with the weights used and how many nodes use them.
+- **typography** — the font size scale in use, the headline and body sizes and their ratio.
+- **grid** — inferred page margins, alignment lines shared by several nodes, and the dominant spacing rhythm.
+- **hierarchy** — nodes ranked by visual weight (size, contrast, position) with the reason.
+- **issues** — lint results, each with affected ids, a message and often a ready-made `fix` as a list of operations.
+
+## Grouping inference
+
+The `semantic` field describes what a group of nodes means — *"product card: image + title + price + button"*, *"list of 4 equal items"* — inferred from containment, proximity and role patterns. Inference is heuristic but deterministic. Explicit [roles](/concepts/roles) and names always win over inference.
+
+## Lint codes
+
+| Code | Means |
+| --- | --- |
+| `low-contrast` | Text contrast below WCAG AA for its size |
+| `tiny-text` | Text too small for the design kind |
+| `text-overflow` | Text does not fit its box |
+| `off-page` | Content outside the page (and bleed) |
+| `overlap` | Unintended overlap between elements |
+| `misaligned` | Almost, but not exactly, aligned with neighbors |
+| `uneven-spacing` | Spacing between similar elements differs |
+| `orphan-line` | A single word on the last line of a paragraph |
+| `too-many-fonts`, `too-many-colors` | More families or colors than the design can carry |
+| `weak-hierarchy` | No clear most-important element |
+| `image-low-res` | An image will look soft at its size or in print |
+| `unsafe-margin` | Content inside the safe margin for the kind |
+| `missing-alt` | An image without alt text |
+| `unlabeled-group` | A group with no meaningful name or role |
+
+## Example
+
+A trimmed response for a social post:
+
+```json
+{
+  "design": { "id": "d3k5m7p9r1t3", "name": "Spring launch", "kind": "social-post", "pageCount": 1 },
+  "page": { "id": "p8k2m4n6q8r0", "index": 0, "width": 1080, "height": 1350, "unit": "px", "background": "solid #0a0a0a" },
+  "selection": [],
+  "tree": [
+    {
+      "id": "h1a2b3c4d5e6", "type": "text", "name": "Headline", "role": "headline",
+      "box": { "x": 96, "y": 120, "w": 888, "h": 230, "rotation": 0 },
+      "z": 2, "visible": true, "locked": false, "opacity": 1,
+      "text": "Hand-thrown cups for slow mornings",
+      "font": { "family": "Instrument Serif", "size": 96, "weight": 400, "color": "#ffb02e", "align": "left", "lines": 2 }
+    }
+  ],
+  "palette": [{ "color": "#0a0a0a", "share": 0.71 }, { "color": "#ffb02e", "share": 0.09 }],
+  "fonts": [{ "family": "Instrument Serif", "weights": [400], "usedBy": 1 }],
+  "typography": { "scale": [24, 96], "headlineSize": 96, "bodySize": 24, "ratio": 4 },
+  "grid": { "margins": { "t": 120, "r": 96, "b": 96, "l": 96 }, "alignments": [{ "axis": "x", "pos": 96, "ids": ["h1a2b3c4d5e6", "c7d8e9f0a1b2"] }], "spacingRhythm": 24 },
+  "hierarchy": [{ "id": "h1a2b3c4d5e6", "rank": 1, "reason": "largest text, high contrast, top of page" }],
+  "issues": [
+    {
+      "severity": "warn", "code": "low-contrast", "ids": ["c7d8e9f0a1b2"],
+      "message": "Caption contrast is 2.8:1; at 24 px it needs 4.5:1.",
+      "fix": [{ "op": "patch", "id": "c7d8e9f0a1b2", "path": ["style", "fills", 0, "color"], "value": "#c9c2b6" }]
+    }
+  ]
+}
+```

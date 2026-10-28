@@ -1,0 +1,27 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AssetObjects",
+      "Effect": "Allow",
+      "Action": ["s3:GetObject", "s3:PutObject", "s3:DeleteObject", "s3:AbortMultipartUpload", "s3:ListMultipartUploadParts", "s3:GetObjectAttributes"],
+      "Resource": ["arn:aws:s3:::desyn-prod-assets/*", "arn:aws:s3:::desyn-dev-assets/*"]
+    },
+    {
+      "Sid": "AssetList",
+      "Effect": "Allow",
+      "Action": ["s3:ListBucket", "s3:ListBucketMultipartUploads", "s3:GetBucketLocation"],
+      "Resource": ["arn:aws:s3:::desyn-prod-assets", "arn:aws:s3:::desyn-dev-assets"]
+    },
+    {
+      "Sid": "SendMail",
+      "Effect": "Allow",
+      "Action": ["ses:SendEmail", "ses:SendRawEmail"],
+      "Resource": [
+        "arn:aws:ses:eu-central-1:${AWS_ACCOUNT_ID}:identity/desyn.app",
+        "arn:aws:ses:eu-central-1:${AWS_ACCOUNT_ID}:configuration-set/desyn"
+      ],
+      "Condition": { "StringLike": { "ses:FromAddress": "*@desyn.app" } }
+    }
+  ]
+}

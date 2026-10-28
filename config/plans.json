@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "currency": "usd",
+  "plans": {
+    "free": {
+      "name": "Free",
+      "priceMonthly": 0,
+      "limits": {
+        "designs": 20,
+        "pagesPerDesign": 10,
+        "storageMb": 1024,
+        "uploadMbPerFile": 15,
+        "collaboratorsPerDesign": 0,
+        "brandKits": 0,
+        "workspaces": 1,
+        "exportsPerMonth": 300,
+        "versionHistoryDays": 0,
+        "creditsPerMonth": 0
+      },
+      "features": {
+        "editor.core": true,
+        "templates.basic": true,
+        "templates.premium": false,
+        "export.png": true, "export.jpg": true, "export.pdf": true,
+        "export.webp": false, "export.svg": false, "export.pptx": false, "export.video": false, "export.pdfPrint": false,
+        "share.viewLink": true, "share.editLink": false,
+        "fonts.google": true, "fonts.custom": false,
+        "layout.auto": false, "vector.pen": false, "effects.advanced": false,
+        "charts": false, "tables": false, "qr": false,
+        "presentation": false, "docs": false, "whiteboard": false, "video": false, "website": false,
+        "ai.agent": false, "ai.generateDesign": false, "ai.images": false, "ai.svg": false, "ai.removeBackground": false,
+        "ai.inpaint": false, "ai.outpaint": false, "ai.upscale": false, "ai.mockup": false, "ai.copy": false, "ai.translate": false,
+        "ai.byok": false, "ai.local": false,
+        "brandKit": false, "magicResize": false, "bulkCreate": false, "workflows": false, "campaign": false, "localize": false,
+        "collab.live": false, "collab.comments": false, "teams": false, "versionHistory": false, "agentApi": false, "mcp": false
+      }
+    },
+    "pro": {
+      "name": "Pro",
+      "priceMonthly": 8,
+      "priceYearly": 80,
+      "limits": {
+        "designs": null,
+        "pagesPerDesign": 200,
+        "storageMb": 102400,
+        "uploadMbPerFile": 200,
+        "collaboratorsPerDesign": 25,
+        "brandKits": 10,
+        "workspaces": 5,
+        "exportsPerMonth": 5000,
+        "versionHistoryDays": 90,
+        "creditsPerMonth": 600
+      },
+      "features": "ALL_TRUE"
+    },
+    "selfhost": {
+      "name": "Self-hosted",
+      "priceMonthly": 0,
+      "limits": {
+        "designs": null, "pagesPerDesign": null, "storageMb": null, "uploadMbPerFile": 1024, "collaboratorsPerDesign": null,
+        "brandKits": null, "workspaces": null, "exportsPerMonth": null, "versionHistoryDays": null, "creditsPerMonth": null
+      },
+      "features": "ALL_TRUE"
+    }
+  },
+  "creditCosts": {
+    "agent.turn": 1,
+    "ai.generateDesign": 5,
+    "ai.image": 3,
+    "ai.svg": 1,
+    "ai.removeBackground": 1,
+    "ai.upscale": 2,
+    "ai.inpaint": 3,
+    "ai.outpaint": 3,
+    "ai.mockup": 3,
+    "ai.translate": 1,
+    "ai.copy": 1,
+    "workflow.campaignDesign": 5,
+    "workflow.resizeVariant": 1,
+    "workflow.localizeVariant": 1,
+    "ai.videoClip": 40
+  },
+  "fairUse": {
+    "softLimitBehavior": "throttle",
+    "throttleDelayMs": [1500, 6000],
+    "noOverageCharges": true,
+    "byokBypassesCredits": true,
+    "perMinuteAiRequests": 20,
+    "perDayAiRequests": 600,
+    "maxConcurrentRuns": 3,
+    "maxCollaboratorsPerDesign": 25,
+    "abuseSignals": ["bulk-account-creation", "automated-scraping", "resale"]
+  }
+}

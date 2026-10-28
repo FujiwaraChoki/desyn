@@ -1,0 +1,31 @@
+[Unit]
+Description=Desyn log shipping to Axiom (Vector, desyn containers only)
+Documentation=file:///opt/desyn/tooling/RUNBOOK.md
+Requires=docker.service
+After=docker.service network-online.target
+Wants=network-online.target
+ConditionPathExists=/opt/desyn/secrets/axiom.env
+
+[Service]
+Type=simple
+# Vector reads the Docker API but only collects containers labelled com.docker.compose.project=desyn (see
+# vector.yaml). Note that ":ro" on the socket only protects the socket file: whoever can talk to it controls
+# the Docker daemon, which is why this runs a pinned upstream image with no capabilities, no new privileges
+# and tight resource limits. AXIOM_TOKEN comes from the root-only env file.
+ExecStartPre=-/usr/bin/docker rm -f desyn-vector
+ExecStart=/usr/bin/docker run --rm --name desyn-vector \
+  --label com.desyn.owner=desyn \
+  --env-file /opt/desyn/secrets/axiom.env \
+  --volume /var/run/docker.sock:/var/run/docker.sock:ro \
+  --volume /opt/desyn/tooling/systemd/vector.yaml:/etc/vector/vector.yaml:ro \
+  --volume desyn_vector_data:/var/lib/vector \
+  --memory 256m --cpus 0.5 --pids-limit 256 \
+  --security-opt no-new-privileges:true --cap-drop ALL \
+  --log-driver local --log-opt max-size=10m --log-opt max-file=3 \
+  timberio/vector:0.60.0-debian --config /etc/vector/vector.yaml
+ExecStop=/usr/bin/docker stop -t 20 desyn-vector
+Restart=on-failure
+RestartSec=15
+
+[Install]
+WantedBy=multi-user.target

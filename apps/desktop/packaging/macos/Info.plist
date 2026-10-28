@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Info.plist for Desyn.app (bundle layout: Desyn.app/Contents/{Info.plist,MacOS/desyn,Resources/desyn.icns}).
+     Registers the .desyn document type (exported UTI app.desyn.design, a zip archive) and the desyn:// URL scheme;
+     macOS delivers both to the running app through GPUI's open-URLs handler. -->
+<plist version="1.0">
+<dict>
+  <key>CFBundleName</key><string>Desyn</string>
+  <key>CFBundleDisplayName</key><string>Desyn</string>
+  <key>CFBundleIdentifier</key><string>app.desyn.Desyn</string>
+  <key>CFBundleExecutable</key><string>desyn</string>
+  <key>CFBundleIconFile</key><string>desyn</string>
+  <key>CFBundlePackageType</key><string>APPL</string>
+  <key>CFBundleShortVersionString</key><string>0.1.0</string>
+  <key>CFBundleVersion</key><string>1</string>
+  <key>LSMinimumSystemVersion</key><string>12.0</string>
+  <key>LSApplicationCategoryType</key><string>public.app-category.graphics-design</string>
+  <key>NSHighResolutionCapable</key><true/>
+  <key>NSSupportsAutomaticGraphicsSwitching</key><true/>
+  <key>CFBundleDocumentTypes</key>
+  <array>
+    <dict>
+      <key>CFBundleTypeName</key><string>Desyn design</string>
+      <key>CFBundleTypeRole</key><string>Editor</string>
+      <key>LSHandlerRank</key><string>Owner</string>
+      <key>CFBundleTypeIconFile</key><string>desyn</string>
+      <key>LSItemContentTypes</key><array><string>app.desyn.design</string></array>
+    </dict>
+    <dict>
+      <key>CFBundleTypeName</key><string>Image</string>
+      <key>CFBundleTypeRole</key><string>Viewer</string>
+      <key>LSHandlerRank</key><string>Alternate</string>
+      <key>LSItemContentTypes</key><array><string>public.svg-image</string><string>public.png</string><string>public.jpeg</string><string>org.webmproject.webp</string></array>
+    </dict>
+  </array>
+  <key>UTExportedTypeDeclarations</key>
+  <array>
+    <dict>
+      <key>UTTypeIdentifier</key><string>app.desyn.design</string>
+      <key>UTTypeDescription</key><string>Desyn design</string>
+      <key>UTTypeIconFile</key><string>desyn</string>
+      <key>UTTypeConformsTo</key><array><string>public.zip-archive</string><string>public.data</string></array>
+      <key>UTTypeTagSpecification</key>
+      <dict>
+        <key>public.filename-extension</key><array><string>desyn</string></array>
+        <key>public.mime-type</key><array><string>application/x-desyn</string></array>
+      </dict>
+    </dict>
+  </array>
+  <key>CFBundleURLTypes</key>
+  <array>
+    <dict>
+      <key>CFBundleURLName</key><string>app.desyn.Desyn</string>
+      <key>CFBundleURLSchemes</key><array><string>desyn</string></array>
+    </dict>
+  </array>
+</dict>
+</plist>

@@ -1,0 +1,39 @@
+---
+title: Comments & collaboration
+description: Edit together in real time with live cursors and selections, leave comments pinned to the canvas, mention teammates and share links.
+---
+
+Real-time collaboration and comments are part of Pro and the self-hosted edition. On Pro, up to 25 people can collaborate on a design.
+
+## Editing together
+
+Open the same design and you are working on it together. There is nothing to merge and no "someone else is editing" lock:
+
+- **Avatars** in the top bar show who is here. Click one to jump to where they are working.
+- **Live cursors** and **selections** show each person's pointer and what they have selected, in their color.
+- Changes arrive as soon as someone finishes a gesture — a drag, a resize, a text edit — and appear for everyone at the same moment.
+- When the agent is working on a design, everyone sees which layers it is editing ("AI is editing…") and its changes land live, as one undoable step.
+
+### When two people change the same thing
+
+Desyn resolves conflicts per property, in the order the server receives changes. If you change a layer's color while a teammate moves it, both changes apply. If you both change the same property, the later change wins. Structural conflicts — for example, one person deletes a frame while another edits its child — are resolved in server order, and the change that no longer applies is dropped. Your undo history only contains your own changes.
+
+Cursors, selections and drag previews are ephemeral: they are shared live but never stored in the design or its history.
+
+## Comments
+
+Press <Keys combo="c" /> for the comment tool and click anywhere on a page — or on a specific layer — to start a thread. Comments pinned to a layer move with it.
+
+- **Mention** teammates with `@name` to notify them.
+- **Reply** in the thread; **resolve** it when it is done. Resolved threads are hidden but kept, and can be reopened.
+- Open all threads in the **Comments** panel (<Keys combo="shift+c" />), filter by open or resolved, and jump to each one.
+
+Workspace members with the *commenter* role, and visitors with a comment link, can comment without being able to edit.
+
+## Sharing
+
+Use **Share** in the top bar to invite workspace members or create a link with view, comment or edit permission, a password and an expiry date. See [workspaces & members](/concepts/workspaces#sharing-a-single-design).
+
+## Working offline
+
+If your connection drops, keep working. Your changes are applied locally and sent in order when you reconnect; collaborators' changes that arrived in the meantime are applied first, then yours on top, so nobody's work is lost.

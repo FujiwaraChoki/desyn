@@ -1,0 +1,26 @@
+{
+  "name": "fill-linear",
+  "schema": "Fill",
+  "valid": true,
+  "description": "linear fill",
+  "value": {
+    "type": "linear",
+    "angle": 135,
+    "stops": [
+      {
+        "pos": 0,
+        "color": "#ffd66b"
+      },
+      {
+        "pos": 0.5,
+        "color": "#ffb02e"
+      },
+      {
+        "pos": 1,
+        "color": {
+          "$var": "brand.ember"
+        }
+      }
+    ]
+  }
+}

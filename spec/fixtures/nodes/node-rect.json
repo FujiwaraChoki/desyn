@@ -1,0 +1,52 @@
+{
+  "name": "node-rect",
+  "schema": "RectNode",
+  "valid": true,
+  "description": "canonical example of a rect node",
+  "value": {
+    "id": "node00000010",
+    "type": "rect",
+    "name": "Button",
+    "parent": "page00000001",
+    "x": 100,
+    "y": 120,
+    "width": 200,
+    "height": 56,
+    "rotation": 0,
+    "opacity": 1,
+    "blend": "normal",
+    "visible": true,
+    "locked": false,
+    "effects": [],
+    "fills": [
+      {
+        "type": "solid",
+        "color": "#ffb02e"
+      }
+    ],
+    "strokes": [
+      {
+        "fills": [
+          {
+            "type": "solid",
+            "color": "#ffffff33"
+          }
+        ],
+        "width": 1,
+        "align": "inside",
+        "cap": "butt",
+        "join": "miter"
+      }
+    ],
+    "cornerRadius": 999,
+    "constraints": {
+      "h": "center",
+      "v": "bottom"
+    },
+    "link": "https://desyn.app",
+    "role": "button",
+    "meta": {
+      "slot": "cta"
+    }
+  }
+}

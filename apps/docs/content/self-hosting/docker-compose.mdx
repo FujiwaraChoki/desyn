@@ -1,0 +1,219 @@
+---
+title: Docker Compose quickstart
+description: Install Desyn on one machine with the Compose stack that ships in the repository — Convex on Postgres, the web app, the render worker and MinIO storage — step by step.
+---
+
+The repository ships a complete self-hosting stack in `deploy/compose/desyn.selfhost.yml` (Compose project `desyn-selfhost`). This guide takes you from an empty machine to a running installation. It takes 30–60 minutes, most of it waiting for the first image build. You need the [requirements](/self-hosting#requirements) in place: Docker Engine with the Compose plugin, and for a server, DNS names and a reverse proxy.
+
+## What the stack runs
+
+| Service | Purpose | Host port (default) |
+| --- | --- | --- |
+| `web` | The Desyn app: editor, dashboard, settings, admin console | `3000` |
+| `convex-backend` | Database, realtime sync, server functions, HTTP actions, crons | `3210` (API), `3211` (HTTP actions) |
+| `convex-dashboard` | Convex admin UI | `127.0.0.1:6791` |
+| `postgres` | Convex's persistence, on an internal network only | — |
+| `minio` + `minio-init` | S3-compatible storage; the bucket is created automatically | `9000` (API), `127.0.0.1:9001` (console) |
+| `worker` | Render worker: exports, thumbnails, AI previews | — (Compose network only) |
+
+Optional services are behind Compose profiles and start only when you ask for them:
+
+| Profile | Services | Host port (default) |
+| --- | --- | --- |
+| `marketing` | `landing` and `docs` (this site) | `3001`, `3002` |
+| `mail` | `mailpit`, an SMTP sink with a web UI for testing email | `127.0.0.1:8025` |
+| `ollama` | `ollama`, local models for the AI features | `127.0.0.1:11434` |
+| `tools` | `convex-tools`, the Convex CLI with this repository's functions | — (used with `run --rm`) |
+
+Published ports bind to `DESYN_BIND` (default `127.0.0.1`), so nothing is reachable from other machines until you put a [reverse proxy](/self-hosting/reverse-proxy) in front or change the bind address. The dashboard, the MinIO console, Mailpit and Ollama always bind to `127.0.0.1`.
+
+<Steps>
+
+### Get the source
+
+Clone the Desyn repository (or unpack a release archive) and enter it. Every command in the self-hosting guides runs from the repository root.
+
+```bash
+git clone <repository-url> desyn
+cd desyn
+```
+
+### Point Compose at the stack
+
+```bash
+export COMPOSE_FILE=deploy/compose/desyn.selfhost.yml
+```
+
+With `COMPOSE_FILE` set, a plain `docker compose …` uses the self-hosting stack; the commands in these docs assume it. Add the line to your shell profile, or pass `-f deploy/compose/desyn.selfhost.yml` to every command instead. Compose reads its variables from `deploy/compose/.env`, next to the stack file.
+
+### Create the stack environment
+
+Copy the template and fill its four required secrets with fresh random values:
+
+```bash
+cp deploy/compose/.env.example deploy/compose/.env
+chmod 600 deploy/compose/.env
+for name in POSTGRES_PASSWORD INSTANCE_SECRET MINIO_ROOT_PASSWORD RENDER_WORKER_SECRET; do
+  sed -i "s|^$name=.*|$name=$(openssl rand -hex 32)|" deploy/compose/.env
+done
+```
+
+`deploy/compose/.env` and `deploy/compose/convex.env` are ignored by git. Keep both with your [backups](/self-hosting/backups): `INSTANCE_SECRET` protects the Convex deployment, and the others are needed to reach your data.
+
+### Create the backend configuration
+
+The server functions read their own configuration from the Convex deployment. Start from the template and fill its secrets, reusing two values from the stack environment:
+
+```bash
+cp deploy/compose/convex.selfhost.env.example deploy/compose/convex.env
+chmod 600 deploy/compose/convex.env
+stack() { grep "^$1=" deploy/compose/.env | cut -d= -f2-; }
+put() { sed -i "s|^$1=.*|$1=$2|" deploy/compose/convex.env; }
+put BETTER_AUTH_SECRET "$(openssl rand -hex 32)"
+put AI_KEY_ENCRYPTION_SECRET "$(openssl rand -hex 32)"
+put RENDER_WORKER_SECRET "$(stack RENDER_WORKER_SECRET)"
+put AWS_SECRET_ACCESS_KEY "$(stack MINIO_ROOT_PASSWORD)"
+```
+
+The template already selects the self-hosted edition (`DESYN_EDITION=selfhost`), the bundled worker and MinIO, and the `log` mail transport. Optionally add `OPENROUTER_API_KEY` and `FAL_AI_API_KEY` for [AI features](/self-hosting/ai-providers), and stock photo keys. The [configuration reference](/self-hosting/configuration) explains every variable.
+
+### Choose your URLs
+
+The browser talks to three origins (app, Convex API, Convex HTTP actions) plus the storage endpoint. The public ones are baked into the web image when it is built, so set them before the first build.
+
+<Tabs>
+<Tab label="With a domain">
+
+Point four DNS names at the server — this guide uses `design.example.org`, `convex.example.org`, `convex-site.example.org` and `s3.example.org` — and set them in both files:
+
+```dotenv title="deploy/compose/.env"
+DESYN_APP_URL=https://design.example.org
+DESYN_SITE_URL=https://design.example.org
+DESYN_CONVEX_URL=https://convex.example.org
+DESYN_CONVEX_SITE_URL=https://convex-site.example.org
+```
+
+```dotenv title="deploy/compose/convex.env"
+APP_URL=https://design.example.org
+SITE_URL=https://design.example.org
+S3_ENDPOINT=https://s3.example.org
+S3_PUBLIC_BASE_URL=https://s3.example.org/desyn
+```
+
+`DESYN_SITE_URL` and `SITE_URL` name the marketing site; without the `marketing` profile, use the app URL as shown. Keep `DESYN_BIND=127.0.0.1` and set up the [reverse proxy](/self-hosting/reverse-proxy) after the stack is running. MinIO's CORS rule follows `DESYN_APP_URL` automatically.
+
+</Tab>
+<Tab label="On one computer">
+
+Keep the `localhost` defaults in `deploy/compose/.env` and open the app at `http://localhost:3000`. Only storage needs care: the backend container fetches objects from `S3_ENDPOINT` too, and inside a container `localhost` is the container itself. Use your machine's LAN address (for example `192.168.1.20`) and publish MinIO on it:
+
+```dotenv title="deploy/compose/.env"
+DESYN_BIND=0.0.0.0
+```
+
+```dotenv title="deploy/compose/convex.env"
+S3_ENDPOINT=http://192.168.1.20:9000
+S3_PUBLIC_BASE_URL=http://192.168.1.20:9000/desyn
+```
+
+`DESYN_BIND=0.0.0.0` also publishes the app and Convex on your network, so use it only on a network you trust.
+
+</Tab>
+</Tabs>
+
+### Build and start
+
+```bash
+docker compose up -d --build
+docker compose ps
+```
+
+The first build compiles the web app and the Rust worker and can take 15–30 minutes (`DESYN_BUILD_JOBS` in `.env` sets the parallel Rust jobs). When it finishes, `docker compose ps` shows every service running and `convex-backend` and `postgres` healthy; `minio-init` exits after creating the bucket.
+
+### Generate the admin key
+
+```bash
+docker compose exec convex-backend ./generate_admin_key.sh
+```
+
+Copy the key from the last line of the output into `CONVEX_SELF_HOSTED_ADMIN_KEY` in `deploy/compose/.env`; the `convex-tools` service reads it from there. Treat it like a root password: it grants full control over the deployment. You also use it to log in to the dashboard.
+
+### Push the backend configuration
+
+```bash
+grep -E '^[A-Z0-9_]+=.+' deploy/compose/convex.env | docker compose run --rm -T convex-tools env set --force
+```
+
+The first `run` builds the `convex-tools` image (a few minutes). The `grep` passes only variables that have a value, so empty optional keys are not set. Run the same command whenever you change `convex.env`; changes apply to new function calls immediately.
+
+### Deploy the functions
+
+```bash
+docker compose run --rm convex-tools deploy --yes
+```
+
+This type-checks and uploads the schema, functions and scheduled jobs from the image's copy of `convex/`. Run it again after every [upgrade](/self-hosting/upgrades).
+
+### Create your account
+
+Open your app URL and sign up. The first account on a fresh installation becomes the administrator and can open the [admin console](/self-hosting/admin-console) at `/admin`.
+
+With the default `MAIL_TRANSPORT=log`, the verification email is not sent but written to the backend logs: open the dashboard at `http://127.0.0.1:6791` (log in with the admin key) and look under **Logs**. Configure [email](/self-hosting/email) before you invite anyone.
+
+</Steps>
+
+## Check the installation
+
+- `<DESYN_CONVEX_SITE_URL>/healthz` returns `{"ok":true,"service":"desyn-convex","edition":"selfhost",…}`. A `503` with `"ok":false` means the backend cannot reach its database.
+- In the editor, upload an image (tests storage and CORS) and export a PNG (tests the worker).
+- **Admin → Health** in the app shows whether storage, email, the worker and each AI provider are configured.
+
+If something does not work, see [troubleshooting](/self-hosting/troubleshooting).
+
+## Optional services
+
+Start a profile with `--profile`, then point the backend at it in `convex.env` and push the configuration again:
+
+```bash
+docker compose --profile mail --profile ollama up -d
+```
+
+| Profile | Backend configuration |
+| --- | --- |
+| `mail` | `MAIL_TRANSPORT=smtp` and `SMTP_URL=smtp://mailpit:1025`; read the messages at `http://127.0.0.1:8025` |
+| `ollama` | `OLLAMA_BASE_URL=http://ollama:11434`, then pull a model: `docker compose exec ollama ollama pull qwen3:32b` |
+| `marketing` | Set `DESYN_SITE_URL` and `DESYN_DOCS_URL` to the public URLs of the landing page and the docs, and `SITE_URL` to match |
+
+## Changing URLs later
+
+The `DESYN_*_URL` values are compiled into the browser bundles. After changing them, rebuild the images that use them and update the backend:
+
+```bash
+docker compose up -d --build web          # add landing docs if you run the marketing profile
+grep -E '^[A-Z0-9_]+=.+' deploy/compose/convex.env | docker compose run --rm -T convex-tools env set --force
+```
+
+## Ports
+
+Every host port can be changed in `deploy/compose/.env`:
+
+| Variable | Default | Service |
+| --- | --- | --- |
+| `DESYN_WEB_PORT` | `3000` | Web app |
+| `DESYN_LANDING_PORT` | `3001` | Landing page (`marketing`) |
+| `DESYN_DOCS_PORT` | `3002` | Docs (`marketing`) |
+| `DESYN_CONVEX_PORT` | `3210` | Convex API |
+| `DESYN_CONVEX_SITE_PORT` | `3211` | Convex HTTP actions |
+| `DESYN_DASHBOARD_PORT` | `6791` | Convex dashboard (always `127.0.0.1`) |
+| `DESYN_MINIO_PORT` | `9000` | MinIO S3 API |
+| `DESYN_MINIO_CONSOLE_PORT` | `9001` | MinIO console (always `127.0.0.1`) |
+| `DESYN_MAILPIT_PORT` | `8025` | Mailpit UI (`mail`, always `127.0.0.1`) |
+| `DESYN_OLLAMA_PORT` | `11434` | Ollama (`ollama`, always `127.0.0.1`) |
+
+## Next steps
+
+- Put [HTTPS in front](/self-hosting/reverse-proxy) and configure [email](/self-hosting/email).
+- Add [AI providers](/self-hosting/ai-providers) or [local models](/ai/local-models).
+- Set up [backups](/self-hosting/backups) before you put real work in.
+- Optional: [sign in with Google or GitHub](/self-hosting/configuration#sign-in-providers) and [stock photos](/self-hosting/configuration#stock-media).
+- To use AWS S3, Cloudflare R2 or another store instead of the bundled MinIO, see [storage](/self-hosting/storage).

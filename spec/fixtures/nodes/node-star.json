@@ -1,0 +1,33 @@
+{
+  "name": "node-star",
+  "schema": "StarNode",
+  "valid": true,
+  "description": "canonical example of a star node",
+  "value": {
+    "id": "node00000013",
+    "type": "star",
+    "name": "Burst",
+    "parent": "page00000001",
+    "x": 100,
+    "y": 120,
+    "width": 100,
+    "height": 100,
+    "rotation": 0,
+    "opacity": 1,
+    "blend": "normal",
+    "visible": true,
+    "locked": false,
+    "effects": [],
+    "fills": [
+      {
+        "type": "solid",
+        "color": "#d9d9d9"
+      }
+    ],
+    "strokes": [],
+    "cornerRadius": 0,
+    "points": 12,
+    "innerRatio": 0.7,
+    "flipX": true
+  }
+}

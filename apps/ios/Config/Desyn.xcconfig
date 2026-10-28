@@ -1,0 +1,5 @@
+// Build settings shared by every configuration of the Desyn app.
+// Endpoints come from deploy/env/public.env (scripts/sync-config.sh). Create Config/Local.xcconfig (git-ignored,
+// see Local.xcconfig.example) to point a build at a local Convex deployment.
+#include "Endpoints.xcconfig"
+#include? "Local.xcconfig"

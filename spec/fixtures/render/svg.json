@@ -1,0 +1,189 @@
+{
+ "schema": 1,
+ "id": "svgdesig0009",
+ "name": "svg",
+ "kind": "social-post",
+ "nodes": {
+  "root": {
+   "id": "root",
+   "type": "root",
+   "name": "Root",
+   "parent": null,
+   "x": 0,
+   "y": 0,
+   "width": 0,
+   "height": 0,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "children": [
+    "svgpagex0006"
+   ]
+  },
+  "svgpagex0006": {
+   "id": "svgpagex0006",
+   "type": "page",
+   "name": "Page 1",
+   "parent": null,
+   "x": 0,
+   "y": 0,
+   "width": 480,
+   "height": 480,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "children": [
+    "svgscene0001",
+    "svgrecol0002",
+    "svgasset0003",
+    "svgstick0004",
+    "svgfilte0005"
+   ],
+   "clip": true,
+   "unit": "px",
+   "background": [
+    {
+     "type": "solid",
+     "color": "#f1efe9"
+    }
+   ],
+   "bleed": 0
+  },
+  "svgscene0001": {
+   "id": "svgscene0001",
+   "type": "svg",
+   "name": "svg-scene",
+   "parent": "svgpagex0006",
+   "x": 20,
+   "y": 20,
+   "width": 200,
+   "height": 200,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "markup": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 200\">\n<defs>\n<linearGradient id=\"sky\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0\" stop-color=\"#1b3a8a\"/><stop offset=\"1\" stop-color=\"#ffb02e\"/></linearGradient>\n<radialGradient id=\"sun\" cx=\"0.5\" cy=\"0.5\" r=\"0.5\"><stop offset=\"0\" stop-color=\"#fff3d6\"/><stop offset=\"1\" stop-color=\"#ffb02e\"/></radialGradient>\n<clipPath id=\"clip\"><circle cx=\"100\" cy=\"100\" r=\"92\"/></clipPath>\n<mask id=\"fade\"><rect width=\"200\" height=\"200\" fill=\"url(#fadeg)\"/></mask>\n<linearGradient id=\"fadeg\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"0\"><stop offset=\"0\" stop-color=\"#fff\"/><stop offset=\"1\" stop-color=\"#000\"/></linearGradient>\n</defs>\n<g clip-path=\"url(#clip)\">\n<rect width=\"200\" height=\"200\" fill=\"url(#sky)\"/>\n<circle cx=\"100\" cy=\"120\" r=\"38\" fill=\"url(#sun)\"/>\n<path d=\"M0 150 Q50 110 100 150 T200 140 V200 H0Z\" fill=\"#2b2b30\" opacity=\"0.9\"/>\n<g mask=\"url(#fade)\"><rect x=\"0\" y=\"170\" width=\"200\" height=\"30\" fill=\"#ffffff\" opacity=\"0.6\"/></g>\n</g>\n<circle cx=\"100\" cy=\"100\" r=\"92\" fill=\"none\" stroke=\"#2b2b30\" stroke-width=\"4\" stroke-dasharray=\"10 6\"/>\n</svg>"
+  },
+  "svgrecol0002": {
+   "id": "svgrecol0002",
+   "type": "svg",
+   "name": "svg-recolor",
+   "parent": "svgpagex0006",
+   "x": 250,
+   "y": 20,
+   "width": 200,
+   "height": 200,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "markup": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 200\">\n<defs>\n<linearGradient id=\"sky\" x1=\"0\" y1=\"0\" x2=\"0\" y2=\"1\"><stop offset=\"0\" stop-color=\"#1b3a8a\"/><stop offset=\"1\" stop-color=\"#ffb02e\"/></linearGradient>\n<radialGradient id=\"sun\" cx=\"0.5\" cy=\"0.5\" r=\"0.5\"><stop offset=\"0\" stop-color=\"#fff3d6\"/><stop offset=\"1\" stop-color=\"#ffb02e\"/></radialGradient>\n<clipPath id=\"clip\"><circle cx=\"100\" cy=\"100\" r=\"92\"/></clipPath>\n<mask id=\"fade\"><rect width=\"200\" height=\"200\" fill=\"url(#fadeg)\"/></mask>\n<linearGradient id=\"fadeg\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"0\"><stop offset=\"0\" stop-color=\"#fff\"/><stop offset=\"1\" stop-color=\"#000\"/></linearGradient>\n</defs>\n<g clip-path=\"url(#clip)\">\n<rect width=\"200\" height=\"200\" fill=\"url(#sky)\"/>\n<circle cx=\"100\" cy=\"120\" r=\"38\" fill=\"url(#sun)\"/>\n<path d=\"M0 150 Q50 110 100 150 T200 140 V200 H0Z\" fill=\"#2b2b30\" opacity=\"0.9\"/>\n<g mask=\"url(#fade)\"><rect x=\"0\" y=\"170\" width=\"200\" height=\"30\" fill=\"#ffffff\" opacity=\"0.6\"/></g>\n</g>\n<circle cx=\"100\" cy=\"100\" r=\"92\" fill=\"none\" stroke=\"#2b2b30\" stroke-width=\"4\" stroke-dasharray=\"10 6\"/>\n</svg>",
+   "recolor": {
+    "#2b2b30": "#a463f2",
+    "#ffb02e": "#2fbf71"
+   }
+  },
+  "svgasset0003": {
+   "id": "svgasset0003",
+   "type": "svg",
+   "name": "svg-asset",
+   "parent": "svgpagex0006",
+   "x": 30,
+   "y": 260,
+   "width": 120,
+   "height": 120,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "assetId": "icon00000001"
+  },
+  "svgstick0004": {
+   "id": "svgstick0004",
+   "type": "svg",
+   "name": "svg-sticker",
+   "parent": "svgpagex0006",
+   "x": 180,
+   "y": 260,
+   "width": 120,
+   "height": 120,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [
+    {
+     "type": "dropShadow",
+     "x": 0,
+     "y": 4,
+     "blur": 10,
+     "spread": 0,
+     "color": "#00000040"
+    }
+   ],
+   "assetId": "icon00000001",
+   "strokes": [
+    {
+     "fills": [
+      {
+       "type": "solid",
+       "color": "#ffffff"
+      }
+     ],
+     "width": 8,
+     "align": "outside",
+     "cap": "butt",
+     "join": "round"
+    }
+   ]
+  },
+  "svgfilte0005": {
+   "id": "svgfilte0005",
+   "type": "svg",
+   "name": "svg-filter",
+   "parent": "svgpagex0006",
+   "x": 330,
+   "y": 260,
+   "width": 120,
+   "height": 120,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "markup": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\">\n<filter id=\"s\"><feGaussianBlur stdDeviation=\"4\"/></filter>\n<rect x=\"20\" y=\"20\" width=\"60\" height=\"60\" rx=\"12\" fill=\"#4f8cff\" filter=\"url(#s)\"/>\n<text x=\"50\" y=\"58\" font-family=\"Inter\" font-size=\"20\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#ffffff\">SVG</text>\n</svg>"
+  }
+ },
+ "assets": {
+  "icon00000001": {
+   "id": "icon00000001",
+   "kind": "svg",
+   "mime": "image/svg+xml",
+   "width": 64,
+   "height": 64
+  }
+ },
+ "styles": {
+  "colors": {},
+  "text": {},
+  "effects": {},
+  "variables": {}
+ },
+ "meta": {
+  "render": {}
+ }
+}

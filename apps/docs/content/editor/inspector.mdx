@@ -1,0 +1,49 @@
+---
+title: The inspector
+description: The right-hand inspector and its five tabs — Design, Arrange, Effects, Animate and Position — and how editing values works.
+---
+
+The inspector on the right edits whatever is selected. With nothing selected, it shows the current page: size, unit, background, bleed, layout grid and notes. Its tabs are always in the same place so your hands learn where things are.
+
+## Design
+
+The look of the selection:
+
+- **Fills** and **strokes** — see [fills, strokes & effects](/editor/effects).
+- **Text** — font, size, weight, spacing, alignment, lists, case and decoration for text layers. See [text](/editor/text).
+- **Image** — fit, crop, shape, adjustments, filters and alt text for images. See [images](/editor/images).
+- **Shape** — corner radius and smoothing, sides, points, arcs.
+- **Chart, table, QR** — the data and appearance of those elements. See [charts, tables & QR](/editor/charts-tables-qr).
+- **Opacity** and **blend mode**.
+- **Role** — the [semantic role](/concepts/roles) of the layer.
+
+## Arrange
+
+How layers relate to each other: align and distribute, tidy up into rows or grids, match sizes, layer order, and the [auto-layout](/editor/auto-layout) settings of a frame.
+
+## Effects
+
+Shadows, blurs, noise and glow, plus effect styles. See [effects](/editor/effects#effects).
+
+## Animate
+
+Entrance, exit and looping animations for presentations and video, with timing and easing, and page transitions. See [animation & video](/editor/animation-and-video).
+
+## Position
+
+Exact geometry: X and Y (relative to the parent), width and height with the aspect lock, rotation, flips, constraints, auto-layout sizing (fixed, hug, fill), and links (to a URL or another page).
+
+## Editing values
+
+Every number field in the inspector works the same way:
+
+- Type a value, or arithmetic such as `120/3` or `+8`.
+- Scrub: drag the field's label left or right; hold <Keys combo="shift" /> for larger steps.
+- Use <Keys combo="arrowup" /> and <Keys combo="arrowdown" /> in a focused field to step by 1, or by 10 with <Keys combo="shift" />.
+- With several layers selected, fields that differ show *Mixed*; setting a value sets it on all of them.
+
+Colors accept hex (`#ffb02e`), and the swatch opens the full color picker. Linked values — a color style or a brand variable — show the style's name; detach to edit the value directly.
+
+## Mixed selections
+
+When you select different kinds of layers, the inspector shows only what they have in common. Selecting text inside a text layer narrows the controls to character and paragraph styles for just that range.

@@ -1,0 +1,67 @@
+---
+title: Providers & BYOK
+description: Which AI providers Desyn supports, the default model for each task, choosing models per task, bringing your own keys and how keys are stored.
+---
+
+Desyn talks to many AI providers through one interface. You can keep the defaults, pick a different model for each task, or bring your own keys so requests are billed to your provider account instead of your credits.
+
+## Supported providers
+
+| Provider | Kind | Used for |
+| --- | --- | --- |
+| **OpenRouter** | Text and vision | The default route for the agent and text tasks; access to many model families |
+| **Fal** | Media | Image generation, background removal, inpaint, outpaint, upscale, video |
+| **Anthropic** | Text and vision | BYOK |
+| **OpenAI** | Text, vision and images | BYOK |
+| **Google** | Text, vision and images | BYOK |
+| **Mistral** | Text | BYOK |
+| **Groq** | Text | BYOK, very fast inference |
+| **Replicate** | Media | BYOK image and video models |
+| **Ollama** | Text and vision | Local models, see [local models](/ai/local-models) |
+| **OpenAI-compatible** | Text and vision | LM Studio, vLLM, llama.cpp, LocalAI or any server that speaks the OpenAI API |
+
+## Default models per task
+
+Each AI task has a default route, chosen for quality:
+
+| Task | Default |
+| --- | --- |
+| Agent, editing and chat | Claude Sonnet 5.5 via OpenRouter |
+| Campaign planning and layout critique | Claude Opus 5.5 via OpenRouter |
+| Vision review of rendered previews | Claude Sonnet 5.5 via OpenRouter |
+| SVG generation | Claude Sonnet 5.5 via OpenRouter |
+| Copywriting and translation | Claude Haiku 5.5 via OpenRouter |
+| Image generation | The best current general image model on Fal, plus a text-in-image model and a vector model |
+| Background removal | A segmentation model on Fal, or an in-browser model |
+| Inpaint and outpaint | A fill model on Fal |
+| Upscale | An upscaler on Fal |
+| Video | A video model on Fal |
+
+Exact model ids are resolved at runtime from the providers' live catalogs, so new versions are picked up without an update. **Settings → AI providers** shows the models currently available to you for each task.
+
+## Choosing models per task
+
+In **Settings → AI providers**, every task has a model picker listing the models available from the default providers, your own keys and your local endpoints. Choose a different model for any task — for example a fast model for copywriting and your strongest model for the agent. Workspace admins can set defaults for the whole workspace.
+
+## Bring your own key (BYOK)
+
+Add an API key for any supported provider in **Settings → AI providers**, then select that provider's models for the tasks you want. Use **Test** to check the key before saving. Requests that run on your key:
+
+- never use Desyn credits,
+- are billed by the provider to your account,
+- are still subject to per-minute and per-day request caps that protect the service.
+
+BYOK is available on Pro and the self-hosted edition.
+
+### How keys are stored
+
+You can store keys in two ways:
+
+- **Encrypted on the server** (default) — the key is encrypted with a server-side secret before it is stored and is only decrypted inside the backend when a request needs it. It works from every device, for server-run agent jobs and for workflows. Keys are never sent back to the browser after you save them.
+- **Local keys only** — the key stays in this browser and never reaches Desyn's servers. AI requests then run from your browser directly to the provider. This works for the agent and asset tools while the editor is open, but not for server-run workflows or other devices.
+
+Delete a key at any time; it is removed immediately.
+
+## Self-hosted defaults
+
+On a self-hosted installation, the server keys `OPENROUTER_API_KEY` and `FAL_AI_API_KEY` provide the defaults for everyone; without them, members use their own keys or local models. See [AI providers for self-hosting](/self-hosting/ai-providers).

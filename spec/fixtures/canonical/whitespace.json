@@ -1,0 +1,7 @@
+{
+  "name": "whitespace",
+  "description": "insignificant whitespace removed, string content kept",
+  "input": { "a": [1, 2], "b": "x  y" },
+  "inputText": "{ \"a\" : [ 1 , 2 ] ,\n\t\"b\" : \"x  y\" }",
+  "canonical": "{\"a\":[1,2],\"b\":\"x  y\"}"
+}

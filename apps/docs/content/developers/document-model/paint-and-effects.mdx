@@ -1,0 +1,53 @@
+---
+title: Paint, effects & animation
+description: Fills, gradient stops, color references, strokes, effects, image adjustments, blend modes and animations in the Desyn document model.
+---
+
+## Fills
+
+Fills are painted bottom to top. Every fill can have its own opacity, visibility and blend mode. Gradient and image coordinates are normalized to the node's box (`0..1`).
+
+<Generated name="model-types" names="Fill,Stop,ColorRef" />
+
+- `linear` — `angle` in degrees.
+- `radial` — center `cx`, `cy` and radii `rx`, `ry`.
+- `conic` — center and start `angle`.
+- `image` — `mode` `fill` (cover), `fit` (contain), `tile` or `stretch`, with optional scale, offset, rotation and per-fill adjustments.
+
+Colors are lowercase hex (`#rrggbb` or `#rrggbbaa`). Where noted, a color can be a `ColorRef` instead: `{ "$var": "brand.primary" }` resolves through `Design.styles.variables`, `{ "$style": "<id>" }` through `Design.styles.colors`.
+
+## Strokes
+
+<Generated name="model-types" names="Stroke" />
+
+A stroke's paint is a list of fills, so strokes can be gradients or images. `dash` is a dash/gap pattern in pixels.
+
+## Effects
+
+<Generated name="model-types" names="Effect" />
+
+Effects render in order. `backgroundBlur` blurs what is behind the node within its shape; `noise` adds grain (`mono` for grayscale grain); `glow` is a colored blur around the node's alpha.
+
+## Image adjustments
+
+<Generated name="model-types" names="ImageAdjust" />
+
+Every adjustment is optional in image fills (`Partial<ImageAdjust>`) and complete on image nodes. `duotone` maps shadows and highlights to two colors; `filter` names a preset.
+
+## Blend modes
+
+<Generated name="model-types" names="BlendMode" />
+
+## Animation
+
+<Generated name="model-types" names="Animation" />
+
+`phase` decides when an animation plays: `in` when the page appears, `out` before it ends, `loop` continuously. `startMs` and `durationMs` are relative to the page's start. Page timing (`PageNode.durationMs`) and transitions (`PageNode.transition`) are described in the [nodes reference](/developers/document-model/nodes#containers).
+
+## Reusable styles
+
+`Design.styles` holds named colors, text styles and effect sets, plus free-form variables:
+
+<Generated name="model-types" names="DesignStyles" />
+
+Text nodes follow a text style through `styleRef`. Variables such as `"brand.primary": "#ffb02e"` are what brand kits change to restyle a whole design in one transaction (a single `styles` operation).

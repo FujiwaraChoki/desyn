@@ -1,0 +1,141 @@
+name: Release images
+
+# Builds the Hetzner images (web, landing, docs, worker) on version tags and pushes them to GHCR as
+#   ghcr.io/<owner>/desyn-<service>:<version>  (+ :<major>.<minor>, :sha-<short>)
+# deploy/scripts/deploy.sh --build registry --registry ghcr.io/<owner> --tag <version> deploys them.
+# NEXT_PUBLIC_* values are public build-time configuration from deploy/env/public.env (Convex Cloud URLs,
+# analytics ids), optionally overridden by repository variables (vars.*), never from secrets.
+# When the repository variable DESYN_CONVEX_DEPLOY_ON_RELEASE is "true", the tag's Convex functions are deployed
+# to Convex Cloud production after the images were built (convex-deploy.yml, secret CONVEX_DEPLOY_KEY); then run
+# deploy.sh with --skip-convex.
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Version tag to build (for example v1.2.3)"
+        required: true
+
+permissions:
+  contents: read
+  packages: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  images:
+    name: ${{ matrix.name }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { name: web, dockerfile: deploy/docker/next.Dockerfile, app: web, marker: apps/web/package.json }
+          - { name: landing, dockerfile: deploy/docker/next.Dockerfile, app: landing, marker: apps/landing/package.json }
+          - { name: docs, dockerfile: deploy/docker/next.Dockerfile, app: docs, marker: apps/docs/package.json }
+          - { name: worker, dockerfile: deploy/docker/worker.Dockerfile, app: "", marker: crates/desyn-worker/Cargo.toml }
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref }}
+
+      - name: Resolve names
+        id: names
+        env:
+          INPUT_TAG: ${{ inputs.tag }}
+        run: |
+          owner="${GITHUB_REPOSITORY_OWNER,,}"
+          version="${GITHUB_REF_NAME}"
+          if [ "${GITHUB_EVENT_NAME}" = "workflow_dispatch" ]; then version="${INPUT_TAG}"; fi
+          echo "image=ghcr.io/${owner}/desyn-${{ matrix.name }}" >> "$GITHUB_OUTPUT"
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
+          if [ -f "${{ matrix.marker }}" ]; then echo "present=true" >> "$GITHUB_OUTPUT"; else echo "present=false" >> "$GITHUB_OUTPUT"; fi
+
+      # Committed, non-secret identifiers (deploy/env/public.env) are the defaults; repository variables
+      # override them.
+      - name: Public build config
+        run: |
+          if [ -f deploy/env/public.env ]; then
+            grep -E '^[A-Z][A-Z0-9_]*=' deploy/env/public.env | sed 's/^/PUB_/' >> "$GITHUB_ENV"
+          fi
+
+      - if: steps.names.outputs.present == 'true'
+        uses: docker/setup-buildx-action@v4.4.1
+
+      - if: steps.names.outputs.present == 'true'
+        uses: docker/login-action@v4.6.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - if: steps.names.outputs.present == 'true'
+        id: meta
+        uses: docker/metadata-action@v6.2.0
+        with:
+          images: ${{ steps.names.outputs.image }}
+          tags: |
+            type=semver,pattern={{version}},value=${{ steps.names.outputs.version }}
+            type=semver,pattern={{major}}.{{minor}},value=${{ steps.names.outputs.version }}
+            type=raw,value=${{ steps.names.outputs.version }}
+            type=sha,prefix=sha-
+
+      - if: steps.names.outputs.present == 'true'
+        uses: docker/build-push-action@v7.4.0
+        with:
+          context: .
+          file: ${{ matrix.dockerfile }}
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          provenance: mode=max
+          sbom: true
+          cache-from: type=gha,scope=${{ matrix.name }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.name }}
+          build-args: |
+            APP=${{ matrix.app }}
+            DESYN_RELEASE=${{ steps.names.outputs.version }}
+            SOURCE_URL=${{ github.server_url }}/${{ github.repository }}
+            NEXT_PUBLIC_CONVEX_URL=${{ vars.NEXT_PUBLIC_CONVEX_URL || env.PUB_NEXT_PUBLIC_CONVEX_URL }}
+            NEXT_PUBLIC_CONVEX_SITE_URL=${{ vars.NEXT_PUBLIC_CONVEX_SITE_URL || env.PUB_NEXT_PUBLIC_CONVEX_SITE_URL }}
+            NEXT_PUBLIC_SITE_URL=${{ vars.NEXT_PUBLIC_SITE_URL || env.PUB_NEXT_PUBLIC_SITE_URL || 'https://desyn.app' }}
+            NEXT_PUBLIC_APP_URL=${{ vars.NEXT_PUBLIC_APP_URL || env.PUB_NEXT_PUBLIC_APP_URL || 'https://app.desyn.app' }}
+            NEXT_PUBLIC_DOCS_URL=${{ vars.NEXT_PUBLIC_DOCS_URL || env.PUB_NEXT_PUBLIC_DOCS_URL || 'https://docs.desyn.app' }}
+            NEXT_PUBLIC_DESYN_EDITION=hosted
+            NEXT_PUBLIC_POSTHOG_KEY=${{ vars.NEXT_PUBLIC_POSTHOG_KEY || env.PUB_NEXT_PUBLIC_POSTHOG_KEY }}
+            NEXT_PUBLIC_POSTHOG_HOST=${{ vars.NEXT_PUBLIC_POSTHOG_HOST || env.PUB_NEXT_PUBLIC_POSTHOG_HOST || 'https://eu.i.posthog.com' }}
+            NEXT_PUBLIC_POSTHOG_UI_HOST=${{ vars.NEXT_PUBLIC_POSTHOG_UI_HOST || env.PUB_NEXT_PUBLIC_POSTHOG_UI_HOST || 'https://eu.posthog.com' }}
+            NEXT_PUBLIC_DATAFAST_WEBSITE_ID=${{ vars.NEXT_PUBLIC_DATAFAST_WEBSITE_ID || env.PUB_NEXT_PUBLIC_DATAFAST_WEBSITE_ID }}
+            NEXT_PUBLIC_DATAFAST_DOMAIN=${{ vars.NEXT_PUBLIC_DATAFAST_DOMAIN || env.PUB_NEXT_PUBLIC_DATAFAST_DOMAIN || 'desyn.app' }}
+            SITE_URL=${{ vars.NEXT_PUBLIC_SITE_URL || 'https://desyn.app' }}
+            APP_URL=${{ vars.NEXT_PUBLIC_APP_URL || 'https://app.desyn.app' }}
+            DESYN_EDITION=hosted
+
+      # Tags derive from the pushed git tag name; pass them through the environment, never expand ${{ }} inside
+      # the script (a crafted tag name would otherwise become shell code).
+      - if: steps.names.outputs.present == 'true'
+        name: Summary
+        env:
+          SERVICE: ${{ matrix.name }}
+          TAGS: ${{ steps.meta.outputs.tags }}
+        run: |
+          {
+            echo "### desyn-${SERVICE}"
+            echo '```'
+            printf '%s\n' "${TAGS}"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  convex:
+    name: Convex functions (production)
+    needs: images
+    if: vars.DESYN_CONVEX_DEPLOY_ON_RELEASE == 'true'
+    uses: ./.github/workflows/convex-deploy.yml
+    with:
+      ref: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
+    secrets: inherit

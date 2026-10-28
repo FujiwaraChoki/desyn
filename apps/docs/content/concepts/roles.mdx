@@ -1,0 +1,35 @@
+---
+title: Semantic roles
+description: Roles label what a layer is for — headline, photo, price, call to action — so the AI can understand and edit designs precisely.
+---
+
+A role is a short label on a layer that says what it *means*, not what it looks like. A text layer might be a `headline`, an `eyebrow` or a `price`; a frame might be a `product-card` or a `cta`. Roles are optional, but they make every AI feature sharper:
+
+- When you say *"make the price bigger"*, the agent finds the layer with the `price` role instead of guessing.
+- When you [apply a brand kit](/ai/brand-consistency), headline fonts go to headlines and body fonts to body text.
+- [Resizing](/ai/workflows#resize) and [localizing](/ai/workflows#localize) keep related elements together and preserve the visual hierarchy.
+- The design [description](/developers/describe) the AI reads groups layers by meaning ("product card: image + title + price + button").
+
+## Setting roles
+
+Select a layer and set **Role** in the inspector, or ask the agent: *"label the layers on this page"*. When the agent creates layers it always assigns roles and meaningful names. Templates ship with roles on every important layer.
+
+When no role is set, Desyn infers a likely meaning from structure and position (for example, a large text at the top is probably a headline). An explicit role always wins over inference.
+
+## Known roles
+
+These are the roles the AI and the layout tools understand. Any other value is allowed and kept, but treated as opaque.
+
+| Area | Roles |
+| --- | --- |
+| Structure | `background`, `section`, `header`, `footer`, `nav`, `card`, `divider`, `pattern`, `decoration`, `watermark`, `placeholder` |
+| Text | `headline`, `subhead`, `eyebrow`, `body`, `caption`, `quote`, `author`, `list`, `list-item`, `slide-title`, `slide-body`, `speaker` |
+| Commerce | `product`, `product-card`, `price`, `rating`, `badge`, `cta`, `button` |
+| Brand | `logo`, `brand-mark` |
+| Media | `hero`, `photo`, `illustration`, `icon`, `avatar` |
+| Data | `stat`, `stat-label`, `chart`, `table`, `qr` |
+| Details | `contact`, `date`, `location`, `url`, `form-field` |
+
+## Roles and template slots
+
+Templates also mark replaceable content with a **slot** name (for example `headline` or `photo`). Slots are what you fill when you [instantiate a template](/concepts/templates); roles describe meaning. A layer often has both.

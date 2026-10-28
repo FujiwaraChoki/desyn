@@ -1,0 +1,16 @@
+{
+  "name": "invalid-fill-stop-pos",
+  "schema": "Fill",
+  "valid": false,
+  "description": "stop positions are within [0, 1]",
+  "value": {
+    "type": "linear",
+    "angle": 0,
+    "stops": [
+      {
+        "pos": 1.5,
+        "color": "#000000"
+      }
+    ]
+  }
+}

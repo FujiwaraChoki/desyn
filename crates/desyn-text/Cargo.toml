@@ -1,0 +1,47 @@
+[package]
+name = "desyn-text"
+version = "0.1.0"
+edition.workspace = true
+license.workspace = true
+description = "Desyn text engine: font database, CSS font matching, fallback, shaping, bidi, line breaking, rich text layout, caret geometry, glyph outlines."
+publish = false
+
+[features]
+default = []
+# Inter, Instrument Sans, Instrument Serif, JetBrains Mono (fonts/README.md).
+bundled = []
+# Noto Sans Arabic and Noto Sans Hebrew.
+bundled-noto = []
+# Noto Emoji (monochrome outlines).
+bundled-emoji = []
+# GoogleFontsProvider (native).
+fetch = ["dep:ureq"]
+
+[dependencies]
+desyn-core = { path = "../desyn-core" }
+serde = { version = "=1.0.229", features = ["derive"] }
+serde_json = "=1.0.154"
+harfrust = "=0.14.0"
+skrifa = "=0.48.0"
+unicode-bidi = "=0.3.18"
+unicode-linebreak = "=0.1.5"
+unicode-segmentation = "=1.13.3"
+unicode-script = "=0.5.8"
+unicode-properties = { version = "=0.1.4", default-features = false, features = ["emoji"] }
+wuff = "=0.2.9"
+
+# Google Fonts provider (native only; the feature compiles out on wasm32).
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+ureq = { version = "=3.4.2", optional = true }
+
+[dev-dependencies]
+criterion = { version = "=0.8.2", default-features = false }
+serde_json = "=1.0.154"
+unicode-segmentation = "=1.13.3"
+
+[[bench]]
+name = "text"
+harness = false
+
+[target.'cfg(target_arch = "wasm32")'.dev-dependencies]
+wasm-bindgen-test = "=0.3.79"

@@ -1,0 +1,14 @@
+{
+  "name": "animation",
+  "schema": "Animation",
+  "valid": true,
+  "description": "entrance animation",
+  "value": {
+    "id": "anim00000001",
+    "preset": "typewriter",
+    "phase": "in",
+    "startMs": 200,
+    "durationMs": 1200,
+    "easing": "spring"
+  }
+}

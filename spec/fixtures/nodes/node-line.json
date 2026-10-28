@@ -1,0 +1,39 @@
+{
+  "name": "node-line",
+  "schema": "LineNode",
+  "valid": true,
+  "description": "canonical example of a line node",
+  "value": {
+    "id": "node00000014",
+    "type": "line",
+    "name": "Arrow",
+    "parent": "page00000001",
+    "x": 100,
+    "y": 120,
+    "width": 320,
+    "height": 0,
+    "rotation": 45,
+    "opacity": 1,
+    "blend": "normal",
+    "visible": true,
+    "locked": false,
+    "effects": [],
+    "strokes": [
+      {
+        "fills": [
+          {
+            "type": "solid",
+            "color": "#ededed"
+          }
+        ],
+        "width": 3,
+        "align": "center",
+        "cap": "round",
+        "join": "miter",
+        "dash": [8, 6]
+      }
+    ],
+    "startCap": "circle",
+    "endCap": "arrow"
+  }
+}

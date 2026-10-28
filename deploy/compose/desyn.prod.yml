@@ -1,0 +1,129 @@
+# Desyn production stack on the shared Hetzner host (compose project "desyn").
+#
+# The database and backend are Convex Cloud (the prod deployment in deploy/env/public.env); this
+# host runs only the stateless services. Run only through deploy/scripts/*.sh, which pass:
+#   --project-name desyn
+#   --env-file /opt/desyn/state/images.env      image tags per service/colour (written by deploy.sh)
+#   DESYN_ROOT=/opt/desyn                       root-only env files live in $DESYN_ROOT/secrets
+#
+# Host ports are bound to 127.0.0.1 only, inside the reserved range 47100-47199, and host nginx proxies them:
+#   47100 / 47120  landing  (blue / green)  -> desyn.app
+#   47101 / 47121  web      (blue / green)  -> app.desyn.app      (the web container listens on 4100)
+#   47102 / 47122  docs     (blue / green)  -> docs.desyn.app
+#   47103 / 47123  worker   (blue / green)  -> render.desyn.app   (only POST /v1/* + GET /healthz, x-desyn-secret)
+#
+# Blue/green: every service has two definitions (<svc>-blue, <svc>-green) in the "bluegreen" profile. deploy.sh
+# starts the idle colour with the new image, waits for it to be healthy, then stops the old colour; nginx lists
+# both ports in one upstream and skips the one that is down, so the switch needs no nginx reload.
+
+name: desyn
+
+x-logging: &logging
+  driver: local
+  options:
+    max-size: "20m"
+    max-file: "5"
+
+# desyn/* images exist only on this host (built by deploy.sh, loaded with docker load, or pulled from GHCR and
+# re-tagged). Never let compose look them up on Docker Hub, where the "desyn" namespace is not ours: a missing
+# tag must fail the rollout, not pull a stranger's image.
+x-hardened: &hardened
+  pull_policy: never
+  restart: unless-stopped
+  logging: *logging
+  networks: [desyn_net]
+  read_only: true
+  security_opt: ["no-new-privileges:true"]
+  cap_drop: [ALL]
+  stop_grace_period: 30s
+  profiles: [bluegreen]
+
+x-next-app: &next-app
+  <<: *hardened
+  init: true
+
+x-worker: &worker
+  <<: *hardened
+  # tini is the image entrypoint already.
+  init: false
+  env_file:
+    # RENDER_WORKER_SECRET: the same value as in the Convex Cloud deployment env (both come from
+    # RENDER_WORKER_SECRET_PROD in .env.keys, see deploy/scripts/server-env.py).
+    - ${DESYN_ROOT:-/opt/desyn}/secrets/worker.env
+  environment:
+    PORT: "8080"
+  tmpfs:
+    - /tmp:size=2g,mode=1777
+  deploy:
+    resources:
+      limits:
+        cpus: "4"
+        memory: 6g
+        pids: 1024
+
+services:
+  worker-blue:
+    <<: *worker
+    image: ${DESYN_IMAGE_PREFIX:-desyn}/worker:${DESYN_TAG_WORKER_BLUE:-unset}
+    ports: ["127.0.0.1:47103:8080"]
+
+  worker-green:
+    <<: *worker
+    image: ${DESYN_IMAGE_PREFIX:-desyn}/worker:${DESYN_TAG_WORKER_GREEN:-unset}
+    ports: ["127.0.0.1:47123:8080"]
+
+  landing-blue:
+    <<: *next-app
+    image: ${DESYN_IMAGE_PREFIX:-desyn}/landing:${DESYN_TAG_LANDING_BLUE:-unset}
+    env_file: ["${DESYN_ROOT:-/opt/desyn}/secrets/landing.env"]
+    ports: ["127.0.0.1:47100:3000"]
+    tmpfs: ["/tmp:size=256m,mode=1777", "/app/apps/landing/.next/cache:size=512m,uid=1000,gid=1000"]
+    deploy: {resources: {limits: {cpus: "1", memory: 1g, pids: 512}}}
+
+  landing-green:
+    <<: *next-app
+    image: ${DESYN_IMAGE_PREFIX:-desyn}/landing:${DESYN_TAG_LANDING_GREEN:-unset}
+    env_file: ["${DESYN_ROOT:-/opt/desyn}/secrets/landing.env"]
+    ports: ["127.0.0.1:47120:3000"]
+    tmpfs: ["/tmp:size=256m,mode=1777", "/app/apps/landing/.next/cache:size=512m,uid=1000,gid=1000"]
+    deploy: {resources: {limits: {cpus: "1", memory: 1g, pids: 512}}}
+
+  web-blue:
+    <<: *next-app
+    image: ${DESYN_IMAGE_PREFIX:-desyn}/web:${DESYN_TAG_WEB_BLUE:-unset}
+    env_file: ["${DESYN_ROOT:-/opt/desyn}/secrets/web.env"]
+    environment: {PORT: "4100"}
+    ports: ["127.0.0.1:47101:4100"]
+    tmpfs: ["/tmp:size=256m,mode=1777", "/app/apps/web/.next/cache:size=512m,uid=1000,gid=1000"]
+    deploy: {resources: {limits: {cpus: "2", memory: 2g, pids: 512}}}
+
+  web-green:
+    <<: *next-app
+    image: ${DESYN_IMAGE_PREFIX:-desyn}/web:${DESYN_TAG_WEB_GREEN:-unset}
+    env_file: ["${DESYN_ROOT:-/opt/desyn}/secrets/web.env"]
+    environment: {PORT: "4100"}
+    ports: ["127.0.0.1:47121:4100"]
+    tmpfs: ["/tmp:size=256m,mode=1777", "/app/apps/web/.next/cache:size=512m,uid=1000,gid=1000"]
+    deploy: {resources: {limits: {cpus: "2", memory: 2g, pids: 512}}}
+
+  docs-blue:
+    <<: *next-app
+    image: ${DESYN_IMAGE_PREFIX:-desyn}/docs:${DESYN_TAG_DOCS_BLUE:-unset}
+    env_file: ["${DESYN_ROOT:-/opt/desyn}/secrets/docs.env"]
+    ports: ["127.0.0.1:47102:3000"]
+    tmpfs: ["/tmp:size=256m,mode=1777", "/app/apps/docs/.next/cache:size=256m,uid=1000,gid=1000"]
+    deploy: {resources: {limits: {cpus: "0.5", memory: 768m, pids: 512}}}
+
+  docs-green:
+    <<: *next-app
+    image: ${DESYN_IMAGE_PREFIX:-desyn}/docs:${DESYN_TAG_DOCS_GREEN:-unset}
+    env_file: ["${DESYN_ROOT:-/opt/desyn}/secrets/docs.env"]
+    ports: ["127.0.0.1:47122:3000"]
+    tmpfs: ["/tmp:size=256m,mode=1777", "/app/apps/docs/.next/cache:size=256m,uid=1000,gid=1000"]
+    deploy: {resources: {limits: {cpus: "0.5", memory: 768m, pids: 512}}}
+
+networks:
+  # Created by deploy/scripts/bootstrap.sh (label com.desyn.owner=desyn); compose never deletes it.
+  desyn_net:
+    external: true
+    name: desyn_net

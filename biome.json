@@ -1,0 +1,43 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "formatter": {
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 100
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "double",
+      "trailingCommas": "all",
+      "semicolons": "always"
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "preset": "recommended"
+    }
+  },
+  "files": {
+    "includes": [
+      "**",
+      "!**/node_modules",
+      "!**/dist",
+      "!**/.next",
+      "!**/target",
+      "!convex/_generated",
+      "!**/*.d.ts",
+      "!**/*.svg",
+      "!apps/landing/shots",
+      "!apps/ios/DesynEngine/Sources/DesynFFI/DesynFFI.swift",
+      "!templates/designs",
+      "!templates/manifest.json",
+      "!templates/assets/manifest.json"
+    ]
+  }
+}

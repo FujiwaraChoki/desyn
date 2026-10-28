@@ -1,0 +1,62 @@
+---
+title: Export
+description: Export to PNG, JPEG, WebP, SVG, PDF, print PDF with bleed and crop marks, PowerPoint, GIF and MP4, with every option explained.
+---
+
+Choose **Export** in the top bar or press <Keys combo="mod+shift+e" />. Pick a format, which pages to include, and the options for that format. Exports are rendered by the same engine that draws the canvas, so the file matches what you see.
+
+To export just part of a design, select the layers first and choose **Export selection** from the context menu.
+
+## Formats
+
+| Format | Best for | Plan |
+| --- | --- | --- |
+| **PNG** | Lossless images, transparency, UI and graphics | Free |
+| **JPEG** | Photos and small files | Free |
+| **PDF** | Documents, decks, sharing and standard printing | Free |
+| **WebP** | Web images with small file sizes | Pro |
+| **SVG** | Vector graphics for the web and other tools | Pro |
+| **Print PDF** | Professional printing with bleed and crop marks | Pro |
+| **PowerPoint (PPTX)** | Presenting or editing in other presentation software | Pro |
+| **GIF** | Short animations without sound | Pro |
+| **MP4** | Video with animation, transitions and audio | Pro |
+
+On Free you can export up to 300 files a month; Pro allows 5,000; self-hosted installations have no limit.
+
+## Image options (PNG, JPEG, WebP)
+
+- **Scale** — 0.5×, 1×, 2×, 3× or a custom value. 2× is a good default for screens.
+- **Quality** — 0–100 for JPEG and WebP.
+- **Background** — the page background, or **transparent** (PNG and WebP).
+- **Pages** — the current page, all pages, or a selection. Multiple pages download as a zip.
+
+## SVG
+
+SVG keeps shapes, paths and text as vectors. Text is exported as text where the font allows it, or as outlines for exact appearance; images are embedded. Effects without an SVG equivalent are rasterized only where necessary.
+
+## PDF
+
+Standard PDF is vector: text stays selectable and searchable, shapes stay sharp at any zoom, and links (to URLs or other pages) keep working. Multi-page designs become multi-page PDFs.
+
+### Print PDF
+
+Print PDF adds what print shops ask for:
+
+- **Bleed** — the page's bleed area (set in the **Design** panel, for example 3 mm) is included around every page so backgrounds extend past the trim line.
+- **Crop marks** — marks at each corner showing where to trim.
+- **CMYK-friendly colors** — an option that converts colors with a print-oriented profile so on-screen colors that cannot be printed are flagged before you send the file.
+
+> [!TIP]
+> Before sending to print: set the page unit to mm or in, add 3 mm (⅛ in) of bleed, keep important text at least 3–5 mm inside the trim line, and check that images are not flagged as low resolution.
+
+## PowerPoint (PPTX)
+
+Each page becomes a slide. Text stays editable text, images stay images, and shapes stay shapes where PowerPoint has an equivalent; layers with effects PowerPoint cannot reproduce are exported as images so they still look right.
+
+## GIF and MP4
+
+Animated exports play each page for its duration with its animations and transitions. Choose the pages, frame rate and resolution. MP4 includes audio from video and audio layers. Long videos are rendered in the background; the export list shows progress, and you can leave the editor while it works.
+
+## Where exports happen
+
+Small image exports render in your browser. Large, multi-page, print, PPTX and video exports are rendered by the Desyn render worker and downloaded from a link that stays valid for a limited time. Your exports are also available to the [Agent API](/developers/api/designs#request-an-export).

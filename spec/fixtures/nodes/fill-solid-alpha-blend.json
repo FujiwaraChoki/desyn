@@ -1,0 +1,13 @@
+{
+  "name": "fill-solid-alpha-blend",
+  "schema": "Fill",
+  "valid": true,
+  "description": "solid-alpha-blend fill",
+  "value": {
+    "type": "solid",
+    "color": "#ffb02e80",
+    "opacity": 0.5,
+    "visible": true,
+    "blend": "screen"
+  }
+}

@@ -1,0 +1,21 @@
+[Unit]
+Description=Desyn backup (Convex Cloud export + assets mirror -> S3)
+Documentation=file:///opt/desyn/tooling/RUNBOOK.md
+Requires=docker.service
+After=docker.service network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/bash /opt/desyn/tooling/scripts/backup.sh --label nightly
+# Stay out of the way of the other workloads on this shared host.
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+CPUWeight=50
+TimeoutStartSec=3h
+PrivateTmp=true
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=read-only
+ReadWritePaths=/opt/desyn

@@ -1,0 +1,46 @@
+---
+title: Editor tour
+description: A map of the Desyn editor — the top bar, panels, canvas, tool dock, inspector and AI dock — and how they fit together.
+---
+
+The editor has the same layout on the web and the desktop app; the iOS app adapts it to touch with sheets instead of side panels.
+
+## The layout
+
+- **Top bar** — the logo menu (file actions, preferences), the design name, undo and redo, zoom, **Share**, **Export**, the avatars of everyone currently in the design, and the **AI** button.
+- **Left rail** — panels that open in a 320 px flyout: **Design** (templates, page size, styles), **Elements** (shapes, lines, icons, stickers, charts, tables, QR, frames), **Text** (text presets and font pairings), **Brand** (your brand kit), **Uploads**, **Photos** (stock photos), **AI** (generative tools and workflows), **Layers** and **Pages**.
+- **Canvas** — an infinite surface with your pages on it. A floating context toolbar appears next to the selection with the most common actions for what you selected.
+- **Page strip** — thumbnails of every page under the canvas; drag to reorder.
+- **Tool dock** — floating at the bottom center: select, frame, shapes, pen, text, image and hand.
+- **Inspector** — on the right, with tabs for **Design** (fills, strokes, text, image settings), **Arrange** (alignment, distribution, auto-layout), **Effects**, **Animate** and **Position** (exact position, size, rotation and constraints). See [the inspector](/editor/inspector).
+- **AI dock** — a prompt bar anchored at the bottom center that expands into a chat with a run log. Open it with <Keys combo="mod+j" />.
+
+Panels are resizable, remember their state, and collapse cleanly on small windows. Toggle all chrome with <Keys combo="mod+\" /> to focus on the canvas.
+
+## The command palette
+
+Press <Keys combo="mod+k" /> anywhere to search every command, panel, setting and recent design by name. It is the fastest way to find a feature you have not used before, and it shows each command's shortcut.
+
+## Context menus
+
+Right-click a layer, the canvas or a page thumbnail for the actions that apply there: copy and paste (including style only), arrange, group, mask, lock and hide, rename, export the selection, and ask the AI about it.
+
+## Saving and undo
+
+There is no save button. Each gesture — a drag, a resize, a finished text edit — is committed as one transaction and synced to everyone in the design. Undo (<Keys combo="mod+z" />) and redo (<Keys combo="mod+shift+z" />) work per gesture, and an entire AI request is always a single undo step.
+
+If you lose your connection, you can keep working: pending changes are applied locally and sent when you reconnect. Changes that conflict with what collaborators did in the meantime are resolved per property, with the most recent change winning.
+
+## In this guide
+
+<Cards cols="3">
+  <Card title="Canvas & navigation" href="/editor/canvas" />
+  <Card title="Selection & transform" href="/editor/selection" />
+  <Card title="Text" href="/editor/text" />
+  <Card title="Shapes & pen" href="/editor/shapes-and-pen" />
+  <Card title="Images" href="/editor/images" />
+  <Card title="Effects" href="/editor/effects" />
+  <Card title="Auto-layout" href="/editor/auto-layout" />
+  <Card title="Layers & pages" href="/editor/layers-and-pages" />
+  <Card title="Export" href="/editor/export" />
+</Cards>

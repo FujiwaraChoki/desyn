@@ -1,0 +1,7 @@
+// Copy to Config/Local.xcconfig (git-ignored) to run against the local anonymous Convex deployment and the web
+// app on this Mac: `npx convex dev` (backend 3210, HTTP actions 3211) and `pnpm --filter @desyn/web dev` (4100).
+// On a device, replace 127.0.0.1 / localhost with the Mac's LAN address.
+DESYN_CONVEX_URL = http:/$()/127.0.0.1:3210
+DESYN_CONVEX_SITE_URL = http:/$()/127.0.0.1:3211
+DESYN_APP_URL = http:/$()/localhost:4100
+DESYN_APP_HOST = localhost

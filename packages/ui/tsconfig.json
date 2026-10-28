@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "allowImportingTsExtensions": true,
+    "types": ["node", "vite/client"],
+    "paths": {
+      "@desyn/ui": ["./src/index.ts"]
+    }
+  },
+  "include": ["src", "test", "playground", "vitest.config.ts"]
+}

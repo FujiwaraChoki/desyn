@@ -1,0 +1,82 @@
+{
+  "name": "node-table",
+  "schema": "TableNode",
+  "valid": true,
+  "description": "canonical example of a table node",
+  "value": {
+    "id": "node00000022",
+    "type": "table",
+    "name": "Pricing",
+    "parent": "page00000001",
+    "x": 100,
+    "y": 120,
+    "width": 360,
+    "height": 80,
+    "rotation": 0,
+    "opacity": 1,
+    "blend": "normal",
+    "visible": true,
+    "locked": false,
+    "effects": [],
+    "rows": 2,
+    "cols": 3,
+    "colWidths": [120, 120, 120],
+    "rowHeights": [40, 40],
+    "cells": [
+      {
+        "r": 0,
+        "c": 0,
+        "text": "Plan",
+        "style": {
+          "fontWeight": 600
+        }
+      },
+      {
+        "r": 0,
+        "c": 1,
+        "text": "Price",
+        "align": "right"
+      },
+      {
+        "r": 0,
+        "c": 2,
+        "text": ""
+      },
+      {
+        "r": 1,
+        "c": 0,
+        "text": "Pro",
+        "colspan": 2,
+        "fill": {
+          "type": "solid",
+          "color": "#ffb02e33"
+        }
+      },
+      {
+        "r": 1,
+        "c": 2,
+        "text": "$8"
+      }
+    ],
+    "header": true,
+    "stripe": true,
+    "borderColor": "#d9d9d9",
+    "borderWidth": 1,
+    "cellPadding": 8,
+    "defaultStyle": {
+      "fontFamily": "Inter",
+      "fontWeight": 400,
+      "fontStyle": "normal",
+      "fontSize": 14,
+      "fills": [
+        {
+          "type": "solid",
+          "color": "#111111"
+        }
+      ],
+      "letterSpacing": 0,
+      "textCase": "none",
+      "decoration": "none"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "invalid-effect-type",
+  "schema": "Effect",
+  "valid": false,
+  "description": "unknown effect type",
+  "value": {
+    "type": "bevel",
+    "depth": 2
+  }
+}

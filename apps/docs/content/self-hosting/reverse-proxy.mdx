@@ -1,0 +1,168 @@
+---
+title: Reverse proxy & TLS
+description: Put HTTPS in front of a self-hosted installation with Caddy or nginx — hostnames, WebSockets for Convex, upload sizes, timeouts and security headers.
+---
+
+The [quickstart](/self-hosting/docker-compose) stack publishes its ports on `127.0.0.1` (`DESYN_BIND`). A reverse proxy on the host terminates TLS and forwards each hostname to its port:
+
+| Hostname | Upstream | Notes |
+| --- | --- | --- |
+| `design.example.org` | `127.0.0.1:3000` | Web app |
+| `convex.example.org` | `127.0.0.1:3210` | Convex API; **WebSockets required** |
+| `convex-site.example.org` | `127.0.0.1:3211` | HTTP actions: auth, Agent API, MCP (long-lived streaming responses) |
+| `s3.example.org` | `127.0.0.1:9000` | MinIO S3 API; large uploads |
+| `docs.example.org` (optional) | `127.0.0.1:3002` | This documentation, with the `marketing` profile |
+
+Do not publish the worker (it has no port), the Convex dashboard or the MinIO console (reach them over an SSH tunnel). After the proxy works, set the public URLs as described in [choose your URLs](/self-hosting/docker-compose#choose-your-urls) and rebuild the web image.
+
+<Tabs>
+<Tab label="Caddy">
+
+Caddy obtains and renews certificates automatically and proxies WebSockets without extra configuration.
+
+```text title="/etc/caddy/Caddyfile"
+design.example.org {
+	encode zstd gzip
+	reverse_proxy 127.0.0.1:3000 {
+		header_up X-Real-IP {remote_host}
+	}
+}
+
+convex.example.org {
+	reverse_proxy 127.0.0.1:3210
+}
+
+convex-site.example.org {
+	reverse_proxy 127.0.0.1:3211 {
+		header_up X-Real-IP {remote_host}
+		flush_interval -1
+	}
+}
+
+s3.example.org {
+	request_body {
+		max_size 1GB
+	}
+	reverse_proxy 127.0.0.1:9000
+}
+```
+
+Reload with `sudo systemctl reload caddy`.
+
+</Tab>
+<Tab label="nginx">
+
+Obtain certificates with certbot (`certbot certonly --nginx -d design.example.org -d convex.example.org -d convex-site.example.org -d s3.example.org`), then:
+
+```nginx title="/etc/nginx/sites-available/desyn.conf"
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    ''      close;
+}
+
+server {
+    listen 443 ssl;
+    http2 on;
+    server_name design.example.org;
+    ssl_certificate     /etc/letsencrypt/live/design.example.org/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/design.example.org/privkey.pem;
+
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 443 ssl;
+    http2 on;
+    server_name convex.example.org;
+    ssl_certificate     /etc/letsencrypt/live/design.example.org/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/design.example.org/privkey.pem;
+
+    location / {
+        proxy_pass http://127.0.0.1:3210;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+        proxy_set_header Host $host;
+        proxy_read_timeout 1h;
+        proxy_send_timeout 1h;
+    }
+}
+
+server {
+    listen 443 ssl;
+    http2 on;
+    server_name convex-site.example.org;
+    ssl_certificate     /etc/letsencrypt/live/design.example.org/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/design.example.org/privkey.pem;
+
+    location / {
+        proxy_pass http://127.0.0.1:3211;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_buffering off;
+        proxy_read_timeout 15m;
+    }
+}
+
+server {
+    listen 443 ssl;
+    http2 on;
+    server_name s3.example.org;
+    ssl_certificate     /etc/letsencrypt/live/design.example.org/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/design.example.org/privkey.pem;
+
+    client_max_body_size 1g;
+    location / {
+        proxy_pass http://127.0.0.1:9000;
+        proxy_set_header Host $host;
+        proxy_request_buffering off;
+        proxy_buffering off;
+    }
+}
+
+server {
+    listen 80;
+    server_name design.example.org convex.example.org convex-site.example.org s3.example.org;
+    return 301 https://$host$request_uri;
+}
+```
+
+Enable with `ln -s /etc/nginx/sites-available/desyn.conf /etc/nginx/sites-enabled/`, then `nginx -t && systemctl reload nginx`.
+
+</Tab>
+</Tabs>
+
+## WebSockets
+
+The editor keeps a WebSocket open to the Convex API for live updates. If the proxy does not forward `Upgrade` headers, or closes idle connections after a short timeout, the app loads but stays in "connecting…" or keeps reconnecting. Caddy handles this automatically; in nginx use the `Upgrade`/`Connection` headers and long read timeouts shown above.
+
+## Upload size
+
+Uploads go straight to the storage hostname. Its body size limit must be at least the largest file you allow (1 GB by default for self-hosted). nginx's default of 1 MB will make most uploads fail.
+
+## Client IP addresses
+
+Sign-in and other per-IP rate limits identify clients by the `X-Real-IP` header first, then the first `X-Forwarded-For` entry. Clients can send these headers themselves, so the proxy must **overwrite** `X-Real-IP` with the real peer address on the app and HTTP actions hostnames, as both configurations above do. Otherwise anyone can bypass the limits by sending a different address with every request.
+
+If your proxy sits behind another layer, such as Cloudflare, list the headers to trust in the backend's `AUTH_IP_HEADERS` (for example `cf-connecting-ip,x-real-ip`), and only headers that layer sets itself. See the [configuration reference](/self-hosting/configuration#env-auth-ip-headers).
+
+## Streaming responses
+
+The Agent API and MCP endpoints on the HTTP actions hostname can stream for minutes during long agent runs. Disable response buffering there and allow long read timeouts.
+
+## Security headers
+
+Add HSTS (`Strict-Transport-Security: max-age=31536000`) once HTTPS works for all hostnames. The web app sets its own content security policy; if you add one at the proxy, allow `connect-src` to your Convex API (including `wss://`), HTTP actions and storage hostnames.
+
+## Serving the docs
+
+The stack's `docs` service (profile `marketing`) serves this documentation on its own hostname: route `docs.example.org` to `127.0.0.1:3002` and set `DESYN_DOCS_URL=https://docs.example.org` before building it. Its image is built for the root path. To serve the docs under a path of another site instead, such as `/docs`, build `apps/docs` with `DOCS_BASE_PATH=/docs` (see the app's README) and route `/docs` and `/docs/*` to it with the path unchanged.

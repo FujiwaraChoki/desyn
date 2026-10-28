@@ -1,0 +1,30 @@
+{
+  "name": "@desyn/templates",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "generate": "tsx src/cli/generate.ts",
+    "fonts": "tsx src/cli/fonts.ts",
+    "render": "tsx src/cli/render.ts",
+    "imagery": "tsx src/cli/imagery.ts",
+    "seed": "tsx src/cli/seed.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "lint": "biome check ."
+  },
+  "dependencies": {
+    "@desyn/engine": "workspace:*",
+    "@desyn/schema": "workspace:*",
+    "convex": "1.47.0"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "vitest": "5.0.5"
+  }
+}

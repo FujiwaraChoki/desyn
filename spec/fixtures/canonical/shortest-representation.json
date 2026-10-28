@@ -1,0 +1,7 @@
+{
+  "name": "shortest-representation",
+  "description": "the shortest decimal that round-trips the rounded double",
+  "input": [0.1, 0.2, 0.30000000000000004, 100.000001, 0.000001],
+  "inputText": "[0.1,0.2,0.30000000000000004,100.000001,0.000001]",
+  "canonical": "[0.1,0.2,0.3,100.000001,0.000001]"
+}

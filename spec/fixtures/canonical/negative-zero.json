@@ -1,0 +1,7 @@
+{
+  "name": "negative-zero",
+  "description": "-0 is written as 0",
+  "input": { "a": -0, "b": -0.0, "c": [-0] },
+  "inputText": "{\"a\":-0,\"b\":-0.0,\"c\":[-0]}",
+  "canonical": "{\"a\":0,\"b\":0,\"c\":[0]}"
+}

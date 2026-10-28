@@ -1,0 +1,61 @@
+---
+title: Architecture
+description: How Desyn is built — one Rust engine shared by every client, Convex as the authoritative backend, the render worker, the AI package and the clients.
+---
+
+<ArchitectureDiagram />
+
+## One engine, everywhere
+
+A single Rust core owns the truth about geometry, text layout, auto-layout, hit-testing, the semantic description of designs and rendering. Every client links the same engine, so a design looks and behaves identically on the web, the desktop, iOS and in exports.
+
+| Crate | Responsibility |
+| --- | --- |
+| `desyn-core` | Document types (serde), operations and transactions, auto-layout and constraints, geometry, hit-testing, snapping, paths and boolean operations, plans, canonical JSON |
+| `desyn-text` | Fonts, shaping, line breaking, bidirectional text, measuring and glyph outlines |
+| `desyn-describe` | The semantic description, lint rules, grouping inference and visual hierarchy |
+| `desyn-raster` | Display lists to pixels with effects, blends and masks; PNG, JPEG, WebP, SVG, PDF (with bleed and crop marks), PPTX, GIF and frame sequences |
+| `desyn-wasm` | The WebAssembly engine for the browser |
+| `desyn-ffi` | The Swift bindings for iOS |
+| `desyn-worker` | The HTTP render worker |
+
+## Clients
+
+- **Web** (Next.js, `apps/web`). The wasm engine runs in a dedicated Web Worker with an OffscreenCanvas. The main thread handles input, a DOM overlay for text editing (so IME, spell checking and accessibility work natively) and selection handles. Rendering uses damage rectangles and layer caching to keep dragging at the display refresh rate; large designs render progressively.
+- **Desktop** (Rust + GPUI, `apps/desktop`). Links the core and raster crates natively, uploads the rendered viewport as a texture and draws its own chrome. Offline-first, with a local library that syncs with the server and `.desyn` files.
+- **iOS** (SwiftUI, `apps/ios`). Draws the RGBA viewport from the Swift bindings on a Metal-backed layer, with touch, Pencil and native SwiftUI panels.
+
+## Backend: Convex
+
+[Convex](https://www.convex.dev) is the authority for all data. It stores the materialized design (one document per node), the canonical transaction log (`designOps`), assets metadata, workspaces, brand kits, templates, comments, versions, shares, presence, AI runs and their events, workflows, the credits ledger, usage counters, exports, API keys and an audit log.
+
+- **Functions** implement the API surface the clients use, e.g. `designs.commit`, `designOps.since`, `assets.requestUpload`, `ai.runAgent`. Every function checks authentication, membership and plan, and validates its arguments.
+- **HTTP actions** serve authentication (Better Auth), the Stripe webhook (hosted), the [Agent API](/developers/api) under `/api/v1/*`, the [MCP server](/developers/mcp) at `/mcp`, `/healthz` and Open Graph metadata.
+- **Crons** clean up presence, roll over credit periods, compact snapshots, remove orphaned assets and expired exports, and reap stalled AI runs.
+
+File bytes live in S3-compatible storage; Convex stores keys and metadata and hands out presigned URLs. Email goes through SES or SMTP.
+
+## Render worker
+
+An Axum service (`desyn-worker`) that exposes render, describe, layout, measure, apply and thumbnail endpoints to the backend. Convex actions call it for exports, thumbnails and the previews the AI looks at. It is internal and protected by a shared secret. See [render worker API](/developers/render-worker).
+
+## AI
+
+The isomorphic `@desyn/ai` package (Vercel AI SDK) runs in Convex actions for server-run agents and workflows, in the browser for BYOK and local models, and behind the Agent API. It contains the provider registry, the per-task model routing, the agent loop and its tools, design-intelligence prompts, workflows and an offline evaluation harness.
+
+The agent edits through a `DocHost` abstraction — `describe()`, `render(region?)`, `measure()`, `apply(tx)`, assets, brand and selection — with implementations for the browser (wasm engine), the server (Convex + worker) and tests (in memory). Every edit is a transaction committed with `source: "ai"`.
+
+## Packages
+
+| Package | Contents |
+| --- | --- |
+| `@desyn/schema` | TypeScript types, zod schemas, JSON Schema, canonical JSON, id generation, defaults, presets, plans loader |
+| `@desyn/doc-ops` | `applyTransaction`, `invert`, transaction builders, compose and rebase for sync |
+| `@desyn/tokens`, `@desyn/ui` | Design tokens and the React component library |
+| `@desyn/engine` | TypeScript bindings around the wasm engine |
+| `@desyn/ai` | Providers, routing, agent, tools, workflows, prompts, evals |
+| `@desyn/sdk` | The public TypeScript SDK and MCP server |
+
+## Plans
+
+`config/plans.json` is the single source of truth for limits, features and credit costs. The server and every client read it (TypeScript through `@desyn/schema`, Rust through `desyn-core`), so there are no license keys or hard-coded limits anywhere else. `DESYN_EDITION=selfhost` switches every account to the self-hosted plan.

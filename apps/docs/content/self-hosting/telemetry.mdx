@@ -1,0 +1,47 @@
+---
+title: Telemetry
+description: Self-hosted Desyn sends nothing anywhere by default. What each optional integration — PostHog, DataFast, Axiom — collects, and how to enable or verify it.
+---
+
+> [!NOTE]
+> A self-hosted installation sends **no telemetry** unless you configure it. No usage data, crash reports or license checks are sent to Desyn, ever.
+
+Every integration below is controlled only by environment variables. When a variable is empty or unset, the integration is completely disabled: its script is not loaded and no request is made.
+
+## Product analytics: PostHog
+
+Set these to send product analytics (page views, feature usage) to **your own** PostHog project:
+
+```dotenv
+NEXT_PUBLIC_POSTHOG_KEY=<project key>
+NEXT_PUBLIC_POSTHOG_HOST=https://eu.i.posthog.com   # default; use your own instance if you self-host PostHog
+POSTHOG_PROJECT_API_KEY=<project key>               # optional, server-side events
+```
+
+`NEXT_PUBLIC_*` values are built into the web app, so rebuild the `web` image after changing them.
+
+## Traffic analytics: DataFast
+
+```dotenv
+NEXT_PUBLIC_DATAFAST_WEBSITE_ID=<id>
+NEXT_PUBLIC_DATAFAST_DOMAIN=design.example.org
+DATAFAST_API_KEY=<key>   # optional, server-side goals
+```
+
+## Logs: Axiom
+
+Structured logs from the backend, web app and worker can be shipped to Axiom:
+
+```dotenv
+AXIOM_TOKEN=<ingest token>
+AXIOM_DATASET=desyn
+AXIOM_ORG_ID=<org id>   # needed with personal tokens
+```
+
+Without Axiom, logs stay where they are produced: the Convex dashboard for backend functions and `docker compose logs` for containers. Logs never contain prompts, design contents, passwords or keys.
+
+## Verifying
+
+- In the browser's developer tools, the **Network** tab on a fresh page load shows no requests to analytics hosts when the variables are unset.
+- **Admin → Health** lists which telemetry integrations are configured.
+- The Convex backend's own anonymous usage beacon is disabled in the quickstart's Compose file (`DISABLE_BEACON=true`).

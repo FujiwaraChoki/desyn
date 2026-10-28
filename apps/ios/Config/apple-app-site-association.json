@@ -1,0 +1,18 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["HL34V4TRZ5.app.desyn.ios"],
+        "components": [
+          {
+            "/": "/api/auth/magic-link/verify",
+            "?": { "callbackURL": "desyn://auth/magic" },
+            "comment": "Magic sign-in links requested by the iOS app (AuthClient.sendMagicLink)"
+          },
+          { "/": "/design/*", "comment": "Open a design in the app" },
+          { "/": "/share/*", "comment": "Open a share link in the app" }
+        ]
+      }
+    ]
+  }
+}

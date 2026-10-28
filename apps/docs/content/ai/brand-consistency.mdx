@@ -1,0 +1,41 @@
+---
+title: Brand consistency
+description: Keep every design on-brand — apply a brand kit with one request, generate on-brand by default, and extract a kit from existing work.
+---
+
+Brand kits ([concepts](/concepts/brand-kits)) hold your colors, fonts, logos, voice and rules. The AI uses them in three ways.
+
+## "Make this match my brand"
+
+Select a design that follows a kit — or tell the agent which kit to use — and ask:
+
+```text
+Make this match my brand.
+```
+
+The agent runs `apply_brand`, which maps the design onto the kit rather than repainting it:
+
+- **Colors** — each color in the design is matched to the closest brand color by role and contrast, keeping text readable. Brand colors become variables (such as `brand.primary`) so later kit changes flow through.
+- **Fonts** — headline-like text gets the heading font, body text the body font, using [roles](/concepts/roles) where they exist and visual hierarchy where they do not.
+- **Logos** — placeholder or outdated logos are replaced with the right variant for the background (light or dark).
+- **Voice** — copy is lightly rewritten in your tone, keeping facts, names and numbers intact. Say *"don't change the copy"* to skip this.
+- **Rules** — hard rules from the kit are checked and fixed (*"logo never on photos"*, *"minimum 24 px headlines"*).
+
+You can scope it: *"apply the brand to the selected card only"*, or *"only fix the colors"*.
+
+## On-brand from the start
+
+When a design follows a kit, everything the AI creates uses it: generated designs, new pages, [workflows](/ai/workflows), template remixes and generated images (whose prompts include the palette and mood). The agent prefers your saved text and color styles over new values.
+
+## Checking a design
+
+Ask *"is this on brand?"* and the agent compares the design with the kit and lists what is off — a color that is not in the palette, an extra font, a logo with too little clear space — before fixing anything you approve.
+
+## Extracting a brand kit
+
+Starting from scratch? Create a kit from existing material:
+
+- **From a design** you like — the agent reads its palette, fonts and logo usage.
+- **From files** — upload your logo, a brand guidelines PDF or a few example images; the agent proposes colors, fonts, a voice description and rules.
+
+Review the proposal, adjust anything, and save. Brand kits are part of Pro (up to 10 per workspace) and the self-hosted edition.

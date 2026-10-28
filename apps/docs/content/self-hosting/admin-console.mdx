@@ -1,0 +1,44 @@
+---
+title: Admin console
+description: The /admin console of a self-hosted installation — users, roles, plan overrides, credit adjustments, feature flags, usage and health.
+---
+
+The admin console at `/admin` is where administrators run the installation from inside the app. It is available to accounts with the **admin** system role.
+
+## Who is an admin
+
+- On a fresh self-hosted installation, the **first account** that signs up becomes an admin automatically.
+- Admins can promote other accounts to admin (and demote them) in **Users**. There is always at least one admin: the last admin cannot be demoted.
+- On the hosted edition, admin access is granted by email address through `ADMIN_EMAILS` instead.
+
+The system role is separate from [workspace roles](/concepts/workspaces#member-roles): being an admin of the installation does not make you a member of anyone's workspace.
+
+## Users
+
+Search accounts by name or email and open one to see its profile, plan, workspaces and usage. From there you can:
+
+- **Change the system role** between user and admin.
+- **Override the plan** — assign a specific plan from `config/plans.json` to one account, or clear the override to return to the installation default (`selfhost`). Useful to test the Free experience, or to apply a stricter plan to guest accounts.
+- **Adjust credits** — add or remove credits with a note, recorded in the account's credit history. Relevant only for plans with a credit pool.
+- **Disable an account** — the account can no longer sign in and its sessions end; its data stays. You cannot disable yourself.
+
+Every admin action is written to the audit log with who did it and when.
+
+## Feature flags
+
+Runtime overrides without a redeploy. A flag named `feature.<key>` overrides a plan feature from `config/plans.json` — for example `feature.ai.images` turned off disables image generation for everyone while you set up a provider. Each flag can be limited to certain plans, to a list of accounts, or to a percentage rollout, and shows who changed it last. Removing a flag returns to the plan's default.
+
+## Usage
+
+An overview of the current period across the installation: the number of accounts, AI requests and exports this period, total designs and storage, and — for plans with credits — credits used, reserved and over the pool, with the number of active AI users. It shows what drives your provider bills and storage growth.
+
+## Health
+
+Operational status at a glance:
+
+- **Integrations** — whether each one is configured, shown as yes/no and never with secret values: the authentication secret and OAuth providers, the mail transport, object storage, the render worker, AI providers (OpenRouter, Fal, Ollama) and BYOK encryption, stock photo sources and telemetry.
+- **Mail queue** — messages waiting to be sent and messages that failed.
+- **Stale credit reservations** — AI jobs that never settled (cleaned up automatically).
+- **Log backlog** — log entries waiting to be shipped when Axiom is configured.
+
+Start here when something does not work; then see [troubleshooting](/self-hosting/troubleshooting).

@@ -1,0 +1,413 @@
+{
+  "description": "A clean poster: background, logo lockup, headline, subhead, a divider line and a CTA button. No rule fires.",
+  "design": {
+    "assets": {
+      "markasset000": {
+        "height": 48.0,
+        "id": "markasset000",
+        "kind": "svg",
+        "mime": "image/svg+xml",
+        "width": 48.0
+      }
+    },
+    "id": "design000001",
+    "kind": "poster",
+    "meta": {},
+    "name": "Fixture",
+    "nodes": {
+      "background00": {
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fills": [
+          {
+            "color": "#0f1115",
+            "type": "solid"
+          }
+        ],
+        "height": 1350.0,
+        "id": "background00",
+        "locked": false,
+        "name": "Background",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "role": "background",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "rect",
+        "visible": true,
+        "width": 1080.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "brandmark000": {
+        "alt": "Desyn sun mark",
+        "assetId": "markasset000",
+        "blend": "normal",
+        "effects": [],
+        "height": 48.0,
+        "id": "brandmark000",
+        "locked": false,
+        "name": "Brand mark",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "role": "logo",
+        "rotation": 0.0,
+        "type": "svg",
+        "visible": true,
+        "width": 48.0,
+        "x": 96.0,
+        "y": 96.0
+      },
+      "brandname000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 33.6,
+        "id": "brandname000",
+        "locked": false,
+        "name": "Brand name",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Desyn"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#f5f2ea",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 28.0,
+          "fontStyle": "normal",
+          "fontWeight": 600.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 200.0,
+        "x": 160.0,
+        "y": 104.0
+      },
+      "ctabutton000": {
+        "blend": "normal",
+        "children": [
+          "ctalabel0000"
+        ],
+        "clip": false,
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fills": [
+          {
+            "color": "#ffb02e",
+            "type": "solid"
+          }
+        ],
+        "height": 96.0,
+        "id": "ctabutton000",
+        "locked": false,
+        "name": "CTA button",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "role": "cta",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "frame",
+        "visible": true,
+        "width": 320.0,
+        "x": 96.0,
+        "y": 1100.0
+      },
+      "ctalabel0000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 43.2,
+        "id": "ctalabel0000",
+        "locked": false,
+        "name": "CTA label",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "center",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "ctabutton000",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Start free"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 36.0,
+          "fontStyle": "normal",
+          "fontWeight": 600.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 240.0,
+        "x": 40.0,
+        "y": 26.0
+      },
+      "divider00000": {
+        "blend": "normal",
+        "effects": [],
+        "endCap": "none",
+        "height": 0.0,
+        "id": "divider00000",
+        "locked": false,
+        "name": "Divider",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "role": "divider",
+        "rotation": 0.0,
+        "startCap": "none",
+        "strokes": [
+          {
+            "align": "center",
+            "cap": "butt",
+            "fills": [
+              {
+                "color": "#111111",
+                "type": "solid"
+              }
+            ],
+            "join": "miter",
+            "width": 2.0
+          }
+        ],
+        "type": "line",
+        "visible": true,
+        "width": 320.0,
+        "x": 96.0,
+        "y": 1040.0
+      },
+      "headline0000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 230.39999999999998,
+        "id": "headline0000",
+        "locked": false,
+        "name": "Headline",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "role": "headline",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Design at the speed of thought"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#ffffff",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 96.0,
+          "fontStyle": "normal",
+          "fontWeight": 700.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 888.0,
+        "x": 96.0,
+        "y": 420.0
+      },
+      "page00000001": {
+        "background": [
+          {
+            "color": "#ffffff",
+            "type": "solid"
+          }
+        ],
+        "bleed": 0.0,
+        "blend": "normal",
+        "children": [
+          "background00",
+          "brandmark000",
+          "brandname000",
+          "headline0000",
+          "subhead00000",
+          "divider00000",
+          "ctabutton000"
+        ],
+        "clip": true,
+        "effects": [],
+        "height": 1350.0,
+        "id": "page00000001",
+        "locked": false,
+        "name": "Page 1",
+        "opacity": 1.0,
+        "parent": "root",
+        "rotation": 0.0,
+        "type": "page",
+        "unit": "px",
+        "visible": true,
+        "width": 1080.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "root": {
+        "blend": "normal",
+        "children": [
+          "page00000001"
+        ],
+        "effects": [],
+        "height": 0.0,
+        "id": "root",
+        "locked": false,
+        "name": "Root",
+        "opacity": 1.0,
+        "parent": null,
+        "rotation": 0.0,
+        "type": "root",
+        "visible": true,
+        "width": 0.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "subhead00000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 86.4,
+        "id": "subhead00000",
+        "locked": false,
+        "name": "Subhead",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "role": "subhead",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Make posters, decks and posts with an AI that edits real layers."
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#c9c4b8",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 36.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 760.0,
+        "x": 96.0,
+        "y": 680.0
+      }
+    },
+    "schema": 1,
+    "styles": {
+      "colors": {},
+      "effects": {},
+      "text": {},
+      "variables": {}
+    }
+  },
+  "expect": {
+    "direction": "ltr",
+    "groups": [
+      {
+        "kind": "button",
+        "node": "CTA button"
+      },
+      {
+        "ids": [
+          "Brand mark",
+          "Brand name"
+        ],
+        "kind": "logo-lockup"
+      }
+    ],
+    "issues": [],
+    "onlyRules": [],
+    "readingOrder": [
+      "Brand mark",
+      "Brand name",
+      "Headline",
+      "Subhead",
+      "CTA label"
+    ],
+    "semantic": {
+      "CTA button": "CTA button: \"Start free\""
+    }
+  },
+  "options": null
+}

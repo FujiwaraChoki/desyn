@@ -1,0 +1,67 @@
+---
+title: Quickstart
+description: Create an account on desyn.app, make your first design, edit it with the agent and export it — in about five minutes.
+---
+
+This guide uses the hosted app at [app.desyn.app](https://app.desyn.app). Everything works the same on a [self-hosted installation](/self-hosting); only the address differs.
+
+<Steps>
+
+### Create your account
+
+Open [app.desyn.app/signup](https://app.desyn.app/signup) and sign up with email and password, a magic link, or your Google or GitHub account. Confirm your email from the message Desyn sends you.
+
+A short onboarding asks what you design most often. It only tunes which templates and sizes you see first; you can change it later in **Settings → Profile**.
+
+### Start a design
+
+The dashboard opens on **Recent**. Choose **Create** and pick a kind — for example *Instagram post* (1080 × 1350) — or type a custom size. You can also start from a template: open **Templates**, search for something like *minimal bakery menu*, and choose **Use template**.
+
+Every design starts with one page. The canvas is in the middle, the tool dock at the bottom, the inspector on the right and the panels (Design, Elements, Text, Brand, Uploads, Photos, AI, Layers, Pages) on the left.
+
+### Add something by hand
+
+Press <Keys combo="t" /> and click on the page to add text, then type a headline. Press <Keys combo="r" /> and drag to draw a rectangle behind it, then send it backward with <Keys combo="mod+[" />. Use the inspector on the right to change fonts, colors and spacing. Everything you do is saved automatically.
+
+### Ask the agent
+
+Press <Keys combo="mod+j" /> to open the prompt bar and describe what you want:
+
+```text
+Turn this into a launch post for a ceramic coffee cup. Warm and minimal,
+one product photo, a short headline and a small "Shop now" button.
+```
+
+The agent reads the page, plans the change, generates the photo, builds the layout from real layers and checks the result before it finishes. You see each step in the run log, and the layers it is working on glow softly while it edits.
+
+### Refine it in conversation
+
+Keep talking to it. The agent only touches what you ask about:
+
+```text
+Make the headline shorter and move it above the photo.
+```
+
+```text
+Try a darker background, keep everything else.
+```
+
+Every agent request is a single undo step, so <Keys combo="mod+z" /> reverts the whole change at once.
+
+### Export
+
+Choose **Export** in the top bar (or press <Keys combo="mod+shift+e" />), pick PNG, JPEG or PDF, and download. Pro adds WebP, SVG, PowerPoint, video and print-ready PDF with bleed and crop marks — see [export](/editor/export).
+
+</Steps>
+
+## Where to next
+
+<Cards>
+  <Card title="Concepts" href="/concepts">Designs, pages, layers, roles, brand kits, templates and credits in one read.</Card>
+  <Card title="The agent" href="/ai/agent">What it can do, how to phrase requests and how edits stay safe.</Card>
+  <Card title="Keyboard shortcuts" href="/editor/keyboard-shortcuts">The full keymap for working fast.</Card>
+  <Card title="Brand kits" href="/concepts/brand-kits">Teach Desyn your colors, fonts, logo and voice once.</Card>
+</Cards>
+
+> [!NOTE]
+> The agent, image generation and the other AI tools are part of **Pro** and the self-hosted edition. The Free plan includes the full editor, basic templates and PNG, JPEG and PDF export. See [plans and credits](/concepts/plans-and-credits).

@@ -1,0 +1,11 @@
+{
+  "name": "effect-background-blur",
+  "schema": "Effect",
+  "valid": true,
+  "description": "background-blur effect",
+  "value": {
+    "type": "backgroundBlur",
+    "radius": 20,
+    "visible": false
+  }
+}

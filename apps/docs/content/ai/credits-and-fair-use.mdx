@@ -1,0 +1,43 @@
+---
+title: Credits & fair use
+description: How AI credits work on Pro, what each action costs, what happens when you run out, rate limits, and how bringing your own key or a local model avoids credits entirely.
+---
+
+The figures on this page come straight from `config/plans.json`, the file the product itself reads.
+
+## The monthly pool
+
+Pro includes **600 credits per month**. Credits are a simple measure of AI work: an agent request, a generated image, a resized variant. The pool refills at the start of each period. The Free plan does not include AI; self-hosted installations have no credit pool at all.
+
+See your balance, recent usage and history in **Settings → Usage**, or with the API at [`GET /credits`](/developers/api/account#get-credit-balance).
+
+## What things cost
+
+<Generated name="credit-costs" />
+
+A few examples:
+
+- Asking the agent to restyle a slide: **1 credit** (one agent turn), however many layers it changes.
+- Generating a full poster that needs two images: **5 + 2 × 3 = 11 credits**.
+- Resizing one design into six formats: **6 credits**.
+- Localizing a design into four languages: **4 credits**.
+
+Credits are reserved when a run starts and settled when it finishes, so a cancelled or failed run returns whatever it did not use.
+
+## When you run out
+
+There are **no overage charges** — you are never billed beyond your plan. When the monthly pool is used up, AI requests keep working under a **soft throttle**: each request waits a little before it starts (between 1.5 and 6 seconds). Your pool refills at the start of the next period.
+
+## Rate limits
+
+<Generated name="fair-use" />
+
+These limits keep the service fast for everyone. Hitting a per-minute or per-day cap returns a clear message with when you can continue; the [API](/developers/api#rate-limits) returns `429` with a `Retry-After` header.
+
+## Bring your own key
+
+Requests that run on **your own provider key** (BYOK) or on a **local model** never spend credits. Add a key for OpenRouter, Anthropic, OpenAI, Google, Mistral, Groq, Fal or Replicate in **Settings → AI providers** and choose it for any task. See [providers & BYOK](/ai/providers-and-byok).
+
+## Fair use
+
+Pro is priced for one person's real design work. Patterns that look like abuse — bulk account creation, automated scraping, or reselling access — are detected and can lead to throttling or suspension. If your work genuinely needs more, bring your own key or [self-host](/self-hosting).

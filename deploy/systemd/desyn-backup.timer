@@ -1,0 +1,12 @@
+[Unit]
+Description=Nightly Desyn backup
+Documentation=file:///opt/desyn/tooling/RUNBOOK.md
+
+[Timer]
+OnCalendar=*-*-* 03:17:00 UTC
+RandomizedDelaySec=20min
+Persistent=true
+Unit=desyn-backup.service
+
+[Install]
+WantedBy=timers.target

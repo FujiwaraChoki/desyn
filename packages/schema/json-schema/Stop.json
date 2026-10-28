@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://desyn.app/schema/v1/Stop.json",
+  "title": "Stop",
+  "type": "object",
+  "properties": {
+    "pos": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "color": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Color"
+        },
+        {
+          "$ref": "#/$defs/ColorRef"
+        }
+      ]
+    }
+  },
+  "required": ["pos", "color"],
+  "additionalProperties": {},
+  "$defs": {
+    "Color": {
+      "type": "string",
+      "pattern": "^#(?:[0-9a-f]{6}|[0-9a-f]{8})$"
+    },
+    "ColorRef": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "$var": {
+              "type": "string"
+            }
+          },
+          "required": ["$var"],
+          "additionalProperties": {}
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$style": {
+              "$ref": "#/$defs/Id"
+            }
+          },
+          "required": ["$style"],
+          "additionalProperties": {}
+        }
+      ]
+    },
+    "Id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]{12}$"
+    }
+  }
+}

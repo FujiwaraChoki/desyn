@@ -1,0 +1,58 @@
+---
+title: Layers
+description: The layer types in a Desyn design, how they nest and stack, and the properties every layer shares.
+---
+
+Everything on a page is a layer. Layers are stacked back to front (the first child is at the bottom) and can be nested inside containers. The [Layers panel](/editor/layers-and-pages) shows the tree; the canvas shows the result.
+
+## Containers
+
+| Layer | What it is for |
+| --- | --- |
+| **Frame** | A box with its own fills, strokes and corner radius that holds children. Frames can clip their content and can use [auto-layout](/editor/auto-layout) to arrange children in rows, columns or grids. Cards, buttons and sections are usually frames. |
+| **Group** | A lightweight bundle with no paint of its own. Its bounds always fit its children. Use it to move or select things together. |
+| **Boolean** | Combines its child shapes with union, subtract, intersect or exclude, keeping them editable. |
+
+## Shapes and drawing
+
+| Layer | Notes |
+| --- | --- |
+| **Rectangle** | Per-corner radius and optional corner smoothing (the iOS "squircle"). |
+| **Ellipse** | Can become an arc or a ring (start/end angle and inner radius). |
+| **Polygon** | Any number of sides. |
+| **Star** | Number of points and inner radius ratio. |
+| **Line** | A stroke with caps at each end: arrow, triangle, circle, square, diamond or bar. |
+| **Path** | Vector paths drawn with the pen tool or produced by boolean flattening, tracing or SVG import. |
+
+## Content
+
+| Layer | Notes |
+| --- | --- |
+| **Text** | Rich text with per-run styles, paragraphs, lists, variable fonts and OpenType features, auto-width or auto-height sizing, maximum lines with ellipsis, text on a curve and outlined text. |
+| **Image** | Fill, fit, crop or tile; a clipping shape (rectangle, ellipse or any path); adjustments and filters; an optional mask from background removal. |
+| **SVG** | Vector artwork such as icons and illustrations, with color remapping. |
+| **Video** and **audio** | Trimmed clips with volume, looping and fades for video designs and presentations. |
+| **Chart** | Bar, column, line, area, pie, donut, scatter, radar, funnel, stacked column and progress. |
+| **Table** | Rows, columns, merged cells, header row, striping and per-cell styles. |
+| **QR code** | Any text or URL, colors, error correction level and rounded modules. |
+
+## What every layer has
+
+- **Name** — shown in the Layers panel and used by the AI. Good names make better edits.
+- **Position, size and rotation** — relative to the parent; rotation is around the center. Layers can be flipped.
+- **Opacity and blend mode** — sixteen blend modes from *multiply* to *luminosity*.
+- **Visible** and **locked** flags.
+- **Effects** — drop and inner shadows, layer and background blur, noise and glow. See [effects](/editor/effects).
+- **Constraints** — how the layer responds when its parent resizes (left, right, center, stretch, scale).
+- **Sizing in auto-layout** — fixed, hug contents, or fill the container.
+- **Mask** — a layer can mask the siblings above it.
+- **Link** — a URL or a jump to another page (used in presentations, PDFs and websites).
+- **Alt text** — an accessibility description, also included in exports where formats support it.
+- **Animations** — entrance, exit and loop effects for presentations and video.
+- **Role** — the [semantic role](/concepts/roles) that tells the AI what the layer is for.
+
+## Styles and variables
+
+Colors, text styles and effect sets can be saved as named **styles** in a design and reused across layers; editing the style updates everything that uses it. Designs can also define **variables** such as `brand.primary`, which [brand kits](/concepts/brand-kits) use to restyle a design in one step.
+
+For the precise data model behind all of this, see the [nodes reference](/developers/document-model/nodes).

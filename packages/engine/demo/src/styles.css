@@ -1,0 +1,473 @@
+@import "@desyn/tokens/variables.css";
+@import "@desyn/tokens/fonts.css";
+
+:root {
+  --stage: var(--canvas, #0e0e0e);
+  --line: rgb(var(--foreground-rgb) / 0.1);
+  --line-strong: rgb(var(--foreground-rgb) / 0.2);
+  --muted: rgb(var(--foreground-rgb) / 0.56);
+  --glass: rgb(var(--surface-1-rgb) / 0.72);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-family-sans);
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.app {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-rows: 56px 1fr;
+  /* Never wider than the viewport (a wide bar must not stretch the canvas). */
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* Top bar ------------------------------------------------------------------------------------------------- */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 16px 0 20px;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(
+    180deg,
+    rgb(var(--surface-1-rgb) / 0.9),
+    rgb(var(--background-rgb) / 0.9)
+  );
+  z-index: 3;
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  user-select: none;
+}
+
+.sun {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  align-self: center;
+  background: radial-gradient(circle at 35% 35%, #ffd66b, #ffb02e 55%, #ff6a1f);
+  box-shadow:
+    0 0 12px rgb(var(--accent-rgb) / 0.55),
+    0 0 32px rgb(var(--accent-rgb) / 0.25);
+}
+
+.wordmark {
+  font-family: var(--font-family-serif);
+  font-size: 26px;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.tag {
+  font-family: var(--font-family-serif);
+  font-size: 20px;
+  color: var(--accent);
+  line-height: 1;
+}
+
+/* The chevron follows the theme's foreground (an inline SVG background could not). */
+.picker {
+  position: relative;
+  display: inline-flex;
+  min-width: 0;
+}
+
+.picker::after {
+  content: "";
+  position: absolute;
+  right: 13px;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid var(--muted);
+  border-bottom: 1.5px solid var(--muted);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+
+.picker select {
+  appearance: none;
+  height: 32px;
+  min-width: 168px;
+  padding: 0 32px 0 12px;
+  border-radius: var(--radius-control);
+  border: 1px solid var(--line-strong);
+  background: var(--surface-2);
+  color: var(--foreground);
+  font: inherit;
+  cursor: pointer;
+  transition: border-color var(--duration-fast) var(--ease-out-sun);
+}
+
+.picker select:hover {
+  border-color: rgb(var(--foreground-rgb) / 0.4);
+}
+
+.spacer {
+  flex: 1;
+}
+
+.zoom {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.zoom,
+.export {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  height: 32px;
+  border-radius: var(--radius-control);
+  border: 1px solid transparent;
+  background: transparent;
+  padding: 0 12px;
+  transition:
+    background var(--duration-fast) var(--ease-out-sun),
+    border-color var(--duration-fast) var(--ease-out-sun),
+    box-shadow var(--duration-fast) var(--ease-out-sun);
+}
+
+button:focus-visible,
+select:focus-visible {
+  outline: 2px solid rgb(var(--accent-rgb) / 0.6);
+  outline-offset: 2px;
+}
+
+button.icon {
+  width: 32px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+}
+
+button.icon svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+button.icon:hover,
+button.ghost:hover,
+.zoom-value:hover {
+  background: var(--surface-3);
+}
+
+.zoom-value {
+  min-width: 64px;
+  font-family: var(--font-family-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+button.secondary {
+  background: var(--surface-2);
+  border-color: var(--line-strong);
+}
+
+button.secondary:hover {
+  border-color: rgb(var(--foreground-rgb) / 0.4);
+}
+
+button.primary {
+  background: var(--accent);
+  color: var(--accent-ink, #1a1205);
+  font-weight: 600;
+}
+
+button.primary:hover {
+  box-shadow:
+    0 0 0 1px rgb(var(--accent-rgb) / 0.6),
+    0 0 24px rgb(var(--accent-rgb) / 0.35);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: progress;
+}
+
+/* Stage --------------------------------------------------------------------------------------------------- */
+
+.stage {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 1px 1px, rgb(var(--foreground-rgb) / 0.06) 1px, transparent 0) 0 0 /
+    24px 24px,
+    var(--stage);
+  touch-action: none;
+}
+
+.stage canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: default;
+}
+
+.stage.panning canvas {
+  cursor: grabbing;
+}
+
+.stage.space canvas {
+  cursor: grab;
+}
+
+.stage.editing canvas {
+  cursor: text;
+}
+
+.overlay,
+.text-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.overlay .hover {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1;
+  opacity: 0.7;
+}
+
+.overlay .selection {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  filter: drop-shadow(0 0 6px rgb(var(--accent-rgb) / 0.45));
+}
+
+.overlay .handle {
+  fill: #ffffff;
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+
+.overlay .guide {
+  stroke: #ff6a1f;
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.overlay .spacing {
+  stroke: #ffd66b;
+  stroke-width: 1;
+}
+
+.overlay .label-bg {
+  fill: #ff6a1f;
+}
+
+.overlay .label {
+  fill: #160c02;
+  font-family: var(--font-family-mono);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.overlay .marquee {
+  fill: rgb(var(--accent-rgb) / 0.08);
+  stroke: rgb(var(--accent-rgb) / 0.7);
+  stroke-width: 1;
+}
+
+.loading {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 16px;
+  background: var(--stage);
+  transition: opacity var(--duration-normal) var(--ease-out-sun);
+  z-index: 2;
+}
+
+.loading p {
+  margin: 0;
+  font-family: var(--font-family-serif);
+  font-size: 28px;
+  color: var(--muted);
+}
+
+.loading em {
+  color: var(--accent);
+}
+
+.loading.done {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, #ffd66b, #ffb02e 55%, #ff6a1f);
+  box-shadow: 0 0 40px rgb(var(--accent-rgb) / 0.5);
+  animation: pulse 1.6s var(--ease-in-out-sun) infinite;
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(0.82);
+    box-shadow: 0 0 64px rgb(var(--accent-rgb) / 0.7);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+  }
+}
+
+/* HUD ----------------------------------------------------------------------------------------------------- */
+
+.hud {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 36px;
+  padding: 0 14px 0 6px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line);
+  background: var(--glass);
+  backdrop-filter: var(--glass-filter);
+  color: var(--muted);
+  font-size: 12px;
+  z-index: 3;
+  max-width: calc(100vw - 32px);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.hud b {
+  color: var(--foreground);
+  font-family: var(--font-family-mono);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.hud .pill {
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 10px;
+  border-radius: var(--radius-pill);
+  background: rgb(var(--accent-rgb) / 0.14);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.hud .hint {
+  padding-left: 14px;
+  border-left: 1px solid var(--line);
+}
+
+@media (max-width: 900px) {
+  .hud .hint,
+  .export .secondary {
+    display: none;
+  }
+}
+
+/* Phones: the bar keeps the brand, the design picker, Fit and the primary export; the HUD keeps mode and timing. */
+@media (max-width: 600px) {
+  .topbar {
+    gap: 8px;
+    padding: 0 12px;
+    min-width: 0;
+  }
+
+  .tag,
+  #zoom-in,
+  #zoom-out,
+  .zoom-value,
+  .spacer,
+  .hud .metric:has(#hud-tiles) {
+    display: none;
+  }
+
+  .picker {
+    flex: 1 1 auto;
+  }
+
+  .picker select {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .hud {
+    left: 12px;
+    bottom: 12px;
+    gap: 10px;
+  }
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translate(-50%, 16px);
+  opacity: 0;
+  padding: 10px 16px;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--line);
+  background: var(--glass);
+  backdrop-filter: var(--glass-filter);
+  transition:
+    opacity var(--duration-fast) var(--ease-out-sun),
+    transform var(--duration-normal) var(--ease-out-sun);
+  pointer-events: none;
+  z-index: 4;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}

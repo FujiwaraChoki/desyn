@@ -1,0 +1,29 @@
+/*
+ * Self-hosted Desyn fonts (no runtime Google requests).
+ * - Instrument Serif (OFL): headings, display, dialog titles, empty states. Regular + Italic only.
+ * - Instrument Sans Variable (OFL, @fontsource-variable): UI and body, weights 400-700.
+ * - JetBrains Mono Variable (OFL, @fontsource-variable): ids, code, aligned numerics.
+ */
+@import "@fontsource-variable/instrument-sans/wght.css";
+@import "@fontsource-variable/instrument-sans/wght-italic.css";
+@import "@fontsource-variable/jetbrains-mono/wght.css";
+
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    url("../fonts/InstrumentSerif-Regular.woff2") format("woff2"),
+    url("../fonts/InstrumentSerif-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    url("../fonts/InstrumentSerif-Italic.woff2") format("woff2"),
+    url("../fonts/InstrumentSerif-Italic.ttf") format("truetype");
+}

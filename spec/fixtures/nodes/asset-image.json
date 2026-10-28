@@ -1,0 +1,28 @@
+{
+  "name": "asset-image",
+  "schema": "AssetRef",
+  "valid": true,
+  "description": "AI-generated image asset",
+  "value": {
+    "id": "asset0000001",
+    "kind": "image",
+    "mime": "image/png",
+    "storageKey": "u/abc/assets/asset0000001.png",
+    "bytes": 524288,
+    "width": 1024,
+    "height": 1024,
+    "hash": "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+    "name": "sun.png",
+    "source": "ai",
+    "ai": {
+      "provider": "fal",
+      "model": "flux",
+      "prompt": "a warm sun over hills",
+      "seed": 42
+    },
+    "attribution": {
+      "author": "Desyn AI",
+      "license": "owned"
+    }
+  }
+}

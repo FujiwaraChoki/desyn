@@ -1,0 +1,134 @@
+---
+title: "Storage: S3, MinIO, R2"
+description: Configure object storage for uploads, generated assets, exports and snapshots — the bundled MinIO, AWS S3, Cloudflare R2 or any S3-compatible store — including CORS and public URLs.
+---
+
+Desyn keeps file bytes in object storage and only metadata in the database. Browsers upload directly to the store with short-lived presigned URLs, and downloads use signed URLs, so files never pass through the web app.
+
+## What is stored
+
+| Prefix | Contents |
+| --- | --- |
+| `uploads/` | Images, SVGs, fonts, video and audio members upload |
+| AI results | Generated and transformed images, SVGs and video |
+| `exports/` | Rendered export files (cleaned up automatically after they expire) |
+| `snapshots/<designId>/<seq>.json.zst` | Compressed design snapshots used for fast loading and version history |
+| Thumbnails | Design and template previews |
+
+Assets no design references any more are removed by a scheduled cleanup job.
+
+## Variables
+
+| Variable | Notes |
+| --- | --- |
+| `S3_BUCKET` | Bucket name |
+| `AWS_REGION` | Bucket region; any value such as `us-east-1` for stores without regions, `auto` for R2 |
+| `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` | Credentials with read, write, list and delete on the bucket |
+| `S3_ENDPOINT` | Unset for AWS S3; the store's URL otherwise |
+| `S3_FORCE_PATH_STYLE` | `true` for MinIO and most self-hosted stores |
+| `S3_PUBLIC_BASE_URL` | Optional public/CDN base for files that may be public |
+
+Set them in the Convex environment (`deploy/compose/convex.env` in the quickstart). See the [configuration reference](/self-hosting/configuration#object-storage).
+
+> [!IMPORTANT]
+> `S3_ENDPOINT` must be reachable **from members' browsers** (for uploads and downloads) **and from the Convex backend** (which signs URLs and manages objects). Use a public HTTPS hostname such as `https://s3.example.org` (or a LAN address for a single-machine evaluation), not `localhost` or a Docker-internal name.
+
+## CORS
+
+Because browsers upload directly, the bucket must allow your app's origin. The bundled MinIO is configured for this automatically (`MINIO_API_CORS_ALLOW_ORIGIN` follows `DESYN_APP_URL`); for any other store, apply rules like these:
+
+```json title="cors.json"
+{
+  "CORSRules": [
+    {
+      "AllowedOrigins": ["https://design.example.org"],
+      "AllowedMethods": ["GET", "PUT", "HEAD"],
+      "AllowedHeaders": ["*"],
+      "ExposeHeaders": ["ETag"],
+      "MaxAgeSeconds": 3600
+    }
+  ]
+}
+```
+
+```bash
+aws --endpoint-url "$S3_ENDPOINT" s3api put-bucket-cors --bucket desyn --cors-configuration file://cors.json
+```
+
+Omit `--endpoint-url` for AWS S3. Without CORS, uploads fail in the browser with a network error while everything else works.
+
+## Provider notes
+
+<Tabs>
+<Tab label="Bundled MinIO">
+
+The [quickstart](/self-hosting/docker-compose) stack runs MinIO (`minio` service, data in the `minio_data` volume) and creates the bucket on start (`minio-init`). The root credentials come from `MINIO_ROOT_USER` and `MINIO_ROOT_PASSWORD` in `deploy/compose/.env`; the backend uses the same pair:
+
+```dotenv title="deploy/compose/convex.env"
+AWS_REGION=us-east-1
+AWS_ACCESS_KEY_ID=desyn
+AWS_SECRET_ACCESS_KEY=<MINIO_ROOT_PASSWORD>
+S3_BUCKET=desyn
+S3_ENDPOINT=https://s3.example.org
+S3_PUBLIC_BASE_URL=https://s3.example.org/desyn
+S3_FORCE_PATH_STYLE=true
+```
+
+Route `s3.example.org` to `127.0.0.1:9000` at the [reverse proxy](/self-hosting/reverse-proxy). The MinIO console is on `127.0.0.1:9001`; reach it through an SSH tunnel.
+
+</Tab>
+<Tab label="AWS S3">
+
+Create a private bucket (keep *Block Public Access* on) and an IAM user or role with a policy scoped to it:
+
+```json title="policy.json"
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": ["s3:GetObject", "s3:PutObject", "s3:DeleteObject", "s3:ListBucket"],
+      "Resource": ["arn:aws:s3:::desyn", "arn:aws:s3:::desyn/*"]
+    }
+  ]
+}
+```
+
+Leave `S3_ENDPOINT` unset and `S3_FORCE_PATH_STYLE=false`.
+
+</Tab>
+<Tab label="Cloudflare R2">
+
+Create a bucket and an R2 API token with *Object Read & Write* on it. Then:
+
+```dotenv
+AWS_REGION=auto
+S3_ENDPOINT=https://<account-id>.r2.cloudflarestorage.com
+S3_FORCE_PATH_STYLE=false
+```
+
+Set CORS in the bucket's settings in the Cloudflare dashboard with the rules above. To serve public files from a custom domain, connect one to the bucket and set `S3_PUBLIC_BASE_URL` to it.
+
+</Tab>
+<Tab label="Other S3-compatible">
+
+MinIO elsewhere, Garage, SeaweedFS, Ceph RGW, Hetzner Object Storage and similar stores work the same way. Create the bucket and a dedicated access key with the store's own tools, apply the CORS rules above, and set:
+
+```dotenv
+AWS_REGION=us-east-1
+S3_ENDPOINT=https://s3.example.org
+S3_FORCE_PATH_STYLE=true
+```
+
+Use the region name your provider documents, and `S3_FORCE_PATH_STYLE=false` if it only supports virtual-hosted-style URLs.
+
+</Tab>
+</Tabs>
+
+## Public files
+
+Without `S3_PUBLIC_BASE_URL`, every file is served through signed URLs that expire, which is the safest default. If you set it — typically to a CDN in front of the bucket — files that are public by nature, such as template thumbnails, use plain URLs and cache better. Members' uploads and designs stay private either way.
+
+## Upload limits
+
+The maximum size per file comes from your plan configuration (`uploadMbPerFile`, 1 GB for self-hosted). If your reverse proxy also fronts the storage endpoint, allow request bodies at least that large there — see [reverse proxy](/self-hosting/reverse-proxy#upload-size).

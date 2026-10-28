@@ -1,0 +1,14 @@
+{
+  "name": "effect-drop-shadow",
+  "schema": "Effect",
+  "valid": true,
+  "description": "drop-shadow effect",
+  "value": {
+    "type": "dropShadow",
+    "x": 0,
+    "y": 12,
+    "blur": 32,
+    "spread": -8,
+    "color": "#00000040"
+  }
+}

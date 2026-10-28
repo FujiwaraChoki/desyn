@@ -1,0 +1,15 @@
+{
+  "name": "asset-font",
+  "schema": "AssetRef",
+  "valid": true,
+  "description": "custom font asset",
+  "value": {
+    "id": "font00000001",
+    "kind": "font",
+    "mime": "font/woff2",
+    "family": "Brand Sans",
+    "weight": 700,
+    "style": "italic",
+    "source": "brand"
+  }
+}

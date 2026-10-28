@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://desyn.app/schema/v1/IssueCode.json",
+  "title": "IssueCode",
+  "type": "string",
+  "enum": [
+    "low-contrast",
+    "tiny-text",
+    "text-overflow",
+    "off-page",
+    "overlap",
+    "misaligned",
+    "uneven-spacing",
+    "orphan-line",
+    "too-many-fonts",
+    "too-many-colors",
+    "weak-hierarchy",
+    "image-low-res",
+    "unsafe-margin",
+    "missing-alt",
+    "unlabeled-group"
+  ]
+}

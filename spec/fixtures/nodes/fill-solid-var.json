@@ -1,0 +1,12 @@
+{
+  "name": "fill-solid-var",
+  "schema": "Fill",
+  "valid": true,
+  "description": "solid-var fill",
+  "value": {
+    "type": "solid",
+    "color": {
+      "$var": "brand.primary"
+    }
+  }
+}

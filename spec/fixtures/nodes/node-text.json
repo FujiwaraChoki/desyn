@@ -1,0 +1,84 @@
+{
+  "name": "node-text",
+  "schema": "TextNode",
+  "valid": true,
+  "description": "canonical example of a text node",
+  "value": {
+    "id": "node00000016",
+    "type": "text",
+    "name": "Headline",
+    "parent": "page00000001",
+    "x": 100,
+    "y": 120,
+    "width": 800,
+    "height": 192,
+    "rotation": 0,
+    "opacity": 1,
+    "blend": "normal",
+    "visible": true,
+    "locked": false,
+    "effects": [],
+    "runs": [
+      {
+        "text": "design at the speed of "
+      },
+      {
+        "text": "light",
+        "style": {
+          "fontStyle": "italic",
+          "fills": [
+            {
+              "type": "solid",
+              "color": {
+                "$var": "brand.primary"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "text": "\nA second paragraph.",
+        "style": {
+          "fontSize": 24,
+          "fontFamily": "Instrument Sans",
+          "link": "https://desyn.app"
+        }
+      }
+    ],
+    "style": {
+      "fontFamily": "Instrument Serif",
+      "fontWeight": 400,
+      "fontStyle": "normal",
+      "fontSize": 80,
+      "fills": [
+        {
+          "type": "solid",
+          "color": "#111111"
+        }
+      ],
+      "letterSpacing": -0.02,
+      "textCase": "none",
+      "decoration": "none",
+      "features": ["liga", "ss01"],
+      "variations": {
+        "wght": 400
+      }
+    },
+    "paragraph": {
+      "align": "center",
+      "direction": "auto",
+      "lineHeight": {
+        "unit": "percent",
+        "value": 110
+      },
+      "spacing": 0,
+      "indent": 0,
+      "list": "none"
+    },
+    "autoResize": "height",
+    "verticalAlign": "middle",
+    "maxLines": 3,
+    "role": "headline",
+    "styleRef": "tstyle000001"
+  }
+}

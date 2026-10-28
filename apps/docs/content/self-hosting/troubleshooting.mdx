@@ -1,0 +1,66 @@
+---
+title: Troubleshooting
+description: Fixes for the most common problems on self-hosted installations — connection loops, sign-in emails, uploads, exports, AI providers and deploy errors.
+---
+
+Commands assume `COMPOSE_FILE` is set as in the [quickstart](/self-hosting/docker-compose#point-compose-at-the-stack). Start with three checks: `docker compose ps` (are all services running and healthy?), **Admin → Health** in the app (is everything configured?), and the logs (`docker compose logs --tail=200 <service>` and the Convex dashboard's **Logs**).
+
+## The app loads but says "connecting…" forever
+
+The browser cannot hold a WebSocket to the Convex API.
+
+- Open `https://convex.example.org/version` in the browser. If it fails, the hostname or proxy is wrong.
+- Make sure the proxy forwards WebSocket upgrades and does not time out idle connections. See [WebSockets](/self-hosting/reverse-proxy#websockets).
+- Check that the web image was built with the right Convex URL (`DESYN_CONVEX_URL` in `deploy/compose/.env`). It is baked in at build time: after changing it, run `docker compose up -d --build web`.
+
+## Sign-in emails never arrive
+
+- `MAIL_TRANSPORT` unset or `log` means messages are only written to the logs. Set `smtp` or `ses`.
+- Look for transport errors in the Convex logs: wrong SMTP credentials, a sender address the provider rejects, or SES still in sandbox mode.
+- Check spam folders and your domain's SPF/DKIM records. See [email](/self-hosting/email).
+
+## Sign-in redirects to the wrong address
+
+`APP_URL` in the Convex environment must be your public app origin (`https://design.example.org`), without a trailing path, and `SITE_URL` your marketing origin (the app origin if you do not run the `marketing` profile). Fix them in `deploy/compose/convex.env` and [push the configuration](/self-hosting/convex#environment-variables) again; no redeploy is needed.
+
+## Sign in with Google or GitHub fails
+
+The provider rejects the redirect. Register exactly `https://design.example.org/api/auth/callback/google` (or `/github`) — your `APP_URL` plus that path — in the provider's OAuth settings. Both the client id and secret must be set, or the button does not appear at all.
+
+## Uploads fail
+
+- **Network or CORS error in the browser console**: the bucket's CORS rules do not allow your app origin. See [CORS](/self-hosting/storage#cors).
+- **413 Request Entity Too Large**: raise the body size limit on the storage hostname. See [upload size](/self-hosting/reverse-proxy#upload-size).
+- **Signature mismatch**: `S3_ENDPOINT`, `AWS_REGION` or `S3_FORCE_PATH_STYLE` do not match the store. MinIO needs `S3_FORCE_PATH_STYLE=true`.
+- **Uploads work but images do not load later**, or uploads fail only when they are finalized: the endpoint is reachable from browsers but not from the backend container, or the other way round. `localhost` never works for `S3_ENDPOINT`, because inside a container it is the container itself. Use a public HTTPS URL, or a LAN address for a single-machine evaluation.
+- **Bucket missing**: `docker compose logs minio-init` shows whether the bundled MinIO bucket was created.
+
+## Exports or thumbnails fail
+
+The render worker is unreachable or rejects requests.
+
+- `docker compose ps worker` should show it running.
+- `RENDER_WORKER_URL` in the Convex environment must be `http://worker:8080` (the Compose service name) and `RENDER_WORKER_SECRET` must be identical in `deploy/compose/convex.env` and `deploy/compose/.env` (which the worker container reads).
+- Very large exports can hit the worker's memory limit; check `docker compose logs worker` for out-of-memory errors.
+
+## AI buttons are disabled
+
+No model is available for that task. Add a server key, a member key or a local endpoint — see [AI providers](/self-hosting/ai-providers). If BYOK keys cannot be saved, `AI_KEY_ENCRYPTION_SECRET` is missing.
+
+## Stored provider keys stopped working after a restore
+
+`AI_KEY_ENCRYPTION_SECRET` differs from the one the keys were encrypted with. Restore the original value, or ask members to enter their keys again.
+
+## Everyone was signed out
+
+`BETTER_AUTH_SECRET` changed. This is expected after rotating it; members sign in again.
+
+## `convex deploy` fails
+
+- **401 or "invalid admin key"**: `CONVEX_SELF_HOSTED_ADMIN_KEY` in `deploy/compose/.env` is empty or belongs to a different `INSTANCE_SECRET`. Generate a new one with `docker compose exec convex-backend ./generate_admin_key.sh`.
+- **Cannot connect**: the `convex-tools` service reaches the backend as `http://convex-backend:3210` on the Compose network and waits until it is healthy; check `docker compose ps convex-backend`. When running the CLI from another machine, use the public `https://convex.example.org`.
+- **Schema validation errors**: the new schema does not match existing documents. Do not force it; check the release notes for a migration step, or restore your backup and stay on the previous version.
+
+## Something else
+
+Collect the output of `docker compose ps`, the relevant logs (remove anything secret first) and the Desyn version, and open an issue in the repository.

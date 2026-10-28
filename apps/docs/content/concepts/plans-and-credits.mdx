@@ -1,0 +1,36 @@
+---
+title: Plans & credits
+description: Free, Pro and self-hosted compared — every limit and feature, how AI credits work, and what each action costs.
+---
+
+The numbers on this page are generated from `config/plans.json`, the same file the product reads, so they are always current.
+
+## Plans
+
+- **Free** — a deliberately basic plan to try the editor: the full canvas and core tools, basic templates and PNG, JPEG and PDF export. No AI features.
+- **Pro** — everything, for one price, with a monthly pool of AI credits under fair use.
+- **Self-hosted** — every feature with no credit pool or limits, on your own server, free for non-commercial use. You bring the AI provider keys or local models. See [self-hosting](/self-hosting).
+
+<Generated name="plan-limits" />
+
+## Features
+
+<Generated name="plan-features" />
+
+## Credits
+
+AI work on the hosted Pro plan is measured in credits. Your plan includes a monthly pool that refills at the start of each period. What an action costs:
+
+<Generated name="credit-costs" />
+
+An **agent turn** is one request to the agent, however many edits it makes. If a run also generates images or other assets, those are counted separately at the rates above. Credits for a run are reserved when it starts and settled when it ends, so a cancelled or failed run returns what it did not use.
+
+## Fair use
+
+<Generated name="fair-use" />
+
+Your current balance and history are in **Settings → Usage**. More on how limits behave and how to avoid them: [credits and fair use](/ai/credits-and-fair-use).
+
+## Changing plans
+
+Upgrade, switch between monthly and yearly, or cancel from **Settings → Billing**. Payments and invoices are handled through Stripe's customer portal.

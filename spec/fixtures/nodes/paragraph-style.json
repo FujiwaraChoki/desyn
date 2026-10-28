@@ -1,0 +1,17 @@
+{
+  "name": "paragraph-style",
+  "schema": "ParagraphStyle",
+  "valid": true,
+  "description": "paragraph style with px line height and bullets",
+  "value": {
+    "align": "justify",
+    "direction": "rtl",
+    "lineHeight": {
+      "unit": "px",
+      "value": 28
+    },
+    "spacing": 12,
+    "indent": 16,
+    "list": "bullet"
+  }
+}

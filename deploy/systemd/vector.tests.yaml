@@ -1,0 +1,52 @@
+# Unit tests for the desyn_shape transform (run by deploy/scripts/lint.sh: vector test vector.yaml vector.tests.yaml).
+tests:
+  - name: compose service label becomes .service, labels are dropped
+    inputs:
+      - insert_at: desyn_shape
+        type: log
+        log_fields:
+          message: "listening on 0.0.0.0:3000"
+          container_name: desyn-web-blue-1
+          label:
+            com.docker.compose.service: web-blue
+            com.docker.compose.project: desyn
+    outputs:
+      - extract_from: desyn_shape
+        conditions:
+          - type: vrl
+            source: |
+              assert_eq!(.service, "web-blue")
+              assert_eq!(.project, "desyn")
+              assert!(!exists(.label))
+
+  - name: JSON log lines are merged into fields
+    inputs:
+      - insert_at: desyn_shape
+        type: log
+        log_fields:
+          message: '{"level":"info","msg":"design saved","designId":"abc123def456"}'
+          container_name: desyn-worker-blue-1
+    outputs:
+      - extract_from: desyn_shape
+        conditions:
+          - type: vrl
+            source: |
+              assert_eq!(.level, "info")
+              assert_eq!(.designId, "abc123def456")
+              assert_eq!(.service, "desyn-worker-blue-1")
+
+  - name: credentials in plain log lines are redacted
+    inputs:
+      - insert_at: desyn_shape
+        type: log
+        log_fields:
+          message: 'request failed authorization: Bearer abcdef123456 api_key=sk-or-v1-0123456789abcdef0123'
+          container_name: desyn-web-blue-1
+    outputs:
+      - extract_from: desyn_shape
+        conditions:
+          - type: vrl
+            source: |
+              assert!(!contains(string!(.message), "abcdef123456"))
+              assert!(!contains(string!(.message), "0123456789abcdef0123"))
+              assert!(contains(string!(.message), "request failed"))

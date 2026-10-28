@@ -1,0 +1,10 @@
+{
+  "name": "invalid-fill-named-color",
+  "schema": "Fill",
+  "valid": false,
+  "description": "named colors are not allowed",
+  "value": {
+    "type": "solid",
+    "color": "red"
+  }
+}

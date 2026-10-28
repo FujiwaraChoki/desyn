@@ -1,0 +1,99 @@
+---
+title: Agent API (v1)
+description: The Desyn REST API for agents and automation — base URLs, API keys and scopes, errors, pagination, rate limits and the full endpoint index.
+---
+
+The Agent API lets your own code and agents do what the editor and the built-in agent do: create and read designs, commit transactions, upload assets, run the agent and workflows, and export. Every endpoint is a thin HTTP wrapper over a backend function, so the API behaves exactly like the app.
+
+> [!NOTE]
+> This is **version 1** of the API. Within v1, changes are additive: new endpoints, new optional parameters and new response fields. Breaking changes would ship as `/api/v2`. The Agent API is part of Pro and the self-hosted edition.
+
+## Base URL
+
+| Installation | Base URL |
+| --- | --- |
+| desyn.app | `https://api.desyn.app/api/v1` |
+| Self-hosted | `https://<CONVEX_SITE_URL host>/api/v1`, e.g. `https://convex-site.example.org/api/v1` |
+
+Requests and responses are JSON (`content-type: application/json`) unless an endpoint says otherwise. Timestamps are milliseconds since the Unix epoch.
+
+## Authentication
+
+Create a key in **Settings → API keys**: give it a name, choose its [scopes](#scopes) and, optionally, an expiry between 1 and 730 days. The key is shown **once**; Desyn only stores a hash of it.
+
+Keys look like `dsk_` followed by 43 characters. Send one with every request, either as a bearer token or in `x-api-key`:
+
+```bash
+curl https://api.desyn.app/api/v1/me \
+  -H "Authorization: Bearer $DESYN_API_KEY"
+```
+
+A key acts as the member who created it, in the workspace it was created for, limited to its scopes. Write scopes only take effect while that member has at least the *editor* role in the workspace; otherwise the key is reduced to its read scopes. Revoke keys at any time in the same settings page.
+
+> [!WARNING]
+> Treat keys like passwords: keep them in environment variables or a secrets manager, never in client-side code, repositories or prompts shared with third parties.
+
+## Scopes
+
+<Generated name="api-scopes" />
+
+## Errors
+
+Failed requests return an HTTP status and a JSON body with a stable, machine-readable code:
+
+```json
+{
+  "error": {
+    "code": "LIMIT_REACHED",
+    "message": "You reached your plan limit for designs (20).",
+    "limit": "designs",
+    "max": 20,
+    "current": 20
+  }
+}
+```
+
+| Status | Code | Meaning |
+| --- | --- | --- |
+| 400 | `INVALID_ARGUMENT` | A parameter is missing or invalid; `field` names it |
+| 401 | `UNAUTHENTICATED` | Missing, malformed, expired or revoked key |
+| 403 | `FORBIDDEN` | The key lacks the scope, or the member lacks the role |
+| 403 | `FEATURE_UNAVAILABLE` | The plan does not include the feature; `feature` names it |
+| 403 | `EMAIL_NOT_VERIFIED` | The member must verify their email first |
+| 404 | `NOT_FOUND` | No such resource in this workspace |
+| 409 | `CONFLICT` | The request conflicts with the current state |
+| 410 | `EXPIRED` | A link, upload or run has expired |
+| 422 | `LIMIT_REACHED` | A plan limit was reached; `limit`, `max` and `current` explain which |
+| 429 | `RATE_LIMITED` | Too many requests; see [rate limits](#rate-limits) |
+| 501 | `NOT_CONFIGURED` | The installation has not configured what this needs (for example storage or a provider) |
+| 500 | `INTERNAL` | Something failed on our side; safe to retry with backoff |
+
+The `message` is written for humans and safe to show to users.
+
+## Rate limits
+
+AI endpoints share the account's fair-use limits: per-minute and per-day request caps and a maximum number of concurrent agent runs and workflows (see [credits & fair use](/ai/credits-and-fair-use)). When a limit is hit the API responds with `429`, a `Retry-After` header in seconds, and the error fields `retryAfterMs` and `scope` (`minute`, `day` or `concurrency`).
+
+On the hosted Pro plan, AI requests beyond the monthly credit pool are not rejected but soft-throttled: they start after a short delay. Requests that run on the member's own provider keys do not use credits.
+
+## Pagination
+
+List endpoints accept `limit` and `cursor` and return `nextCursor`; pass it back to get the next page. `nextCursor` is `null` on the last page.
+
+## Idempotency
+
+Transactions are idempotent on their `tx.id`: retrying a commit after a timeout returns the original result instead of applying the change twice. Generate transaction ids on the client (12 characters, lowercase letters and digits).
+
+## Endpoints
+
+<Generated name="api-index" />
+
+## Working with designs
+
+The endpoints that matter most for agents:
+
+1. [Describe a page](/developers/api/designs#describe-a-page) to understand it, or [load the document](/developers/api/designs#load-the-document) for full detail.
+2. Change it either by [committing transactions](/developers/api/designs#commit-a-transaction) you build yourself, or by [starting an agent run](/developers/api/ai#start-an-agent-run) with a goal in plain language.
+3. [Render a preview](/developers/api/designs#render-a-preview) to check the result visually, then [export](/developers/api/designs#request-an-export).
+
+Prefer the [MCP server](/developers/mcp) if your agent speaks MCP, and the [TypeScript SDK](/developers/sdk) for typed access from Node.js, Deno, Bun or the browser.

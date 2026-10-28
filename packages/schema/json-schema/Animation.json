@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://desyn.app/schema/v1/Animation.json",
+  "title": "Animation",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "#/$defs/Id"
+    },
+    "preset": {
+      "type": "string",
+      "enum": [
+        "fade",
+        "rise",
+        "drop",
+        "slide-left",
+        "slide-right",
+        "zoom-in",
+        "zoom-out",
+        "pop",
+        "rotate",
+        "wipe",
+        "typewriter",
+        "pulse",
+        "float",
+        "shake",
+        "blur-in",
+        "none"
+      ]
+    },
+    "phase": {
+      "type": "string",
+      "enum": ["in", "out", "loop"]
+    },
+    "startMs": {
+      "type": "number"
+    },
+    "durationMs": {
+      "type": "number",
+      "minimum": 0
+    },
+    "easing": {
+      "type": "string",
+      "enum": ["linear", "ease", "ease-in", "ease-out", "ease-in-out", "spring"]
+    }
+  },
+  "required": ["id", "preset", "phase", "startMs", "durationMs", "easing"],
+  "additionalProperties": {},
+  "$defs": {
+    "Id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]{12}$"
+    }
+  }
+}

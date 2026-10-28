@@ -1,0 +1,28 @@
+---
+title: AI endpoints
+description: Agent API v1 endpoints for AI — start, follow, answer and cancel agent runs; generate and transform assets; run workflows; list models.
+---
+
+AI endpoints start server-side jobs and return immediately with an id. Follow a job by polling its events or status. Runs commit their edits to the design as they go (`source: "ai"`), so anyone with the design open watches them happen live.
+
+A typical agent run from a script:
+
+```bash
+RUN=$(curl -sS -X POST "https://api.desyn.app/api/v1/designs/$DESIGN_ID/agent-runs" \
+  -H "Authorization: Bearer $DESYN_API_KEY" -H "Content-Type: application/json" \
+  -d '{"goal":"Make the headline shorter and warmer. Keep everything else."}' | jq -r .runId)
+
+AFTER=0
+while :; do
+  EVENTS=$(curl -sS "https://api.desyn.app/api/v1/agent-runs/$RUN/events?after=$AFTER" \
+    -H "Authorization: Bearer $DESYN_API_KEY")
+  echo "$EVENTS" | jq -c '.items[]'
+  AFTER=$(echo "$EVENTS" | jq -r .next)
+  echo "$EVENTS" | jq -e '.items[] | select(.type == "done" or .type == "error")' >/dev/null && break
+  sleep 1
+done
+```
+
+On the hosted Pro plan these endpoints spend credits like the app does; see [credits & fair use](/ai/credits-and-fair-use).
+
+<Generated name="api-endpoints" page="ai" />

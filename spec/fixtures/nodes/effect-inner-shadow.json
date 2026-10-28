@@ -1,0 +1,15 @@
+{
+  "name": "effect-inner-shadow",
+  "schema": "Effect",
+  "valid": true,
+  "description": "inner-shadow effect",
+  "value": {
+    "type": "innerShadow",
+    "x": 0,
+    "y": -2,
+    "blur": 4,
+    "spread": 0,
+    "color": "#ffffff26",
+    "visible": true
+  }
+}

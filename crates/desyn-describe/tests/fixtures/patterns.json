@@ -1,0 +1,926 @@
+{
+  "description": "Stat, quote, image with caption, text block, labelled icon, card on a backing shape and a vertical list.",
+  "design": {
+    "assets": {
+      "lakephoto000": {
+        "height": 800.0,
+        "id": "lakephoto000",
+        "kind": "image",
+        "mime": "image/jpeg",
+        "width": 1200.0
+      },
+      "staricon0000": {
+        "height": 24.0,
+        "id": "staricon0000",
+        "kind": "svg",
+        "mime": "image/svg+xml",
+        "width": 24.0
+      }
+    },
+    "id": "design000001",
+    "kind": "infographic",
+    "meta": {},
+    "name": "Fixture",
+    "nodes": {
+      "blockbody000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 52.8,
+        "id": "blockbody000",
+        "locked": false,
+        "name": "Block body",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Good layouts guide the eye from the headline to the action without friction."
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#333333",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 22.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 480.0,
+        "x": 640.0,
+        "y": 470.0
+      },
+      "blocktitle00": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 57.599999999999994,
+        "id": "blocktitle00",
+        "locked": false,
+        "name": "Block title",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Why it matters"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 48.0,
+          "fontStyle": "normal",
+          "fontWeight": 700.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 480.0,
+        "x": 640.0,
+        "y": 400.0
+      },
+      "cardart00000": {
+        "alt": "Star",
+        "assetId": "staricon0000",
+        "blend": "normal",
+        "effects": [],
+        "height": 64.0,
+        "id": "cardart00000",
+        "locked": false,
+        "name": "Card art",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "type": "svg",
+        "visible": true,
+        "width": 64.0,
+        "x": 104.0,
+        "y": 884.0
+      },
+      "cardtext0000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 24.0,
+        "id": "cardtext0000",
+        "locked": false,
+        "name": "Card text",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "On every order over fifty euros, worldwide."
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#333333",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 20.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 420.0,
+        "x": 104.0,
+        "y": 1010.0
+      },
+      "cardtitle000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 33.6,
+        "id": "cardtitle000",
+        "locked": false,
+        "name": "Card title",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Free shipping"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 28.0,
+          "fontStyle": "normal",
+          "fontWeight": 700.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 420.0,
+        "x": 104.0,
+        "y": 968.0
+      },
+      "infocard0000": {
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fills": [
+          {
+            "color": "#eef2f7",
+            "type": "solid"
+          }
+        ],
+        "height": 260.0,
+        "id": "infocard0000",
+        "locked": false,
+        "name": "Info card",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "rect",
+        "visible": true,
+        "width": 480.0,
+        "x": 80.0,
+        "y": 860.0
+      },
+      "lakecaption0": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 19.2,
+        "id": "lakecaption0",
+        "locked": false,
+        "name": "Lake caption",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Lake Bled at dawn"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#666666",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 16.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 480.0,
+        "x": 80.0,
+        "y": 732.0
+      },
+      "lakephoto000": {
+        "alt": "Lake at dawn",
+        "assetId": "lakephoto000",
+        "blend": "normal",
+        "cornerRadius": 0.0,
+        "effects": [],
+        "fit": "fill",
+        "height": 320.0,
+        "id": "lakephoto000",
+        "locked": false,
+        "name": "Lake photo",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "strokes": [],
+        "type": "image",
+        "visible": true,
+        "width": 480.0,
+        "x": 80.0,
+        "y": 400.0
+      },
+      "page00000001": {
+        "background": [
+          {
+            "color": "#ffffff",
+            "type": "solid"
+          }
+        ],
+        "bleed": 0.0,
+        "blend": "normal",
+        "children": [
+          "statvalue000",
+          "statlabel000",
+          "quotetext000",
+          "quoteauthor0",
+          "lakephoto000",
+          "lakecaption0",
+          "blocktitle00",
+          "blockbody000",
+          "staricon0000",
+          "starlabel000",
+          "infocard0000",
+          "cardart00000",
+          "cardtitle000",
+          "cardtext0000",
+          "step00000000",
+          "step10000000",
+          "step20000000",
+          "step30000000"
+        ],
+        "clip": true,
+        "effects": [],
+        "height": 1600.0,
+        "id": "page00000001",
+        "locked": false,
+        "name": "Page 1",
+        "opacity": 1.0,
+        "parent": "root",
+        "rotation": 0.0,
+        "type": "page",
+        "unit": "px",
+        "visible": true,
+        "width": 1200.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "quoteauthor0": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 24.0,
+        "id": "quoteauthor0",
+        "locked": false,
+        "name": "Quote author",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Ada, studio lead"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#444444",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 20.0,
+          "fontStyle": "normal",
+          "fontWeight": 600.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 400.0,
+        "x": 600.0,
+        "y": 190.0
+      },
+      "quotetext000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 86.4,
+        "id": "quotetext000",
+        "locked": false,
+        "name": "Quote text",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "“The best tool we have used this year.”"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 36.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 520.0,
+        "x": 600.0,
+        "y": 80.0
+      },
+      "root": {
+        "blend": "normal",
+        "children": [
+          "page00000001"
+        ],
+        "effects": [],
+        "height": 0.0,
+        "id": "root",
+        "locked": false,
+        "name": "Root",
+        "opacity": 1.0,
+        "parent": null,
+        "rotation": 0.0,
+        "type": "root",
+        "visible": true,
+        "width": 0.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "staricon0000": {
+        "assetId": "staricon0000",
+        "blend": "normal",
+        "effects": [],
+        "height": 28.0,
+        "id": "staricon0000",
+        "locked": false,
+        "name": "Star icon",
+        "opacity": 1.0,
+        "parent": "page00000001",
+        "role": "icon",
+        "rotation": 0.0,
+        "type": "svg",
+        "visible": true,
+        "width": 28.0,
+        "x": 640.0,
+        "y": 700.0
+      },
+      "starlabel000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 24.0,
+        "id": "starlabel000",
+        "locked": false,
+        "name": "Star label",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Top rated"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 20.0,
+          "fontStyle": "normal",
+          "fontWeight": 600.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 200.0,
+        "x": 680.0,
+        "y": 702.0
+      },
+      "statlabel000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 26.4,
+        "id": "statlabel000",
+        "locked": false,
+        "name": "Stat label",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "of readers finish the page"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#444444",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 22.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 300.0,
+        "x": 80.0,
+        "y": 200.0
+      },
+      "statvalue000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 115.19999999999999,
+        "id": "statvalue000",
+        "locked": false,
+        "name": "Stat value",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "98%"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 96.0,
+          "fontStyle": "normal",
+          "fontWeight": 800.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 300.0,
+        "x": 80.0,
+        "y": 80.0
+      },
+      "step00000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 28.799999999999997,
+        "id": "step00000000",
+        "locked": false,
+        "name": "Step 0",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Step 1 of the process"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 24.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 480.0,
+        "x": 640.0,
+        "y": 860.0
+      },
+      "step10000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 28.799999999999997,
+        "id": "step10000000",
+        "locked": false,
+        "name": "Step 1",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Step 2 of the process"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 24.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 480.0,
+        "x": 640.0,
+        "y": 924.0
+      },
+      "step20000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 28.799999999999997,
+        "id": "step20000000",
+        "locked": false,
+        "name": "Step 2",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Step 3 of the process"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 24.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 480.0,
+        "x": 640.0,
+        "y": 988.0
+      },
+      "step30000000": {
+        "autoResize": "height",
+        "blend": "normal",
+        "effects": [],
+        "height": 28.799999999999997,
+        "id": "step30000000",
+        "locked": false,
+        "name": "Step 3",
+        "opacity": 1.0,
+        "paragraph": {
+          "align": "left",
+          "direction": "auto",
+          "indent": 0.0,
+          "lineHeight": {
+            "unit": "percent",
+            "value": 120.0
+          },
+          "list": "none",
+          "spacing": 0.0
+        },
+        "parent": "page00000001",
+        "rotation": 0.0,
+        "runs": [
+          {
+            "text": "Step 4 of the process"
+          }
+        ],
+        "style": {
+          "decoration": "none",
+          "fills": [
+            {
+              "color": "#111111",
+              "type": "solid"
+            }
+          ],
+          "fontFamily": "Inter",
+          "fontSize": 24.0,
+          "fontStyle": "normal",
+          "fontWeight": 400.0,
+          "letterSpacing": 0.0,
+          "textCase": "none"
+        },
+        "type": "text",
+        "verticalAlign": "top",
+        "visible": true,
+        "width": 480.0,
+        "x": 640.0,
+        "y": 1052.0
+      }
+    },
+    "schema": 1,
+    "styles": {
+      "colors": {},
+      "effects": {},
+      "text": {},
+      "variables": {}
+    }
+  },
+  "expect": {
+    "absent": [
+      "uneven-spacing"
+    ],
+    "groups": [
+      {
+        "ids": [
+          "Stat value",
+          "Stat label"
+        ],
+        "kind": "stat"
+      },
+      {
+        "ids": [
+          "Quote text",
+          "Quote author"
+        ],
+        "kind": "quote"
+      },
+      {
+        "ids": [
+          "Lake photo",
+          "Lake caption"
+        ],
+        "kind": "image-with-caption"
+      },
+      {
+        "ids": [
+          "Block title",
+          "Block body"
+        ],
+        "kind": "text-block"
+      },
+      {
+        "ids": [
+          "Star icon",
+          "Star label"
+        ],
+        "kind": "labelled-icon"
+      },
+      {
+        "ids": [
+          "Info card",
+          "Card title",
+          "Card text"
+        ],
+        "kind": "card"
+      },
+      {
+        "ids": [
+          "Step 0",
+          "Step 1",
+          "Step 2",
+          "Step 3"
+        ],
+        "kind": "list"
+      }
+    ],
+    "issues": []
+  },
+  "options": null
+}

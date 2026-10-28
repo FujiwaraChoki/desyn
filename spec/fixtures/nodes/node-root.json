@@ -1,0 +1,23 @@
+{
+  "name": "node-root",
+  "schema": "RootNode",
+  "valid": true,
+  "description": "canonical example of a root node",
+  "value": {
+    "id": "root",
+    "type": "root",
+    "name": "Root",
+    "parent": null,
+    "x": 0,
+    "y": 0,
+    "width": 0,
+    "height": 0,
+    "rotation": 0,
+    "opacity": 1,
+    "blend": "normal",
+    "visible": true,
+    "locked": false,
+    "effects": [],
+    "children": ["page00000001"]
+  }
+}

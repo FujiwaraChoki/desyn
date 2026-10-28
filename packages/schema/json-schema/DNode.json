@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://desyn.app/schema/v1/DNode.json",
+  "title": "DNode",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "#/$defs/NodeId"
+    },
+    "type": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "box": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "w": {
+          "type": "number"
+        },
+        "h": {
+          "type": "number"
+        },
+        "rotation": {
+          "type": "number"
+        }
+      },
+      "required": ["x", "y", "w", "h", "rotation"],
+      "additionalProperties": {}
+    },
+    "z": {
+      "type": "number"
+    },
+    "visible": {
+      "type": "boolean"
+    },
+    "locked": {
+      "type": "boolean"
+    },
+    "opacity": {
+      "type": "number"
+    },
+    "text": {
+      "type": "string"
+    },
+    "font": {
+      "type": "object",
+      "properties": {
+        "family": {
+          "type": "string"
+        },
+        "size": {
+          "type": "number"
+        },
+        "weight": {
+          "type": "number"
+        },
+        "color": {
+          "$ref": "#/$defs/Color"
+        },
+        "align": {
+          "type": "string"
+        },
+        "lines": {
+          "type": "number"
+        }
+      },
+      "required": ["family", "size", "weight", "color", "align"],
+      "additionalProperties": {}
+    },
+    "fill": {
+      "type": "string"
+    },
+    "image": {
+      "type": "object",
+      "properties": {
+        "assetId": {
+          "$ref": "#/$defs/Id"
+        },
+        "alt": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "enum": ["photo", "illustration", "logo", "icon", "unknown"]
+        }
+      },
+      "required": ["assetId"],
+      "additionalProperties": {}
+    },
+    "semantic": {
+      "type": "string"
+    },
+    "children": {
+      "type": "array",
+      "items": {
+        "$ref": "#"
+      }
+    },
+    "flags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": ["id", "type", "name", "box", "z", "visible", "locked", "opacity"],
+  "additionalProperties": {},
+  "$defs": {
+    "NodeId": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Id"
+        },
+        {
+          "type": "string",
+          "const": "root"
+        }
+      ]
+    },
+    "Id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]{12}$"
+    },
+    "Color": {
+      "type": "string",
+      "pattern": "^#(?:[0-9a-f]{6}|[0-9a-f]{8})$"
+    }
+  }
+}

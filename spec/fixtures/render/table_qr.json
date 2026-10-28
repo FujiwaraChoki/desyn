@@ -1,0 +1,277 @@
+{
+ "schema": 1,
+ "id": "tableqrd0007",
+ "name": "table_qr",
+ "kind": "social-post",
+ "nodes": {
+  "root": {
+   "id": "root",
+   "type": "root",
+   "name": "Root",
+   "parent": null,
+   "x": 0,
+   "y": 0,
+   "width": 0,
+   "height": 0,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "children": [
+    "tableqrp0004"
+   ]
+  },
+  "tableqrp0004": {
+   "id": "tableqrp0004",
+   "type": "page",
+   "name": "Page 1",
+   "parent": null,
+   "x": 0,
+   "y": 0,
+   "width": 480,
+   "height": 480,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "children": [
+    "pricingx0001",
+    "qrsquare0002",
+    "qrrounde0003"
+   ],
+   "clip": true,
+   "unit": "px",
+   "background": [
+    {
+     "type": "solid",
+     "color": "#ffffff"
+    }
+   ],
+   "bleed": 0
+  },
+  "pricingx0001": {
+   "id": "pricingx0001",
+   "type": "table",
+   "name": "pricing",
+   "parent": "tableqrp0004",
+   "x": 20,
+   "y": 20,
+   "width": 440,
+   "height": 210,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "rows": 5,
+   "cols": 4,
+   "colWidths": [
+    120,
+    80,
+    110,
+    130
+   ],
+   "rowHeights": [
+    44,
+    40,
+    40,
+    40,
+    46
+   ],
+   "cells": [
+    {
+     "r": 0,
+     "c": 0,
+     "text": "Plan"
+    },
+    {
+     "r": 0,
+     "c": 1,
+     "text": "Price"
+    },
+    {
+     "r": 0,
+     "c": 2,
+     "text": "Credits"
+    },
+    {
+     "r": 0,
+     "c": 3,
+     "text": "Support"
+    },
+    {
+     "r": 1,
+     "c": 0,
+     "text": "Free",
+     "align": "left"
+    },
+    {
+     "r": 1,
+     "c": 1,
+     "text": "$0",
+     "align": "right"
+    },
+    {
+     "r": 1,
+     "c": 2,
+     "text": "40",
+     "align": "right"
+    },
+    {
+     "r": 1,
+     "c": 3,
+     "text": "Community",
+     "align": "left"
+    },
+    {
+     "r": 2,
+     "c": 0,
+     "text": "Pro",
+     "align": "left",
+     "fill": {
+      "type": "solid",
+      "color": "#ffb02e33"
+     },
+     "style": {
+      "fontWeight": 700
+     }
+    },
+    {
+     "r": 2,
+     "c": 1,
+     "text": "$8",
+     "align": "right"
+    },
+    {
+     "r": 2,
+     "c": 2,
+     "text": "600",
+     "align": "right"
+    },
+    {
+     "r": 2,
+     "c": 3,
+     "text": "Email",
+     "align": "left"
+    },
+    {
+     "r": 3,
+     "c": 0,
+     "text": "Self-host",
+     "align": "left"
+    },
+    {
+     "r": 3,
+     "c": 1,
+     "text": "—",
+     "align": "right"
+    },
+    {
+     "r": 3,
+     "c": 2,
+     "text": "Unlimited",
+     "align": "right"
+    },
+    {
+     "r": 3,
+     "c": 3,
+     "text": "You",
+     "align": "left"
+    },
+    {
+     "r": 4,
+     "c": 0,
+     "text": "Prices exclude VAT. Credits reset monthly.",
+     "colspan": 4,
+     "align": "center",
+     "style": {
+      "fontSize": 11,
+      "fills": [
+       {
+        "type": "solid",
+        "color": "#6b6b73"
+       }
+      ]
+     }
+    }
+   ],
+   "header": true,
+   "stripe": true,
+   "borderColor": "#d4d4d8",
+   "borderWidth": 1,
+   "cellPadding": 8,
+   "defaultStyle": {
+    "fontFamily": "Inter",
+    "fontWeight": 400,
+    "fontStyle": "normal",
+    "fontSize": 13,
+    "fills": [
+     {
+      "type": "solid",
+      "color": "#1f1f23"
+     }
+    ],
+    "letterSpacing": 0,
+    "textCase": "none",
+    "decoration": "none"
+   }
+  },
+  "qrsquare0002": {
+   "id": "qrsquare0002",
+   "type": "qr",
+   "name": "qr-square",
+   "parent": "tableqrp0004",
+   "x": 30,
+   "y": 260,
+   "width": 180,
+   "height": 180,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "data": "https://desyn.app",
+   "fg": "#111111",
+   "bg": "#ffffff",
+   "errorCorrection": "M",
+   "rounded": false
+  },
+  "qrrounde0003": {
+   "id": "qrrounde0003",
+   "type": "qr",
+   "name": "qr-rounded",
+   "parent": "tableqrp0004",
+   "x": 260,
+   "y": 260,
+   "width": 180,
+   "height": 180,
+   "rotation": 0,
+   "opacity": 1,
+   "blend": "normal",
+   "visible": true,
+   "locked": false,
+   "effects": [],
+   "data": "https://desyn.app/templates?ref=fixture",
+   "fg": "#1b1446",
+   "bg": "#fff3d6",
+   "errorCorrection": "Q",
+   "rounded": true
+  }
+ },
+ "assets": {},
+ "styles": {
+  "colors": {},
+  "text": {},
+  "effects": {},
+  "variables": {}
+ },
+ "meta": {
+  "render": {}
+ }
+}
